@@ -3,6 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/SH++_mentor/assignment2/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.33796296296296297" />
+        <entry key="..\:/SH++_mentor/assignment2/app/src/main/res/drawable/button_background.xml" value="0.3351851851851852" />
+        <entry key="..\:/SH++_mentor/assignment2/app/src/main/res/drawable/ic_facebok_log.xml" value="0.3351851851851852" />
+        <entry key="..\:/SH++_mentor/assignment2/app/src/main/res/drawable/ic_instagram_log.xml" value="0.3351851851851852" />
+        <entry key="..\:/SH++_mentor/assignment2/app/src/main/res/drawable/ic_launcher_background.xml" value="0.33796296296296297" />
+        <entry key="..\:/SH++_mentor/assignment2/app/src/main/res/drawable/ic_vk_log.xml" value="0.3351851851851852" />
         <entry key="..\:/SH++_mentor/assignment2/app/src/main/res/layout/activity_main.xml" value="0.25" />
       </map>
     </option>

@@ -30,7 +30,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-       >
+        tools:layout_editor_absoluteX="-16dp"
+        tools:layout_editor_absoluteY="-63dp">
 
         <TextView
             android:id="@+id/settings"
@@ -84,7 +85,7 @@
             android:textSize="14sp" />
 
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/edit_profile"
             android:layout_width="match_parent"
             android:layout_height="60dp"
@@ -96,7 +97,7 @@
             android:background="@drawable/button_background"
             android:text="@string/edit_profile" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/view_my_contacts"
             android:layout_width="match_parent"
             android:layout_height="70dp"
@@ -105,36 +106,35 @@
             android:layout_marginTop="5dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
-            android:text="@string/view_my_contacts" />
+            android:background="@color/purple_200"
+            android:text="@string/view_my_contacts"
+            android:textColor="@color/white_grey_500"
+            android:textSize="25sp" />
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/home_address"
-            android:layout_marginTop="147dp"
-            android:layout_marginBottom="-217dp"
-            app:srcCompat="@drawable/ic_facebok_log" />
+            android:layout_alignBottom="@+id/iv_instagram_log"
+            android:layout_marginStart="50dp"
+            app:srcCompat="@drawable/ic_facebook_log" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/iv_instagram_log"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/imageView"
-            android:layout_centerInParent="true"
-            android:layout_marginStart="129dp"
-            android:layout_marginBottom="4dp"
-            android:layout_toEndOf="@+id/imageView"
+            android:layout_above="@+id/edit_profile"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="50dp"
             app:srcCompat="@drawable/ic_instagram_log" />
 
         <ImageView
             android:id="@+id/imageView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/imageView2"
-            android:layout_marginStart="83dp"
-            android:layout_marginBottom="13dp"
-            android:layout_toEndOf="@+id/imageView2"
+            android:layout_alignBottom="@+id/iv_instagram_log"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="50dp"
             app:srcCompat="@drawable/ic_vk_log" />
 
     </RelativeLayout>

@@ -10,8 +10,10 @@
         <entry key="..\:/SH++_mentor/assignment2/app/src/main/res/drawable/ic_instagram_log.xml" value="0.3351851851851852" />
         <entry key="..\:/SH++_mentor/assignment2/app/src/main/res/drawable/ic_launcher_background.xml" value="0.33796296296296297" />
         <entry key="..\:/SH++_mentor/assignment2/app/src/main/res/drawable/ic_vk_log.xml" value="0.3351851851851852" />
+        <entry key="..\:/SH++_mentor/assignment2/app/src/main/res/font/open_sans.xml" value="0.33796296296296297" />
         <entry key="..\:/SH++_mentor/assignment2/app/src/main/res/font/pacifico_regular.xml" value="0.3351851851851852" />
-        <entry key="..\:/SH++_mentor/assignment2/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/SH++_mentor/assignment2/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/SH++_mentor/assignment2/app/src/main/res/layout/sign_up_main.xml" value="0.1697061803444782" />
       </map>
     </option>
   </component>

@@ -12,7 +12,7 @@
         android:id="@+id/view_top_container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@color/blue_500"
+        android:background="@color/blue"
         app:layout_constraintBottom_toTopOf="@id/view_bottom_container"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_weight="0.5" />
@@ -33,7 +33,7 @@
         tools:layout_editor_absoluteX="-16dp"
         tools:layout_editor_absoluteY="-63dp">
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/settings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -42,7 +42,7 @@
             android:textColor="@color/white_grey_500"
             android:textSize="24sp" />
 
-        <ImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/mok2"
             android:layout_width="113dp"
             android:layout_height="113dp"
@@ -51,7 +51,7 @@
             app:srcCompat="@drawable/mok2" />
 
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -62,7 +62,7 @@
             android:textColor="@color/white_grey_500"
             android:textSize="18sp" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/career"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -73,7 +73,7 @@
             android:textColor="@color/white_grey_500"
             android:textSize="14sp" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/home_address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -88,7 +88,7 @@
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/edit_profile"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
             android:layout_above="@+id/view_my_contacts"
             android:layout_marginStart="10dp"
             android:layout_marginTop="8dp"
@@ -106,20 +106,20 @@
             android:layout_marginTop="5dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
-            android:background="@color/purple_200"
+            android:background="@color/orange"
             android:text="@string/view_my_contacts"
             android:textColor="@color/white_grey_500"
             android:textSize="25sp" />
 
-        <ImageView
-            android:id="@+id/imageView"
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_facebook_log"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/iv_instagram_log"
             android:layout_marginStart="50dp"
             app:srcCompat="@drawable/ic_facebook_log" />
 
-        <ImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_instagram_log"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -128,8 +128,8 @@
             android:layout_marginBottom="50dp"
             app:srcCompat="@drawable/ic_instagram_log" />
 
-        <ImageView
-            android:id="@+id/imageView3"
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_vk_log"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/iv_instagram_log"

@@ -6,4 +6,9 @@
     <string name="home_address">Home address</string>
     <string name="edit_profile">Edit profile</string>
     <string name="view_my_contacts">VIEW MY CONTACTS</string>
+    <string name="let_s_get_acquainted">Let\'s get acquainted</string>
+    <string name="fill_out_the_profile_and_go_to_the_application">Fill out the profile and go to the application!</string>
+    <string name="e_mail">E-mail</string>
+    <string name="lucile_alvarado_gmail_com">lucile.alvarado@gmail.com</string>
+    <string name="password">Password</string>
 </resources>

@@ -30,7 +30,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent">
-        tools:layout_editor_absoluteY="-63dp">
+
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/settings"
@@ -60,9 +60,9 @@
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/open_sans"
             android:layout_below="@+id/mok2"
             android:layout_centerHorizontal="true"
+            android:fontFamily="@font/open_sans"
             android:text="@string/name"
             android:textColor="@color/textColor"
             android:textSize="18sp" />
@@ -83,10 +83,13 @@
             android:id="@+id/home_address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/open_sans"
             android:layout_below="@+id/career"
             android:layout_centerHorizontal="true"
-            android:layout_margin="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/open_sans"
             android:text="@string/home_address"
             android:textColor="@color/gray_text_2"
             android:textSize="14sp" />

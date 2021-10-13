@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,13 +7,92 @@
     tools:context=".MainActivity">
 
 
-
     <View
-        android:id="@+id/view_top_container"
+        android:id="@+id/view2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/blue"
-        />
+        android:background="@color/blue" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+       >
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/let_s_get_acquainted"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="159dp"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/open_sans"
+            android:padding="10dp"
+            android:text="@string/let_s_get_acquainted"
+            android:textColor="@color/textColor"
+            android:textSize="31sp"
+             />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/fill_out_the_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           android:layout_below="@id/let_s_get_acquainted"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/open_sans"
+            android:padding="8dp"
+            android:text="@string/fill_out_the_profile_and_go_to_the_application"
+            android:textColor="@color/textColor"
+            android:textSize="14sp"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/e_mail"
+            android:theme="@style/MyTextStyle1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:layout_below="@id/fill_out_the_profile"
+            android:text="@string/e_mail"
+            android:textSize="18sp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/lucile_alvarado_gmail_com"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/e_mail"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/open_sans"
+            android:text="@string/lucile_alvarado_gmail_com"
+            android:textColor="@color/textColor"
+            android:textSize="18sp"
+            />
+        <View
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_below="@id/lucile_alvarado_gmail_com"
+            android:background="@color/gray_text_2" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/password"
+            android:theme="@style/MyTextStyle1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:layout_below="@+id/line"
+            android:text="@string/password"
+            android:textSize="18sp" />
+
+
+    </RelativeLayout>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

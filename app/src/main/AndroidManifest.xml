@@ -11,6 +11,11 @@
         android:theme="@style/Theme.Assignment2">
 
         <activity
+            android:name=".Sign_upActivity"
+            android:exported="true">
+
+        </activity>
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -24,11 +29,7 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity
-            android:name=".Sign_upActivity"
-            android:exported="true">
 
-        </activity>
     </application>
 
 </manifest>

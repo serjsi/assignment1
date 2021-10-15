@@ -11,4 +11,9 @@
     <string name="e_mail">E-mail</string>
     <string name="lucile_alvarado_gmail_com">lucile.alvarado@gmail.com</string>
     <string name="password">Password</string>
+    <string name="password_cower">password cower</string>
+    <string name="checkbox">CheckBox</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="sign_in">Sign in</string>
+    <string name="by_clicking_register_you_agree_to_our_terms_and_conditionst">By clicking Register you agree to our Terms and Conditions</string>
 </resources>

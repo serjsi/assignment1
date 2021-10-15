@@ -6,5 +6,9 @@
         <item name="android:textColor">#B2B2B3</item>
         <item name="android:textSize">18sp</item>
         <item name="android:fontFamily">@font/open_sans</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+
     </style>
 </resources>

@@ -100,7 +100,10 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_above="@+id/view_my_contacts"
-            android:layout_margin ="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
             android:background="@drawable/button_background"
             android:fontFamily="@font/open_sans"
             android:text="@string/edit_profile" />

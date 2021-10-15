@@ -57,16 +57,17 @@
             android:textSize="18sp" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/lucile_alvarado_gmail_com"
+            android:id="@+id/enter_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/e_mail"
             android:layout_marginStart="16dp"
             android:fontFamily="@font/open_sans"
+            android:inputType="text"
             android:text="@string/lucile_alvarado_gmail_com"
             android:textColor="@color/textColor"
-            android:textSize="18sp"
-            />
+            android:textSize="18sp" />
+
         <View
             android:id="@+id/line"
             android:layout_width="match_parent"
@@ -75,21 +76,105 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="16dp"
-            android:layout_below="@id/lucile_alvarado_gmail_com"
+            android:layout_below="@id/enter_email"
             android:background="@color/gray_text_2" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/password"
-            android:theme="@style/MyTextStyle1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/line"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp"
-            android:layout_below="@+id/line"
             android:text="@string/password"
-            android:textSize="18sp" />
+            android:theme="@style/MyTextStyle1" />
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/password_cower"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/password"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/open_sans"
+            android:text="@string/password_cower"
+            android:textColor="@color/textColor"
+            android:textSize="18sp"
+            android:inputType="text" />
+
+        <View
+            android:id="@+id/line2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_below="@+id/password_cower"
+            android:background="@color/gray_text_2" />
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/checkBox_sign_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/line2"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/checkbox"
+            android:theme="@style/MyTextStyle1" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/edit_profile"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_above="@+id/by_clicking_register_you"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/orange_button_long_fb5e06"
+            android:fontFamily="@font/open_sans"
+            android:text="@string/edit_profile" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/by_clicking_register_you"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/already_have_an_account"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/by_clicking_register_you_agree_to_our_terms_and_conditionst"
+            android:textSize="15sp"
+            android:theme="@style/MyTextStyle1" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/already_have_an_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/already_have_an_account"
+            android:theme="@style/MyTextStyle1" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/sign_in"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/already_have_an_account"
+            android:layout_alignBaseline="@+id/already_have_an_account"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/open_sans"
+            android:text="@string/sign_in"
+            android:textColor="@color/textColor"
+            android:textSize="18sp"
+            />
 
     </RelativeLayout>
 

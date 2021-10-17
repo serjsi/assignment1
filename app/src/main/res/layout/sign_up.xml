@@ -17,50 +17,53 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-       >
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/let_s_get_acquainted"
+            android:id="@+id/textViewLetSGetAcquainted"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="159dp"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="159dp"
             android:fontFamily="@font/open_sans"
             android:padding="10dp"
             android:text="@string/let_s_get_acquainted"
             android:textColor="@color/textColor"
-            android:textSize="31sp"
-             />
+            android:textSize="31sp" />
+
+
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/fill_out_the_profile"
+            android:id="@+id/textVieFillOutTheProfile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-           android:layout_below="@id/let_s_get_acquainted"
+            android:layout_below="@id/textViewLetSGetAcquainted"
             android:layout_centerHorizontal="true"
             android:fontFamily="@font/open_sans"
             android:padding="8dp"
             android:text="@string/fill_out_the_profile_and_go_to_the_application"
             android:textColor="@color/textColor"
-            android:textSize="14sp"
-            />
+            android:textSize="14sp" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/e_mail"
-            android:theme="@style/MyTextStyle1"
+            android:id="@+id/textViewEMail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/textVieFillOutTheProfile"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp"
-            android:layout_below="@id/fill_out_the_profile"
             android:text="@string/e_mail"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:theme="@style/MyTextStyle1" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/enter_email"
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/EditTextEnterEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/e_mail"
+            android:layout_below="@+id/textViewEMail"
             android:layout_marginStart="16dp"
             android:fontFamily="@font/open_sans"
             android:inputType="text"
@@ -69,52 +72,53 @@
             android:textSize="18sp" />
 
         <View
-            android:id="@+id/line"
+            android:id="@+id/viewLine"
             android:layout_width="match_parent"
             android:layout_height="1dp"
+            android:layout_below="@id/EditTextEnterEmail"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
             android:layout_marginEnd="16dp"
-            android:layout_below="@id/enter_email"
+            android:layout_marginBottom="8dp"
             android:background="@color/gray_text_2" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/password"
+            android:id="@+id/textViewPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/line"
+            android:layout_below="@+id/viewLine"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp"
             android:text="@string/password"
             android:theme="@style/MyTextStyle1" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/password_cower"
+
+        <EditText
+            android:id="@+id/editTextTextPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/password"
+            android:layout_below="@+id/textViewPassword"
             android:layout_marginStart="16dp"
-            android:fontFamily="@font/open_sans"
+            android:ems="10"
+            android:inputType="textPassword"
             android:text="@string/password_cower"
             android:textColor="@color/textColor"
-            android:textSize="18sp"
-            android:inputType="text" />
+            android:textSize="18sp" />
 
         <View
             android:id="@+id/line2"
             android:layout_width="match_parent"
             android:layout_height="1dp"
+            android:layout_below="@+id/editTextTextPassword"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
             android:layout_marginEnd="16dp"
-            android:layout_below="@+id/password_cower"
+            android:layout_marginBottom="8dp"
             android:background="@color/gray_text_2" />
 
         <androidx.appcompat.widget.AppCompatCheckBox
-            android:id="@+id/checkBox_sign_up"
+            android:id="@+id/checkBoxRemember"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/line2"
@@ -122,27 +126,29 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp"
             android:text="@string/checkbox"
+            android:textColor="@color/gray_text_2"
             android:theme="@style/MyTextStyle1" />
 
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/edit_profile"
+            android:id="@+id/buttonEditProfile"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_above="@+id/by_clicking_register_you"
+            android:layout_above="@+id/textViewByClickingRegisterYou"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
             android:background="@drawable/orange_button_long_fb5e06"
+            android:ellipsize="none"
             android:fontFamily="@font/open_sans"
             android:text="@string/edit_profile" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/by_clicking_register_you"
+            android:id="@+id/textViewByClickingRegisterYou"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/already_have_an_account"
+            android:layout_above="@+id/textViewAlreadyHaveAnAccount"
             android:layout_centerHorizontal="true"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
@@ -153,7 +159,7 @@
             android:theme="@style/MyTextStyle1" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/already_have_an_account"
+            android:id="@+id/textViewAlreadyHaveAnAccount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -163,21 +169,21 @@
             android:text="@string/already_have_an_account"
             android:theme="@style/MyTextStyle1" />
 
-        <androidx.appcompat.widget.AppCompatTextView
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/sign_in"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/already_have_an_account"
-            android:layout_alignBaseline="@+id/already_have_an_account"
+            android:layout_alignBaseline="@+id/textViewAlreadyHaveAnAccount"
             android:layout_marginStart="16dp"
+            android:layout_toEndOf="@+id/textViewAlreadyHaveAnAccount"
+            android:background="@color/blue"
             android:fontFamily="@font/open_sans"
             android:text="@string/sign_in"
             android:textColor="@color/textColor"
-            android:textSize="18sp"
-            />
+            android:textSize="18sp" />
+
 
     </RelativeLayout>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

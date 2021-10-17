@@ -7,22 +7,22 @@
     tools:context=".MainActivity">
 
 
-    <View
-        android:id="@+id/view_top_container"
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageViewTopContainer"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@color/blue"
-        app:layout_constraintBottom_toTopOf="@id/view_bottom_container"
+        app:layout_constraintBottom_toTopOf="@id/imageViewBottomContainer"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_weight="0.5" />
 
-    <View
-        android:id="@+id/view_bottom_container"
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageViewBottomContainer"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@color/textColor"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/view_top_container"
+        app:layout_constraintTop_toBottomOf="@id/imageViewTopContainer"
         app:layout_constraintVertical_weight="0.5" />
 
     <RelativeLayout
@@ -33,7 +33,7 @@
 
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/settings"
+            android:id="@+id/textViewSettings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/open_sans"
@@ -43,11 +43,11 @@
             android:textSize="31sp" />
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/mok2"
+            android:id="@+id/imageViewMok2"
             android:layout_width="113dp"
             android:layout_height="113dp"
             android:fontFamily="@font/open_sans"
-            android:layout_below="@+id/settings"
+            android:layout_below="@+id/textViewSettings"
             android:layout_centerHorizontal="true"
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
@@ -57,10 +57,10 @@
 
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/name"
+            android:id="@+id/textViewName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/mok2"
+            android:layout_below="@+id/imageViewMok2"
             android:layout_centerHorizontal="true"
             android:fontFamily="@font/open_sans"
             android:text="@string/name"
@@ -68,11 +68,11 @@
             android:textSize="18sp" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/career"
+            android:id="@+id/textViewCareer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/open_sans"
-            android:layout_below="@+id/name"
+            android:layout_below="@+id/textViewName"
             android:layout_centerHorizontal="true"
             android:layout_margin="8dp"
             android:text="@string/career"
@@ -80,10 +80,10 @@
             android:textSize="14sp" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/home_address"
+            android:id="@+id/textViewHomeAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/career"
+            android:layout_below="@+id/textViewCareer"
             android:layout_centerHorizontal="true"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
@@ -96,10 +96,10 @@
 
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/edit_profile"
+            android:id="@+id/buttonEditProfile"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_above="@+id/view_my_contacts"
+            android:layout_above="@+id/buttonViewMyContacts"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
@@ -109,7 +109,7 @@
             android:text="@string/edit_profile" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/view_my_contacts"
+            android:id="@+id/buttonViewMyContacts"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_alignParentBottom="true"
@@ -125,28 +125,28 @@
 
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/iv_facebook_log"
+            android:id="@+id/imageViewFacebookLog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/iv_instagram_log"
+            android:layout_alignBottom="@+id/imageViewInstagramLog"
             android:layout_marginStart="50dp"
             app:srcCompat="@drawable/ic_facebook_log" />
 
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/iv_instagram_log"
+            android:id="@+id/imageViewInstagramLog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/edit_profile"
+            android:layout_above="@+id/buttonEditProfile"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="50dp"
             app:srcCompat="@drawable/ic_instagram_log" />
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/iv_vk_log"
+            android:id="@+id/imageViewVkLog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/iv_instagram_log"
+            android:layout_alignBottom="@+id/imageViewInstagramLog"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="50dp"
             app:srcCompat="@drawable/ic_vk_log" />

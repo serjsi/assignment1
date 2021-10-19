@@ -5,18 +5,25 @@
       <map>
         <entry key="..\:/SH++_mentor/assignment2/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.33796296296296297" />
         <entry key="..\:/SH++_mentor/assignment2/app/src/main/res/drawable/button_background.xml" value="0.3351851851851852" />
+        <entry key="..\:/SH++_mentor/assignment2/app/src/main/res/drawable/button_background_grey.xml" value="0.32314814814814813" />
         <entry key="..\:/SH++_mentor/assignment2/app/src/main/res/drawable/ic_facebok_log.xml" value="0.3351851851851852" />
         <entry key="..\:/SH++_mentor/assignment2/app/src/main/res/drawable/ic_facebook_log.xml" value="0.3351851851851852" />
         <entry key="..\:/SH++_mentor/assignment2/app/src/main/res/drawable/ic_instagram_log.xml" value="0.3351851851851852" />
         <entry key="..\:/SH++_mentor/assignment2/app/src/main/res/drawable/ic_launcher_background.xml" value="0.33796296296296297" />
         <entry key="..\:/SH++_mentor/assignment2/app/src/main/res/drawable/ic_vk_log.xml" value="0.3351851851851852" />
+        <entry key="..\:/SH++_mentor/assignment2/app/src/main/res/drawable/my_photo_background.xml" value="0.32037037037037036" />
         <entry key="..\:/SH++_mentor/assignment2/app/src/main/res/font/open_sans.xml" value="0.33796296296296297" />
         <entry key="..\:/SH++_mentor/assignment2/app/src/main/res/font/pacifico_regular.xml" value="0.3351851851851852" />
         <entry key="..\:/SH++_mentor/assignment2/app/src/main/res/layout-w1240dp/activity_login.xml" value="0.12550200803212852" />
+        <entry key="..\:/SH++_mentor/assignment2/app/src/main/res/layout/activity_auth.xml" value="0.3183876811594203" />
         <entry key="..\:/SH++_mentor/assignment2/app/src/main/res/layout/activity_login.xml" value="0.1953125" />
         <entry key="..\:/SH++_mentor/assignment2/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/SH++_mentor/assignment2/app/src/main/res/layout/sign_up.xml" value="0.33" />
         <entry key="..\:/SH++_mentor/assignment2/app/src/main/res/layout/sign_up_main.xml" value="0.1697061803444782" />
+        <entry key="..\:/SH++_mentor/assignment2/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.20885416666666667" />
+        <entry key="..\:/SH++_mentor/assignment2/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.32314814814814813" />
+        <entry key="..\:/SH++_mentor/assignment2/app/src/main/res/mipmap-anydpi-v26/my_photo.xml" value="0.20885416666666667" />
+        <entry key="..\:/SH++_mentor/assignment2/app/src/main/res/mipmap-anydpi-v26/my_photo_round.xml" value="0.20885416666666667" />
       </map>
     </option>
   </component>

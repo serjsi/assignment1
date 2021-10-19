@@ -46,13 +46,13 @@
             android:id="@+id/imageViewMok2"
             android:layout_width="113dp"
             android:layout_height="113dp"
-            android:fontFamily="@font/open_sans"
             android:layout_below="@+id/textViewSettings"
             android:layout_centerHorizontal="true"
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="24dp"
+            android:fontFamily="@font/open_sans"
             app:srcCompat="@drawable/mok2" />
 
 
@@ -104,7 +104,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
-            android:background="@drawable/button_background"
+            android:background="@drawable/button_background_black"
             android:fontFamily="@font/open_sans"
             android:text="@string/edit_profile" />
 
@@ -117,7 +117,8 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
-            android:background="@drawable/orange_button_long_fb5e06"
+            android:background="@drawable/button_background_orange"
+            android:backgroundTint="@color/orange"
             android:fontFamily="@font/open_sans"
             android:text="@string/view_my_contacts"
             android:textColor="@color/textColor"

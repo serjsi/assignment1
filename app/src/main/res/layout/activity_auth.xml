@@ -67,7 +67,7 @@
             android:layout_marginStart="16dp"
             android:fontFamily="@font/open_sans"
             android:inputType="text"
-            android:text="@string/lucile_alvarado_gmail_com"
+            android:text="@string/enter_email"
             android:textColor="@color/textColor"
             android:textSize="18sp" />
 
@@ -139,10 +139,11 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
-            android:background="@drawable/orange_button_long_fb5e06"
+            android:background="@drawable/button_background_orange"
             android:fontFamily="@font/open_sans"
-            android:textSize="16sp"
-            android:text="@string/register" />
+            android:text="@string/register"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textViewByClickingRegisterYou"

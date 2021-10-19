@@ -42,6 +42,7 @@ class AuthActivity : AppCompatActivity() {
         //Switching to another screen
         register?.setOnClickListener{
             val intent = Intent(this,MainActivity::class.java)
+            intent.putExtra("name",username?.text.toString())
             startActivity(intent)
         }
     }

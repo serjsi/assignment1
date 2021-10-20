@@ -43,6 +43,7 @@ class AuthActivity : AppCompatActivity() {
         register?.setOnClickListener{
             val intent = Intent(this,MainActivity::class.java)
             intent.putExtra("name",username?.text.toString())
+            intent.putExtra("myPhoto",R.drawable.my_photo)
             startActivity(intent)
         }
     }

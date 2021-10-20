@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">assignment2</string>
+    <string name="settings">Налаштування</string>
+    <string name="name">Ім\'я</string>
+    <string name="career">Професія</string>
+    <string name="home_address">Домашня адреса</string>
+    <string name="edit_profile">Редагувати профіль</string>
+    <string name="view_my_contacts">ПЕРЕГЛЯНУТИ МОЇ КОНТАКТИ</string>
+    <string name="let_s_get_acquainted">Давайте познайомимося</string>
+    <string name="fill_out_the_profile_and_go_to_the_application">Заповніть профіль і перейдіть до програми!</string>
+    <string name="e_mail">Електронна пошта</string>
+    <string name="enter_email">serhii.sierykh@gmail.com</string>
+    <string name="password">Пароль</string>
+    <string name="password_cower">сховати пароль</string>
+    <string name="checkbox">Запам\'ятати мене</string>
+    <string name="already_have_an_account">Уже є обліковий запис?</string>
+    <string name="sign_in">Увійти</string>
+    <string name="by_clicking_register_you_agree_to_our_terms_and_conditionst">Натиснувши Реєстрація, ви погоджуєтесь з нашими Умовами використання</string>
+    <string name="title_activity_login">Дії входу</string>
+    <string name="prompt_email">Електронна пошта</string>
+    <string name="prompt_password">Пароль</string>
+    <string name="action_sign_in">Увійдіть або зареєструйтесь</string>
+    <string name="action_sign_in_short">Увійти</string>
+    <string name="welcome">Ласкаво просимо!</string>
+    <string name="invalid_username">Недійсне ім’я користувача</string>
+    <string name="invalid_password">Пароль повинен містити> 5 символів</string>
+    <string name="login_failed">Не вдалося ввійти</string>
+    <string name="register">реєструватись</string>
+</resources>

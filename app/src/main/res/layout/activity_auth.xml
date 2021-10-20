@@ -25,12 +25,13 @@
             android:id="@+id/textViewLetSGetAcquainted"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_above="@+id/textVieFillOutTheProfile"
+
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="159dp"
             android:fontFamily="@font/open_sans"
             android:padding="10dp"
             android:text="@string/let_s_get_acquainted"
-            android:textColor="@color/textColor"
+            android:textColor="@color/gray_very_light"
             android:textSize="31sp" />
 
 
@@ -38,20 +39,20 @@
             android:id="@+id/textVieFillOutTheProfile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textViewLetSGetAcquainted"
+            android:layout_above="@+id/textViewEMail"
             android:layout_centerHorizontal="true"
             android:fontFamily="@font/open_sans"
             android:padding="8dp"
             android:text="@string/fill_out_the_profile_and_go_to_the_application"
-            android:textColor="@color/textColor"
+            android:textColor="@color/gray_very_light"
             android:textSize="14sp" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textViewEMail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textVieFillOutTheProfile"
-            android:layout_marginStart="16dp"
+            android:layout_above="@+id/editTextEnterEmail"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp"
             android:text="@string/e_mail"
@@ -61,74 +62,64 @@
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/editTextEnterEmail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textViewEMail"
-            android:layout_marginStart="16dp"
-            android:fontFamily="@font/open_sans"
-            android:inputType="text"
-            android:text="@string/enter_email"
-            android:textColor="@color/textColor"
-            android:textSize="18sp" />
-
-        <View
-            android:id="@+id/viewLine"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_below="@id/editTextEnterEmail"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/textViewPassword"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="8dp"
-            android:background="@color/gray_text_2" />
+            android:backgroundTint="@color/white_my"
+            android:fontFamily="@font/open_sans"
+            android:inputType="text"
+            android:text="@string/enter_email"
+            android:textColor="@color/gray_very_light"
+            android:textSize="18sp" />
+
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textViewPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/viewLine"
+            android:layout_above="@+id/editTextTextPassword"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="26dp"
             android:layout_marginBottom="8dp"
             android:text="@string/password"
             android:theme="@style/MyTextStyle1" />
 
 
-        <EditText
+        <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/editTextTextPassword"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textViewPassword"
+            android:layout_above="@+id/checkBoxRemember"
             android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="@color/white_my"
             android:ems="10"
             android:inputType="textPassword"
+            android:lines="@integer/material_motion_duration_long_2"
             android:text="@string/password_cower"
-            android:textColor="@color/textColor"
+            android:textColor="@color/gray_very_light"
+            android:textColorHint="@color/orange"
             android:textSize="18sp" />
 
-        <View
-            android:id="@+id/line2"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_below="@+id/editTextTextPassword"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="8dp"
-            android:background="@color/gray_text_2" />
 
         <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/checkBoxRemember"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/line2"
+            android:layout_above="@+id/buttonRegister"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="23dp"
+            android:backgroundTint="@color/white_my"
+            android:buttonTint="@color/gray_very_light"
+            android:duplicateParentState="false"
+            android:focusable="auto"
             android:text="@string/checkbox"
-            android:textColor="@color/gray_text_2"
+            android:textColor="@color/white_my"
             android:theme="@style/MyTextStyle1" />
-
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/buttonRegister"
@@ -180,7 +171,7 @@
             android:background="@color/blue"
             android:fontFamily="@font/open_sans"
             android:text="@string/sign_in"
-            android:textColor="@color/textColor"
+            android:textColor="@color/gray_very_light"
             android:textSize="18sp" />
 
 

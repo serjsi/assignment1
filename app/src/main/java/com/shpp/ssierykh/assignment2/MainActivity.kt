@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import java.util.*
 
 
@@ -28,12 +29,22 @@ class MainActivity : AppCompatActivity() {
         editProfile = findViewById<Button>(R.id.buttonEditProfile)
 
 
+
+
+
+
         val name: TextView = findViewById(R.id.textViewName)
         val nameChange = intent.extras?.get("name").toString()
         name.text = nameParsing(nameChange)
 
+        val photo: ImageView = findViewById(R.id.imageViewPhotoProfile)
+        photo.setImageResource(intent.extras?.get("myPhoto") as Int)
+       // photo.setImageResource(R.drawable.my_photo)
 
-        //Switching to another screen////////////////////////////delet
+
+
+
+        //Switching to another screen////////////////////////////delete---------------------------
         editProfile?.setOnClickListener {
             val intent = Intent(this, AuthActivity::class.java)
             startActivity(intent)
@@ -60,5 +71,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 }
+
+
 
 

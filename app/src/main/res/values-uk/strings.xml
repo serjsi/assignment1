@@ -9,9 +9,9 @@
     <string name="let_s_get_acquainted">Давайте познайомимося</string>
     <string name="fill_out_the_profile_and_go_to_the_application">Заповніть профіль і перейдіть до програми!</string>
     <string name="e_mail">Електронна пошта</string>
-    <string name="enter_email">serhii.sierykh@gmail.com</string>
+    <string name="enter_email">Введіть ваш імейл</string>
     <string name="password">Пароль</string>
-    <string name="password_cower">сховати пароль</string>
+    <string name="password_cower">Введіть ваш пароль</string>
     <string name="checkbox">Запам\'ятати мене</string>
     <string name="already_have_an_account">Уже є обліковий запис?</string>
     <string name="sign_in">Увійти</string>
@@ -26,4 +26,5 @@
     <string name="invalid_password">Пароль повинен містити> 5 символів</string>
     <string name="login_failed">Не вдалося ввійти</string>
     <string name="register">реєструватись</string>
+    <string name="empty_email_or_password">Пуста електрона пошта або пароль</string>
 </resources>

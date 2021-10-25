@@ -26,10 +26,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/textVieFillOutTheProfile"
-
             android:layout_centerHorizontal="true"
             android:fontFamily="@font/open_sans"
-            android:padding="10dp"
+            android:layout_margin="10dp"
             android:text="@string/let_s_get_acquainted"
             android:textColor="@color/gray_very_light"
             android:textSize="31sp" />
@@ -39,7 +38,7 @@
             android:id="@+id/textVieFillOutTheProfile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/textViewEMail"
+            android:layout_above="@+id/textInputLayoutEmail"
             android:layout_centerHorizontal="true"
             android:fontFamily="@font/open_sans"
             android:padding="8dp"
@@ -47,70 +46,62 @@
             android:textColor="@color/gray_very_light"
             android:textSize="14sp" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/textViewEMail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/editTextEnterEmail"
-            android:layout_marginStart="@dimen/activity_horizontal_margin"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp"
-            android:text="@string/e_mail"
-            android:textSize="18sp"
-            android:theme="@style/MyTextStyle1" />
 
+        <com.google.android.material.textfield.TextInputLayout
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/editTextEnterEmail"
+            android:id="@+id/textInputLayoutEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/textViewPassword"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:backgroundTint="@color/white_my"
-            android:fontFamily="@font/open_sans"
-            android:inputType="text"
-            android:text="@string/enter_email"
-            android:textColor="@color/gray_very_light"
-            android:textSize="18sp" />
+            android:layout_above="@+id/textInputLayoutPassword"
+            android:hint="@string/e_mail"
+            android:textColorHint="@color/white_my"
+            app:errorEnabled="true"
+            app:errorTextAppearance="@style/ErrorText"
+            app:errorTextColor="@color/design_default_color_error"
+            app:hintTextColor="@color/gray_very_light"
+            style="@style/TextInputLayout">
 
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/textViewPassword"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/editTextTextPassword"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="26dp"
-            android:layout_marginBottom="8dp"
-            android:text="@string/password"
-            android:theme="@style/MyTextStyle1" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextEnterEmail"
+                style="@style/TextInputEditText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/editTextTextPassword"
+        <com.google.android.material.textfield.TextInputLayout
+
+            android:id="@+id/textInputLayoutPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_above="@+id/checkBoxRemember"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:backgroundTint="@color/white_my"
-            android:ems="10"
-            android:inputType="textPassword"
-            android:lines="@integer/material_motion_duration_long_2"
-            android:text="@string/password_cower"
-            android:textColor="@color/gray_very_light"
-            android:textColorHint="@color/orange"
-            android:textSize="18sp" />
+            android:hint="@string/password"
+            android:textColorHint="@color/white_my"
+            app:errorEnabled="true"
+            app:errorTextAppearance="@style/ErrorText"
+            app:errorTextColor="@color/design_default_color_error"
+            app:hintTextColor="@color/gray_very_light"
+            style="@style/TextInputLayout">
 
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextTextPassword"
+                style="@style/TextInputEditText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/checkBoxRemember"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/buttonRegister"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="@dimen/margin_offset_from_edge_screen_16dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="23dp"
             android:backgroundTint="@color/white_my"
@@ -127,11 +118,12 @@
             android:layout_height="50dp"
             android:layout_above="@+id/textViewByClickingRegisterYou"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginTop="@dimen/margin_offset_from_edge_screen_16dp"
+            android:layout_marginEnd="@dimen/margin_offset_from_edge_screen_16dp"
             android:layout_marginBottom="16dp"
             android:background="@drawable/button_background_orange"
             android:fontFamily="@font/open_sans"
+            android:textAllCaps="true"
             android:text="@string/register"
             android:textColor="@color/white"
             android:textSize="16sp" />
@@ -143,8 +135,8 @@
             android:layout_above="@+id/textViewAlreadyHaveAnAccount"
             android:layout_centerHorizontal="true"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginTop="@dimen/margin_offset_from_edge_screen_16dp"
+            android:layout_marginEnd="@dimen/margin_offset_from_edge_screen_16dp"
             android:layout_marginBottom="8dp"
             android:text="@string/by_clicking_register_you_agree_to_our_terms_and_conditionst"
             android:textSize="15sp"
@@ -159,7 +151,8 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             android:text="@string/already_have_an_account"
-            android:theme="@style/MyTextStyle1" />
+            android:theme="@style/MyTextStyle1"/>
+
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/sign_in"
@@ -173,6 +166,7 @@
             android:text="@string/sign_in"
             android:textColor="@color/gray_very_light"
             android:textSize="18sp" />
+
 
 
     </RelativeLayout>

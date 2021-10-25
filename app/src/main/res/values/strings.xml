@@ -9,9 +9,9 @@
     <string name="let_s_get_acquainted">Let\'s get acquainted</string>
     <string name="fill_out_the_profile_and_go_to_the_application">Fill out the profile and go to the application!</string>
     <string name="e_mail">E-mail</string>
-    <string name="enter_email">serhii.sierykh@gmail.com</string>
+    <string name="enter_email">Enter your email</string>
     <string name="password">Password</string>
-    <string name="password_cower">password cower</string>
+    <string name="password_cower">Enter your password</string>
     <string name="checkbox">Remember me</string>
     <string name="already_have_an_account">Already have an account?</string>
     <string name="sign_in">Sign in</string>
@@ -26,4 +26,5 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="register">register</string>
+    <string name="empty_email_or_password">\"Empty e-mail or password \"</string>
 </resources>

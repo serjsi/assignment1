@@ -11,4 +11,38 @@
         <item name="android:layout_marginBottom">8dp</item>
 
     </style>
+
+    <style name="ErrorText" parent="TextAppearance.AppCompat.Small">
+        <item name="android:textStyle">bold|italic</item>
+        <item name="android:textColor">@color/design_default_color_on_primary</item>
+    </style>
+    <style name="TextInputLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginRight">16dp</item>
+
+        <item name="boxStrokeColor">@color/white_my</item>
+        <item name="endIconTint">@color/gray_very_light</item>
+
+    </style>
+
+    <style name="TextInputLayoutHint" parent="">
+        <item name="android:textColorHint">@color/gray_very_light</item>
+        <item name="colorControlActivated">@color/gray_very_light</item>
+        <item name="android:textSize">11dp</item>
+    </style>
+
+    <style name="TextInputEditText" parent="">
+        <item name="android:layout_marginStart">@dimen/margin_offset_from_edge_screen_16dp</item>
+        <item name="android:layout_marginEnd">@dimen/margin_offset_from_edge_screen_16dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:fontFamily" >@font/open_sans</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textColorHint">@color/white_my</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+
 </resources>

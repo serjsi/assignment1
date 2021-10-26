@@ -11,6 +11,7 @@ import android.text.TextUtils
 import com.shpp.ssierykh.assignment2.Constants.TEST_EMAIL
 import com.shpp.ssierykh.assignment2.Constants.TEST_PASSWORD
 import android.text.TextWatcher;
+import com.google.android.material.textfield.TextInputLayout
 import java.lang.reflect.Array.newInstance
 
 
@@ -18,7 +19,9 @@ class AuthActivity : AppCompatActivity() {
 
     //Announce the use of the following objects
     private var username: EditText? = null
+    private var usernameTextInputLayout: TextInputLayout? = null
     private var password: EditText? = null
+    private var passwordTextInputLayout: TextInputLayout? = null
     private var sign_in: Button? = null
     private var register: Button? = null
 
@@ -29,11 +32,11 @@ class AuthActivity : AppCompatActivity() {
 
         //Connect with the elements of our interface:
         username = (findViewById(R.id.editTextEnterEmail) as EditText?)!!
-
+        usernameTextInputLayout = (findViewById(R.id.textInputLayoutEmail) as TextInputLayout?)!!
 
 
         password = findViewById(R.id.editTextTextPassword) as EditText?
-
+        passwordTextInputLayout = (findViewById(R.id.textInputLayoutPassword) as TextInputLayout?)!!
         
         sign_in = findViewById(R.id.sign_in) as Button?
         register = findViewById(R.id.buttonRegister) as Button?

@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
 
         val photo: ImageView = findViewById(R.id.imageViewPhotoProfile)
         photo.setImageResource(intent.extras?.get("myPhoto") as Int)
-       // photo.setImageResource(R.drawable.my_photo)
+
 
 
 

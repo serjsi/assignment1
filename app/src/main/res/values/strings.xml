@@ -27,4 +27,6 @@
     <string name="login_failed">"Login failed"</string>
     <string name="register">register</string>
     <string name="empty_email_or_password">\"Empty e-mail or password \"</string>
+    <string name="or">or</string>
+    <string name="google">google</string>
 </resources>

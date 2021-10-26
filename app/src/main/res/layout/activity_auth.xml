@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -72,10 +73,8 @@
                     android:id="@+id/editTextEnterEmail"
                     style="@style/TextInputEditText"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:ellipsize="none"
-                    android:selectAllOnFocus="true"
-                    android:singleLine="true" />
+                    android:layout_height="wrap_content"
+                   />
 
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -89,11 +88,14 @@
                 android:layout_height="wrap_content"
                 android:layout_above="@+id/checkBoxRemember"
                 android:hint="@string/password"
+                android:inputType="textPassword"
                 android:textColorHint="@color/white_my"
                 app:errorEnabled="true"
                 app:errorTextAppearance="@style/ErrorText"
                 app:errorTextColor="@color/design_default_color_error"
-                app:hintTextColor="@color/gray_very_light">
+                app:hintTextColor="@color/gray_very_light"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/gray_very_light">
 
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -197,6 +199,8 @@
                     android:text="@string/sign_in"
                     android:textColor="@color/gray_very_light"
                     android:theme="@style/MyTextStyle1" />
+
+
             </androidx.appcompat.widget.LinearLayoutCompat>
 
         </com.google.android.material.circularreveal.CircularRevealRelativeLayout>

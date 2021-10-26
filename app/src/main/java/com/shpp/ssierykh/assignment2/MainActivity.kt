@@ -1,61 +1,44 @@
 package com.shpp.ssierykh.assignment2
 
 import android.content.Intent
-import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import androidx.databinding.DataBindingUtil
+import com.shpp.ssierykh.assignment2.databinding.ActivityMainBinding
 import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
 
-
-    //Announce the use of the following objects
-
-    private var editProfile: Button? = null
-
-
-
-    //private var name: TextView? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        // setContentView(R.layout.activity_main)
+        val binding: ActivityMainBinding =
+            DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        editProfile = findViewById<Button>(R.id.buttonEditProfile)
-
-
-
-
-
-
-        val name: TextView = findViewById(R.id.textViewName)
         val nameChange = intent.extras?.get("name").toString()
-        name.text = nameParsing(nameChange)
-
-        val photo: ImageView = findViewById(R.id.imageViewPhotoProfile)
-        photo.setImageResource(intent.extras?.get("myPhoto") as Int)
+        binding.textViewName.setText(nameParsing(nameChange))
 
 
-
+//        val photo: ImageView = findViewById(R.id.imageViewPhotoProfile)
+//        photo.setImageResource(intent.extras?.get("myPhoto") as Int)
+        binding.imageViewPhotoProfile.setImageResource(intent.extras?.get("myPhoto") as Int)
 
 
         //Switching to another screen////////////////////////////delete---------------------------
-        editProfile?.setOnClickListener {
+       // editProfile = findViewById<Button>(R.id.buttonEditProfile)
+        binding.buttonEditProfile.setOnClickListener {
             val intent = Intent(this, AuthActivity::class.java)
             startActivity(intent)
         }
 
+
     }
 
     //Parsing E-mail to Name and Surname
-    private fun nameParsing(string: String): String? {
-        var name: String? = null
-        var surname: String? = null
+    private fun nameParsing(string: String): String {
+        val name: String?
+        val surname: String?
         //Possibility check parsing
         if (string.indexOf(".") > -1 && string.indexOf(".") < string.indexOf("@")) {
             val parts = string.split(".", limit = 2)

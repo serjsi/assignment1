@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
             DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         val nameChange = intent.extras?.get("name").toString()
-        binding.textViewName.setText(nameParsing(nameChange))
+        binding.textViewName.text = nameParsing(nameChange)
 
 
 //        val photo: ImageView = findViewById(R.id.imageViewPhotoProfile)
@@ -30,6 +30,9 @@ class MainActivity : AppCompatActivity() {
         binding.buttonEditProfile.setOnClickListener {
             val intent = Intent(this, AuthActivity::class.java)
             startActivity(intent)
+            //Animation
+            overridePendingTransition(0,R.anim.slide_out_left)
+
         }
 
 

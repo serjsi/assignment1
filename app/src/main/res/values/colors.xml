@@ -10,6 +10,7 @@
     <color name="blue">#242235</color>
     <color name="gray_very_light">#FAFAFA</color>
     <color name="white_my">#B2B2B3</color>
+    <color name="gray">#BDBDBD</color>
     <color name="mtrl_textinput_default_box_stroke_color">#B2B2B3</color>
 
 </resources>

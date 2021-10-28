@@ -1,5 +1,6 @@
 package com.shpp.ssierykh.assignment2
 
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -8,9 +9,11 @@ import android.text.Editable
 import android.text.TextUtils
 import android.text.TextWatcher
 import android.view.View
+import android.widget.TextView
 import com.shpp.ssierykh.assignment2.Constants.TEST_EMAIL
 import com.shpp.ssierykh.assignment2.Constants.TEST_PASSWORD
 import androidx.databinding.DataBindingUtil
+import com.shpp.ssierykh.assignment2.Constants.MIN_LENGTH_PASSWORD
 import com.shpp.ssierykh.assignment2.Validators.isStringContainNumber
 import com.shpp.ssierykh.assignment2.Validators.isStringContainSpecialCharacter
 import com.shpp.ssierykh.assignment2.Validators.isStringLowerAndUpperCase
@@ -31,27 +34,36 @@ class AuthActivity : AppCompatActivity() {
 
         setupListeners()
 
-
-
-        //Handle pressing the "SignIn" button:
-        binding.signIn.setOnClickListener {
-            if (binding.editTextEnterEmail.text.toString() == TEST_EMAIL &&
-                binding.editTextTextPassword.text.toString() == TEST_PASSWORD) {
-                Toast.makeText(applicationContext, "Enter!", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(applicationContext, "Wrong password!", Toast.LENGTH_SHORT)
-                    .show()
-            }
+        binding.checkBoxRemember.setOnClickListener {
+            binding.editTextEnterEmail.setText(TEST_EMAIL, TextView.BufferType.EDITABLE)
+            binding.editTextTextPassword.setText(TEST_PASSWORD, TextView.BufferType.EDITABLE)
         }
+
+
+        //Handle pressing the "SignIn" google:
+        binding.buttonGoogle.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("name", "serhii.sierykh@gmail.com")
+            intent.putExtra("myPhoto", R.drawable.my_photo)
+            startActivity(intent)
+            //Animation
+            overridePendingTransition(0, R.anim.slide_out_right)
+
+        }
+
 
         //Switching to another screen
         binding.buttonRegister.setOnClickListener {
-            if (isValidate() ||!TextUtils.isEmpty(binding.editTextEnterEmail.text) ||
-                !TextUtils.isEmpty(binding.editTextTextPassword.text)) {
+
+            if (isValidate() || !TextUtils.isEmpty(binding.editTextEnterEmail.text) ||
+                !TextUtils.isEmpty(binding.editTextTextPassword.text)
+            ) {
                 val intent = Intent(this, MainActivity::class.java)
                 intent.putExtra("name", binding.editTextEnterEmail.text.toString())
-                intent.putExtra("myPhoto", R.drawable.my_photo)
+                intent.putExtra("myPhoto", R.drawable.lucile)
                 startActivity(intent)
+                //Animation
+                overridePendingTransition(0, R.anim.slide_out_right)
             } else {
                 Toast.makeText(
                     applicationContext,
@@ -62,7 +74,9 @@ class AuthActivity : AppCompatActivity() {
             }
         }
 
+
     }
+
 
     private fun isValidate(): Boolean = validateEmail() && validatePassword()
 
@@ -73,12 +87,13 @@ class AuthActivity : AppCompatActivity() {
 
     private fun validatePassword(): Boolean {
 
-        if (binding.editTextTextPassword .text.toString().trim().isEmpty()) {
+        if (binding.editTextTextPassword.text.toString().trim().isEmpty()) {
             binding.textInputLayoutPassword.error = "Required Field!"
             binding.editTextTextPassword.requestFocus()
             return false
-        } else if (binding.editTextTextPassword.text.toString().length < 6) {
-            binding.textInputLayoutPassword.error = "password can't be less than 6"
+        } else if (binding.editTextTextPassword.text.toString().length < MIN_LENGTH_PASSWORD) {
+            binding.textInputLayoutPassword.error =
+                "Password can't be less than $MIN_LENGTH_PASSWORD"
             binding.editTextTextPassword.requestFocus()
             return false
         } else if (!isStringContainNumber(binding.editTextTextPassword.text.toString())) {
@@ -117,8 +132,6 @@ class AuthActivity : AppCompatActivity() {
     }
 
 
-
-
     /**
      * applying text watcher on each text field
      */
@@ -139,6 +152,9 @@ class AuthActivity : AppCompatActivity() {
         }
     }
 
+
 }
+
+
 
 

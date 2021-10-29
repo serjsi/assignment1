@@ -26,7 +26,14 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="register">register</string>
-    <string name="empty_email_or_password">\"Empty e-mail or password \"</string>
+    <string name="wrong_email_or_password">\"Wrong e-mail or password \"</string>
     <string name="or">or</string>
     <string name="google" translatable="false">google</string>
+    <string name="message_cannot_be_empty">Required field cannot be empty!</string>
+    <string name="password_cant_be_less_than">Password can\'t be less than </string>
+    <string name="required_at_least_1_digit">Required at least 1 digit</string>
+    <string name="password_must_contain_lower_case_letters">Password must contain lower case letters</string>
+    <string name="password_must_contain_upper_case_letters">Password must contain upper case letters</string>
+    <string name="_1_special_character_required">1 special character required</string>
+    <string name="message_wromg_e_mail">Invalid email address, example name@mail.com</string>
 </resources>

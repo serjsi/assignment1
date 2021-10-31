@@ -1,0 +1,8 @@
+syntax = "proto3";
+option java_package = "com.example.prototutorialproject";
+option java_multiple_files = true;
+message SettingsProto {
+  bool isDarkTheme = 1;
+  int32 appVersion = 2;
+  string created_at = 3;
+}

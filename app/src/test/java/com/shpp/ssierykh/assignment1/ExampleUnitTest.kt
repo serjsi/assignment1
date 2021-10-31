@@ -1,4 +1,4 @@
-package com.shpp.ssierykh.assignment2
+package com.shpp.ssierykh.assignment1
 
 import org.junit.Test
 

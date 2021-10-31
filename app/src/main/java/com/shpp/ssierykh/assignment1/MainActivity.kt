@@ -1,10 +1,10 @@
-package com.shpp.ssierykh.assignment2
+package com.shpp.ssierykh.assignment1
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
-import com.shpp.ssierykh.assignment2.databinding.ActivityMainBinding
+import com.shpp.ssierykh.assignment1.databinding.ActivityMainBinding
 import java.util.*
 
 

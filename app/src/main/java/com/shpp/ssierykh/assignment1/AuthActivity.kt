@@ -1,4 +1,4 @@
-package com.shpp.ssierykh.assignment2
+package com.shpp.ssierykh.assignment1
 
 
 import androidx.appcompat.app.AppCompatActivity
@@ -9,16 +9,15 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.TextView
-import com.shpp.ssierykh.assignment2.Constants.TEST_EMAIL
-import com.shpp.ssierykh.assignment2.Constants.TEST_PASSWORD
+import com.shpp.ssierykh.assignment1.Constants.TEST_EMAIL
+import com.shpp.ssierykh.assignment1.Constants.TEST_PASSWORD
 import androidx.databinding.DataBindingUtil
-import com.shpp.ssierykh.assignment2.Constants.MIN_LENGTH_PASSWORD
-import com.shpp.ssierykh.assignment2.databinding.ActivityAuthBinding
-
+import com.shpp.ssierykh.assignment1.Constants.MIN_LENGTH_PASSWORD
+import com.shpp.ssierykh.assignment1.databinding.ActivityAuthBinding
 
 class AuthActivity : AppCompatActivity() {
 
-    //Announce the use of the following objects
+
 
     lateinit var binding: ActivityAuthBinding
 
@@ -168,6 +167,7 @@ class AuthActivity : AppCompatActivity() {
             }
         }
     }
+    
 
 
 }

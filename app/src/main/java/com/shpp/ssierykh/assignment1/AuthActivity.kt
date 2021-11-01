@@ -11,30 +11,45 @@ import android.view.View
 import android.widget.TextView
 import com.shpp.ssierykh.assignment1.Constants.TEST_EMAIL
 import com.shpp.ssierykh.assignment1.Constants.TEST_PASSWORD
-import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.asLiveData
 import com.shpp.ssierykh.assignment1.Constants.MIN_LENGTH_PASSWORD
 import com.shpp.ssierykh.assignment1.databinding.ActivityAuthBinding
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import java.lang.Exception
 
 class AuthActivity : AppCompatActivity() {
-
-
-
     lateinit var binding: ActivityAuthBinding
+
+    lateinit var userManager: UserManager
+    var remember = false
+    lateinit var email : String
+    lateinit var password : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_auth)
+        /* binding = DataBindingUtil.setContentView(this, R.layout.activity_auth)*/
+
+        binding = ActivityAuthBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        //Get reference to our userManager class
+        userManager = UserManager(dataStore)
 
         setupListeners()
 
-        binding.checkBoxRemember.setOnClickListener {
-            binding.editTextEnterEmail.setText(TEST_EMAIL, TextView.BufferType.EDITABLE)
-            binding.editTextTextPassword.setText(TEST_PASSWORD, TextView.BufferType.EDITABLE)
-        }
+        observeData()
+
+        /* binding.checkBoxRemember.setOnClickListener {
+             binding.editTextEnterEmail.setText(TEST_EMAIL, TextView.BufferType.EDITABLE)
+             binding.editTextTextPassword.setText(TEST_PASSWORD, TextView.BufferType.EDITABLE)
+         }*/
 
 
         //Handle pressing the "SignIn" google:
         binding.buttonGoogle.setOnClickListener {
+
             val intent = Intent(this, MainActivity::class.java)
             intent.putExtra("name", "serhii.sierykh@gmail.com")
             intent.putExtra("myPhoto", R.drawable.my_photo)
@@ -44,16 +59,19 @@ class AuthActivity : AppCompatActivity() {
 
         }
 
-
         //Switching to another screen
         binding.buttonRegister.setOnClickListener {
-            if ( validateEmail() && validatePassword()  ) {
+            if (validateEmail() && validatePassword()) {
+                //Stores the values
+                writeData()
+
                 val intent = Intent(this, MainActivity::class.java)
                 intent.putExtra("name", binding.editTextEnterEmail.text.toString())
                 intent.putExtra("myPhoto", R.drawable.lucile)
                 startActivity(intent)
                 //Animation
                 overridePendingTransition(0, R.anim.slide_out_right)
+
             } else {
                 Toast.makeText(
                     applicationContext,
@@ -87,12 +105,13 @@ class AuthActivity : AppCompatActivity() {
             }//checking is string min length
             passwordChek.length < MIN_LENGTH_PASSWORD -> {
                 binding.textInputLayoutPassword.error =
-                    getString(R.string.password_cant_be_less_than)+ MIN_LENGTH_PASSWORD
+                    getString(R.string.password_cant_be_less_than) + MIN_LENGTH_PASSWORD
                 binding.editTextTextPassword.requestFocus()
                 return false
             }//checking is string contain any number
             !passwordChek.contains(Regex("""\d""")) -> {
-                binding.textInputLayoutPassword.error = getString(R.string.required_at_least_1_digit)
+                binding.textInputLayoutPassword.error =
+                    getString(R.string.required_at_least_1_digit)
                 binding.editTextTextPassword.requestFocus()
                 return false
             }//checking is string contain lower case letters"
@@ -109,7 +128,8 @@ class AuthActivity : AppCompatActivity() {
                 return false
             }//checking is string contain any special character
             !passwordChek.contains(Regex("""[^a-zA-Z0-9]""")) -> {
-                binding.textInputLayoutPassword.error = getString(R.string._1_special_character_required)
+                binding.textInputLayoutPassword.error =
+                    getString(R.string._1_special_character_required)
                 binding.editTextTextPassword.requestFocus()
                 return false
             }
@@ -167,10 +187,65 @@ class AuthActivity : AppCompatActivity() {
             }
         }
     }
-    
 
+    //Stores the values
+    @DelicateCoroutinesApi
+    private fun writeData() {
+        if (binding.checkBoxRemember.isChecked) {
+            email = binding.editTextEnterEmail.text.toString()
+            password = binding.editTextTextPassword.text.toString()
+            remember = binding.checkBoxRemember.isChecked
 
-}
+            val toast = Toast.makeText(
+                applicationContext,
+                email, Toast.LENGTH_SHORT
+            )
+            toast.show()
+
+        } else{
+            email = ""
+            password = ""
+            remember = false
+        }
+            GlobalScope.launch {
+                userManager.storeUser(email, password, remember)
+        }
+    }
+
+    private fun observeData() {
+
+            //Check ChekBox
+            userManager.userRememberFlow.asLiveData().observe(this, {
+                if (it == true) {
+
+                    //Updates email
+                    userManager.userEmailFlow.asLiveData().observe(this, {
+                        if (it != null) {
+                            email = it
+                            binding.editTextEnterEmail.setText(email, TextView.BufferType.EDITABLE)
+                        }
+                    })
+
+                    //Updates password
+                    userManager.userPasswordFlow.asLiveData().observe(this, {
+                        if (it != null) {
+                            password = it
+                            binding.editTextTextPassword.setText(password, TextView.BufferType.EDITABLE)
+                        }
+                    })
+
+                    //Updates remember
+                    userManager.userRememberFlow.asLiveData().observe(this, {
+                        if (it != null) {
+                            remember = it
+                            binding.checkBoxRemember.isChecked = it
+                        }
+                    })
+                }
+            })
+        }
+    }
+
 
 
 

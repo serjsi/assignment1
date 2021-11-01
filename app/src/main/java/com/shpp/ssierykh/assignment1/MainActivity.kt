@@ -10,23 +10,25 @@ import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
+    lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // setContentView(R.layout.activity_main)
-        val binding: ActivityMainBinding =
-            DataBindingUtil.setContentView(this, R.layout.activity_main)
+       /* val binding: ActivityMainBinding =
+            DataBindingUtil.setContentView(this, R.layout.activity_main)*/
+
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val nameChange = intent.extras?.get("name").toString()
         binding.textViewName.text = nameParsing(nameChange)
 
 
-//        val photo: ImageView = findViewById(R.id.imageViewPhotoProfile)
-//        photo.setImageResource(intent.extras?.get("myPhoto") as Int)
+
         binding.imageViewPhotoProfile.setImageResource(intent.extras?.get("myPhoto") as Int)
 
 
         //Switching to another screen////////////////////////////delete---------------------------
-       // editProfile = findViewById<Button>(R.id.buttonEditProfile)
         binding.buttonEditProfile.setOnClickListener {
             val intent = Intent(this, AuthActivity::class.java)
             startActivity(intent)

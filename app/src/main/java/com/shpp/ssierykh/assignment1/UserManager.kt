@@ -12,7 +12,7 @@ class UserManager(val dataStore: DataStore<Preferences>) {
     companion object {
         val USER_EMAIL_KEY = stringPreferencesKey("USER_EMAIL")
         val USER_PASSWORD_KEY = stringPreferencesKey("USER_PASSWORD")
-        val USER_REMEMBER_KEY = booleanPreferencesKey("USER_GENDER")
+        val USER_REMEMBER_KEY = booleanPreferencesKey("USER_REMEMBER")
     }
 
     //Store user data

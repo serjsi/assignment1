@@ -9,15 +9,14 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.TextView
-import com.shpp.ssierykh.assignment1.Constants.TEST_EMAIL
-import com.shpp.ssierykh.assignment1.Constants.TEST_PASSWORD
 import androidx.lifecycle.asLiveData
 import com.shpp.ssierykh.assignment1.Constants.MIN_LENGTH_PASSWORD
+import com.shpp.ssierykh.assignment1.Constants.TEST_EMAIL
+import com.shpp.ssierykh.assignment1.Constants.TEST_PASSWORD
 import com.shpp.ssierykh.assignment1.databinding.ActivityAuthBinding
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import java.lang.Exception
 
 class AuthActivity : AppCompatActivity() {
     lateinit var binding: ActivityAuthBinding
@@ -41,10 +40,10 @@ class AuthActivity : AppCompatActivity() {
 
         observeData()
 
-        /* binding.checkBoxRemember.setOnClickListener {
+         binding.signIn.setOnClickListener {
              binding.editTextEnterEmail.setText(TEST_EMAIL, TextView.BufferType.EDITABLE)
              binding.editTextTextPassword.setText(TEST_PASSWORD, TextView.BufferType.EDITABLE)
-         }*/
+         }
 
 
         //Handle pressing the "SignIn" google:
@@ -63,7 +62,7 @@ class AuthActivity : AppCompatActivity() {
         binding.buttonRegister.setOnClickListener {
             if (validateEmail() && validatePassword()) {
                 //Stores the values
-                writeData()
+                writeDataAutoLogon()
 
                 val intent = Intent(this, MainActivity::class.java)
                 intent.putExtra("name", binding.editTextEnterEmail.text.toString())
@@ -190,17 +189,12 @@ class AuthActivity : AppCompatActivity() {
 
     //Stores the values
     @DelicateCoroutinesApi
-    private fun writeData() {
+    private fun writeDataAutoLogon() {
         if (binding.checkBoxRemember.isChecked) {
             email = binding.editTextEnterEmail.text.toString()
             password = binding.editTextTextPassword.text.toString()
             remember = binding.checkBoxRemember.isChecked
 
-            val toast = Toast.makeText(
-                applicationContext,
-                email, Toast.LENGTH_SHORT
-            )
-            toast.show()
 
         } else{
             email = ""
@@ -217,6 +211,9 @@ class AuthActivity : AppCompatActivity() {
             //Check ChekBox
             userManager.userRememberFlow.asLiveData().observe(this, {
                 if (it == true) {
+                    //Updates remember
+                    remember = it
+                    binding.checkBoxRemember.isChecked = it
 
                     //Updates email
                     userManager.userEmailFlow.asLiveData().observe(this, {
@@ -234,13 +231,6 @@ class AuthActivity : AppCompatActivity() {
                         }
                     })
 
-                    //Updates remember
-                    userManager.userRememberFlow.asLiveData().observe(this, {
-                        if (it != null) {
-                            remember = it
-                            binding.checkBoxRemember.isChecked = it
-                        }
-                    })
                 }
             })
         }

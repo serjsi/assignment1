@@ -33,11 +33,11 @@
                 android:layout_height="wrap_content"
                 android:layout_above="@+id/textVieFillOutTheProfile"
                 android:layout_centerHorizontal="true"
-                android:layout_margin="10dp"
+                android:layout_margin="@dimen/activity_vertical_margin_10"
                 android:fontFamily="@font/open_sans"
                 android:text="@string/let_s_get_acquainted"
                 android:textColor="@color/gray_very_light"
-                android:textSize="31sp" />
+                android:textSize="@dimen/textSize_31sp" />
 
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -50,7 +50,7 @@
                 android:padding="8dp"
                 android:text="@string/fill_out_the_profile_and_go_to_the_application"
                 android:textColor="@color/gray"
-                android:textSize="14sp" />
+                android:textSize="@dimen/textSize_14sp" />
 
 
             <com.google.android.material.textfield.TextInputLayout
@@ -61,11 +61,14 @@
                 android:layout_above="@+id/textInputLayoutPassword"
                 android:hint="@string/e_mail"
                 android:textColorHint="@color/gray_very_light"
+                app:boxStrokeWidth="1dp"
                 app:errorEnabled="true"
                 app:errorTextAppearance="@style/ErrorText"
                 app:errorTextColor="@color/design_default_color_error"
                 app:hintTextAppearance="@style/TextInputLayoutHintText"
-                app:hintTextColor="@color/gray">
+
+                app:hintTextColor="@color/gray"
+                app:passwordToggleEnabled="false">
 
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -106,7 +109,7 @@
                     style="@style/TextInputEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textVisiblePassword"
+                    android:inputType="textPassword"
                     android:paddingStart="0dp"
                     android:paddingEnd="0dp" />
 
@@ -137,7 +140,7 @@
                 android:layout_marginEnd="@dimen/margin_offset_from_edge_screen_16dp"
                 android:fontFamily="@font/open_sans"
                 android:text="@string/google"
-                android:textSize="16sp" />
+                android:textSize="@dimen/textSize_16sp" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/or"
@@ -150,7 +153,7 @@
                 android:fontFamily="@font/open_sans"
                 android:text="@string/or"
                 android:textColor="@color/gray_very_light"
-                android:textSize="18sp" />
+                android:textSize="@dimen/textSize_18sp" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/buttonRegister"
@@ -166,7 +169,7 @@
                 android:text="@string/register"
                 android:textAllCaps="true"
                 android:textColor="@color/white"
-                android:textSize="16sp" />
+                android:textSize="@dimen/textSize_16sp" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/textViewByClickingRegisterYou"

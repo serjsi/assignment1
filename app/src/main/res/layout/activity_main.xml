@@ -131,7 +131,7 @@
                 android:layout_marginEnd="@dimen/margin_offset_from_edge_screen_16dp"
                 android:layout_marginBottom="@dimen/margin_offset_from_edge_screen_16dp"
                 android:background="@drawable/button_background_orange"
-                android:backgroundTint="?attr/colorPrimaryVariant"
+                android:backgroundTint="?attr/colorSecondary"
                 android:text="@string/view_my_contacts"
                 android:textColor="?attr/colorOnPrimary"
                 android:textSize="@dimen/textSize_16sp" />

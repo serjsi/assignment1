@@ -10,21 +10,6 @@
             name="textViewSettings"
             type="String" />
 
-        <variable
-            name="imageViewPhotoProfile"
-            type="androidx.core.widget.ImageViewCompat" />
-
-        <variable
-            name="textViewName"
-            type="String" />
-
-        <variable
-            name="textViewCareer"
-            type="String" />
-
-        <variable
-            name="textViewHomeAddress"
-            type="String" />
 
     </data>
 

@@ -3,6 +3,9 @@ package com.shpp.ssierykh.assignment1
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils.isEmpty
+import com.shpp.ssierykh.assignment1.Constants.NAME_EXTRA
+import com.shpp.ssierykh.assignment1.Constants.PHOTO_EXTRA
 import androidx.databinding.DataBindingUtil
 import com.shpp.ssierykh.assignment1.databinding.ActivityMainBinding
 import java.util.*
@@ -14,18 +17,15 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-       /* val binding: ActivityMainBinding =
-            DataBindingUtil.setContentView(this, R.layout.activity_main)*/
+
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val nameChange = intent.extras?.get("name").toString()
-        binding.textViewName.text = nameParsing(nameChange)
+        val nameChange = intent.extras?.get(NAME_EXTRA).toString()
 
-
-
-        binding.imageViewPhotoProfile.setImageResource(intent.extras?.get("myPhoto") as Int)
+           binding.textViewName.text = nameParsing(nameChange)
+          binding.imageViewPhotoProfile.setImageResource(intent.extras?.get(PHOTO_EXTRA) as Int)
 
 
         //Switching to another screen////////////////////////////delete---------------------------
@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, AuthActivity::class.java)
             startActivity(intent)
             //Animation
-            overridePendingTransition(0,R.anim.slide_out_left)
+            overridePendingTransition(0, R.anim.slide_out_left)
 
         }
 

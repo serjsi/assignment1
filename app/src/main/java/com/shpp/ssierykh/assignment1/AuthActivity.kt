@@ -11,6 +11,8 @@ import android.view.View
 import android.widget.TextView
 import androidx.lifecycle.asLiveData
 import com.shpp.ssierykh.assignment1.Constants.MIN_LENGTH_PASSWORD
+import com.shpp.ssierykh.assignment1.Constants.NAME_EXTRA
+import com.shpp.ssierykh.assignment1.Constants.PHOTO_EXTRA
 import com.shpp.ssierykh.assignment1.Constants.TEST_EMAIL
 import com.shpp.ssierykh.assignment1.Constants.TEST_PASSWORD
 import com.shpp.ssierykh.assignment1.databinding.ActivityAuthBinding
@@ -21,15 +23,13 @@ import kotlinx.coroutines.launch
 class AuthActivity : AppCompatActivity() {
     lateinit var binding: ActivityAuthBinding
 
-    lateinit var userManager: UserManager
-    var remember = false
-    lateinit var email : String
-    lateinit var password : String
+    private lateinit var userManager: UserManager
+    private var remember = false
+    private lateinit var email: String
+    private lateinit var password: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        /* binding = DataBindingUtil.setContentView(this, R.layout.activity_auth)*/
-
         binding = ActivityAuthBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -37,36 +37,17 @@ class AuthActivity : AppCompatActivity() {
         userManager = UserManager(dataStore)
 
         setupListeners()
-
         observeData()
 
-         binding.signIn.setOnClickListener {
-             binding.editTextEnterEmail.setText(TEST_EMAIL, TextView.BufferType.EDITABLE)
-             binding.editTextTextPassword.setText(TEST_PASSWORD, TextView.BufferType.EDITABLE)
-         }
-
-
-        //Handle pressing the "SignIn" google:
-        binding.buttonGoogle.setOnClickListener {
-
-            val intent = Intent(this, MainActivity::class.java)
-            intent.putExtra("name", "serhii.sierykh@gmail.com")
-            intent.putExtra("myPhoto", R.drawable.my_photo)
-            startActivity(intent)
-            //Animation
-            overridePendingTransition(0, R.anim.slide_out_right)
-
-        }
 
         //Switching to another screen
         binding.buttonRegister.setOnClickListener {
             if (validateEmail() && validatePassword()) {
                 //Stores the values
                 writeDataAutoLogon()
-
                 val intent = Intent(this, MainActivity::class.java)
-                intent.putExtra("name", binding.editTextEnterEmail.text.toString())
-                intent.putExtra("myPhoto", R.drawable.lucile)
+                intent.putExtra(NAME_EXTRA, binding.editTextEnterEmail.text.toString())
+                intent.putExtra(PHOTO_EXTRA, R.drawable.lucile)
                 startActivity(intent)
                 //Animation
                 overridePendingTransition(0, R.anim.slide_out_right)
@@ -81,7 +62,22 @@ class AuthActivity : AppCompatActivity() {
             }
         }
 
+        ////////////////////////////////test method////////////////////////////////////////
+        binding.signIn.setOnClickListener {
+            binding.editTextEnterEmail.setText(TEST_EMAIL, TextView.BufferType.EDITABLE)
+            binding.editTextTextPassword.setText(TEST_PASSWORD, TextView.BufferType.EDITABLE)
+        }
 
+        //Handle pressing the "SignIn" google:
+        binding.buttonGoogle.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra(NAME_EXTRA, "serhii.sierykh@gmail.com")
+            intent.putExtra(PHOTO_EXTRA, R.drawable.my_photo)
+            startActivity(intent)
+            //Animation
+            overridePendingTransition(0, R.anim.slide_out_right)
+        }
+        //////////////////////////////////////////////////////////////////////////////////
     }
 
 
@@ -196,45 +192,44 @@ class AuthActivity : AppCompatActivity() {
             remember = binding.checkBoxRemember.isChecked
 
 
-        } else{
+        } else {
             email = ""
             password = ""
             remember = false
         }
-            GlobalScope.launch {
-                userManager.storeUser(email, password, remember)
+        GlobalScope.launch {
+            userManager.storeUser(email, password, remember)
         }
     }
 
     private fun observeData() {
+        //Check ChekBox
+        userManager.userRememberFlow.asLiveData().observe(this, {
+            if (it == true) {
+                //Updates remember
+                remember = it
+                binding.checkBoxRemember.isChecked = it
 
-            //Check ChekBox
-            userManager.userRememberFlow.asLiveData().observe(this, {
-                if (it == true) {
-                    //Updates remember
-                    remember = it
-                    binding.checkBoxRemember.isChecked = it
+                //Updates email
+                userManager.userEmailFlow.asLiveData().observe(this, {
+                    if (it != null) {
+                        email = it
+                        binding.editTextEnterEmail.setText(email, TextView.BufferType.EDITABLE)
+                    }
+                })
 
-                    //Updates email
-                    userManager.userEmailFlow.asLiveData().observe(this, {
-                        if (it != null) {
-                            email = it
-                            binding.editTextEnterEmail.setText(email, TextView.BufferType.EDITABLE)
-                        }
-                    })
+                //Updates password
+                userManager.userPasswordFlow.asLiveData().observe(this, {
+                    if (it != null) {
+                        password = it
+                        binding.editTextTextPassword.setText(password, TextView.BufferType.EDITABLE)
+                    }
+                })
 
-                    //Updates password
-                    userManager.userPasswordFlow.asLiveData().observe(this, {
-                        if (it != null) {
-                            password = it
-                            binding.editTextTextPassword.setText(password, TextView.BufferType.EDITABLE)
-                        }
-                    })
-
-                }
-            })
-        }
+            }
+        })
     }
+}
 
 
 

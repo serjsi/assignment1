@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">assignment2</string>
     <string name="settings">Налаштування</string>
     <string name="name">Ім\'я</string>
     <string name="career">Професія</string>
@@ -35,4 +34,5 @@
     <string name="password_must_contain_upper_case_letters">Пароль повинен містити великі літери</string>
     <string name="_1_special_character_required">Потрібен 1 спеціальний символ</string>
     <string name="message_wromg_e_mail">Недійсна адреса електронної пошти, наприклад name@mail.com</string>
+    <string name="go_to_settings_and_fill_out_the_profile">Зайдіть в налаштування і заповніть профіль</string>
 </resources>

@@ -5,10 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import android.content.Intent
-import android.text.Editable
-import android.text.TextWatcher
-import android.view.View
 import android.widget.TextView
+import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.asLiveData
 import com.shpp.ssierykh.assignment1.Constants.NAME_EXTRA
 import com.shpp.ssierykh.assignment1.Constants.PHOTO_EXTRA
@@ -76,12 +74,38 @@ class AuthActivity : AppCompatActivity() {
         //////////////////////////////////////////////////////////////////////////////////
     }
 
-
+    /**
+     * Applying text watcher on each text field
+     */
     private fun setupListeners() {
-        binding.editTextEnterEmail.addTextChangedListener(TextFieldValidation(binding.editTextEnterEmail))
-        binding.editTextTextPassword.addTextChangedListener(TextFieldValidation(binding.editTextTextPassword))
+
+        binding.editTextEnterEmail.doOnTextChanged{text,_,_,_ -> validateEmail()}
+        binding.editTextTextPassword.doOnTextChanged{text,_,_,_ -> validatePassword()}
+
     }
 
+
+
+    /**
+     * Сhecking validate E-mail
+     */
+    private fun validateEmail(): Boolean {
+        binding.apply {
+            if (editTextEnterEmail.text.toString().trim().isEmpty()) {
+                textInputLayoutEmail.error = getString(R.string.message_cannot_be_empty)
+                editTextEnterEmail.requestFocus()
+                return false
+            } else if (!Validators.isValidEmail(editTextEnterEmail.text.toString())
+            ) {
+                textInputLayoutEmail.error = getString(R.string.message_wromg_e_mail)
+                editTextEnterEmail.requestFocus()
+                return false
+            } else {
+                textInputLayoutEmail.isErrorEnabled = false
+            }
+        }
+        return true
+    }
 
     /**
      * Сhecking validate password
@@ -101,50 +125,6 @@ class AuthActivity : AppCompatActivity() {
         return true
     }
 
-
-
-    /**
-     * Сhecking validate E-mail
-     */
-    private fun validateEmail(): Boolean {
-        binding.apply {
-            if (editTextEnterEmail.text.toString().trim().isEmpty()) {
-                textInputLayoutEmail.error = getString(R.string.message_cannot_be_empty)
-                editTextEnterEmail.requestFocus()
-                return false
-                //} else if (!isValidEmail(binding.editTextEnterEmail.text.toString())) {
-            } else if (!Validators.isValidEmail(editTextEnterEmail.text.toString())
-            ) {
-                textInputLayoutEmail.error = getString(R.string.message_wromg_e_mail)
-                editTextEnterEmail.requestFocus()
-                return false
-            } else {
-                textInputLayoutEmail.isErrorEnabled = false
-            }
-        }
-        return true
-    }
-
-
-    /**
-     * Applying text watcher on each text field
-     */
-    inner class TextFieldValidation(private val view: View) : TextWatcher {
-        override fun afterTextChanged(s: Editable?) {}
-        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-            // checking ids of each text field and applying functions accordingly.
-            when (view.id) {
-                R.id.editTextEnterEmail -> {
-                    validateEmail()
-                }
-                R.id.editTextTextPassword -> {
-                    validatePassword()
-                }
-
-            }
-        }
-    }
 
 
     //Stores the values

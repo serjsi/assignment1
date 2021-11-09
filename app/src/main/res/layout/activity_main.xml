@@ -28,6 +28,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_weight="0.5" />
 
+
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imageViewBottomContainer"
             android:layout_width="match_parent"
@@ -35,118 +36,145 @@
             android:background="?attr/colorPrimary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/imageViewTopContainer"
-            app:layout_constraintVertical_weight="0.5" />
+            app:layout_constraintVertical_weight="0.5"
+            tools:layout_editor_absoluteX="0dp" />
 
-        <RelativeLayout
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewSettings"
+            style="@style/FontLayoutWidthAndHeight"
+            android:layout_width="3dp"
+            android:layout_height="3dp"
+            android:layout_margin="@dimen/activity_horizontal_margin_16"
+            android:text="@string/settings"
+            android:textColor="@color/gray_very_light"
+            android:textSize="@dimen/textSize_24sp"
+            app:layout_constraintStart_toStartOf="@+id/imageViewTopContainer"
+            app:layout_constraintTop_toTopOf="@+id/imageViewTopContainer" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageViewPhotoProfile"
+            android:layout_width="113dp"
+            android:layout_height="113dp"
+            android:layout_below="@+id/textViewSettings"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="@dimen/activity_vertical_margin_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewSettings"
+            app:srcCompat="@drawable/mok2" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imageViewPhotoProfile"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/activity_vertical_margin_24"
+            android:fontFamily="@font/open_sans"
+            android:text="@string/name"
+            android:textColor="@color/gray_very_light"
+            android:textSize="@dimen/textSize_18sp"
+            app:layout_constraintEnd_toEndOf="@+id/imageViewTopContainer"
+            app:layout_constraintStart_toStartOf="@+id/imageViewTopContainer"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewPhotoProfile" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewCareer"
+            style="@style/FontLayoutWidthAndHeight"
+            android:layout_below="@+id/textViewName"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/activity_vertical_margin_8"
+            android:text="@string/career"
+            android:textColor="@color/white_my"
+            app:layout_constraintEnd_toEndOf="@+id/imageViewTopContainer"
+            app:layout_constraintStart_toStartOf="@+id/imageViewTopContainer"
+            app:layout_constraintTop_toBottomOf="@+id/textViewName" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewHomeAddress"
+            style="@style/FontLayoutWidthAndHeight"
+            android:layout_below="@+id/textViewCareer"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/activity_vertical_margin_16"
+            android:text="@string/home_address"
+            android:textColor="@color/white_my"
+            app:layout_constraintEnd_toEndOf="@+id/imageViewTopContainer"
+            app:layout_constraintStart_toStartOf="@+id/imageViewTopContainer"
+            app:layout_constraintTop_toBottomOf="@+id/textViewCareer" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonEditProfile"
+            style="@style/FontLayoutWidthAndHeight"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            app:layout_constraintStart_toStartOf="parent">
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/buttonViewMyContacts"
+            android:layout_margin="@dimen/margin_offset_from_edge_screen_16dp"
+            android:background="@drawable/button_background_black"
+            android:text="@string/edit_profile"
+            android:textAllCaps="false"
+            android:textSize="@dimen/textSize_14sp"
+            app:layout_constraintBottom_toTopOf="@+id/buttonViewMyContacts"
+            tools:layout_editor_absoluteX="16dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonViewMyContacts"
+            style="@style/FontLayoutWidthAndHeight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="@dimen/margin_offset_from_edge_screen_16dp"
+            android:background="@drawable/button_background_orange"
+            android:backgroundTint="?attr/colorSecondary"
+            android:text="@string/view_my_contacts"
+            android:textColor="?attr/colorOnPrimary"
+            android:textSize="@dimen/textSize_16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageViewBottomContainer"
+            app:layout_constraintEnd_toEndOf="@+id/imageViewBottomContainer"
+            app:layout_constraintStart_toStartOf="@+id/imageViewBottomContainer" />
 
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/textViewSettings"
-                style="@style/FontLayoutWidthAndHeight"
-                android:padding="10dp"
-                android:text="@string/settings"
-                android:textColor="@color/gray_very_light"
-                android:textSize="@dimen/textSize_31sp" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageViewInstagramLog"
+            style="@style/logo_ImageView"
+            android:layout_width="136dp"
+            android:layout_above="@+id/buttonEditProfile"
+            android:layout_centerHorizontal="true"
+            app:layout_constraintBottom_toBottomOf="@+id/imageViewVkLog"
+            app:layout_constraintEnd_toStartOf="@+id/imageViewFacebookLog"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/imageViewVkLog"
+            app:layout_constraintTop_toTopOf="@+id/imageViewVkLog"
+            app:layout_constraintVertical_bias="0.42000002"
+            app:srcCompat="@drawable/ic_instagram_log" />
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/imageViewPhotoProfile"
-                android:layout_width="113dp"
-                android:layout_height="113dp"
-                android:layout_below="@+id/textViewSettings"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="24dp"
-                android:layout_marginBottom="24dp"
-                app:srcCompat="@drawable/mok2" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageViewVkLog"
+            style="@style/logo_ImageView"
+            android:layout_width="135dp"
+            android:layout_alignBottom="@+id/imageViewInstagramLog"
+            android:layout_alignParentEnd="true"
+            app:layout_constraintBottom_toTopOf="@+id/buttonEditProfile"
+            app:layout_constraintEnd_toStartOf="@+id/imageViewInstagramLog"
+            app:layout_constraintHorizontal_bias="0.51"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewTopContainer"
+            app:srcCompat="@drawable/ic_vk_log" />
 
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/textViewName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/imageViewPhotoProfile"
-                android:layout_centerHorizontal="true"
-                android:fontFamily="@font/open_sans"
-                android:text="@string/name"
-                android:textColor="@color/gray_very_light"
-                android:textSize="@dimen/textSize_18sp" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/textViewCareer"
-                style="@style/FontLayoutWidthAndHeight"
-                android:layout_below="@+id/textViewName"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/activity_vertical_margin_8"
-                android:text="@string/career"
-                android:textColor="@color/white_my" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/textViewHomeAddress"
-                style="@style/FontLayoutWidthAndHeight"
-                android:layout_below="@+id/textViewCareer"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/activity_vertical_margin_8"
-                android:text="@string/home_address"
-                android:textColor="@color/white_my" />
-
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/buttonEditProfile"
-                style="@style/FontLayoutWidthAndHeight"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_above="@+id/buttonViewMyContacts"
-                android:layout_marginStart="@dimen/margin_offset_from_edge_screen_16dp"
-                android:layout_marginEnd="@dimen/margin_offset_from_edge_screen_16dp"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/button_background_black"
-                android:text="@string/edit_profile" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/buttonViewMyContacts"
-                style="@style/FontLayoutWidthAndHeight"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="@dimen/margin_offset_from_edge_screen_16dp"
-                android:layout_marginTop="@dimen/activity_vertical_margin_16"
-                android:layout_marginEnd="@dimen/margin_offset_from_edge_screen_16dp"
-                android:layout_marginBottom="@dimen/margin_offset_from_edge_screen_16dp"
-                android:background="@drawable/button_background_orange"
-                android:backgroundTint="?attr/colorSecondary"
-                android:text="@string/view_my_contacts"
-                android:textColor="?attr/colorOnPrimary"
-                android:textSize="@dimen/textSize_16sp" />
-
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/imageViewFacebookLog"
-                style="@style/logo_ImageView"
-                android:layout_alignBottom="@+id/imageViewInstagramLog"
-                android:layout_marginStart="50dp"
-                app:srcCompat="@drawable/ic_facebook_log" />
-
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/imageViewInstagramLog"
-                style="@style/logo_ImageView"
-                android:layout_above="@+id/buttonEditProfile"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="50dp"
-                app:srcCompat="@drawable/ic_instagram_log" />
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/imageViewVkLog"
-                style="@style/logo_ImageView"
-                android:layout_alignBottom="@+id/imageViewInstagramLog"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="50dp"
-                app:srcCompat="@drawable/ic_vk_log" />
-
-        </RelativeLayout>
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageViewFacebookLog"
+            style="@style/logo_ImageView"
+            android:layout_width="136dp"
+            android:layout_alignBottom="@+id/imageViewInstagramLog"
+            app:layout_constraintBottom_toBottomOf="@+id/imageViewInstagramLog"
+            app:layout_constraintEnd_toEndOf="@+id/imageViewBottomContainer"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/imageViewInstagramLog"
+            app:layout_constraintTop_toTopOf="@+id/imageViewInstagramLog"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/ic_facebook_log" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -19,12 +19,13 @@
     </style>
 
     <style name="TextInputLayout">
+
+        <item name="boxCollapsedPaddingTop">0dp</item>
+        <item name="expandedHintEnabled">false</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="boxStrokeColor">@color/white_my</item>
         <item name="endIconTint">@color/gray</item>
-        <item name="android:layout_marginStart">@dimen/margin_offset_from_edge_screen_16dp</item>
-        <item name="android:layout_marginEnd">@dimen/margin_offset_from_edge_screen_16dp</item>
     </style>
 
     <style name="TextInputEditText" parent="">

@@ -53,32 +53,40 @@
             app:layout_constraintTop_toTopOf="@+id/imageViewTopContainer" />
 
 
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imageViewPhotoProfile"
-            android:layout_width="113dp"
-            android:layout_height="113dp"
-            android:layout_centerHorizontal="true"
-            android:layout_margin="@dimen/activity_vertical_margin_24"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="57dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/imageViewTopContainer"
             app:layout_constraintTop_toBottomOf="@+id/textViewSettings"
-            app:srcCompat="@drawable/mok2" />
+            android:layout_marginTop="@dimen/textSize_24sp">
 
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imageViewPhotoProfile"
+                android:layout_width="113dp"
+                android:layout_height="113dp"
+                android:layout_centerHorizontal="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewSettings"
+                app:srcCompat="@drawable/mok2" />
+        </androidx.cardview.widget.CardView>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textViewName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/activity_vertical_margin_24"
             android:text="@string/name"
+            android:layout_marginTop="@dimen/textSize_24sp"
             android:textColor="@color/gray_very_light"
             android:textSize="@dimen/textSize_18sp"
             android:theme="@style/MyTextStyle1"
             app:layout_constraintEnd_toEndOf="@+id/imageViewTopContainer"
             app:layout_constraintStart_toStartOf="@+id/imageViewTopContainer"
-            app:layout_constraintTop_toBottomOf="@+id/imageViewPhotoProfile" />
+            app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textViewCareer"

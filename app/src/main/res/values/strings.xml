@@ -30,7 +30,7 @@
     <string name="or">or</string>
     <string name="google" translatable="false">google</string>
     <string name="message_cannot_be_empty">Required field cannot be empty!</string>
-    <string name="password_cant_be_less_than">Password can\'t be less than </string>
+    <string name="password_cant_be_less_than">Password can\'t be less than 8 </string>
     <string name="required_at_least_1_digit">Required at least 1 digit</string>
     <string name="password_must_contain_lower_case_letters">Password must contain lower case letters</string>
     <string name="password_must_contain_upper_case_letters">Password must contain upper case letters</string>

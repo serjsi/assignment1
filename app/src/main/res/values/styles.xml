@@ -9,7 +9,7 @@
 
     <style name="MyTextStyle2">
         <item name="android:textColor">#B2B2B3</item>
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">12sp</item>
         <item name="android:fontFamily">@font/open_sans_semibold</item>
     </style>
 

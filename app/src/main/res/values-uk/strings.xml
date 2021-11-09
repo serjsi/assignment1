@@ -28,7 +28,7 @@
     <string name="wrong_email_or_password">Помилка в електроній пошті або паролі</string>
     <string name="or">або</string>
     <string name="message_cannot_be_empty">Обов’язкове поле не може бути порожнім!</string>
-    <string name="password_cant_be_less_than">Пароль не може бути менше ніж</string>
+    <string name="password_cant_be_less_than">Пароль не може бути менше ніж 8</string>
     <string name="required_at_least_1_digit">Потрібна принаймні 1 цифра</string>
     <string name="password_must_contain_lower_case_letters">Пароль повинен містити малі літери</string>
     <string name="password_must_contain_upper_case_letters">Пароль повинен містити великі літери</string>

@@ -28,16 +28,16 @@
             android:layout_height="wrap_content"
             android:layout_above="@+id/textVieFillOutTheProfile"
             android:layout_centerHorizontal="true"
-            android:theme="@style/MyTextStyle1"
             android:text="@string/let_s_get_acquainted"
             android:textColor="@color/gray_very_light"
             android:textSize="@dimen/textSize_24sp"
+            android:theme="@style/MyTextStyle1"
             app:layout_constraintBottom_toTopOf="@+id/textVieFillOutTheProfile"
             app:layout_constraintEnd_toEndOf="@+id/view2"
             app:layout_constraintHorizontal_bias="0.503"
             app:layout_constraintStart_toStartOf="@+id/view2"
             app:layout_constraintTop_toTopOf="@+id/view2"
-            app:layout_constraintVertical_bias="0.71000004"
+            app:layout_constraintVertical_bias="0.6"
             app:layout_constraintVertical_chainStyle="packed" />
 
 
@@ -49,7 +49,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/activity_vertical_margin_8"
             android:theme="@style/MyTextStyle2"
-            android:padding="8dp"
+            android:layout_margin="8dp"
             android:text="@string/fill_out_the_profile_and_go_to_the_application"
             android:textColor="@color/gray"
             android:textSize="@dimen/textSize_14sp"
@@ -100,7 +100,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_above="@+id/checkBoxRemember"
-            android:layout_marginTop="@dimen/activity_vertical_margin_8"
+
             android:gravity="top"
             android:hint="@string/password"
             android:inputType="textPassword"
@@ -120,7 +120,7 @@
 
 
             <com.google.android.material.textfield.TextInputEditText
-
+                android:layout_marginTop="@dimen/activity_vertical_margin_16"
                 android:id="@+id/editTextTextPassword"
                 style="@style/TextInputEditText"
                 android:layout_width="match_parent"

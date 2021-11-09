@@ -10,7 +10,6 @@ import android.text.TextWatcher
 import android.view.View
 import android.widget.TextView
 import androidx.lifecycle.asLiveData
-import com.shpp.ssierykh.assignment1.Constants.MIN_LENGTH_PASSWORD
 import com.shpp.ssierykh.assignment1.Constants.NAME_EXTRA
 import com.shpp.ssierykh.assignment1.Constants.PHOTO_EXTRA
 import com.shpp.ssierykh.assignment1.Constants.TEST_EMAIL
@@ -24,9 +23,6 @@ class AuthActivity : AppCompatActivity() {
     lateinit var binding: ActivityAuthBinding
 
     private lateinit var userManager: UserManager
-    private var remember = false
-    private lateinit var email: String
-    private lateinit var password: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -72,7 +68,7 @@ class AuthActivity : AppCompatActivity() {
         binding.buttonGoogle.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             intent.putExtra(NAME_EXTRA, "serhii.sierykh@gmail.com")
-            intent.putExtra(PHOTO_EXTRA, R.drawable.my_photo)
+            intent.putExtra(PHOTO_EXTRA, R.drawable.kot_ochki)
             startActivity(intent)
             //Animation
             overridePendingTransition(0, R.anim.slide_out_right)
@@ -86,78 +82,45 @@ class AuthActivity : AppCompatActivity() {
         binding.editTextTextPassword.addTextChangedListener(TextFieldValidation(binding.editTextTextPassword))
     }
 
+
     /**
      * Сhecking validate password
      */
     private fun validatePassword(): Boolean {
         val passwordChek = binding.editTextTextPassword.text.toString()
-        when {
-            //checking is empty
-            passwordChek.isEmpty() -> {
-                binding.textInputLayoutPassword.error = getString(R.string.message_cannot_be_empty)
-                binding.editTextTextPassword.requestFocus()
-                return false
-            }//checking is string min length
-            passwordChek.length < MIN_LENGTH_PASSWORD -> {
+
+        Validators.validatePassword(passwordChek)
+        if (Validators.validatePassword(passwordChek) != 0){
                 binding.textInputLayoutPassword.error =
-                    getString(R.string.password_cant_be_less_than) + MIN_LENGTH_PASSWORD
-                binding.editTextTextPassword.requestFocus()
-                return false
-            }//checking is string contain any number
-            !passwordChek.contains(Regex("""\d""")) -> {
-                binding.textInputLayoutPassword.error =
-                    getString(R.string.required_at_least_1_digit)
-                binding.editTextTextPassword.requestFocus()
-                return false
-            }//checking is string contain lower case letters"
-            !passwordChek.contains(Regex("""[a-z]""")) -> {
-                binding.textInputLayoutPassword.error =
-                    getString(R.string.password_must_contain_lower_case_letters)
-                binding.editTextTextPassword.requestFocus()
-                return false
-            }//checking is string contain lower upper case letters"
-            !passwordChek.contains(Regex("""[A-Z]""")) -> {
-                binding.textInputLayoutPassword.error =
-                    getString(R.string.password_must_contain_upper_case_letters)
-                binding.editTextTextPassword.requestFocus()
-                return false
-            }//checking is string contain any special character
-            !passwordChek.contains(Regex("""[^a-zA-Z0-9]""")) -> {
-                binding.textInputLayoutPassword.error =
-                    getString(R.string._1_special_character_required)
+                    getString(Validators.validatePassword(passwordChek))
                 binding.editTextTextPassword.requestFocus()
                 return false
             }
-            else -> {
-                binding.textInputLayoutPassword.isErrorEnabled = false
-            }
-        }
+            else   binding.textInputLayoutPassword.isErrorEnabled = false
 
         return true
     }
+
 
 
     /**
      * Сhecking validate E-mail
      */
     private fun validateEmail(): Boolean {
-        if (binding.editTextEnterEmail.text.toString().trim().isEmpty()) {
-            binding.textInputLayoutEmail.error = getString(R.string.message_cannot_be_empty)
-            binding.editTextEnterEmail.requestFocus()
-            return false
-            //} else if (!isValidEmail(binding.editTextEnterEmail.text.toString())) {
-        } else if (!binding.editTextEnterEmail.text.toString().contains(
-                Regex(
-                    "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" +
-                            "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"
-                )
-            )
-        ) {
-            binding.textInputLayoutEmail.error = getString(R.string.message_wromg_e_mail)
-            binding.editTextEnterEmail.requestFocus()
-            return false
-        } else {
-            binding.textInputLayoutEmail.isErrorEnabled = false
+        binding.apply {
+            if (editTextEnterEmail.text.toString().trim().isEmpty()) {
+                textInputLayoutEmail.error = getString(R.string.message_cannot_be_empty)
+                editTextEnterEmail.requestFocus()
+                return false
+                //} else if (!isValidEmail(binding.editTextEnterEmail.text.toString())) {
+            } else if (!Validators.isValidEmail(editTextEnterEmail.text.toString())
+            ) {
+                textInputLayoutEmail.error = getString(R.string.message_wromg_e_mail)
+                editTextEnterEmail.requestFocus()
+                return false
+            } else {
+                textInputLayoutEmail.isErrorEnabled = false
+            }
         }
         return true
     }
@@ -183,22 +146,17 @@ class AuthActivity : AppCompatActivity() {
         }
     }
 
+
     //Stores the values
     @DelicateCoroutinesApi
     private fun writeDataAutoLogon() {
-        if (binding.checkBoxRemember.isChecked) {
-            email = binding.editTextEnterEmail.text.toString()
-            password = binding.editTextTextPassword.text.toString()
-            remember = binding.checkBoxRemember.isChecked
-
-
-        } else {
-            email = ""
-            password = ""
-            remember = false
-        }
         GlobalScope.launch {
-            userManager.storeUser(email, password, remember)
+            if (binding.checkBoxRemember.isChecked) {
+                userManager.storeUser(binding.editTextEnterEmail.text.toString(),
+                    binding.editTextTextPassword.text.toString(), true)
+            }else{
+                userManager.storeUser("", "", false)
+            }
         }
     }
 
@@ -207,22 +165,19 @@ class AuthActivity : AppCompatActivity() {
         userManager.userRememberFlow.asLiveData().observe(this, {
             if (it == true) {
                 //Updates remember
-                remember = it
                 binding.checkBoxRemember.isChecked = it
 
                 //Updates email
                 userManager.userEmailFlow.asLiveData().observe(this, {
                     if (it != null) {
-                        email = it
-                        binding.editTextEnterEmail.setText(email, TextView.BufferType.EDITABLE)
+                        binding.editTextEnterEmail.setText(it, TextView.BufferType.EDITABLE)
                     }
                 })
 
                 //Updates password
                 userManager.userPasswordFlow.asLiveData().observe(this, {
                     if (it != null) {
-                        password = it
-                        binding.editTextTextPassword.setText(password, TextView.BufferType.EDITABLE)
+                        binding.editTextTextPassword.setText(it, TextView.BufferType.EDITABLE)
                     }
                 })
 

@@ -37,6 +37,7 @@ class AuthActivity : AppCompatActivity() {
         //Switching to another screen
         binding.buttonRegister.setOnClickListener {
             if (validateEmail() && validatePassword()) {
+
                 //Stores the values
                 writeDataAutoLogon()
                 val intent = Intent(this, MainActivity::class.java)
@@ -45,7 +46,7 @@ class AuthActivity : AppCompatActivity() {
                 startActivity(intent)
                 //Animation
                 overridePendingTransition(0, R.anim.slide_out_right)
-
+                binding.buttonRegister.isClickable = false
             } else {
                 Toast.makeText(
                     applicationContext,
@@ -63,7 +64,9 @@ class AuthActivity : AppCompatActivity() {
         }
 
         //Handle pressing the "SignIn" google:
+
         binding.buttonGoogle.setOnClickListener {
+
             val intent = Intent(this, MainActivity::class.java)
             intent.putExtra(NAME_EXTRA, "serhii.sierykh@gmail.com")
             intent.putExtra(PHOTO_EXTRA, R.drawable.kot_ochki)
@@ -165,6 +168,8 @@ class AuthActivity : AppCompatActivity() {
         })
     }
 }
+
+
 
 
 

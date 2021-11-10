@@ -3,14 +3,14 @@
 
     <style name="MyTextStyle1">
         <item name="android:textColor">#B2B2B3</item>
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">14sp</item>
         <item name="android:fontFamily">@font/open_sans_semibold</item>
     </style>
 
     <style name="MyTextStyle2">
         <item name="android:textColor">#B2B2B3</item>
         <item name="android:textSize">12sp</item>
-        <item name="android:fontFamily">@font/open_sans_semibold</item>
+        <item name="android:fontFamily">@font/open_sans_regular</item>
     </style>
 
     <style name="ErrorText" parent="TextAppearance.AppCompat.Small">
@@ -19,7 +19,6 @@
     </style>
 
     <style name="TextInputLayout">
-
         <item name="boxCollapsedPaddingTop">0dp</item>
         <item name="expandedHintEnabled">false</item>
         <item name="android:layout_width">match_parent</item>
@@ -39,7 +38,7 @@
     <style name="TextInputLayoutHintText">
         <item name="android:textSize">@dimen/textSize_14sp</item>
         <item name="endIconTint">@color/gray_very_light</item>
-        <item name="android:textColorHint">@color/gray</item>
+
 
     </style>
 

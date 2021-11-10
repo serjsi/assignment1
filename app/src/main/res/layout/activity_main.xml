@@ -4,14 +4,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-
-        <variable
-            name="textViewSettings"
-            type="String" />
-
-
-    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -57,11 +49,11 @@
             android:id="@+id/cardView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/textSize_24sp"
             app:cardCornerRadius="57dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/imageViewTopContainer"
-            app:layout_constraintTop_toBottomOf="@+id/textViewSettings"
-            android:layout_marginTop="@dimen/textSize_24sp">
+            app:layout_constraintTop_toBottomOf="@+id/textViewSettings">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/imageViewPhotoProfile"
@@ -79,8 +71,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:text="@string/name"
             android:layout_marginTop="@dimen/textSize_24sp"
+            android:text="@string/name"
             android:textColor="@color/gray_very_light"
             android:textSize="@dimen/textSize_18sp"
             android:theme="@style/MyTextStyle1"

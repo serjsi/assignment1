@@ -104,7 +104,7 @@ class AuthActivity : AppCompatActivity() {
                 editTextEnterEmail.requestFocus()
                 return false
             } else {
-                textInputLayoutEmail.isErrorEnabled = false
+                binding.textInputLayoutPassword.error = null
             }
         }
         return true
@@ -123,7 +123,9 @@ class AuthActivity : AppCompatActivity() {
                 binding.editTextTextPassword.requestFocus()
                 return false
             }
-            else   binding.textInputLayoutPassword.isErrorEnabled = false
+            else  {
+            binding.textInputLayoutPassword.error = null
+        }
 
         return true
     }

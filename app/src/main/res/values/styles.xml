@@ -14,7 +14,7 @@
     </style>
 
     <style name="ErrorText" parent="TextAppearance.AppCompat.Small">
-        <item name="android:textStyle">bold|italic</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/design_default_color_on_primary</item>
     </style>
 
@@ -25,6 +25,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="boxStrokeColor">@color/white_my</item>
         <item name="endIconTint">@color/gray</item>
+        <item name="android:fontFamily">@font/open_sans_semibold</item>
     </style>
 
     <style name="TextInputEditText" parent="">
@@ -38,7 +39,7 @@
     <style name="TextInputLayoutHintText">
         <item name="android:textSize">@dimen/textSize_14sp</item>
         <item name="endIconTint">@color/gray_very_light</item>
-
+        <item name="android:gravity">top</item>
 
     </style>
 

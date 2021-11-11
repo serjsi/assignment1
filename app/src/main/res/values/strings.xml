@@ -15,7 +15,7 @@
     <string name="checkbox">Remember me</string>
     <string name="already_have_an_account">Already have an account?</string>
     <string name="sign_in">Sign in</string>
-    <string name="by_clicking_register_you_agree_to_our_terms_and_conditionst">By clicking Register you agree to our Terms and Conditions</string>
+    <string name="by_clicking_register_you_agree_to_our_terms_and_conditionst">By clicking Register you agree to our Terms \n and Conditions</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>

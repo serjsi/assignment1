@@ -6,39 +6,28 @@ import android.os.Bundle
 import android.text.TextUtils.isEmpty
 import com.shpp.ssierykh.assignment1.Constants.NAME_EXTRA
 import com.shpp.ssierykh.assignment1.Constants.PHOTO_EXTRA
-import androidx.databinding.DataBindingUtil
 import com.shpp.ssierykh.assignment1.databinding.ActivityMainBinding
 import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+            binding = ActivityMainBinding.inflate(layoutInflater)
+            setContentView(binding.root)
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        val nameChange = intent.extras?.get(NAME_EXTRA).toString()
-
-           binding.textViewName.text = nameParsing(nameChange)
-          binding.imageViewPhotoProfile.setImageResource(intent.extras?.get(PHOTO_EXTRA) as Int)
-
-
-        //Switching to another screen////////////////////////////delete---------------------------
-        binding.buttonEditProfile.setOnClickListener {
-            val intent = Intent(this, AuthActivity::class.java)
-            startActivity(intent)
-            //Animation
-            overridePendingTransition(0, R.anim.slide_out_left)
-
+        binding.apply {
+            val nameChange = intent.extras?.get(NAME_EXTRA).toString()
+           textViewName.text = nameParsing(nameChange)
+           imageViewPhotoProfile.setImageResource(intent.extras?.get(PHOTO_EXTRA) as Int)
         }
-
-
+        forTestMethod()
     }
+
 
     //Parsing E-mail to Name and Surname
     private fun nameParsing(string: String): String {
@@ -58,6 +47,16 @@ class MainActivity : AppCompatActivity() {
         return "$name $surname"
     }
 
+    //Switching to another screen////////////////////////////delete---------------------------
+    private fun forTestMethod() {
+        binding.buttonEditProfile.setOnClickListener {
+            val intent = Intent(this, AuthActivity::class.java)
+            startActivity(intent)
+            //Animation
+            overridePendingTransition(0, R.anim.slide_out_left)
+
+        }
+    }
 }
 
 

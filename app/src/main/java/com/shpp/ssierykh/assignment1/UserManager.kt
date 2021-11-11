@@ -25,6 +25,12 @@ class UserManager(val dataStore: DataStore<Preferences>) {
         }
     }
 
+    suspend fun storeUser(remember: Boolean) {
+        dataStore.edit {
+            it[USER_REMEMBER_KEY] = remember
+        }
+    }
+
 
     //Create a email flow
     val userEmailFlow: Flow<String?> = dataStore.data.map {

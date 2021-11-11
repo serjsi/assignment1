@@ -14,7 +14,7 @@
     <string name="checkbox">Запам\'ятати мене</string>
     <string name="already_have_an_account">Уже є обліковий запис?</string>
     <string name="sign_in">Увійти</string>
-    <string name="by_clicking_register_you_agree_to_our_terms_and_conditionst">Натиснувши Реєстрація, ви погоджуєтесь з нашими Умовами використання</string>
+    <string name="by_clicking_register_you_agree_to_our_terms_and_conditionst">Натиснувши Реєстрація, ви погоджуєтесь з \n нашими Умовами використання</string>
     <string name="title_activity_login">Дії входу</string>
     <string name="prompt_email">Електронна пошта</string>
     <string name="prompt_password">Пароль</string>

@@ -3,7 +3,6 @@ package com.shpp.ssierykh.assignment1
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.TextUtils.isEmpty
 import com.shpp.ssierykh.assignment1.Constants.NAME_EXTRA
 import com.shpp.ssierykh.assignment1.Constants.PHOTO_EXTRA
 import com.shpp.ssierykh.assignment1.databinding.ActivityMainBinding
@@ -17,15 +16,19 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-            binding = ActivityMainBinding.inflate(layoutInflater)
-            setContentView(binding.root)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        binding.apply {
-            val nameChange = intent.extras?.get(NAME_EXTRA).toString()
-           textViewName.text = nameParsing(nameChange)
-           imageViewPhotoProfile.setImageResource(intent.extras?.get(PHOTO_EXTRA) as Int)
-        }
+        val nameChange = intent.extras?.get(NAME_EXTRA).toString()
+        setView(nameChange)
         forTestMethod()
+    }
+
+    private fun setView(nameChange: String) {
+        binding.apply {
+            textViewName.text = nameParsing(nameChange)
+            imageViewPhotoProfile.setImageResource(intent.extras?.get(PHOTO_EXTRA) as Int)
+        }
     }
 
 
@@ -53,12 +56,9 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, AuthActivity::class.java)
             startActivity(intent)
             //Animation
+            finish()
             overridePendingTransition(0, R.anim.slide_out_left)
 
         }
     }
 }
-
-
-
-

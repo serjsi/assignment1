@@ -4,10 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/SH++_mentor/assignment1/app/src/main/res/drawable/button_background_black.xml" value="0.3851851851851852" />
+        <entry key="..\:/SH++_mentor/assignment1/app/src/main/res/drawable/button_background_grey.xml" value="0.4453125" />
         <entry key="..\:/SH++_mentor/assignment1/app/src/main/res/drawable/button_background_orange.xml" value="0.3675925925925926" />
         <entry key="..\:/SH++_mentor/assignment1/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.3675925925925926" />
         <entry key="..\:/SH++_mentor/assignment1/app/src/main/res/drawable/ic_facebook_log.xml" value="0.38796296296296295" />
         <entry key="..\:/SH++_mentor/assignment1/app/src/main/res/drawable/ic_instagram_log.xml" value="0.38796296296296295" />
+        <entry key="..\:/SH++_mentor/assignment1/app/src/main/res/drawable/ic_mok_background.xml" value="0.2574074074074074" />
         <entry key="..\:/SH++_mentor/assignment1/app/src/main/res/drawable/ic_mok_foreground.xml" value="0.15462962962962962" />
         <entry key="..\:/SH++_mentor/assignment1/app/src/main/res/font/open_sans.xml" value="0.3851851851851852" />
         <entry key="..\:/SH++_mentor/assignment1/app/src/main/res/font/open_sans_regular.xml" value="0.3888888888888889" />

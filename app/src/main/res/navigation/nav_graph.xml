@@ -6,11 +6,11 @@
     app:startDestination="@id/authActivity">
     <activity
         android:id="@+id/authActivity"
-        android:name="com.shpp.ssierykh.assignment1.AuthActivity"
+        android:name="com.shpp.ssierykh.assignment1.MainActivity"
         android:label="AuthActivity" />
     <activity
         android:id="@+id/mainActivity"
-        android:name="com.shpp.ssierykh.assignment1.MainActivity"
+        android:name="com.shpp.ssierykh.assignment1.ProfileActivity"
         android:label="MainActivity" />
     <action
         android:id="@+id/action_global_mainActivity"

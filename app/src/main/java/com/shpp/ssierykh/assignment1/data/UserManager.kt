@@ -1,4 +1,4 @@
-package com.shpp.ssierykh.assignment1
+package com.shpp.ssierykh.assignment1.data
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.*

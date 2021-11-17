@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ContactsActivity">
+
+
+    <!--Add recycler view to main activity-->
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_TopContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="?attr/colorPrimaryVariant"
+        app:layout_constraintBottom_toTopOf="@id/imageViewBottomContainer"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_weight="0.18"
+         />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/imageViewBottomContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="?attr/colorSecondary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_TopContainer"
+        app:layout_constraintVertical_weight="0.82"
+        tools:listitem="@layout/single_item"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_ArrowBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/margin_offset_from_edge_screen_16dp"
+        android:paddingStart="@dimen/margin_offset_from_edge_screen_16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_Contacts"
+        style="@style/MyTextStyle1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/contacts"
+        android:textColor="@color/gray_very_light"
+        android:textSize="@dimen/textSize_24sp"
+        android:theme="@style/MyTextStyle1"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_ArrowBack"
+        app:layout_constraintEnd_toStartOf="@+id/iv_Search"
+        app:layout_constraintStart_toEndOf="@+id/iv_ArrowBack"
+        app:layout_constraintTop_toTopOf="@+id/iv_ArrowBack" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_Search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/margin_offset_from_edge_screen_16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_Contacts"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_Contacts"
+        app:srcCompat="@drawable/ic_baseline_search_24" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_AddContacts"
+        style="@style/MyTextStyle1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/margin_offset_from_edge_screen_16dp"
+        android:text="@string/add_contacts"
+        android:textColor="@color/gray_very_light"
+        android:textSize="@dimen/textSize_16sp"
+        android:theme="@style/MyTextStyle1"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_TopContainer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_ArrowBack" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

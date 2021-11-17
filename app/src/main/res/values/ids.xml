@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item name="imageViewTopContainer" type="id" />
+    <item name="iv_TopContainer" type="id" />
 </resources>

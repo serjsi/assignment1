@@ -1,64 +1,182 @@
 package com.shpp.ssierykh.assignment1
 
-import android.content.Intent
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import android.content.Intent
+import android.widget.TextView
+import androidx.core.widget.doOnTextChanged
+import androidx.lifecycle.asLiveData
 import com.shpp.ssierykh.assignment1.Constants.NAME_EXTRA
 import com.shpp.ssierykh.assignment1.Constants.PHOTO_EXTRA
+import com.shpp.ssierykh.assignment1.Constants.TEST_EMAIL
+import com.shpp.ssierykh.assignment1.Constants.TEST_PASSWORD
+import com.shpp.ssierykh.assignment1.data.UserManager
 import com.shpp.ssierykh.assignment1.databinding.ActivityMainBinding
-import java.util.*
-
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
-
     private lateinit var binding: ActivityMainBinding
+    private lateinit var userManager: UserManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val nameChange = intent.extras?.get(NAME_EXTRA).toString()
-        setView(nameChange)
+        //Get reference to our userManager class
+        userManager = UserManager(dataStore)
+
+        setupListeners()
+        observeData()
+
         forTestMethod()
     }
 
-    private fun setView(nameChange: String) {
+    /**
+     * Applying text watcher on each text field
+     */
+    @DelicateCoroutinesApi
+    private fun setupListeners() {
         binding.apply {
-            textViewName.text = nameParsing(nameChange)
-            imageViewPhotoProfile.setImageResource(intent.extras?.get(PHOTO_EXTRA) as Int)
+            editTextEnterEmail.doOnTextChanged { _, _, _, _ -> isValidateEmail() }
+            editTextTextPassword.doOnTextChanged { _, _, _, _ -> isValidatePassword() }
+            //Switching to another screen
+            buttonRegister.setOnClickListener {
+                if (isValidateEmail() && isValidatePassword()) {
+                    writeDataAutoLogon()
+                    //Stores the values
+                    val intent = Intent(this@MainActivity, ProfileActivity::class.java)
+                    intent.putExtra(NAME_EXTRA, editTextEnterEmail.text.toString())
+                    intent.putExtra(PHOTO_EXTRA, R.drawable.lucile)
+                    startActivity(intent)
+                    finish()
+                    //Animation
+                    overridePendingTransition(0, R.anim.slide_out_right)
+                    buttonRegister.isClickable = false
+                } else {
+                    Toast.makeText(
+                        applicationContext,
+                        getString(R.string.wrong_email_or_password),
+                        Toast.LENGTH_SHORT
+                    )
+                        .show()
+                }
+            }
+
         }
     }
 
-
-    //Parsing E-mail to Name and Surname
-    private fun nameParsing(string: String): String {
-        val name: String?
-        val surname: String?
-        //Possibility check parsing
-        if (string.indexOf(".") > -1 && string.indexOf(".") < string.indexOf("@")) {
-            val parts = string.split(".", limit = 2)
-            name = parts[0].substring(0, 1).uppercase(Locale.getDefault()) +
-                    parts[0].substring(1)
-            surname = parts[1].substring(0, 1).uppercase(Locale.getDefault()) +
-                    parts[1].substring(1, parts[1].indexOf("@"))
-        } else {
-            return string.substring(0, 1).uppercase(Locale.getDefault()) +
-                    string.substring(1, string.indexOf("@"))
+    /**
+     * Checking validate E-mail
+     */
+    private fun isValidateEmail(): Boolean {
+        binding.apply {
+            if (editTextEnterEmail.text.toString().trim().isEmpty()) {
+                textInputLayoutEmail.error = getString(R.string.message_cannot_be_empty)
+                editTextEnterEmail.requestFocus()
+                return false
+            } else if (!Validators.isValidEmail(editTextEnterEmail.text.toString())
+            ) {
+                textInputLayoutEmail.error = getString(R.string.message_wromg_e_mail)
+                editTextEnterEmail.requestFocus()
+                return false
+            } else {
+                textInputLayoutEmail.error = ""
+                binding.textInputLayoutPassword.error = null
+            }
         }
-        return "$name $surname"
+        return true
     }
 
-    //Switching to another screen////////////////////////////delete---------------------------
+    /**
+     * Checking validate password
+     */
+    private fun isValidatePassword(): Boolean {
+        binding.apply {
+            val passwordChek = binding.editTextTextPassword.text.toString()
+            Validators.validatePassword(passwordChek)
+            if (Validators.validatePassword(passwordChek) != 0) {
+                textInputLayoutPassword.error =
+                    getString(Validators.validatePassword(passwordChek))
+                editTextTextPassword.requestFocus()
+                return false
+            } else {
+                textInputLayoutPassword.error = null
+            }
+        }
+        return true
+    }
+
+
+    //Stores the values
+    @DelicateCoroutinesApi
+    private fun writeDataAutoLogon() {
+        GlobalScope.launch {
+            binding.apply {
+                if (checkBoxRemember.isChecked) {
+                    userManager.storeUser(
+                        editTextEnterEmail.text.toString(),
+                        editTextTextPassword.text.toString(), true
+                    )
+                } else {
+                    userManager.storeUser(false)
+                }
+                finish()
+            }
+        }
+    }
+
+    private fun observeData() {
+        //Check ChekBox
+        userManager.userRememberFlow.asLiveData().observe(this, {
+            if (it == true) {
+                //Updates remember
+                binding.checkBoxRemember.isChecked = it
+
+                //Updates email
+                userManager.userEmailFlow.asLiveData().observe(this, { email ->
+                    if (email != null) {
+                        binding.editTextEnterEmail.setText(email, TextView.BufferType.EDITABLE)
+                    }
+                })
+
+                //Updates password
+                userManager.userPasswordFlow.asLiveData().observe(this, { password ->
+                    if (password != null) {
+                        binding.editTextTextPassword.setText(
+                            password,
+                            TextView.BufferType.EDITABLE
+                        )
+                    }
+                })
+
+            }
+        })
+    }
+
+    ////////////////////////////////test method////////////////////////////////////////
     private fun forTestMethod() {
-        binding.buttonEditProfile.setOnClickListener {
-            val intent = Intent(this, AuthActivity::class.java)
-            startActivity(intent)
-            //Animation
-            finish()
-            overridePendingTransition(0, R.anim.slide_out_left)
+        binding.apply {
+            binding.signIn.setOnClickListener {
+              editTextEnterEmail.setText(TEST_EMAIL, TextView.BufferType.EDITABLE)
+               editTextTextPassword.setText(TEST_PASSWORD, TextView.BufferType.EDITABLE)
+            }
 
+            //Handle pressing the "SignIn" google:
+
+            buttonGoogle.setOnClickListener {
+                val intent = Intent(this@MainActivity, ProfileActivity::class.java)
+                intent.putExtra(NAME_EXTRA, "serhii.sierykh@gmail.com")
+                intent.putExtra(PHOTO_EXTRA, R.drawable.kot_ochki)
+                startActivity(intent)
+                //Animation
+                overridePendingTransition(0, R.anim.slide_out_right)
+            }
         }
     }
+    //////////////////////////////////////////////////////////////////////////////////
 }

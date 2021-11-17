@@ -37,4 +37,6 @@
     <string name="_1_special_character_required">1 special character required</string>
     <string name="message_wromg_e_mail">Invalid email address, example name@mail.com</string>
     <string name="go_to_settings_and_fill_out_the_profile">Go to settings and fill out the profile</string>
+    <string name="contacts">Contacts</string>
+    <string name="add_contacts">Add contacts</string>
 </resources>

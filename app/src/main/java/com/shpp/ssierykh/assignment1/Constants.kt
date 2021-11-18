@@ -7,6 +7,9 @@ object Constants {
     const val MIN_LENGTH_PASSWORD = 8
     const val PHOTO_EXTRA = "photo"
     const val NAME_EXTRA = "name"
+    const val REMEMBER_SP = "Remember"
+    const val NAME_SP = "Name"
+    const val PASSWORD_SP = "Password"
 
 
 }

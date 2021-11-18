@@ -13,13 +13,13 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="?attr/colorPrimaryVariant"
-        app:layout_constraintBottom_toTopOf="@id/imageViewBottomContainer"
+        app:layout_constraintBottom_toTopOf="@id/iv_BottomContainer"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_weight="0.18"
          />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/imageViewBottomContainer"
+        android:id="@+id/iv_BottomContainer"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="?attr/colorSecondary"
@@ -42,13 +42,13 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_Contacts"
-        style="@style/MyTextStyle1"
+        style="@style/TextStyBasic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/contacts"
         android:textColor="@color/gray_very_light"
         android:textSize="@dimen/textSize_24sp"
-        android:theme="@style/MyTextStyle1"
+        android:theme="@style/TextStyBasic"
         app:layout_constraintBottom_toBottomOf="@+id/iv_ArrowBack"
         app:layout_constraintEnd_toStartOf="@+id/iv_Search"
         app:layout_constraintStart_toEndOf="@+id/iv_ArrowBack"
@@ -66,14 +66,14 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_AddContacts"
-        style="@style/MyTextStyle1"
+        style="@style/TextStyBasic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingStart="@dimen/margin_offset_from_edge_screen_16dp"
         android:text="@string/add_contacts"
         android:textColor="@color/gray_very_light"
         android:textSize="@dimen/textSize_16sp"
-        android:theme="@style/MyTextStyle1"
+        android:theme="@style/TextStyBasic"
         app:layout_constraintBottom_toBottomOf="@+id/iv_TopContainer"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_ArrowBack" />

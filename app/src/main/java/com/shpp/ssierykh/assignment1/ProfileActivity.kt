@@ -26,8 +26,8 @@ class ProfileActivity : AppCompatActivity() {
 
     private fun setView(nameChange: String) {
         binding.apply {
-            textViewName.text = nameParsing(nameChange)
-            imageViewPhotoProfile.setImageResource(intent.extras?.get(PHOTO_EXTRA) as Int)
+           tvName.text = nameParsing(nameChange)
+            ivPhotoProfile.setImageResource(intent.extras?.get(PHOTO_EXTRA) as Int)
         }
     }
 
@@ -52,7 +52,7 @@ class ProfileActivity : AppCompatActivity() {
 
     //Switching to another screen////////////////////////////delete---------------------------
     private fun forTestMethod() {
-        binding.buttonEditProfile.setOnClickListener {
+        binding.btEditProfile.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             //Animation

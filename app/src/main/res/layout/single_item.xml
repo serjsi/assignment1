@@ -15,7 +15,7 @@
 
         <!--Add image view, We will not set any data here.-->
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imageViewPhoto"
+            android:id="@+id/iv_Photo"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_margin="@dimen/vertical_margin_8"
@@ -27,34 +27,34 @@
 
         <!--Text view for showing the name-->
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/textViewName"
+            android:id="@+id/tv_Name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/horizontal_margin_16"
             android:text="Name"
             android:textColor="?attr/colorOnSecondary"
             android:textSize="@dimen/textSize_18sp"
-            android:theme="@style/MyTextStyle1"
+            android:theme="@style/TextStyBasic"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageViewPhoto"
+            app:layout_constraintStart_toEndOf="@+id/iv_Photo"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.35" />
 
         <!--Text View for showing the carrier-->
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/textViewCareer"
+            android:id="@+id/tv_Career"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Career"
             android:textColor="@color/gray"
             android:textSize="@dimen/textSize_12sp"
-            android:theme="@style/MyTextStyle1"
-            app:layout_constraintStart_toStartOf="@+id/textViewName"
-            app:layout_constraintTop_toBottomOf="@+id/textViewName" />
+            android:theme="@style/TextStyBasic"
+            app:layout_constraintStart_toStartOf="@+id/tv_Name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_Name" />
 
         <!--Add image basket.-->
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imageViewBasket"
+            android:id="@+id/iv_Basket"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/horizontal_margin_16"

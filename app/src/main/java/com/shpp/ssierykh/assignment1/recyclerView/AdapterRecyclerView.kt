@@ -33,8 +33,8 @@ class AdapterRecyclerView (var contactsList: List<ContactsRecyclerView>,
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         with(holder){
             with(contactsList[position]){
-                binding.textViewName.text = this.name
-                binding.textViewCareer.text = this.career
+                binding.tvName.text = this.name
+                binding.tvCareer.text = this.career
             }
         }
     }

@@ -5,22 +5,25 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import android.content.Intent
+import android.content.SharedPreferences
 import android.widget.TextView
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.asLiveData
 import com.shpp.ssierykh.assignment1.Constants.NAME_EXTRA
+import com.shpp.ssierykh.assignment1.Constants.NAME_SP
+import com.shpp.ssierykh.assignment1.Constants.PASSWORD_SP
 import com.shpp.ssierykh.assignment1.Constants.PHOTO_EXTRA
+import com.shpp.ssierykh.assignment1.Constants.REMEMBER_SP
 import com.shpp.ssierykh.assignment1.Constants.TEST_EMAIL
 import com.shpp.ssierykh.assignment1.Constants.TEST_PASSWORD
-import com.shpp.ssierykh.assignment1.data.UserManager
 import com.shpp.ssierykh.assignment1.databinding.ActivityMainBinding
 import kotlinx.coroutines.DelicateCoroutinesApi
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private lateinit var userManager: UserManager
+
+    private lateinit var shPref: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,11 +31,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         //Get reference to our userManager class
-        userManager = UserManager(dataStore)
+
 
         setupListeners()
-        observeData()
 
+        loadAutologin()
         forTestMethod()
     }
 
@@ -42,21 +45,20 @@ class MainActivity : AppCompatActivity() {
     @DelicateCoroutinesApi
     private fun setupListeners() {
         binding.apply {
-            editTextEnterEmail.doOnTextChanged { _, _, _, _ -> isValidateEmail() }
-            editTextTextPassword.doOnTextChanged { _, _, _, _ -> isValidatePassword() }
+            etEnterEmail.doOnTextChanged { _, _, _, _ -> isValidateEmail() }
+            etTextPassword.doOnTextChanged { _, _, _, _ -> isValidatePassword() }
             //Switching to another screen
-            buttonRegister.setOnClickListener {
+            btRegister.setOnClickListener {
                 if (isValidateEmail() && isValidatePassword()) {
-                    writeDataAutoLogon()
                     //Stores the values
                     val intent = Intent(this@MainActivity, ProfileActivity::class.java)
-                    intent.putExtra(NAME_EXTRA, editTextEnterEmail.text.toString())
+                    intent.putExtra(NAME_EXTRA, etEnterEmail.text.toString())
                     intent.putExtra(PHOTO_EXTRA, R.drawable.lucile)
                     startActivity(intent)
                     finish()
                     //Animation
                     overridePendingTransition(0, R.anim.slide_out_right)
-                    buttonRegister.isClickable = false
+                    btRegister.isClickable = false
                 } else {
                     Toast.makeText(
                         applicationContext,
@@ -75,21 +77,26 @@ class MainActivity : AppCompatActivity() {
      */
     private fun isValidateEmail(): Boolean {
         binding.apply {
-            if (editTextEnterEmail.text.toString().trim().isEmpty()) {
-                textInputLayoutEmail.error = getString(R.string.message_cannot_be_empty)
-                editTextEnterEmail.requestFocus()
-                return false
-            } else if (!Validators.isValidEmail(editTextEnterEmail.text.toString())
-            ) {
-                textInputLayoutEmail.error = getString(R.string.message_wromg_e_mail)
-                editTextEnterEmail.requestFocus()
-                return false
-            } else {
-                textInputLayoutEmail.error = ""
-                binding.textInputLayoutPassword.error = null
+
+            val emailCheck = etEnterEmail.text.toString()
+            when {
+                emailCheck.isEmpty() -> {
+                    tilEmail.error = getString(R.string.message_cannot_be_empty)
+                    etEnterEmail.requestFocus()
+                    return false
+                }
+                !Validators.isValidEmail(emailCheck) -> {
+                    tilEmail.error = getString(R.string.message_wromg_e_mail)
+                    etEnterEmail.requestFocus()
+                    return false
+                }
+                else -> {
+                    tilEmail.isErrorEnabled = false
+                    return true
+                }
             }
+
         }
-        return true
     }
 
     /**
@@ -97,78 +104,62 @@ class MainActivity : AppCompatActivity() {
      */
     private fun isValidatePassword(): Boolean {
         binding.apply {
-            val passwordChek = binding.editTextTextPassword.text.toString()
+            val passwordChek = binding.etTextPassword.text.toString()
             Validators.validatePassword(passwordChek)
             if (Validators.validatePassword(passwordChek) != 0) {
-                textInputLayoutPassword.error =
+                tilPassword.error =
                     getString(Validators.validatePassword(passwordChek))
-                editTextTextPassword.requestFocus()
+                etTextPassword.requestFocus()
                 return false
             } else {
-                textInputLayoutPassword.error = null
-            }
-        }
-        return true
-    }
-
-
-    //Stores the values
-    @DelicateCoroutinesApi
-    private fun writeDataAutoLogon() {
-        GlobalScope.launch {
-            binding.apply {
-                if (checkBoxRemember.isChecked) {
-                    userManager.storeUser(
-                        editTextEnterEmail.text.toString(),
-                        editTextTextPassword.text.toString(), true
-                    )
-                } else {
-                    userManager.storeUser(false)
-                }
-                finish()
+                tilPassword.isErrorEnabled = false
+                return true
             }
         }
     }
 
-    private fun observeData() {
-        //Check ChekBox
-        userManager.userRememberFlow.asLiveData().observe(this, {
-            if (it == true) {
-                //Updates remember
-                binding.checkBoxRemember.isChecked = it
-
-                //Updates email
-                userManager.userEmailFlow.asLiveData().observe(this, { email ->
-                    if (email != null) {
-                        binding.editTextEnterEmail.setText(email, TextView.BufferType.EDITABLE)
-                    }
-                })
-
-                //Updates password
-                userManager.userPasswordFlow.asLiveData().observe(this, { password ->
-                    if (password != null) {
-                        binding.editTextTextPassword.setText(
-                            password,
-                            TextView.BufferType.EDITABLE
-                        )
-                    }
-                })
-
-            }
-        })
+    /**
+     * Saving in SharedPreference autologin
+     */
+    private fun saveAutologin() {
+        shPref = getSharedPreferences("PrefAutologin", MODE_PRIVATE)
+        val ed: SharedPreferences.Editor = shPref.edit()
+        ed.putBoolean(REMEMBER_SP, binding.cbRemember.isChecked)
+        ed.putString(NAME_SP, binding.etEnterEmail.text.toString())
+        ed.putString(PASSWORD_SP, binding.etTextPassword.text.toString())
+        ed.commit()
     }
+
+    /**
+     * Loading  SharedPreference autologin
+     */
+    private fun loadAutologin() {
+        shPref = getSharedPreferences("PrefAutologin", MODE_PRIVATE)
+        val remember: Boolean = shPref.getBoolean(REMEMBER_SP, false)
+        if (remember) {
+            binding.cbRemember.isChecked = true
+            binding.etEnterEmail.setText(shPref.getString(NAME_SP, ""))
+            binding.etTextPassword.setText(shPref.getString(PASSWORD_SP, ""))
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        saveAutologin()
+    }
+
 
     ////////////////////////////////test method////////////////////////////////////////
     private fun forTestMethod() {
         binding.apply {
-            binding.signIn.setOnClickListener {
-              editTextEnterEmail.setText(TEST_EMAIL, TextView.BufferType.EDITABLE)
-               editTextTextPassword.setText(TEST_PASSWORD, TextView.BufferType.EDITABLE)
+            binding.tvSignIn.setOnClickListener {
+                etEnterEmail.setText(TEST_EMAIL, TextView.BufferType.EDITABLE)
+                etTextPassword.setText(TEST_PASSWORD, TextView.BufferType.EDITABLE)
             }
 
             //Handle pressing the "SignIn" google:
 
-            buttonGoogle.setOnClickListener {
+            btGoogle.setOnClickListener {
                 val intent = Intent(this@MainActivity, ProfileActivity::class.java)
                 intent.putExtra(NAME_EXTRA, "serhii.sierykh@gmail.com")
                 intent.putExtra(PHOTO_EXTRA, R.drawable.kot_ochki)

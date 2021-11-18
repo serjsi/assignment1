@@ -28,7 +28,7 @@ class ContactsActivity : AppCompatActivity() {
         rvAdapter = AdapterRecyclerView(contactsList)
 
         // attach adapter to the recycler view
-        binding.imageViewBottomContainer.adapter = rvAdapter
+        binding.ivBottomContainer.adapter = rvAdapter
     }
 
 

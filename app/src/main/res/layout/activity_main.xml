@@ -1,34 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/colorPrimaryVariant"
     android:padding="@dimen/margin_offset_from_edge_screen_16dp"
-    tools:context=".ProfileActivity">
+    tools:context=".MainActivity">
 
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textViewLetSGetAcquainted"
+        android:id="@+id/tv_LetSGetAcquainted"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:text="@string/let_s_get_acquainted"
         android:textColor="@color/gray_very_light"
         android:textSize="@dimen/textSize_24sp"
-        android:theme="@style/MyTextStyle1"
-        app:layout_constraintBottom_toTopOf="@+id/textVieFillOutTheProfile"
+        android:theme="@style/TextStyBasic"
+        app:layout_constraintBottom_toTopOf="@+id/tv_FillOutTheProfile"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
 
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textVieFillOutTheProfile"
+        android:id="@+id/tv_FillOutTheProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -36,15 +34,14 @@
         android:layout_marginTop="@dimen/vertical_margin_8"
         android:text="@string/fill_out_the_profile_and_go_to_the_application"
         android:textColor="@color/gray"
-        android:theme="@style/MyTextStyle2"
-        app:layout_constraintBottom_toTopOf="@+id/textInputLayoutEmail"
+        android:theme="@style/TextStyleSmall"
+        app:layout_constraintBottom_toTopOf="@+id/til_Email"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewLetSGetAcquainted" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_LetSGetAcquainted" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutEmail"
+        android:id="@+id/til_Email"
         style="@style/TextInputLayout"
         android:layout_marginTop="@dimen/vertical_margin_24"
         android:hint="@string/e_mail"
@@ -53,16 +50,15 @@
         app:errorTextColor="@color/design_default_color_error"
         app:hintTextAppearance="@style/TextInputLayoutHintText"
         app:hintTextColor="@color/gray"
-        app:layout_constraintBottom_toTopOf="@+id/textInputLayoutPassword"
+        app:layout_constraintBottom_toTopOf="@+id/til_Password"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textVieFillOutTheProfile"
+        app:layout_constraintTop_toBottomOf="@+id/tv_FillOutTheProfile"
         app:passwordToggleEnabled="false">
 
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextEnterEmail"
+            android:id="@+id/et_EnterEmail"
             style="@style/TextInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -72,10 +68,11 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutPassword"
+        android:id="@+id/til_Password"
         style="@style/TextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/vertical_margin_24"
         android:hint="@string/password"
         android:inputType="textPassword"
         android:textColorHint="@color/gray_very_light"
@@ -83,17 +80,15 @@
         app:errorTextColor="@color/design_default_color_error"
         app:hintTextAppearance="@style/TextInputLayoutHintText"
         app:hintTextColor="@color/gray"
-        app:layout_constraintBottom_toTopOf="@+id/checkBoxRemember"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@+id/cb_Remember"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutEmail"
+        app:layout_constraintTop_toBottomOf="@+id/til_Email"
         app:passwordToggleEnabled="true"
         app:passwordToggleTint="@color/gray_very_light">
 
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextTextPassword"
+            android:id="@+id/et_TextPassword"
             style="@style/TextInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -103,38 +98,38 @@
 
 
     <androidx.appcompat.widget.AppCompatCheckBox
-        android:id="@+id/checkBoxRemember"
+        android:id="@+id/cb_Remember"
         android:layout_width="wrap_content"
-        android:layout_height="20dp"
+        android:layout_height="wrap_content"
         android:backgroundTint="@color/white_my"
         android:buttonTint="@color/gray_very_light"
         android:duplicateParentState="false"
         android:focusable="auto"
         android:text="@string/checkbox"
         android:textColor="@color/white_my"
-        android:theme="@style/MyTextStyle1"
-        app:layout_constraintBottom_toTopOf="@+id/buttonGoogle"
+        android:theme="@style/TextStyBasic"
+        app:layout_constraintBottom_toTopOf="@+id/bt_Google"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/til_Password" />
 
     <androidx.appcompat.widget.AppCompatImageButton
-        android:background="@drawable/button_background_grey"
-        android:backgroundTint="?attr/colorSecondary"
-        android:id="@+id/buttonGoogle"
+        android:id="@+id/bt_Google"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/vertical_margin_8"
-        android:src="@drawable/google_for_button"
-        android:scaleType="centerCrop"
         android:adjustViewBounds="true"
+        android:background="@drawable/button_background_grey"
+        android:backgroundTint="?attr/colorSecondary"
         android:paddingHorizontal="130dp"
         android:paddingVertical="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/or"
+        android:scaleType="centerCrop"
+        android:src="@drawable/google_for_button"
+        app:layout_constraintBottom_toTopOf="@+id/tv_separator_or"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/or"
+        android:id="@+id/tv_separator_or"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -142,13 +137,13 @@
         android:text="@string/or"
         android:textColor="@color/gray_very_light"
         android:textSize="@dimen/textSize_18sp"
-        android:theme="@style/MyTextStyle1"
-        app:layout_constraintBottom_toTopOf="@+id/buttonRegister"
-        app:layout_constraintEnd_toEndOf="@+id/textInputLayoutEmail"
-        app:layout_constraintStart_toStartOf="@+id/textInputLayoutEmail" />
+        android:theme="@style/TextStyBasic"
+        app:layout_constraintBottom_toTopOf="@+id/bt_Register"
+        app:layout_constraintEnd_toEndOf="@+id/til_Email"
+        app:layout_constraintStart_toStartOf="@+id/til_Email" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/buttonRegister"
+        android:id="@+id/bt_Register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/horizontal_margin_16"
@@ -157,12 +152,12 @@
         android:textAllCaps="true"
         android:textColor="@color/white"
         android:textSize="@dimen/textSize_16sp"
-        android:theme="@style/MyTextStyle1"
-        app:layout_constraintBottom_toTopOf="@+id/textViewByClickingRegisterYou"
-        app:layout_constraintEnd_toEndOf="@+id/textInputLayoutEmail" />
+        android:theme="@style/TextStyBasic"
+        app:layout_constraintBottom_toTopOf="@+id/tv_ClickingRegisterYou"
+        app:layout_constraintEnd_toEndOf="@+id/til_Email" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textViewByClickingRegisterYou"
+        android:id="@+id/tv_ClickingRegisterYou"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -171,24 +166,24 @@
         android:paddingLeft="@dimen/margin_offset_from_edge_screen_16dp"
         android:paddingRight="@dimen/margin_offset_from_edge_screen_16dp"
         android:text="@string/by_clicking_register_you_agree_to_our_terms_and_conditionst"
-        android:theme="@style/MyTextStyle2"
-        app:layout_constraintBottom_toTopOf="@+id/textViewAlreadyHaveAnAccount"
+        android:theme="@style/TextStyleSmall"
+        app:layout_constraintBottom_toTopOf="@+id/tv_AlreadyHaveAnAccount"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textViewAlreadyHaveAnAccount"
+        android:id="@+id/tv_AlreadyHaveAnAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/already_have_an_account"
-        android:theme="@style/MyTextStyle1"
+        android:theme="@style/TextStyBasic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/sign_in"
+        android:id="@+id/tv_sign_in"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/blue"
@@ -196,10 +191,10 @@
         android:focusable="true"
         android:text="@string/sign_in"
         android:textColor="@color/gray_very_light"
-        android:theme="@style/MyTextStyle1"
+        android:theme="@style/TextStyBasic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textViewAlreadyHaveAnAccount" />
+        app:layout_constraintStart_toEndOf="@+id/tv_AlreadyHaveAnAccount" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

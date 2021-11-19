@@ -3,6 +3,7 @@ package com.shpp.ssierykh.assignment1
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.bumptech.glide.Glide
 import com.shpp.ssierykh.assignment1.Constants.NAME_EXTRA
 import com.shpp.ssierykh.assignment1.Constants.PHOTO_EXTRA
 import com.shpp.ssierykh.assignment1.databinding.ActivityProfileBinding
@@ -27,7 +28,13 @@ class ProfileActivity : AppCompatActivity() {
     private fun setView(nameChange: String) {
         binding.apply {
            tvName.text = nameParsing(nameChange)
-            ivPhotoProfile.setImageResource(intent.extras?.get(PHOTO_EXTRA) as Int)
+           // ivPhotoProfile.setImageResource(intent.extras?.get(PHOTO_EXTRA) as Int)
+          val resourceId : Int = intent.extras?.get(PHOTO_EXTRA) as Int
+            Glide
+                .with(ivPhotoProfile)
+                .load(resourceId)
+                .circleCrop()
+                .into(ivPhotoProfile);
         }
     }
 

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -19,6 +18,7 @@
         app:layout_constraintVertical_weight="0.5"
         tools:layout_editor_absoluteX="0dp" />
 
+
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/iv_BottomContainer"
         android:layout_width="match_parent"
@@ -26,7 +26,8 @@
         android:background="?attr/colorSecondary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/iv_TopContainer"
-        app:layout_constraintVertical_weight="0.5" />
+        app:layout_constraintVertical_weight="0.5"
+        tools:layout_editor_absoluteX="0dp" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_Settings"
@@ -34,37 +35,59 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/horizontal_margin_16"
+        android:layout_marginStart="16dp"
         android:text="@string/settings"
         android:textColor="@color/gray_very_light"
         android:textSize="@dimen/textSize_24sp"
         android:theme="@style/TextStyBasic"
-        app:layout_constraintStart_toStartOf="@+id/iv_TopContainer"
-        app:layout_constraintTop_toTopOf="@+id/iv_TopContainer"
-        app:layout_constraintBottom_toTopOf="@+id/cv_Photo" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cv_Photo"
+        app:layout_constraintStart_toStartOf="@+id/iv_TopContainer"
+        app:layout_constraintTop_toTopOf="@+id/iv_TopContainer" />
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_PhotoProfile"
+        android:layout_width="113dp"
+        android:layout_height="113dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_Name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_Settings"
+        app:layout_constraintVertical_chainStyle="spread"
+        app:srcCompat="@drawable/mok_green" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_HomeAddress"
+        style="@style/TextStyBasic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="57dp"
-        android:layout_margin="@dimen/vertical_margin_16"
-        app:layout_constraintEnd_toEndOf="@+id/iv_TopContainer"
-        app:layout_constraintStart_toStartOf="@+id/iv_TopContainer"
-        app:layout_constraintTop_toBottomOf="@+id/tv_Settings"
-        app:layout_constraintBottom_toTopOf="@+id/tv_Name">
+        android:layout_marginBottom="@dimen/vertical_margin_24"
+        android:layout_centerHorizontal="true"
+        android:text="@string/home_address"
+        android:textColor="@color/white_my"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_TopContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_Career" />
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/iv_PhotoProfile"
-            android:layout_width="113dp"
-            android:layout_height="113dp"
-            android:layout_centerHorizontal="true"
-            app:srcCompat="@drawable/mok_green" />
-    </androidx.cardview.widget.CardView>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_Career"
+        style="@style/TextStyBasic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/vertical_margin_16"
+        android:layout_centerHorizontal="true"
+        android:text="@string/career"
+        android:textColor="@color/white_my"
+        app:layout_constraintBottom_toTopOf="@+id/tv_HomeAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_Name" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_Name"
         android:layout_width="wrap_content"
-        android:layout_height="24dp"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:text="@string/name"
         android:textColor="@color/gray_very_light"
@@ -72,36 +95,9 @@
         android:theme="@style/TextStyBasic"
         app:layout_constraintBottom_toTopOf="@+id/tv_Career"
         app:layout_constraintEnd_toEndOf="@+id/iv_TopContainer"
-        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="@+id/iv_TopContainer"
-        app:layout_constraintTop_toBottomOf="@+id/cv_Photo" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_Career"
-        style="@style/TextStyBasic"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="8dp"
-        android:text="@string/career"
-        android:textColor="@color/white_my"
-        app:layout_constraintEnd_toEndOf="@+id/iv_TopContainer"
-        app:layout_constraintStart_toStartOf="@+id/iv_TopContainer"
-        app:layout_constraintTop_toBottomOf="@+id/tv_Name" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_HomeAddress"
-        style="@style/TextStyBasic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="@string/home_address"
-        android:textColor="@color/white_my"
-        app:layout_constraintBottom_toBottomOf="@+id/iv_TopContainer"
-        app:layout_constraintEnd_toEndOf="@+id/iv_TopContainer"
-        app:layout_constraintStart_toStartOf="@+id/iv_TopContainer"
-        app:layout_constraintTop_toBottomOf="@+id/tv_Career"
-        app:layout_constraintVertical_bias="0.211" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_PhotoProfile"
+        />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_goToSettingsAndFill"

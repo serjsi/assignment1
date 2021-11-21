@@ -54,6 +54,7 @@ class MainActivity : AppCompatActivity() {
                     //Animation
                     overridePendingTransition(0, R.anim.slide_out_right)
                     btRegister.isClickable = false
+                    saveAutologin()
                 } else {
                     Toast.makeText(
                         applicationContext,
@@ -140,7 +141,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        saveAutologin()
+       if(!binding.cbRemember.isChecked) {
+           saveAutologin()
+       }
     }
 
 
@@ -157,7 +160,7 @@ class MainActivity : AppCompatActivity() {
             btGoogle.setOnClickListener {
                 val intent = Intent(this@MainActivity, ProfileActivity::class.java)
                 intent.putExtra(NAME_EXTRA, "serhii.sierykh@gmail.com")
-                intent.putExtra(PHOTO_EXTRA, R.drawable.kot_ochki)
+                intent.putExtra(PHOTO_EXTRA, R.mipmap.ic_kot)
                 startActivity(intent)
                 //Animation
                 overridePendingTransition(0, R.anim.slide_out_right)

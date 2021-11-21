@@ -54,7 +54,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_Settings"
         app:layout_constraintVertical_chainStyle="spread"
-        app:srcCompat="@drawable/mok_green" />
+        app:srcCompat="@drawable/ic_mok" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_HomeAddress"

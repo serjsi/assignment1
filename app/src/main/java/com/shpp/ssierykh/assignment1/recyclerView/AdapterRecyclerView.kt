@@ -1,10 +1,13 @@
 package com.shpp.ssierykh.assignment1.recyclerView
 
 
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.shpp.ssierykh.assignment1.Constants
+import com.shpp.ssierykh.assignment1.R
 import com.shpp.ssierykh.assignment1.databinding.SingleItemBinding
 
 
@@ -33,6 +36,14 @@ class AdapterRecyclerView (var contactsList: List<ContactsRecyclerView>,
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         with(holder){
             with(contactsList[position]){
+             //   val resourceId : Int = R.drawable.kot_ochki
+              //  val resourceId ="http://developer.alexanderklimov.ru/android/images/android_cat.jpg"
+                val resourceId = this.photoAddress
+                Glide
+                    .with(binding.ivPhoto)
+                    .load(resourceId)
+                    .circleCrop()
+                    .into(binding.ivPhoto);
                 binding.tvName.text = this.name
                 binding.tvCareer.text = this.career
             }

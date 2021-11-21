@@ -2,6 +2,20 @@ package com.shpp.ssierykh.assignment1
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.shpp.ssierykh.assignment1.Constants.PHOTO_FAKE_1
+import com.shpp.ssierykh.assignment1.Constants.PHOTO_FAKE_2
+import com.shpp.ssierykh.assignment1.Constants.PHOTO_FAKE_3
+import com.shpp.ssierykh.assignment1.Constants.PHOTO_FAKE_4
+import com.shpp.ssierykh.assignment1.Constants.PHOTO_FAKE_5
+import com.shpp.ssierykh.assignment1.Constants.PHOTO_FAKE_6
+import com.shpp.ssierykh.assignment1.Constants.PHOTO_FAKE_7
+import com.shpp.ssierykh.assignment1.Constants.PHOTO_FAKE_8
+import com.shpp.ssierykh.assignment1.Constants.PHOTO_FAKE_9
+import com.shpp.ssierykh.assignment1.Constants.PHOTO_FAKE_10
+import com.shpp.ssierykh.assignment1.Constants.PHOTO_FAKE_11
+import com.shpp.ssierykh.assignment1.Constants.PHOTO_FAKE_12
+import com.shpp.ssierykh.assignment1.Constants.PHOTO_FAKE_13
+import com.shpp.ssierykh.assignment1.Constants.PHOTO_FAKE_14
 import com.shpp.ssierykh.assignment1.databinding.ActivityContactsBinding
 import com.shpp.ssierykh.assignment1.recyclerView.AdapterRecyclerView
 import com.shpp.ssierykh.assignment1.recyclerView.ContactsRecyclerView
@@ -44,7 +58,7 @@ class ContactsActivity : AppCompatActivity() {
     private fun forTest() {
         contactsList = listOf(
 
-            ContactsRecyclerView("Frank Wells" , "Baker"),
+        /*    ContactsRecyclerView("Frank Wells" , "Baker"),
             ContactsRecyclerView("Jasmin Bailey" , "Business owner"),
             ContactsRecyclerView("Alaina Walters" , "Cameraman"),
             ContactsRecyclerView("Daisy Gordon" , "Cashier"),
@@ -57,22 +71,22 @@ class ContactsActivity : AppCompatActivity() {
             ContactsRecyclerView("Juliet McDonald" , "Fitter"),
             ContactsRecyclerView("Thomas Hampton" , "Guard"),
             ContactsRecyclerView("Valentine Craig" , "Hunter"),
-            ContactsRecyclerView("Edwin Little" , "Jeweller"),
+            ContactsRecyclerView("Edwin Little" , "Jeweller"),*/
 
-           /* ContactsRecyclerView("https://thispersondoesnotexist.com/","Frank Wells" , "Baker"),
-            ContactsRecyclerView("https://thispersondoesnotexist.com/","Jasmin Bailey" , "Business owner"),
-            ContactsRecyclerView("https://thispersondoesnotexist.com/","Alaina Walters" , "Cameraman"),
-            ContactsRecyclerView("https://thispersondoesnotexist.com/","Daisy Gordon" , "Cashier"),
-            ContactsRecyclerView("https://thispersondoesnotexist.com/","Frederick Pope" , "Chef"),
-            ContactsRecyclerView("https://thispersondoesnotexist.com/","Thomas Paul" , "Civil servant"),
-            ContactsRecyclerView("https://thispersondoesnotexist.com/","Richard Todd" , "Cleaner"),
-            ContactsRecyclerView("https://thispersondoesnotexist.com/","Sharon Anderson" , "Distributor"),
-            ContactsRecyclerView("https://thispersondoesnotexist.com/","Robert Harmon" , "Engineer"),
-            ContactsRecyclerView("https://thispersondoesnotexist.com/","Ruth Johnson" , "Financier"),
-            ContactsRecyclerView("https://thispersondoesnotexist.com/","Juliet McDonald" , "Fitter"),
-            ContactsRecyclerView("https://thispersondoesnotexist.com/","Thomas Hampton" , "Guard"),
-            ContactsRecyclerView("https://thispersondoesnotexist.com/","Valentine Craig" , "Hunter"),
-            ContactsRecyclerView("https://thispersondoesnotexist.com/","Edwin Little" , "Jeweller"),*/
+            ContactsRecyclerView(PHOTO_FAKE_1,"Frank Wells" , "Baker"),
+            ContactsRecyclerView(PHOTO_FAKE_2,"Jasmin Bailey" , "Business owner"),
+            ContactsRecyclerView(PHOTO_FAKE_3,"Alaina Walters" , "Cameraman"),
+            ContactsRecyclerView(PHOTO_FAKE_4,"Daisy Gordon" , "Cashier"),
+            ContactsRecyclerView(PHOTO_FAKE_5,"Frederick Pope" , "Chef"),
+            ContactsRecyclerView(PHOTO_FAKE_6,"Thomas Paul" , "Civil servant"),
+            ContactsRecyclerView(PHOTO_FAKE_7,"Richard Todd" , "Cleaner"),
+            ContactsRecyclerView(PHOTO_FAKE_8,"Sharon Anderson" , "Distributor"),
+            ContactsRecyclerView(PHOTO_FAKE_9,"Robert Harmon" , "Engineer"),
+            ContactsRecyclerView(PHOTO_FAKE_10,"Ruth Johnson" , "Financier"),
+            ContactsRecyclerView(PHOTO_FAKE_11,"Juliet McDonald" , "Fitter"),
+            ContactsRecyclerView(PHOTO_FAKE_12,"Thomas Hampton" , "Guard"),
+            ContactsRecyclerView(PHOTO_FAKE_13,"Valentine Craig" , "Hunter"),
+            ContactsRecyclerView(PHOTO_FAKE_14,"Edwin Little" , "Jeweller"),
         )
     }
 }

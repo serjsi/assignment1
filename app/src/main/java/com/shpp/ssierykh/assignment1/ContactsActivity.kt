@@ -58,21 +58,6 @@ class ContactsActivity : AppCompatActivity() {
     private fun forTest() {
         contactsList = listOf(
 
-        /*    ContactsRecyclerView("Frank Wells" , "Baker"),
-            ContactsRecyclerView("Jasmin Bailey" , "Business owner"),
-            ContactsRecyclerView("Alaina Walters" , "Cameraman"),
-            ContactsRecyclerView("Daisy Gordon" , "Cashier"),
-            ContactsRecyclerView("Frederick Pope" , "Chef"),
-            ContactsRecyclerView("Thomas Paul" , "Civil servant"),
-            ContactsRecyclerView("Richard Todd" , "Cleaner"),
-            ContactsRecyclerView("Sharon Anderson" , "Distributor"),
-            ContactsRecyclerView("Robert Harmon" , "Engineer"),
-            ContactsRecyclerView("Ruth Johnson" , "Financier"),
-            ContactsRecyclerView("Juliet McDonald" , "Fitter"),
-            ContactsRecyclerView("Thomas Hampton" , "Guard"),
-            ContactsRecyclerView("Valentine Craig" , "Hunter"),
-            ContactsRecyclerView("Edwin Little" , "Jeweller"),*/
-
             ContactsRecyclerView(PHOTO_FAKE_1,"Frank Wells" , "Baker"),
             ContactsRecyclerView(PHOTO_FAKE_2,"Jasmin Bailey" , "Business owner"),
             ContactsRecyclerView(PHOTO_FAKE_3,"Alaina Walters" , "Cameraman"),

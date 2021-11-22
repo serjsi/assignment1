@@ -4,16 +4,17 @@ package com.shpp.ssierykh.assignment1.recyclerView
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.shpp.ssierykh.assignment1.Constants
-import com.shpp.ssierykh.assignment1.R
 import com.shpp.ssierykh.assignment1.databinding.SingleItemBinding
 
 
-class AdapterRecyclerView (var contactsList: List<ContactsRecyclerView>,
-) : RecyclerView.Adapter<AdapterRecyclerView.ViewHolder>(){
 
+
+
+class AdapterRecyclerView(
+    var contactsList: List<ContactsRecyclerView>,) : RecyclerView.Adapter<AdapterRecyclerView.ViewHolder>(){
 
 
     // create an inner class with name ViewHolder
@@ -26,8 +27,9 @@ class AdapterRecyclerView (var contactsList: List<ContactsRecyclerView>,
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = SingleItemBinding
             .inflate(LayoutInflater.from(parent.context), parent, false)
-
         return ViewHolder(binding)
+
+
     }
 
     // bind the items with each item of the list contactsList which than will be
@@ -36,14 +38,13 @@ class AdapterRecyclerView (var contactsList: List<ContactsRecyclerView>,
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         with(holder){
             with(contactsList[position]){
-             //   val resourceId : Int = R.drawable.kot_ochki
               //  val resourceId ="http://developer.alexanderklimov.ru/android/images/android_cat.jpg"
                 val resourceId = this.photoAddress
                 Glide
                     .with(binding.ivPhoto)
                     .load(resourceId)
                     .circleCrop()
-                    .into(binding.ivPhoto);
+                    .into(binding.ivPhoto)
                 binding.tvName.text = this.name
                 binding.tvCareer.text = this.career
             }

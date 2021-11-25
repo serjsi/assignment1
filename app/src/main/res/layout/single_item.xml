@@ -7,9 +7,11 @@
     android:layout_marginBottom="@dimen/vertical_margin_16"
     android:layout_marginStart="@dimen/horizontal_margin_16"
     android:layout_marginEnd="@dimen/horizontal_margin_16"
-    android:layout_height="66dp">
+    android:layout_height="66dp"
+    app:cardCornerRadius="7dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -31,7 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/horizontal_margin_16"
-            android:text="Name"
+            android:text="@string/name"
             android:textColor="?attr/colorOnSecondary"
             android:textSize="@dimen/textSize_18sp"
             android:theme="@style/TextStyBasic"
@@ -45,7 +47,7 @@
             android:id="@+id/tv_Career"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Career"
+            android:text="@string/career"
             android:textColor="@color/gray"
             android:textSize="@dimen/textSize_12sp"
             android:theme="@style/TextStyBasic"
@@ -54,7 +56,7 @@
 
         <!--Add image basket.-->
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/iv_Basket"
+            android:id="@+id/iv_Delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/horizontal_margin_16"

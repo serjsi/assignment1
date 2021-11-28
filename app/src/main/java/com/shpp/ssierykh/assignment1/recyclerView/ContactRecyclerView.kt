@@ -1,7 +1,7 @@
 package com.shpp.ssierykh.assignment1.recyclerView
 
 // this is the Contacts model class
-class ContactsRecyclerView (
+data class ContactRecyclerView (
 
     val photoAddress : String ="",
     val name : String ="",

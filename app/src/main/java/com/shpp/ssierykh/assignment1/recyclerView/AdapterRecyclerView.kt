@@ -1,23 +1,25 @@
 package com.shpp.ssierykh.assignment1.recyclerView
 
 
+
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.shpp.ssierykh.assignment1.databinding.SingleItemBinding
-
-
+import android.os.CountDownTimer
+import android.view.View
+import android.widget.Toast
+import com.google.android.material.snackbar.Snackbar
+import com.shpp.ssierykh.assignment1.ContactsActivity
 
 
 class AdapterRecyclerView(
-   private var contactsList: MutableList<ContactsRecyclerView>,
-) : RecyclerView.Adapter<AdapterRecyclerView.ViewHolder>(){
-
-
+    private var contactList: MutableList<ContactRecyclerView>,
+ //   private val listener: OnItemClickListener
+) : RecyclerView.Adapter<AdapterRecyclerView.ViewHolder>() {
 
 
     // create an inner class with name ViewHolder
@@ -40,10 +42,11 @@ class AdapterRecyclerView(
     // to keep it simple we are not setting any image data to view
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        with(holder){
-            with(contactsList[position]){
-              //  val resourceId ="http://developer.alexanderklimov.ru/android/images/android_cat.jpg"
+        with(holder) {
+            with(contactList[position]) {
+                //  val resourceId ="http://developer.alexanderklimov.ru/android/images/android_cat.jpg"
                 val resourceId = this.photoAddress
+
                 Glide
                     .with(binding.ivPhoto)
                     .load(resourceId)
@@ -51,31 +54,47 @@ class AdapterRecyclerView(
                     .into(binding.ivPhoto)
                 binding.tvName.text = this.name
                 binding.tvCareer.text = this.career
+
+                binding.ivDelete.setOnClickListener {
+                    deleteItem(position)
+                }
+
+              /*  override fun onClick(v: View?) {
+                    listener.onItemClick(position)
+                }*/
             }
         }
 
- /*       // remove the item from recycler view
-        holder.remove.setOnClickListener {
-            contactsList.removeAt(position)
-            notifyItemRemoved(position)
-            notifyItemRangeChanged(position,contactsList.size)
-        }*/
 
     }
 
+
+    private fun deleteItem(index: Int) {
+
+        val temp = contactList.get(index)
+        contactList.removeAt(index)
+        notifyDataSetChanged()
+
+        object : CountDownTimer(5000, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                //   mTextField.setText("seconds remaining: " + millisUntilFinished / 1000)
+
+            }
+
+            override fun onFinish() {
+                //  mTextField.setText("Time's finished!")
+                contactList.add(index,temp)
+                notifyDataSetChanged()
+            }
+        }.start()
+    }
 
 
     // return the size of contactList
     override fun getItemCount(): Int {
-        return contactsList.size
+        return contactList.size
 
     }
-/*
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        val name: TextView = itemView.tvName
-        val basket: ImageView = itemView.ivBasket
-    }
-*/
 
 
     // this two methods useful for avoiding duplicate item
@@ -87,6 +106,12 @@ class AdapterRecyclerView(
     override fun getItemViewType(position: Int): Int {
         return position
     }
+
+   /* interface OnItemClickListener {
+        fun onItemClick(position: Int)
+
+    }*/
+
 
 }
 

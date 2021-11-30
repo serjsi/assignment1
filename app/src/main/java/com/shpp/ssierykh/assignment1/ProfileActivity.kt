@@ -22,19 +22,20 @@ class ProfileActivity : AppCompatActivity() {
 
         val nameChange = intent.extras?.get(NAME_EXTRA).toString()
         setView(nameChange)
+        goMyContacts()
         forTestMethod()
     }
 
     private fun setView(nameChange: String) {
         binding.apply {
-           tvName.text = nameParsing(nameChange)
-           // ivPhotoProfile.setImageResource(intent.extras?.get(PHOTO_EXTRA) as Int)
-          val resourceId : Int = intent.extras?.get(PHOTO_EXTRA) as Int
+            tvName.text = nameParsing(nameChange)
+            // ivPhotoProfile.setImageResource(intent.extras?.get(PHOTO_EXTRA) as Int)
+            val resourceId: Int = intent.extras?.get(PHOTO_EXTRA) as Int
             Glide
                 .with(ivPhotoProfile)
                 .load(resourceId)
                 .circleCrop()
-                .into(ivPhotoProfile);
+                .into(ivPhotoProfile)
         }
     }
 
@@ -55,6 +56,18 @@ class ProfileActivity : AppCompatActivity() {
                     string.substring(1, string.indexOf("@"))
         }
         return "$name $surname"
+    }
+
+    //Switching to another screen////////////////////////////delete---------------------------
+    private fun goMyContacts() {
+        binding.btViewMyContacts.setOnClickListener {
+            val intent = Intent(this, ContactsActivity::class.java)
+            startActivity(intent)
+            //Animation
+            finish()
+            overridePendingTransition(0, R.anim.slide_out_left)
+
+        }
     }
 
     //Switching to another screen////////////////////////////delete---------------------------

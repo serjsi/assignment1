@@ -10,7 +10,7 @@
         android:label="AuthActivity" />
     <activity
         android:id="@+id/mainActivity"
-        android:name="com.shpp.ssierykh.assignment1.ProfileActivity"
+        android:name="com.shpp.ssierykh.assignment1.MyProfileActivity"
         android:label="MainActivity" />
     <action
         android:id="@+id/action_global_mainActivity"

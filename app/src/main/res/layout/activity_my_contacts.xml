@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ContactsActivity">
+    tools:context=".MyContactsActivity">
 
 
     <!--Add recycler view to main activity-->
@@ -29,7 +29,7 @@
         app:layout_constraintTop_toBottomOf="@id/iv_TopContainer"
         app:layout_constraintVertical_weight="0.82"
         tools:layout_editor_absoluteX="-16dp"
-        tools:listitem="@layout/single_item" />
+        tools:listitem="@layout/single_item_contact" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/iv_ArrowBack"

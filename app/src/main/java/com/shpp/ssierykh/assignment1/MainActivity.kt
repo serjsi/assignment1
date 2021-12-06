@@ -2,7 +2,6 @@ package com.shpp.ssierykh.assignment1
 
 
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.TextView
 import android.widget.Toast
@@ -46,7 +45,7 @@ class MainActivity : AppCompatActivity() {
             btRegister.setOnClickListener {
                 if (isValidateEmail() && isValidatePassword()) {
                     //Stores the values
-                    val intent = Intent(this@MainActivity, ProfileActivity::class.java)
+                    val intent = Intent(this@MainActivity, MyProfileActivity::class.java)
                     intent.putExtra(NAME_EXTRA, etEnterEmail.text.toString())
                     intent.putExtra(PHOTO_EXTRA, R.drawable.lucile)
                     startActivity(intent)
@@ -158,11 +157,12 @@ class MainActivity : AppCompatActivity() {
             //Handle pressing the "SignIn" google:
 
             btGoogle.setOnClickListener {
-                val intent = Intent(this@MainActivity, ProfileActivity::class.java)
+                val intent = Intent(this@MainActivity, MyProfileActivity::class.java)
                 intent.putExtra(NAME_EXTRA, "serhii.sierykh@gmail.com")
                 intent.putExtra(PHOTO_EXTRA, R.mipmap.ic_kot)
                 startActivity(intent)
                 //Animation
+                finish()
                 overridePendingTransition(0, R.anim.slide_out_right)
             }
         }

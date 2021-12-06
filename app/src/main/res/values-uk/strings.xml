@@ -36,4 +36,8 @@
     <string name="message_wromg_e_mail">Недійсна адреса електронної пошти, наприклад name@mail.com</string>
     <string name="go_to_settings_and_fill_out_the_profile">Зайдіть в налаштування і заповніть профіль</string>
     <string name="contacts">Контакти</string>
+    <string name="add_contacts">Додати контакт</string>
+    <string name="message">ПОВІДОМЛЕННЯ</string>
+    <string name="profile">Профіль</string>
+    <string name="save">ЗБЕРЕГТИ</string>
 </resources>

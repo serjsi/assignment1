@@ -7,9 +7,13 @@ object Constants {
     const val MIN_LENGTH_PASSWORD = 8
     const val PHOTO_EXTRA = "photo"
     const val NAME_EXTRA = "name"
+    const val CAREER_EXTRA = "career"
+    const val HOME_ADDRESS_EXTRA = "address"
     const val REMEMBER_SP = "Remember"
     const val NAME_SP = "Name"
     const val PASSWORD_SP = "Password"
+    const val SNACKBAR_LENGTH_MANUAL = 5000
+
 
         //Photo fake contacts
     const val PHOTO_FAKE_1 = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd3CRpoDEzJ_j5HF4YKKrVo3zT7rNz_2oYzQ&usqp=CAU"

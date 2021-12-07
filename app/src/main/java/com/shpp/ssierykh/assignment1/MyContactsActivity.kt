@@ -19,10 +19,11 @@ import com.shpp.ssierykh.assignment1.Constants.PHOTO_FAKE_11
 import com.shpp.ssierykh.assignment1.Constants.PHOTO_FAKE_12
 import com.shpp.ssierykh.assignment1.Constants.PHOTO_FAKE_13
 import com.shpp.ssierykh.assignment1.Constants.PHOTO_FAKE_14
-import com.shpp.ssierykh.assignment1.Constants.SNACKBAR_LENGTH_MANUAL
 import com.shpp.ssierykh.assignment1.databinding.ActivityMyContactsBinding
-import com.shpp.ssierykh.assignment1.recyclerView.AdapterRecyclerView
-import com.shpp.ssierykh.assignment1.recyclerView.ContactRecyclerView
+import com.shpp.ssierykh.assignment1.contacts.AdapterRecyclerView
+import com.shpp.ssierykh.assignment1.contacts.AddContactsDialog
+import com.shpp.ssierykh.assignment1.contacts.ContactRecyclerView
+import com.shpp.ssierykh.assignment1.contacts.ContactsProfileActivity
 import kotlinx.android.synthetic.main.activity_my_contacts.*
 
 
@@ -52,12 +53,18 @@ class MyContactsActivity : AppCompatActivity(), AdapterRecyclerView.OnItemClickL
         // attach adapter to the recycler view
         binding.ivBottomContainer.adapter = rvAdapter
 
-        binding.tvAddContacts.setOnClickListener { goAddContacts() }
 
-        binding.ivArrowBack.setOnClickListener{finish()}
+
+        binding.tvAddContacts.setOnClickListener { dialogAddContact() }
+        // binding.tvAddContacts.setOnClickListener { goAddContacts() }
+
+        binding.ivArrowBack.setOnClickListener { finish() }
 
     }
 
+    fun dialogAddContact() {
+        AddContactsDialog().show(supportFragmentManager, "customDialog")
+    }
 
 
     // on destroy of view make the binding reference to null
@@ -77,38 +84,36 @@ class MyContactsActivity : AppCompatActivity(), AdapterRecyclerView.OnItemClickL
         //Animation
         overridePendingTransition(0, R.anim.slide_out_right)
 
-      //  rvAdapter.notifyItemChanged(position)
     }
 
 
     override fun onItemDelete(position: Int) {
-        val clickedItem = contactList[position]
-//        contactList.removeAt(position)
-//        rvAdapter.notifyItemRemoved(position)
-
-        isSnack(position, clickedItem)
-
-//        rvAdapter.notifyItemChanged(position)
+        val deleteItem = contactList[position]
+        contactList.removeAt(position)
+        rvAdapter.notifyItemRemoved(position)
+        isSnack(position,deleteItem)
     }
 
-    private fun isSnack(position: Int, clickedItem: ContactRecyclerView) {
+    private fun isSnack(position: Int, deleteItem: ContactRecyclerView) {
         val snackbar = Snackbar
-            .make(iv_BottomContainer, "Contact is deleted", 5000)
+            .make(iv_BottomContainer, "Contact ${deleteItem.name} is deleted ", 5000)
             .setAction("UNDO") { // Show another Snackbar.
                 val snackbar1 =
-                    Snackbar.make(iv_BottomContainer, "Contact is restored!", Snackbar.LENGTH_SHORT)
-                contactList.add(position, clickedItem)
+                    Snackbar.make(iv_BottomContainer,
+                        "Contact ${deleteItem.name} is restored!",
+                        Snackbar.LENGTH_SHORT)
+                contactList.add(deleteItem)
+                contactList.sortBy { contactRecyclerView -> contactRecyclerView.name }
                 rvAdapter.notifyItemChanged(position)
                 snackbar1.show()
             }
-
         snackbar.show()
     }
 
-    //Switching to another screen////////////////////////////delete---------------------------
+    //Switching to another screen
     private fun goAddContacts() {
         binding.tvAddContacts.setOnClickListener {
-            val intent = Intent(this, AddContactsActivity::class.java)
+            val intent = Intent(this, AddContactsDialog::class.java)
             startActivity(intent)
             //Animation
             //   finish()
@@ -137,6 +142,7 @@ class MyContactsActivity : AppCompatActivity(), AdapterRecyclerView.OnItemClickL
             ContactRecyclerView(PHOTO_FAKE_13, "Valentine Craig", "Hunter"),
             ContactRecyclerView(PHOTO_FAKE_14, "Edwin Little", "Jeweller"),
         )
+        contactList.sortBy { contactRecyclerView -> contactRecyclerView.name }
 
     }
 

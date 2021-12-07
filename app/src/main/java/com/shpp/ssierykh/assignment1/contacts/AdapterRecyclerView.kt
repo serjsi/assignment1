@@ -1,8 +1,7 @@
-package com.shpp.ssierykh.assignment1.recyclerView
+package com.shpp.ssierykh.assignment1.contacts
 
 
 import android.annotation.SuppressLint
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -10,12 +9,13 @@ import com.bumptech.glide.Glide
 import com.shpp.ssierykh.assignment1.databinding.SingleItemContactBinding
 import android.os.CountDownTimer
 import android.view.View
-import androidx.appcompat.widget.AppCompatImageView
+import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.activity_my_contacts.*
 
 
 class AdapterRecyclerView(
     private var contactList: MutableList<ContactRecyclerView>,
-    private val listener: OnItemClickListener
+    private val listener: OnItemClickListener,
 ) : RecyclerView.Adapter<AdapterRecyclerView.ViewHolder>() {
 
 
@@ -23,7 +23,8 @@ class AdapterRecyclerView(
     // It takes a view argument, in which pass the generated class of single_item.xml
     // ie SingleItemContactsBinding and in the RecyclerView.ViewHolder(binding.root) pass it like this
     //inner class ViewHolder(val binding: SingleItemContactsBinding) : RecyclerView.ViewHolder(binding.root)
-    inner class ViewHolder(val binding: SingleItemContactBinding) : RecyclerView.ViewHolder(binding.root),
+    inner class ViewHolder(val binding: SingleItemContactBinding) :
+        RecyclerView.ViewHolder(binding.root),
         View.OnClickListener {
 
         init {
@@ -56,46 +57,23 @@ class AdapterRecyclerView(
         with(holder) {
             with(contactList[position]) {
                 Glide
-                        .with(binding.ivPhoto)
-                        .load(this.photoAddress)
-                        .circleCrop()
-                        .into(binding.ivPhoto)
+                    .with(binding.ivPhoto)
+                    .load(this.photoAddress)
+                    .circleCrop()
+                    .into(binding.ivPhoto)
 
                 binding.tvName.text = this.name
                 binding.tvCareer.text = this.career
 
                 binding.ivDelete.setOnClickListener {
-                     deleteItem(position)
-//                    onItemDelete(position)
+                    listener.onItemDelete(position)
+
 
                 }
             }
         }
     }
 
-
-
-
-    @SuppressLint("NotifyDataSetChanged")
-    private fun deleteItem(index: Int) {
-
-        val temp = contactList.get(index)
-        contactList.removeAt(index)
-        notifyDataSetChanged()
-
-        object : CountDownTimer(5000, 1000) {
-            override fun onTick(millisUntilFinished: Long) {
-                //   mTextField.setText("seconds remaining: " + millisUntilFinished / 1000)
-
-            }
-
-            override fun onFinish() {
-                //  mTextField.setText("Time's finished!")
-                contactList.add(index, temp)
-                this@AdapterRecyclerView.notifyDataSetChanged()
-            }
-        }.start()
-    }
 
 
     // return the size of contactList
@@ -114,6 +92,7 @@ class AdapterRecyclerView(
         fun onItemDelete(position: Int)
 
     }
+
 
 }
 

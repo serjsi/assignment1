@@ -16,7 +16,7 @@
         app:layout_constraintBottom_toTopOf="@id/iv_BottomContainer"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_weight="0.5"
-        tools:layout_editor_absoluteX="0dp" />
+        />
 
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -27,7 +27,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/iv_TopContainer"
         app:layout_constraintVertical_weight="0.5"
-        tools:layout_editor_absoluteX="0dp" />
+         />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_Settings"

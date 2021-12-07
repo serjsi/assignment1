@@ -37,7 +37,11 @@
     <string name="go_to_settings_and_fill_out_the_profile">Зайдіть в налаштування і заповніть профіль</string>
     <string name="contacts">Контакти</string>
     <string name="add_contacts">Додати контакт</string>
-    <string name="message">ПОВІДОМЛЕННЯ</string>
+    <string name="message">ПОВІДОМЛЕНЯ</string>
     <string name="profile">Профіль</string>
     <string name="save">ЗБЕРЕГТИ</string>
+    <string name="username">Ім\'я користувача</string>
+    <string name="date_of_birth">День народження</string>
+    <string name="address">Адреса</string>
+    <string name="phone">Телефон</string>
 </resources>

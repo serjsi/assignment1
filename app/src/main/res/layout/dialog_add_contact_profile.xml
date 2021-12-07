@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".contacts.AddContactsDialog">
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_TopContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="?attr/colorPrimaryVariant"
+        app:layout_constraintBottom_toTopOf="@+id/iv_BottomContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_weight="0.3" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_BottomContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="?attr/colorSecondary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_TopContainer"
+        app:layout_constraintVertical_weight="0.7" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_AddContacts"
+        style="@style/TextStyBasic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/vertical_margin_16"
+        android:text="@string/add_contacts"
+        android:textColor="@color/gray_very_light"
+        android:textSize="@dimen/textSize_18sp"
+        android:theme="@style/TextStyBasic"
+        app:layout_constraintEnd_toEndOf="@+id/iv_TopContainer"
+        app:layout_constraintStart_toStartOf="@+id/iv_TopContainer"
+        app:layout_constraintTop_toTopOf="@+id/iv_TopContainer" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_ArrowBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/margin_offset_from_edge_screen_16dp"
+        android:paddingTop="@dimen/margin_offset_from_edge_screen_16dp"
+        app:layout_constraintStart_toStartOf="@+id/iv_TopContainer"
+        app:layout_constraintTop_toTopOf="@+id/iv_TopContainer"
+        app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_PhotoProfile"
+        android:layout_width="113dp"
+        android:layout_height="113dp"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_TopContainer"
+        app:layout_constraintEnd_toEndOf="@+id/iv_TopContainer"
+        app:layout_constraintStart_toStartOf="@+id/iv_TopContainer"
+        app:layout_constraintTop_toBottomOf="@+id/tv_AddContacts"
+        app:srcCompat="@drawable/ic_mok" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_AddPhoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_TopContainer"
+        app:layout_constraintEnd_toEndOf="@+id/iv_TopContainer"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toEndOf="@+id/iv_PhotoProfile"
+        app:layout_constraintTop_toBottomOf="@+id/tv_AddContacts"
+        app:srcCompat="@drawable/ic_add_photo_button" />
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bt_Save"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_TopContainer">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_offset_from_edge_screen_16dp"
+            android:orientation="vertical">
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_UserName"
+                style="@style/TextInputLayout"
+                android:layout_marginBottom="@dimen/vertical_margin_8"
+                android:hint="@string/username"
+                android:textColorHint="@color/gray"
+                app:errorTextAppearance="@style/ErrorText"
+                app:errorTextColor="@color/design_default_color_error"
+                app:hintTextAppearance="@style/TextInputLayoutHintText"
+                app:hintTextColor="@color/black"
+                app:layout_constraintBottom_toTopOf="@+id/til_Career">
+
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_UserName"
+                    style="@style/TextInputEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="?attr/colorOnSecondary" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_Career"
+                style="@style/TextInputLayout"
+                android:layout_marginBottom="@dimen/vertical_margin_8"
+                android:hint="@string/career"
+                android:textColorHint="@color/gray"
+                app:errorTextAppearance="@style/ErrorText"
+                app:errorTextColor="@color/design_default_color_error"
+                app:hintTextAppearance="@style/TextInputLayoutHintText"
+                app:hintTextColor="@color/black">
+
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_Career"
+                    style="@style/TextInputEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="?attr/colorOnSecondary" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_Email"
+                style="@style/TextInputLayout"
+                android:layout_marginBottom="@dimen/vertical_margin_8"
+                android:hint="@string/e_mail"
+                android:textColorHint="@color/gray"
+                app:errorTextAppearance="@style/ErrorText"
+                app:errorTextColor="@color/design_default_color_error"
+                app:hintTextAppearance="@style/TextInputLayoutHintText"
+                app:hintTextColor="@color/black">
+
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_Email"
+                    style="@style/TextInputEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="?attr/colorOnSecondary" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_Phone"
+                style="@style/TextInputLayout"
+                android:layout_marginBottom="@dimen/vertical_margin_8"
+                android:hint="@string/phone"
+                android:textColorHint="@color/gray"
+                app:errorTextAppearance="@style/ErrorText"
+                app:errorTextColor="@color/design_default_color_error"
+                app:hintTextAppearance="@style/TextInputLayoutHintText"
+                app:hintTextColor="@color/black">
+
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_Phone"
+                    style="@style/TextInputEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="?attr/colorOnSecondary" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_Address"
+                style="@style/TextInputLayout"
+                android:layout_marginBottom="@dimen/vertical_margin_8"
+                android:hint="@string/address"
+                android:textColorHint="@color/gray"
+                app:errorTextAppearance="@style/ErrorText"
+                app:errorTextColor="@color/design_default_color_error"
+                app:hintTextAppearance="@style/TextInputLayoutHintText"
+                app:hintTextColor="@color/black">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_Address"
+                    style="@style/TextInputEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="?attr/colorOnSecondary" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_DateOfBirth"
+                style="@style/TextInputLayout"
+                android:layout_marginBottom="@dimen/vertical_margin_8"
+                android:hint="@string/date_of_birth"
+                android:textColorHint="@color/gray"
+                app:errorTextAppearance="@style/ErrorText"
+                app:errorTextColor="@color/design_default_color_error"
+                app:hintTextAppearance="@style/TextInputLayoutHintText"
+                app:hintTextColor="@color/black">
+
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_DateOfBirth"
+                    style="@style/TextInputEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="?attr/colorOnSecondary" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bt_Save"
+        style="@style/TextStyBasic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_offset_from_edge_screen_16dp"
+        android:background="@drawable/button_background_orange"
+        android:backgroundTint="?attr/colorPrimary"
+        android:text="@string/save"
+        android:textColor="?attr/colorOnPrimary"
+        android:textSize="@dimen/textSize_16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_BottomContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/iv_BottomContainer" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+

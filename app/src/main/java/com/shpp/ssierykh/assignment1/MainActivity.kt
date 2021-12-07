@@ -16,7 +16,7 @@ import com.shpp.ssierykh.assignment1.Constants.TEST_EMAIL
 import com.shpp.ssierykh.assignment1.Constants.TEST_PASSWORD
 import com.shpp.ssierykh.assignment1.data.PreferenceStorage
 import com.shpp.ssierykh.assignment1.databinding.ActivityMainBinding
-
+import com.shpp.ssierykh.assignment1.extensions.Validators
 
 
 class MainActivity : AppCompatActivity() {

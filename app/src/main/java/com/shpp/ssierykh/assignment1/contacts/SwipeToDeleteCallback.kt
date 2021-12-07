@@ -1,4 +1,4 @@
-package com.shpp.ssierykh.assignment1.recyclerView
+package com.shpp.ssierykh.assignment1.contacts
 
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView

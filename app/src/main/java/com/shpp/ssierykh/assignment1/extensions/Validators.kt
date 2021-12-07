@@ -1,6 +1,7 @@
-package com.shpp.ssierykh.assignment1
+package com.shpp.ssierykh.assignment1.extensions
 
-import android.util.Patterns
+import com.shpp.ssierykh.assignment1.Constants
+import com.shpp.ssierykh.assignment1.R
 
 object Validators {
 
@@ -34,7 +35,7 @@ object Validators {
             }
             //checking is string contain any special character
             !passwordChek.contains(Regex("""[^a-zA-Z0-9]""")) -> {
-                return  R.string._1_special_character_required
+                return R.string._1_special_character_required
             }
         }
 

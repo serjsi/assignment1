@@ -1,6 +1,5 @@
-package com.shpp.ssierykh.assignment1
+package com.shpp.ssierykh.assignment1.contacts
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bumptech.glide.Glide

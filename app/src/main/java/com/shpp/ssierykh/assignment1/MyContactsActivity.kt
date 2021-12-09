@@ -1,9 +1,12 @@
 package com.shpp.ssierykh.assignment1
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.ItemTouchHelper.SimpleCallback
 import com.google.android.material.snackbar.Snackbar
 import com.shpp.ssierykh.assignment1.Constants.PHOTO_FAKE_1
 import com.shpp.ssierykh.assignment1.Constants.PHOTO_FAKE_2
@@ -19,15 +22,14 @@ import com.shpp.ssierykh.assignment1.Constants.PHOTO_FAKE_11
 import com.shpp.ssierykh.assignment1.Constants.PHOTO_FAKE_12
 import com.shpp.ssierykh.assignment1.Constants.PHOTO_FAKE_13
 import com.shpp.ssierykh.assignment1.Constants.PHOTO_FAKE_14
+import com.shpp.ssierykh.assignment1.Constants.SNACKBAR_LENGTH_MANUAL
+import com.shpp.ssierykh.assignment1.contacts.*
 import com.shpp.ssierykh.assignment1.databinding.ActivityMyContactsBinding
-import com.shpp.ssierykh.assignment1.contacts.AdapterRecyclerView
-import com.shpp.ssierykh.assignment1.contacts.AddContactsDialog
-import com.shpp.ssierykh.assignment1.contacts.ContactRecyclerView
-import com.shpp.ssierykh.assignment1.contacts.ContactsProfileActivity
 import kotlinx.android.synthetic.main.activity_my_contacts.*
 
 
-class MyContactsActivity : AppCompatActivity(), AdapterRecyclerView.OnItemClickListener {
+class MyContactsActivity : AppCompatActivity(), AdapterRecyclerView.OnItemClickListener,
+    AddContactsDialog.OnAddContactListener {
 
 
     // view binding for the activity
@@ -53,17 +55,15 @@ class MyContactsActivity : AppCompatActivity(), AdapterRecyclerView.OnItemClickL
         // attach adapter to the recycler view
         binding.ivBottomContainer.adapter = rvAdapter
 
-
-
         binding.tvAddContacts.setOnClickListener { dialogAddContact() }
-        // binding.tvAddContacts.setOnClickListener { goAddContacts() }
 
         binding.ivArrowBack.setOnClickListener { finish() }
 
+
     }
 
-    fun dialogAddContact() {
-        AddContactsDialog().show(supportFragmentManager, "customDialog")
+    private fun dialogAddContact() {
+        AddContactsDialog(this).show(supportFragmentManager, "customDialog")
     }
 
 
@@ -86,39 +86,35 @@ class MyContactsActivity : AppCompatActivity(), AdapterRecyclerView.OnItemClickL
 
     }
 
+    override fun onAddContact(addItem: ContactRecyclerView) {
+        contactList.add(addItem)
+        contactList.sortBy { contactRecyclerView -> contactRecyclerView.name }
+        rvAdapter.notifyItemInserted(contactList.indexOf(addItem))
+        Toast.makeText(applicationContext, "Contact ${addItem.name} is add ",
+            Toast.LENGTH_SHORT).show()
+    }
 
     override fun onItemDelete(position: Int) {
         val deleteItem = contactList[position]
         contactList.removeAt(position)
         rvAdapter.notifyItemRemoved(position)
-        isSnack(position,deleteItem)
+        isSnack(position, deleteItem)
     }
 
+    @SuppressLint("WrongConstant")
     private fun isSnack(position: Int, deleteItem: ContactRecyclerView) {
-        val snackbar = Snackbar
-            .make(iv_BottomContainer, "Contact ${deleteItem.name} is deleted ", 5000)
-            .setAction("UNDO") { // Show another Snackbar.
-                val snackbar1 =
-                    Snackbar.make(iv_BottomContainer,
-                        "Contact ${deleteItem.name} is restored!",
-                        Snackbar.LENGTH_SHORT)
-                contactList.add(deleteItem)
-                contactList.sortBy { contactRecyclerView -> contactRecyclerView.name }
-                rvAdapter.notifyItemChanged(position)
-                snackbar1.show()
-            }
-        snackbar.show()
-    }
-
-    //Switching to another screen
-    private fun goAddContacts() {
-        binding.tvAddContacts.setOnClickListener {
-            val intent = Intent(this, AddContactsDialog::class.java)
-            startActivity(intent)
-            //Animation
-            //   finish()
-            overridePendingTransition(0, R.anim.slide_out_left)
-
+        Snackbar.make(iv_BottomContainer, "Contact ${deleteItem.name} is deleted ",
+            SNACKBAR_LENGTH_MANUAL).setAction("UNDO") {
+            // Show another SnackBar.
+            val snackBarRestore =
+                Snackbar.make(iv_BottomContainer,
+                    "Contact ${deleteItem.name} is restored!",
+                    Snackbar.LENGTH_SHORT)
+            contactList.add(position, deleteItem)
+            rvAdapter.notifyItemInserted(position)
+            snackBarRestore.show()
+        }.apply {
+            show()
         }
     }
 
@@ -146,4 +142,10 @@ class MyContactsActivity : AppCompatActivity(), AdapterRecyclerView.OnItemClickL
 
     }
 
+
+    private var mAdapter: AdapterRecyclerView? = null
+
+
+
 }
+

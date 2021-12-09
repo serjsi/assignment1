@@ -1,16 +1,14 @@
 package com.shpp.ssierykh.assignment1.contacts
 
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.shpp.ssierykh.assignment1.databinding.SingleItemContactBinding
-import android.os.CountDownTimer
 import android.view.View
-import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.activity_my_contacts.*
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.ItemTouchHelper.*
 
 
 class AdapterRecyclerView(
@@ -36,6 +34,8 @@ class AdapterRecyclerView(
                 listener.onItemClick(position)
             }
         }
+
+
     }
 
     // inside the onCreateViewHolder inflate the view of SingleItemContactsBinding
@@ -67,32 +67,28 @@ class AdapterRecyclerView(
 
                 binding.ivDelete.setOnClickListener {
                     listener.onItemDelete(position)
-
-
                 }
             }
         }
     }
 
 
-
     // return the size of contactList
     override fun getItemCount(): Int {
         return contactList.size
-
     }
 
     override fun getItemViewType(position: Int): Int {
         return position
     }
 
+
     interface OnItemClickListener {
         fun onItemClick(position: Int)
-
         fun onItemDelete(position: Int)
+
 
     }
 
 
 }
-

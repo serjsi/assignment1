@@ -22,6 +22,12 @@ import android.database.Cursor
 import androidx.core.app.ActivityCompat.startActivityForResult
 import androidx.core.app.ActivityCompat.startActivityForResult
 import java.io.File
+import androidx.recyclerview.widget.RecyclerView
+
+import androidx.recyclerview.widget.ItemTouchHelper
+
+
+
 
 
 class AddContactsDialog(private var onDateSelectedListener: OnAddContactListener) :
@@ -42,11 +48,11 @@ class AddContactsDialog(private var onDateSelectedListener: OnAddContactListener
     ): View? {
 
         binding = DialogAddContactProfileBinding.inflate(inflater, container, false)
-        binding.ivArrowBack.setOnClickListener() { dismiss() }
+        binding.ivArrowBack.setOnClickListener { dismiss() }
 
         saveContact()
 
-        binding.ivAddPhoto.setOnClickListener(){
+        binding.ivAddPhoto.setOnClickListener {
             val intent = Intent()
             intent.type = "image/*"
             intent.action = Intent.ACTION_PICK
@@ -73,13 +79,13 @@ class AddContactsDialog(private var onDateSelectedListener: OnAddContactListener
         binding.apply {
             etEmail.doOnTextChanged { _, _, _, _ -> isValidateEmail() }
 
-            btSave.setOnClickListener() {
+            btSave.setOnClickListener {
                 val userName = etUserName.text.toString()
                 val career = etCareer.text.toString()
                 val selectedDate =
                     ContactRecyclerView(Constants.PHOTO_FAKE_1, userName, career)
                 dismiss()
-                onDateSelectedListener?.onAddContact(selectedDate)
+                onDateSelectedListener.onAddContact(selectedDate)
             }
         }
     }
@@ -120,5 +126,6 @@ class AddContactsDialog(private var onDateSelectedListener: OnAddContactListener
         params?.height = WindowManager.LayoutParams.MATCH_PARENT
         dialog?.onWindowAttributesChanged(params)
     }
+
 
 }

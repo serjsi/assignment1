@@ -6,7 +6,8 @@ import android.os.Bundle
 import android.widget.Toast
 
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.ItemTouchHelper.SimpleCallback
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.shpp.ssierykh.assignment1.Constants.PHOTO_FAKE_1
 import com.shpp.ssierykh.assignment1.Constants.PHOTO_FAKE_2
@@ -26,6 +27,10 @@ import com.shpp.ssierykh.assignment1.Constants.SNACKBAR_LENGTH_MANUAL
 import com.shpp.ssierykh.assignment1.contacts.*
 import com.shpp.ssierykh.assignment1.databinding.ActivityMyContactsBinding
 import kotlinx.android.synthetic.main.activity_my_contacts.*
+
+
+
+
 
 
 class MyContactsActivity : AppCompatActivity(), AdapterRecyclerView.OnItemClickListener,
@@ -59,7 +64,27 @@ class MyContactsActivity : AppCompatActivity(), AdapterRecyclerView.OnItemClickL
 
         binding.ivArrowBack.setOnClickListener { finish() }
 
+        swipeDeleteItem()
+    }
 
+    private fun swipeDeleteItem() {
+        val itemTouchHelperCallback = object :
+            ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                viewHolder2: RecyclerView.ViewHolder,
+            ): Boolean {
+                return false
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, swipeDirection: Int) {
+                 onItemDelete(viewHolder.adapterPosition)
+            }
+        }
+
+        val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallback)
+        itemTouchHelper.attachToRecyclerView(binding.ivBottomContainer)
     }
 
     private fun dialogAddContact() {
@@ -139,13 +164,5 @@ class MyContactsActivity : AppCompatActivity(), AdapterRecyclerView.OnItemClickL
             ContactRecyclerView(PHOTO_FAKE_14, "Edwin Little", "Jeweller"),
         )
         contactList.sortBy { contactRecyclerView -> contactRecyclerView.name }
-
     }
-
-
-    private var mAdapter: AdapterRecyclerView? = null
-
-
-
 }
-

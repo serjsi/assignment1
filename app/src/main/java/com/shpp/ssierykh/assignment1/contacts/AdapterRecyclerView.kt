@@ -7,14 +7,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.shpp.ssierykh.assignment1.databinding.SingleItemContactBinding
 import android.view.View
-import androidx.recyclerview.widget.ItemTouchHelper
-import androidx.recyclerview.widget.ItemTouchHelper.*
+
 
 
 class AdapterRecyclerView(
     private var contactList: MutableList<ContactRecyclerView>,
     private val listener: OnItemClickListener,
-) : RecyclerView.Adapter<AdapterRecyclerView.ViewHolder>() {
+) :  RecyclerView.Adapter<AdapterRecyclerView.ViewHolder>()  {
 
 
     // create an inner class with name ViewHolder
@@ -23,7 +22,9 @@ class AdapterRecyclerView(
     //inner class ViewHolder(val binding: SingleItemContactsBinding) : RecyclerView.ViewHolder(binding.root)
     inner class ViewHolder(val binding: SingleItemContactBinding) :
         RecyclerView.ViewHolder(binding.root),
-        View.OnClickListener {
+    View.OnClickListener {
+
+
 
         init {
             itemView.setOnClickListener(this)
@@ -34,6 +35,7 @@ class AdapterRecyclerView(
                 listener.onItemClick(position)
             }
         }
+
 
 
     }
@@ -83,12 +85,14 @@ class AdapterRecyclerView(
     }
 
 
+
     interface OnItemClickListener {
         fun onItemClick(position: Int)
         fun onItemDelete(position: Int)
-
-
     }
 
 
+
 }
+
+

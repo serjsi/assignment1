@@ -1,13 +1,16 @@
 package com.shpp.ssierykh.assignment1.contacts
 
 
+import CircleTransform
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.shpp.ssierykh.assignment1.databinding.SingleItemContactBinding
 import android.view.View
-
+import com.shpp.ssierykh.assignment1.extensions.OutImages.loadImageGlade
+import com.shpp.ssierykh.assignment1.extensions.OutImages.loadImagePicasso
+import com.squareup.picasso.Picasso
 
 
 class AdapterRecyclerView(
@@ -31,8 +34,8 @@ class AdapterRecyclerView(
         }
 
         override fun onClick(v: View?) {
-            if (position != RecyclerView.NO_POSITION) {
-                listener.onItemClick(position)
+            if (absoluteAdapterPosition != RecyclerView.NO_POSITION) {
+                listener.onItemClick(absoluteAdapterPosition)
             }
         }
 
@@ -44,10 +47,9 @@ class AdapterRecyclerView(
     // and return new ViewHolder object containing this layout
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
-        val view = SingleItemContactBinding
+        val itemView = SingleItemContactBinding
             .inflate(LayoutInflater.from(parent.context), parent, false)
-        return ViewHolder(view)
-
+        return ViewHolder(itemView)
 
     }
 
@@ -58,11 +60,8 @@ class AdapterRecyclerView(
 
         with(holder) {
             with(contactList[position]) {
-                Glide
-                    .with(binding.ivPhoto)
-                    .load(this.photoAddress)
-                    .circleCrop()
-                    .into(binding.ivPhoto)
+               binding.ivPhoto.loadImageGlade(photoAddress)
+              //  binding.ivPhoto.loadImagePicasso(photoAddress)
 
                 binding.tvName.text = this.name
                 binding.tvCareer.text = this.career
@@ -80,6 +79,8 @@ class AdapterRecyclerView(
         return contactList.size
     }
 
+
+
     override fun getItemViewType(position: Int): Int {
         return position
     }
@@ -94,5 +95,6 @@ class AdapterRecyclerView(
 
 
 }
+
 
 

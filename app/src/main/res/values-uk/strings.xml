@@ -44,4 +44,9 @@
     <string name="date_of_birth">День народження</string>
     <string name="address">Адреса</string>
     <string name="phone">Телефон</string>
+    <string name="Contact">"Контакт "</string>
+    <string name="is_deleted">" видалено"</string>
+    <string name="is_restored">" відновлено"</string>
+    <string name="is_add">" додано"</string>
+    <string name="UNDO">Скасувать</string>
 </resources>

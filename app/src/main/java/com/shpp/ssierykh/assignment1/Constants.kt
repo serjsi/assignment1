@@ -13,7 +13,7 @@ object Constants {
     const val REMEMBER_SP = "Remember"
     const val NAME_SP = "Name"
     const val PASSWORD_SP = "Password"
-    const val SNACKBAR_LENGTH_MANUAL = 5000
+        const val SNACKbAR_LENGTH_MANUAL = 5000
 
 
         //Photo fake contacts

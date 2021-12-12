@@ -39,11 +39,16 @@
     <string name="go_to_settings_and_fill_out_the_profile">Go to settings and fill out the profile</string>
     <string name="contacts">Contacts</string>
     <string name="add_contacts">Add contacts</string>
-    <string name="message" translatable="false">MESSAGE</string>
+    <string name="message">MESSAGE</string>
     <string name="profile">Profile</string>
     <string name="save">SAVE</string>
     <string name="username">Username</string>
     <string name="date_of_birth">Date of birth</string>
     <string name="address">Address</string>
     <string name="phone">Phone</string>
+    <string name="Contact">Contact </string>
+    <string name="is_deleted"> is deleted!</string>
+    <string name="is_restored"> is restored!</string>
+    <string name="is_add"> is add!</string>
+    <string name="UNDO"> UNDO</string>
 </resources>

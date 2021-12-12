@@ -2,6 +2,8 @@ package com.shpp.ssierykh.assignment1
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Canvas
+import android.graphics.Color
 import android.os.Bundle
 import android.widget.Toast
 
@@ -23,10 +25,14 @@ import com.shpp.ssierykh.assignment1.Constants.PHOTO_FAKE_11
 import com.shpp.ssierykh.assignment1.Constants.PHOTO_FAKE_12
 import com.shpp.ssierykh.assignment1.Constants.PHOTO_FAKE_13
 import com.shpp.ssierykh.assignment1.Constants.PHOTO_FAKE_14
-import com.shpp.ssierykh.assignment1.Constants.SNACKBAR_LENGTH_MANUAL
+import com.shpp.ssierykh.assignment1.Constants.SNACKbAR_LENGTH_MANUAL
 import com.shpp.ssierykh.assignment1.contacts.*
 import com.shpp.ssierykh.assignment1.databinding.ActivityMyContactsBinding
 import kotlinx.android.synthetic.main.activity_my_contacts.*
+import android.graphics.drawable.ColorDrawable
+
+
+
 
 
 
@@ -70,6 +76,23 @@ class MyContactsActivity : AppCompatActivity(), AdapterRecyclerView.OnItemClickL
     private fun swipeDeleteItem() {
         val itemTouchHelperCallback = object :
             ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
+
+      /*      override fun onChildDraw(
+                c: Canvas,
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                dX: Float,
+                dY: Float,
+                actionState: Int,
+                isCurrentlyActive: Boolean
+            ) {
+                val background = ColorDrawable(Color.RED)
+            //   background.setBounds(0, getTop(), itemView.getLeft() + dX, itemView.getBottom())
+                background.setBounds(0, getTop(), itemView.getLeft() + dX, itemView.getBottom())
+                background.draw(c)
+                super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
+            }*/
+
             override fun onMove(
                 recyclerView: RecyclerView,
                 viewHolder: RecyclerView.ViewHolder,
@@ -79,13 +102,18 @@ class MyContactsActivity : AppCompatActivity(), AdapterRecyclerView.OnItemClickL
             }
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, swipeDirection: Int) {
-                 onItemDelete(viewHolder.adapterPosition)
+                 onItemDelete(viewHolder.absoluteAdapterPosition)
+
             }
         }
 
         val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallback)
         itemTouchHelper.attachToRecyclerView(binding.ivBottomContainer)
+
+
     }
+
+
 
     private fun dialogAddContact() {
         AddContactsDialog(this).show(supportFragmentManager, "customDialog")
@@ -115,7 +143,8 @@ class MyContactsActivity : AppCompatActivity(), AdapterRecyclerView.OnItemClickL
         contactList.add(addItem)
         contactList.sortBy { contactRecyclerView -> contactRecyclerView.name }
         rvAdapter.notifyItemInserted(contactList.indexOf(addItem))
-        Toast.makeText(applicationContext, "Contact ${addItem.name} is add ",
+        Toast.makeText(applicationContext,
+            "${getString(R.string.Contact)} ${addItem.name} ${getString(R.string.is_add)} ",
             Toast.LENGTH_SHORT).show()
     }
 
@@ -126,14 +155,17 @@ class MyContactsActivity : AppCompatActivity(), AdapterRecyclerView.OnItemClickL
         isSnack(position, deleteItem)
     }
 
+
+
     @SuppressLint("WrongConstant")
     private fun isSnack(position: Int, deleteItem: ContactRecyclerView) {
-        Snackbar.make(iv_BottomContainer, "Contact ${deleteItem.name} is deleted ",
-            SNACKBAR_LENGTH_MANUAL).setAction("UNDO") {
+        Snackbar.make(iv_BottomContainer,
+            "${getString(R.string.Contact)}  ${deleteItem.name} ${getString(R.string.is_deleted)} ",
+            SNACKbAR_LENGTH_MANUAL).setAction(getString(R.string.UNDO)) {
             // Show another SnackBar.
             val snackBarRestore =
                 Snackbar.make(iv_BottomContainer,
-                    "Contact ${deleteItem.name} is restored!",
+                    "${getString(R.string.Contact)} ${deleteItem.name} ${getString(R.string.is_restored)}",
                     Snackbar.LENGTH_SHORT)
             contactList.add(position, deleteItem)
             rvAdapter.notifyItemInserted(position)

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="GoogleCustomView">
+        <attr name="colorBackgroundGoogle" format="color"/>
+        <attr name="colorBlueGoogle" format="color"/>
+        <attr name="colorRedGoogle" format="color"/>
+        <attr name="colorYellowGoogle" format="color"/>
+        <attr name="colorGreenGoogle" format="color"/>
+
+        <attr name="textSizeGoogle" format="dimension"/>
+        <attr name="cornerBackground" format="dimension"/>
+        <attr name="marginGoogleX" format="dimension"/>
+        <attr name="marginGoogleY" format="dimension"/>
+        <attr name="rotationG" format="dimension"/>
+
+    </declare-styleable>
+</resources>

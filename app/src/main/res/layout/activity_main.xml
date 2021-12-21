@@ -108,31 +108,27 @@
         android:text="@string/checkbox"
         android:textColor="@color/white_my"
         android:theme="@style/TextStyBasic"
-        app:layout_constraintBottom_toTopOf="@+id/bt_Google"
+        app:layout_constraintBottom_toTopOf="@+id/cuv_Google"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/til_Password" />
 
-    <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/bt_Google"
+    <com.shpp.ssierykh.assignment1.app.GoogleCustomView
+        android:id="@+id/cuv_Google"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/vertical_margin_8"
-        android:adjustViewBounds="true"
-        android:background="@drawable/button_background_grey"
-        android:backgroundTint="?attr/colorSecondary"
-        android:paddingHorizontal="130dp"
-        android:paddingVertical="8dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/google_for_button"
+        app:colorBackgroundGoogle="@color/gray_very_light"
         app:layout_constraintBottom_toTopOf="@+id/tv_separator_or"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:rotationG="0dp"
+        app:textSizeGoogle="25sp" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_separator_or"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/vertical_margin_8"
         android:layout_marginBottom="@dimen/vertical_margin_8"
         android:text="@string/or"
         android:textColor="@color/gray_very_light"

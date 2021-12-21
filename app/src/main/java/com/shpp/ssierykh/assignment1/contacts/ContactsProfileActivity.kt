@@ -39,8 +39,8 @@ class ContactsProfileActivity : AppCompatActivity() {
                 .load(intent.extras?.get(PHOTO_EXTRA))
                 .circleCrop()
                 .into(ivPhotoProfile)
-            if (!career.equals("null")) tvCareer.text = career
-            if (!homeAddress.equals("null")) tvHomeAddress.text = homeAddress
+            if (career != "null") tvCareer.text = career
+            if (homeAddress != "null") tvHomeAddress.text = homeAddress
 
         }
     }

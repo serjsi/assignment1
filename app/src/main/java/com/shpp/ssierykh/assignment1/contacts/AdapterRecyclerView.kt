@@ -1,16 +1,13 @@
 package com.shpp.ssierykh.assignment1.contacts
 
 
-import CircleTransform
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.shpp.ssierykh.assignment1.databinding.SingleItemContactBinding
 import android.view.View
 import com.shpp.ssierykh.assignment1.extensions.OutImages.loadImageGlade
-import com.shpp.ssierykh.assignment1.extensions.OutImages.loadImagePicasso
-import com.squareup.picasso.Picasso
+
 
 
 class AdapterRecyclerView(

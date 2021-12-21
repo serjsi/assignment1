@@ -25,9 +25,7 @@ import java.io.File
 import androidx.recyclerview.widget.RecyclerView
 
 import androidx.recyclerview.widget.ItemTouchHelper
-
-
-
+import com.shpp.ssierykh.assignment1.extensions.Validators.isValidEmail
 
 
 class AddContactsDialog(private var onDateSelectedListener: OnAddContactListener) :
@@ -45,7 +43,7 @@ class AddContactsDialog(private var onDateSelectedListener: OnAddContactListener
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
 
         binding = DialogAddContactProfileBinding.inflate(inflater, container, false)
         binding.ivArrowBack.setOnClickListener { dismiss() }
@@ -58,16 +56,6 @@ class AddContactsDialog(private var onDateSelectedListener: OnAddContactListener
             intent.action = Intent.ACTION_PICK
             startActivityForResult(Intent.createChooser(intent, "Select Picture"),
                 IMAGE_AVATAR)
-
-         /*   if(requestCode == IMAGE_AVATAR && data!=null){
-                Uri selectedImage = data.getData();
-                // create file
-                Cursor c = getContentResolver().query(selectedImage,null,null,null,null);
-                c.moveToFirst();
-                String path = c.getString(c.getColumnIndex(MediaStore.MediaColumns.DATA));
-                File file = new File(ImagePickUpUtil.getRealPathFromURI(this,selectedImage));
-
-            }*/
 
         }
 
@@ -103,7 +91,7 @@ class AddContactsDialog(private var onDateSelectedListener: OnAddContactListener
                     etEmail.requestFocus()
                     return false
                 }
-                !Validators.isValidEmail(emailCheck) -> {
+                !emailCheck.isValidEmail() -> {
                     tilEmail.error = getString(R.string.message_wromg_e_mail)
                     etEmail.requestFocus()
                     return false

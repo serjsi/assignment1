@@ -3,14 +3,11 @@ package com.shpp.ssierykh.assignment1
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.appcompat.widget.AppCompatImageView
-import com.bumptech.glide.Glide
 import com.shpp.ssierykh.assignment1.Constants.CAREER_EXTRA
 import com.shpp.ssierykh.assignment1.Constants.HOME_ADDRESS_EXTRA
 import com.shpp.ssierykh.assignment1.Constants.NAME_EXTRA
 import com.shpp.ssierykh.assignment1.Constants.PHOTO_EXTRA
 import com.shpp.ssierykh.assignment1.databinding.ActivityMyProfileBinding
-import com.shpp.ssierykh.assignment1.extensions.OutImages
 import com.shpp.ssierykh.assignment1.extensions.OutImages.loadImageGlade
 
 import java.util.*

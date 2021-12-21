@@ -17,6 +17,8 @@ import com.shpp.ssierykh.assignment1.Constants.TEST_PASSWORD
 import com.shpp.ssierykh.assignment1.data.PreferenceStorage
 import com.shpp.ssierykh.assignment1.databinding.ActivityMainBinding
 import com.shpp.ssierykh.assignment1.extensions.Validators
+import com.shpp.ssierykh.assignment1.extensions.Validators.isValidEmail
+import com.shpp.ssierykh.assignment1.extensions.Validators.validatePassword
 
 
 class MainActivity : AppCompatActivity() {
@@ -80,7 +82,7 @@ class MainActivity : AppCompatActivity() {
                     etEnterEmail.requestFocus()
                     return false
                 }
-                !Validators.isValidEmail(emailCheck) -> {
+                !emailCheck.isValidEmail() -> {
                     tilEmail.error = getString(R.string.message_wromg_e_mail)
                     etEnterEmail.requestFocus()
                     return false
@@ -100,10 +102,10 @@ class MainActivity : AppCompatActivity() {
     private fun isValidatePassword(): Boolean {
         binding.apply {
             val passwordChek = binding.etTextPassword.text.toString()
-            Validators.validatePassword(passwordChek)
-            return if (Validators.validatePassword(passwordChek) != 0) {
+            passwordChek.validatePassword()
+            return if (passwordChek.validatePassword() != 0) {
                 tilPassword.error =
-                    getString(Validators.validatePassword(passwordChek))
+                    getString(passwordChek.validatePassword())
                 etTextPassword.requestFocus()
                 false
             } else {
@@ -150,13 +152,13 @@ class MainActivity : AppCompatActivity() {
     private fun forTestMethod() {
         binding.apply {
             binding.tvSignIn.setOnClickListener {
-                etEnterEmail.setText(TEST_EMAIL, TextView.BufferType.EDITABLE)
-                etTextPassword.setText(TEST_PASSWORD, TextView.BufferType.EDITABLE)
+                binding.etEnterEmail.setText(TEST_EMAIL, TextView.BufferType.EDITABLE)
+                binding.etTextPassword.setText(TEST_PASSWORD, TextView.BufferType.EDITABLE)
             }
 
             //Handle pressing the "SignIn" google:
 
-            btGoogle.setOnClickListener {
+            binding.cuvGoogle.setOnClickListener {
                 val intent = Intent(this@MainActivity, MyProfileActivity::class.java)
                 intent.putExtra(NAME_EXTRA, "serhii.sierykh@gmail.com")
                 intent.putExtra(PHOTO_EXTRA, R.mipmap.ic_kot)

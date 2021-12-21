@@ -2,8 +2,6 @@ package com.shpp.ssierykh.assignment1
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.graphics.Canvas
-import android.graphics.Color
 import android.os.Bundle
 import android.widget.Toast
 
@@ -29,7 +27,6 @@ import com.shpp.ssierykh.assignment1.Constants.SNACKbAR_LENGTH_MANUAL
 import com.shpp.ssierykh.assignment1.contacts.*
 import com.shpp.ssierykh.assignment1.databinding.ActivityMyContactsBinding
 import kotlinx.android.synthetic.main.activity_my_contacts.*
-import android.graphics.drawable.ColorDrawable
 
 
 

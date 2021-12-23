@@ -16,7 +16,6 @@ import com.shpp.ssierykh.assignment1.Constants.TEST_EMAIL
 import com.shpp.ssierykh.assignment1.Constants.TEST_PASSWORD
 import com.shpp.ssierykh.assignment1.data.PreferenceStorage
 import com.shpp.ssierykh.assignment1.databinding.ActivityMainBinding
-import com.shpp.ssierykh.assignment1.extensions.Validators
 import com.shpp.ssierykh.assignment1.extensions.Validators.isValidEmail
 import com.shpp.ssierykh.assignment1.extensions.Validators.validatePassword
 
@@ -24,7 +23,7 @@ import com.shpp.ssierykh.assignment1.extensions.Validators.validatePassword
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
-    private  var shPref: PreferenceStorage = PreferenceStorage(this)
+    private var shPref: PreferenceStorage = PreferenceStorage(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,7 +64,6 @@ class MainActivity : AppCompatActivity() {
                         .show()
                 }
             }
-
         }
     }
 
@@ -142,9 +140,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-       if(!binding.cbRemember.isChecked) {
-           saveAutologin()
-       }
+        if (!binding.cbRemember.isChecked) {
+            saveAutologin()
+        }
     }
 
 

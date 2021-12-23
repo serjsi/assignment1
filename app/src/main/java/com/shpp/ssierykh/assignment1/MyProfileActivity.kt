@@ -65,7 +65,6 @@ class MyProfileActivity : AppCompatActivity() {
         return string
     }
 
-    //Switching to another screen////////////////////////////delete---------------------------
     private fun goMyContacts() {
         binding.btViewMyContacts.setOnClickListener {
             val intent = Intent(this, MyContactsActivity::class.java)

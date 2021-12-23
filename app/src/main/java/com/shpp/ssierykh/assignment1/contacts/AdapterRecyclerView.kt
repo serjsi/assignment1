@@ -9,11 +9,10 @@ import android.view.View
 import com.shpp.ssierykh.assignment1.extensions.OutImages.loadImageGlade
 
 
-
 class AdapterRecyclerView(
     private var contactList: MutableList<ContactRecyclerView>,
     private val listener: OnItemClickListener,
-) :  RecyclerView.Adapter<AdapterRecyclerView.ViewHolder>()  {
+) : RecyclerView.Adapter<AdapterRecyclerView.ViewHolder>() {
 
 
     // create an inner class with name ViewHolder
@@ -22,7 +21,7 @@ class AdapterRecyclerView(
     //inner class ViewHolder(val binding: SingleItemContactsBinding) : RecyclerView.ViewHolder(binding.root)
     inner class ViewHolder(val binding: SingleItemContactBinding) :
         RecyclerView.ViewHolder(binding.root),
-    View.OnClickListener {
+        View.OnClickListener {
 
 
 
@@ -35,7 +34,6 @@ class AdapterRecyclerView(
                 listener.onItemClick(absoluteAdapterPosition)
             }
         }
-
 
 
     }
@@ -57,8 +55,8 @@ class AdapterRecyclerView(
 
         with(holder) {
             with(contactList[position]) {
-               binding.ivPhoto.loadImageGlade(photoAddress)
-              //  binding.ivPhoto.loadImagePicasso(photoAddress)
+                binding.ivPhoto.loadImageGlade(photoAddress)
+                //  binding.ivPhoto.loadImagePicasso(photoAddress)
 
                 binding.tvName.text = this.name
                 binding.tvCareer.text = this.career
@@ -77,18 +75,15 @@ class AdapterRecyclerView(
     }
 
 
-
     override fun getItemViewType(position: Int): Int {
         return position
     }
-
 
 
     interface OnItemClickListener {
         fun onItemClick(position: Int)
         fun onItemDelete(position: Int)
     }
-
 
 
 }

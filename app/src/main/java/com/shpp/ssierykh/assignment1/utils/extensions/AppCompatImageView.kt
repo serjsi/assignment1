@@ -1,11 +1,12 @@
-package com.shpp.ssierykh.assignment1.extensions
+package com.shpp.ssierykh.assignment1.utils.extensions
 
-import CircleTransform
+import com.shpp.ssierykh.assignment1.utils.CircleTransform
 import androidx.appcompat.widget.AppCompatImageView
 import com.bumptech.glide.Glide
 import com.squareup.picasso.Picasso
 
-object OutImages {
+
+
 
     fun AppCompatImageView.loadImageGlade(
 
@@ -26,4 +27,3 @@ object OutImages {
             .transform(CircleTransform())
             .into(this)
     }
-}

@@ -1,41 +1,44 @@
-package com.shpp.ssierykh.assignment1
+package com.shpp.ssierykh.assignment1.ui.contacts
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.shpp.ssierykh.assignment1.Constants.CAREER_EXTRA
-import com.shpp.ssierykh.assignment1.Constants.HOME_ADDRESS_EXTRA
-import com.shpp.ssierykh.assignment1.Constants.NAME_EXTRA
-import com.shpp.ssierykh.assignment1.Constants.PHOTO_EXTRA
-import com.shpp.ssierykh.assignment1.databinding.ActivityMyProfileBinding
-import com.shpp.ssierykh.assignment1.extensions.OutImages.loadImageGlade
+import com.bumptech.glide.Glide
+import com.shpp.ssierykh.assignment1.utils.Constants.CAREER_EXTRA
+import com.shpp.ssierykh.assignment1.utils.Constants.HOME_ADDRESS_EXTRA
+import com.shpp.ssierykh.assignment1.utils.Constants.NAME_EXTRA
+import com.shpp.ssierykh.assignment1.utils.Constants.PHOTO_EXTRA
+import com.shpp.ssierykh.assignment1.databinding.ActivityContactsProfileBinding
 
 import java.util.*
 
 
-class MyProfileActivity : AppCompatActivity() {
+class ContactsProfileActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMyProfileBinding
+    private lateinit var binding: ActivityContactsProfileBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityMyProfileBinding.inflate(layoutInflater)
+        binding = ActivityContactsProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val nameChange = intent.extras?.get(NAME_EXTRA).toString()
         val career = intent.extras?.get(CAREER_EXTRA).toString()
         val homeAddress = intent.extras?.get(HOME_ADDRESS_EXTRA).toString()
         setView(nameChange, career, homeAddress)
-        goMyContacts()
-        forTestMethod()
+
+        binding.ivArrowBack.setOnClickListener { finish() }
+
     }
 
     private fun setView(nameChange: String, career: String, homeAddress: String) {
         binding.apply {
-            val loadImage = intent.extras?.get(PHOTO_EXTRA)
-            ivPhotoProfile.loadImageGlade(loadImage)
             tvName.text = nameParsing(nameChange)
+            Glide
+                .with(ivPhotoProfile)
+                .load(intent.extras?.get(PHOTO_EXTRA))
+                .circleCrop()
+                .into(ivPhotoProfile)
             if (career != "null") tvCareer.text = career
             if (homeAddress != "null") tvHomeAddress.text = homeAddress
 
@@ -63,28 +66,5 @@ class MyProfileActivity : AppCompatActivity() {
             }
         }
         return string
-    }
-
-    private fun goMyContacts() {
-        binding.btViewMyContacts.setOnClickListener {
-            val intent = Intent(this, MyContactsActivity::class.java)
-            startActivity(intent)
-            //Animation
-            //   finish()
-            overridePendingTransition(0, R.anim.slide_out_left)
-
-        }
-    }
-
-    //Switching to another screen////////////////////////////delete---------------------------
-    private fun forTestMethod() {
-        binding.btEditProfile.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            //Animation
-            finish()
-            overridePendingTransition(0, R.anim.slide_out_left)
-
-        }
     }
 }

@@ -1,4 +1,4 @@
-package com.shpp.ssierykh.assignment1.contacts
+package com.shpp.ssierykh.assignment1.utils
 
 
 import android.view.LayoutInflater
@@ -6,13 +6,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.shpp.ssierykh.assignment1.databinding.SingleItemContactBinding
 import android.view.View
-import com.shpp.ssierykh.assignment1.extensions.OutImages.loadImageGlade
+import com.shpp.ssierykh.assignment1.data.ContactForRecyclerView
+import com.shpp.ssierykh.assignment1.utils.extensions.loadImageGlade
 
 
-class AdapterRecyclerView(
-    private var contactList: MutableList<ContactRecyclerView>,
+class AdapterContactsRV(
+    private var contactForList: MutableList<ContactForRecyclerView>,
     private val listener: OnItemClickListener,
-) : RecyclerView.Adapter<AdapterRecyclerView.ViewHolder>() {
+) : RecyclerView.Adapter<AdapterContactsRV.ViewHolder>() {
 
 
     // create an inner class with name ViewHolder
@@ -54,7 +55,7 @@ class AdapterRecyclerView(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         with(holder) {
-            with(contactList[position]) {
+            with(contactForList[position]) {
                 binding.ivPhoto.loadImageGlade(photoAddress)
                 //  binding.ivPhoto.loadImagePicasso(photoAddress)
 
@@ -71,7 +72,7 @@ class AdapterRecyclerView(
 
     // return the size of contactList
     override fun getItemCount(): Int {
-        return contactList.size
+        return contactForList.size
     }
 
 

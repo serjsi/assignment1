@@ -1,31 +1,21 @@
-package com.shpp.ssierykh.assignment1.contacts
+package com.shpp.ssierykh.assignment1.ui.contacts
 
 
-import android.content.Context
 import android.os.Bundle
-import android.os.Parcel
-import android.os.Parcelable
 import android.view.ViewGroup
 import android.view.LayoutInflater
 import android.view.View
 import android.view.WindowManager
-import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.DialogFragment
-import com.shpp.ssierykh.assignment1.Constants
+import com.shpp.ssierykh.assignment1.utils.Constants
 import com.shpp.ssierykh.assignment1.R
-import com.shpp.ssierykh.assignment1.databinding.DialogAddContactProfileBinding
-import com.shpp.ssierykh.assignment1.extensions.Validators
-import androidx.core.app.ActivityCompat.startActivityForResult
+
 
 import android.content.Intent
-import android.database.Cursor
-import androidx.core.app.ActivityCompat.startActivityForResult
-import androidx.core.app.ActivityCompat.startActivityForResult
-import java.io.File
-import androidx.recyclerview.widget.RecyclerView
-
-import androidx.recyclerview.widget.ItemTouchHelper
-import com.shpp.ssierykh.assignment1.extensions.Validators.isValidEmail
+import androidx.core.widget.doOnTextChanged
+import com.shpp.ssierykh.assignment1.data.ContactForRecyclerView
+import com.shpp.ssierykh.assignment1.databinding.DialogAddContactProfileBinding
+import com.shpp.ssierykh.assignment1.utils.Validators.isValidEmail
 
 
 class AddContactsDialog(private var onDateSelectedListener: OnAddContactListener) :
@@ -33,7 +23,7 @@ class AddContactsDialog(private var onDateSelectedListener: OnAddContactListener
 
 
     interface OnAddContactListener {
-        fun onAddContact(addItem: ContactRecyclerView)
+        fun onAddContact(addItem: ContactForRecyclerView)
     }
 
 
@@ -71,7 +61,7 @@ class AddContactsDialog(private var onDateSelectedListener: OnAddContactListener
                 val userName = etUserName.text.toString()
                 val career = etCareer.text.toString()
                 val selectedDate =
-                    ContactRecyclerView(Constants.PHOTO_FAKE_1, userName, career)
+                    ContactForRecyclerView(Constants.PHOTO_FAKE_1, userName, career)
                 dismiss()
                 onDateSelectedListener.onAddContact(selectedDate)
             }
@@ -91,7 +81,7 @@ class AddContactsDialog(private var onDateSelectedListener: OnAddContactListener
                     etEmail.requestFocus()
                     return false
                 }
-                !emailCheck.isValidEmail() -> {
+                !isValidEmail(emailCheck) -> {
                     tilEmail.error = getString(R.string.message_wromg_e_mail)
                     etEmail.requestFocus()
                     return false

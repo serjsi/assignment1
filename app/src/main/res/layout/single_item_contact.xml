@@ -6,13 +6,14 @@
     android:layout_marginBottom="@dimen/vertical_margin_16"
     android:layout_marginStart="@dimen/horizontal_margin_16"
     android:layout_marginEnd="@dimen/horizontal_margin_16"
-    android:layout_height="66dp"
+    android:layout_height="wrap_content"
     app:cardCornerRadius="7dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cor"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:backgroundTintMode="?attr/colorSecondary">
 
         <!--Add image view, We will not set any data here.-->
         <androidx.appcompat.widget.AppCompatImageView

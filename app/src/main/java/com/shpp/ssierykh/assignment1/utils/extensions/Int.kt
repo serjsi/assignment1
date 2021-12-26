@@ -1,9 +1,9 @@
-package com.shpp.ssierykh.assignment1.extensions
+package com.shpp.ssierykh.assignment1.utils.extensions
 
 import android.content.Context
 import android.util.TypedValue
 
-object MeasurementConverter {
+
 
     fun Int.convertDpToPixels( context: Context): Int {
         return TypedValue.applyDimension(
@@ -22,4 +22,3 @@ object MeasurementConverter {
         )
             .toInt()
     }
-}

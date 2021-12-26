@@ -1,14 +1,27 @@
-package com.shpp.ssierykh.assignment1.app
+package com.shpp.ssierykh.assignment1.utils
 
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
 import com.shpp.ssierykh.assignment1.R
+import com.shpp.ssierykh.assignment1.utils.Constants.DEFAULT_COLOR_BACKGRAUND_GOOGLE
+import com.shpp.ssierykh.assignment1.utils.Constants.DEFAULT_COLOR_BLUE_GOOGLE
+import com.shpp.ssierykh.assignment1.utils.Constants.DEFAULT_COLOR_GREEN_GOOGLE
+import com.shpp.ssierykh.assignment1.utils.Constants.DEFAULT_COLOR_RED_GOOGLE
+import com.shpp.ssierykh.assignment1.utils.Constants.DEFAULT_COLOR_YELLOW_GOOGLE
+import com.shpp.ssierykh.assignment1.utils.Constants.DEFAULT_CORNER_RADIUS
+import com.shpp.ssierykh.assignment1.utils.Constants.DEFAULT_MARGIN_X_GOOGLE
+import com.shpp.ssierykh.assignment1.utils.Constants.DEFAULT_MARGIN_Y_GOOGLE
+import com.shpp.ssierykh.assignment1.utils.Constants.DEFAULT_SIZE_HEIGHT_GOOGLE
+import com.shpp.ssierykh.assignment1.utils.Constants.DEFAULT_SIZE_WIDTH_GOOGLE
+import com.shpp.ssierykh.assignment1.utils.Constants.DEFAULT_TEXT_SIZE
+import com.shpp.ssierykh.assignment1.utils.Constants.DEFAULT_TURN_G
+import com.shpp.ssierykh.assignment1.utils.extensions.convertDpToPixels
+import com.shpp.ssierykh.assignment1.utils.extensions.convertSpToPixels
 import com.shpp.ssierykh.myapplication.extentions.dpToPx
 
-import com.shpp.ssierykh.assignment1.extensions.MeasurementConverter.convertDpToPixels
-import com.shpp.ssierykh.assignment1.extensions.MeasurementConverter.convertSpToPixels
+
 
 
 class GoogleCustomView @JvmOverloads constructor(
@@ -17,17 +30,7 @@ class GoogleCustomView @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
 
-    companion object {
-        private const val DEFAULT_SIZE_WIDTH = 30
-        private const val DEFAULT_SIZE_HEIGHT = 100
-        private const val DEFAULT_TEXT_SIZE = 60
-        private const val DEFAULT_MARGIN_X_GOOGLE = 20F
-        private const val DEFAULT_MARGIN_Y_GOOGLE = 20F
-        private const val DEFAULT_CORNER_BACKGROUND = 20F
-        private const val DEFAULT_TURN_G = 0
 
-
-    }
 
     private val paint: Paint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val attitudeToTextSizeForInnerRadius = 0.40F
@@ -37,15 +40,15 @@ class GoogleCustomView @JvmOverloads constructor(
 
 
     //colors default
-    private var colorBackgroundGoogle = Color.rgb(228, 215, 217)
-    private var colorBlueGoogle = Color.rgb(66, 133, 245)
-    private var colorRedGoogle = Color.rgb(234, 67, 53)
-    private var colorYellowGoogle = Color.rgb(250, 187, 5)
-    private var colorGreenGoogle = Color.rgb(52, 168, 82)
+    private var colorBackgroundGoogle = Color.parseColor(DEFAULT_COLOR_BACKGRAUND_GOOGLE)
+    private var colorBlueGoogle =Color.parseColor(DEFAULT_COLOR_BLUE_GOOGLE)
+    private var colorRedGoogle = Color.parseColor(DEFAULT_COLOR_RED_GOOGLE)
+    private var colorYellowGoogle = Color.parseColor(DEFAULT_COLOR_YELLOW_GOOGLE)
+    private var colorGreenGoogle = Color.parseColor(DEFAULT_COLOR_GREEN_GOOGLE)
 
     //dimens
     private var textSizeGoogle = DEFAULT_TEXT_SIZE
-    private var cornerBackground = DEFAULT_CORNER_BACKGROUND
+    private var cornerRadius = DEFAULT_CORNER_RADIUS
     private var marginGoogleX = DEFAULT_MARGIN_X_GOOGLE
     private var marginGoogleY = DEFAULT_MARGIN_Y_GOOGLE
     private var rotationG = DEFAULT_TURN_G
@@ -84,9 +87,9 @@ class GoogleCustomView @JvmOverloads constructor(
             R.styleable.GoogleCustomView_textSizeGoogle.convertSpToPixels(context),
             DEFAULT_TEXT_SIZE.toFloat()
         ).toInt()
-        cornerBackground = typedArray.getDimension(
+        cornerRadius = typedArray.getDimension(
             R.styleable.GoogleCustomView_cornerBackground.convertDpToPixels(context),
-            DEFAULT_CORNER_BACKGROUND
+            DEFAULT_CORNER_RADIUS
         )
         marginGoogleX = typedArray.getDimension(
             R.styleable.GoogleCustomView_marginGoogleX.convertDpToPixels(context),
@@ -113,7 +116,7 @@ class GoogleCustomView @JvmOverloads constructor(
 
     private fun resolveDefaultSizeWidth(spec: Int): Int {
         return when (MeasureSpec.getMode(spec)) {
-            MeasureSpec.UNSPECIFIED -> context.dpToPx(DEFAULT_SIZE_WIDTH).toInt()
+            MeasureSpec.UNSPECIFIED -> context.dpToPx(DEFAULT_SIZE_WIDTH_GOOGLE).toInt()
             MeasureSpec.AT_MOST -> (marginGoogleX * 2 + pairRadiusLaterG().second * 8 +
                     pairRadiusLaterG().first * 2).toInt()
             MeasureSpec.EXACTLY -> MeasureSpec.getSize(spec)
@@ -123,7 +126,7 @@ class GoogleCustomView @JvmOverloads constructor(
 
     private fun resolveDefaultSizeHeight(spec: Int): Int {
         return when (MeasureSpec.getMode(spec)) {
-            MeasureSpec.UNSPECIFIED -> context.dpToPx(DEFAULT_SIZE_HEIGHT).toInt()
+            MeasureSpec.UNSPECIFIED -> context.dpToPx(DEFAULT_SIZE_HEIGHT_GOOGLE).toInt()
             MeasureSpec.AT_MOST -> (marginGoogleY * 2 + pairRadiusLaterG().first * 2 +
                     pairRadiusLaterG().second).toInt()
             MeasureSpec.EXACTLY -> MeasureSpec.getSize(spec)
@@ -180,8 +183,8 @@ class GoogleCustomView @JvmOverloads constructor(
             0F,
             measuredWidth.toFloat(),
             measuredHeight.toFloat(),
-            cornerBackground,
-            cornerBackground,
+            cornerRadius,
+            cornerRadius,
             paint
         )
     }

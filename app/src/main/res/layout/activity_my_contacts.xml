@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MyContactsActivity">
+    tools:context=".ui.MyContactsActivity">
 
 
     <!--Add recycler view to main activity-->
@@ -13,14 +13,14 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="?attr/colorPrimaryVariant"
-        app:layout_constraintBottom_toTopOf="@id/iv_BottomContainer"
+        app:layout_constraintBottom_toTopOf="@id/rv_BottomContainer"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_weight="0.18"
          />
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/iv_BottomContainer"
+        android:id="@+id/rv_BottomContainer"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="?attr/colorSecondary"

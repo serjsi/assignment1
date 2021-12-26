@@ -1,4 +1,4 @@
-package com.shpp.ssierykh.assignment1
+package com.shpp.ssierykh.assignment1.ui
 
 
 import android.content.Intent
@@ -7,17 +7,19 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
-import com.shpp.ssierykh.assignment1.Constants.NAME_EXTRA
-import com.shpp.ssierykh.assignment1.Constants.NAME_SP
-import com.shpp.ssierykh.assignment1.Constants.PASSWORD_SP
-import com.shpp.ssierykh.assignment1.Constants.PHOTO_EXTRA
-import com.shpp.ssierykh.assignment1.Constants.REMEMBER_SP
-import com.shpp.ssierykh.assignment1.Constants.TEST_EMAIL
-import com.shpp.ssierykh.assignment1.Constants.TEST_PASSWORD
+import com.shpp.ssierykh.assignment1.R
+import com.shpp.ssierykh.assignment1.utils.Constants.NAME_EXTRA
+import com.shpp.ssierykh.assignment1.utils.Constants.NAME_SP
+import com.shpp.ssierykh.assignment1.utils.Constants.PASSWORD_SP
+import com.shpp.ssierykh.assignment1.utils.Constants.PHOTO_EXTRA
+import com.shpp.ssierykh.assignment1.utils.Constants.REMEMBER_SP
+import com.shpp.ssierykh.assignment1.utils.Constants.TEST_EMAIL
+import com.shpp.ssierykh.assignment1.utils.Constants.TEST_PASSWORD
 import com.shpp.ssierykh.assignment1.data.PreferenceStorage
 import com.shpp.ssierykh.assignment1.databinding.ActivityMainBinding
-import com.shpp.ssierykh.assignment1.extensions.Validators.isValidEmail
-import com.shpp.ssierykh.assignment1.extensions.Validators.validatePassword
+import com.shpp.ssierykh.assignment1.utils.Validators
+import com.shpp.ssierykh.assignment1.utils.Validators.isValidEmail
+import com.shpp.ssierykh.assignment1.utils.Validators.validatePassword
 
 
 class MainActivity : AppCompatActivity() {
@@ -80,7 +82,7 @@ class MainActivity : AppCompatActivity() {
                     etEnterEmail.requestFocus()
                     return false
                 }
-                !emailCheck.isValidEmail() -> {
+                !isValidEmail(emailCheck) -> {
                     tilEmail.error = getString(R.string.message_wromg_e_mail)
                     etEnterEmail.requestFocus()
                     return false
@@ -100,10 +102,10 @@ class MainActivity : AppCompatActivity() {
     private fun isValidatePassword(): Boolean {
         binding.apply {
             val passwordChek = binding.etTextPassword.text.toString()
-            passwordChek.validatePassword()
-            return if (passwordChek.validatePassword() != 0) {
+            //validatePassword(passwordChek)
+            return if (validatePassword(passwordChek) != 0) {
                 tilPassword.error =
-                    getString(passwordChek.validatePassword())
+                    getString(validatePassword(passwordChek))
                 etTextPassword.requestFocus()
                 false
             } else {

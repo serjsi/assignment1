@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MyProfileActivity">
+    tools:context=".ui.MyProfileActivity">
 
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -119,6 +119,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/bt_ViewMyContacts"
         android:layout_margin="@dimen/margin_offset_from_edge_screen_16dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/button_background_black"
         android:text="@string/edit_profile"
         android:textAllCaps="false"

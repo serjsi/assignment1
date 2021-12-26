@@ -1,3 +1,5 @@
+package com.shpp.ssierykh.assignment1.utils
+
 import android.graphics.*
 import com.squareup.picasso.Transformation
 import kotlin.math.min

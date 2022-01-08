@@ -1,72 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_marginBottom="@dimen/vertical_margin_16"
-    android:layout_marginStart="@dimen/horizontal_margin_16"
-    android:layout_marginEnd="@dimen/horizontal_margin_16"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="7dp">
+    android:layout_marginStart="@dimen/horizontal_margin_16"
+    android:layout_marginTop="@dimen/vertical_margin_8"
+    android:layout_marginEnd="@dimen/horizontal_margin_16"
+    android:layout_marginBottom="@dimen/vertical_margin_8"
+    android:background="@drawable/corner_grey">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cor"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTintMode="?attr/colorSecondary">
+    <!--Add image view, We will not set any data here.-->
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_Photo"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="@dimen/vertical_margin_8"
+        android:scaleType="fitCenter"
+        android:src="@drawable/mok"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <!--Add image view, We will not set any data here.-->
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/iv_Photo"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="@dimen/vertical_margin_8"
-            android:scaleType="fitCenter"
-            android:src="@drawable/mok"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <!--Text view for showing the name-->
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_Name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/horizontal_margin_16"
             android:text="@string/name"
+            android:layout_marginStart="@dimen/textSize_16sp"
             android:textColor="?attr/colorOnSecondary"
             android:textSize="@dimen/textSize_18sp"
             android:theme="@style/TextStyBasic"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/iv_Photo"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.35" />
+            app:layout_constraintTop_toTopOf="@+id/iv_Photo" />
 
-        <!--Text View for showing the carrier-->
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_Career"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/career"
-            android:textColor="@color/gray"
+            android:textColor="?attr/colorSecondaryVariant"
             android:textSize="@dimen/textSize_12sp"
             android:theme="@style/TextStyBasic"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_Photo"
             app:layout_constraintStart_toStartOf="@+id/tv_Name"
             app:layout_constraintTop_toBottomOf="@+id/tv_Name" />
 
-        <!--Add image basket.-->
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/iv_Delete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/horizontal_margin_16"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ic_basket"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_Delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/horizontal_margin_16"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_basket"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintStart_toEndOf="@+id/tv_Name"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 
-</com.google.android.material.card.MaterialCardView>

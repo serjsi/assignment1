@@ -28,6 +28,10 @@
         <item name="boxStrokeColor">@color/white_my</item>
         <item name="endIconTint">@color/gray</item>
         <item name="android:fontFamily">@font/open_sans_semibold</item>
+        <item name="android:textColorHint">?attr/colorSecondaryVariant</item>
+        <item name="errorTextColor">@color/design_default_color_error</item>
+        <item name="hintTextAppearance">@style/TextInputLayoutHintText</item>
+        <item name="hintTextColor">@color/black</item>
     </style>
 
     <style name="TextInputEditText" parent="">

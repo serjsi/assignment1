@@ -1,8 +1,10 @@
 package com.shpp.ssierykh.assignment1.utils
 
+import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import com.shpp.ssierykh.assignment1.R
 import com.shpp.ssierykh.assignment1.utils.Constants.DEFAULT_COLOR_BACKGRAUND_GOOGLE
@@ -15,13 +17,15 @@ import com.shpp.ssierykh.assignment1.utils.Constants.DEFAULT_MARGIN_X_GOOGLE
 import com.shpp.ssierykh.assignment1.utils.Constants.DEFAULT_MARGIN_Y_GOOGLE
 import com.shpp.ssierykh.assignment1.utils.Constants.DEFAULT_SIZE_HEIGHT_GOOGLE
 import com.shpp.ssierykh.assignment1.utils.Constants.DEFAULT_SIZE_WIDTH_GOOGLE
+import com.shpp.ssierykh.assignment1.utils.Constants.DEFAULT_TEXT_COLOR_GOOGLE
 import com.shpp.ssierykh.assignment1.utils.Constants.DEFAULT_TEXT_SIZE
 import com.shpp.ssierykh.assignment1.utils.Constants.DEFAULT_TURN_G
 import com.shpp.ssierykh.assignment1.utils.extensions.convertDpToPixels
 import com.shpp.ssierykh.assignment1.utils.extensions.convertSpToPixels
 import com.shpp.ssierykh.myapplication.extentions.dpToPx
-
-
+import java.sql.Array
+import java.util.*
+import kotlin.Array as Arrays
 
 
 class GoogleCustomView @JvmOverloads constructor(
@@ -29,7 +33,6 @@ class GoogleCustomView @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
-
 
 
     private val paint: Paint = Paint(Paint.ANTI_ALIAS_FLAG)
@@ -41,52 +44,127 @@ class GoogleCustomView @JvmOverloads constructor(
 
     //colors default
     private var colorBackgroundGoogle = Color.parseColor(DEFAULT_COLOR_BACKGRAUND_GOOGLE)
-    private var colorBlueGoogle =Color.parseColor(DEFAULT_COLOR_BLUE_GOOGLE)
+    private var colorBlueGoogle = Color.parseColor(DEFAULT_COLOR_BLUE_GOOGLE)
     private var colorRedGoogle = Color.parseColor(DEFAULT_COLOR_RED_GOOGLE)
     private var colorYellowGoogle = Color.parseColor(DEFAULT_COLOR_YELLOW_GOOGLE)
     private var colorGreenGoogle = Color.parseColor(DEFAULT_COLOR_GREEN_GOOGLE)
+    private val colorOrderGoogle = arrayOf(
+        colorBlueGoogle, colorRedGoogle, colorYellowGoogle, colorBlueGoogle, colorGreenGoogle,
+        colorRedGoogle, colorYellowGoogle, colorBlueGoogle, colorGreenGoogle, colorRedGoogle
+    )
 
     //dimens
-    private var textSizeGoogle = DEFAULT_TEXT_SIZE
+    private var textSizeGoogle = 0
+    private var textColorsGoogle = "GOOGLE"
+    //private lateinit var textColorsGoogle: String
+    private var textColorsGoogleArray: CharArray
+    private var textColorLength = 0
     private var cornerRadius = DEFAULT_CORNER_RADIUS
     private var marginGoogleX = DEFAULT_MARGIN_X_GOOGLE
     private var marginGoogleY = DEFAULT_MARGIN_Y_GOOGLE
     private var rotationG = DEFAULT_TURN_G
 
 
+    private var startLaterX = 0F
+    private var startLaterY = 0F
+    private var longBetweenLater = 0F
+    private var shiftGoogleX = 0F
+    private var shiftGoogleY = 0F
+    private var startLaterYMinusHalfRadius = 0F
+    private var startLaterYPlusHalfRadius = 0F
+    private var startLaterXMinusOuterRadius = 0F
+    private var startLaterYMinusOuterRadius = 0F
+    private var startLaterXPlusOuterRadius = 0F
+    private var startLaterYPlusOuterRadius = 0F
+    private var startLaterXMinusInnerRadius = 0F
+    private var startLaterYMinusInnerRadius = 0F
+    private var startLaterXPlusInnerRadius = 0F
+    private var startLaterYPlusInnerRadius = 0F
+    private var innerRadiusLaterG = 0F
+    private var outerRadiusLaterG = 0F
+
+
     init {
         paint.isAntiAlias = true
+        Log.e("CustomView", "Init")////////////////////////////////////////////
         setupAttributes(attrs)
+        textColorsGoogleArray = textColorsGoogle.toCharArray()
+        textColorLength = textColorsGoogle.length
+        longBetweenLater = textSizeGoogle * indentFromGOOGLEAttitudeToTextSize
+        innerRadiusLaterG = textSizeGoogle * attitudeToTextSizeForInnerRadius
+        outerRadiusLaterG = textSizeGoogle * attitudeToTextSizeForOuterRadius
+        //setOnClickListener { click() }
+    }
+
+
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+        val initSizeX = resolveDefaultSizeWidth(widthMeasureSpec)
+        val initSizeY = resolveDefaultSizeHeight(heightMeasureSpec)
+        setMeasuredDimension(initSizeX, initSizeY)
+        Log.e("CustomView", "onMeasure")//////////////////////////////////////
+    }
+
+    override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
+        Log.e("CustomView", "onSizeChanged")////////////////////////////////////////////
+        super.onSizeChanged(w, h, oldw, oldh)
+
+        startLaterY = startDrawingForCenteringHeight()
+        startLaterX = startDrawingForCenteringWidth()
+
+        shiftGoogleX = startLaterX + outerRadiusLaterG
+        shiftGoogleY = startLaterY + textSizeGoogle / indentFromGAttitudeToTextSize
+        startLaterYMinusHalfRadius = startLaterY - ((outerRadiusLaterG - innerRadiusLaterG) / 2)
+        startLaterYPlusHalfRadius = startLaterY + ((outerRadiusLaterG - innerRadiusLaterG) / 2)
+
+        startLaterXMinusOuterRadius = startLaterX - outerRadiusLaterG
+        startLaterYMinusOuterRadius = startLaterY - outerRadiusLaterG
+        startLaterXPlusOuterRadius = startLaterX + outerRadiusLaterG
+        startLaterYPlusOuterRadius = startLaterY + outerRadiusLaterG
+
+        startLaterXMinusInnerRadius = startLaterX - innerRadiusLaterG
+        startLaterYMinusInnerRadius = startLaterY - innerRadiusLaterG
+        startLaterXPlusInnerRadius = startLaterX + innerRadiusLaterG
+        startLaterYPlusInnerRadius = startLaterY + innerRadiusLaterG
+    }
+
+    override fun onDraw(canvas: Canvas?) {
+        super.onDraw(canvas)
+
+        if (canvas != null) {
+            drawBackground(canvas)
+        }
+        if (canvas != null) {
+            drawG(canvas)
+        }
+        if (canvas != null) {
+            drawTextColorGoogle(canvas)
+        }
+
+
     }
 
     private fun setupAttributes(attrs: AttributeSet?) {
+
         val typedArray = context.theme.obtainStyledAttributes(
             attrs, R.styleable.GoogleCustomView,
             0, 0
         )
+       // textColorsGoogle = "GOOGLE"
+        /*  textColorsGoogle = typedArray.getString(
+              R.styleable.GoogleCustomView_textColorsGoogle
+          ) as String
+  */
         colorBackgroundGoogle = typedArray.getColor(
             R.styleable.GoogleCustomView_colorBackgroundGoogle, colorBackgroundGoogle
         )
-        colorBlueGoogle = typedArray.getColor(
-            R.styleable.GoogleCustomView_colorBlueGoogle,
-            colorBlueGoogle
-        )
-        colorRedGoogle = typedArray.getColor(
-            R.styleable.GoogleCustomView_colorRedGoogle,
-            colorRedGoogle
-        )
-        colorYellowGoogle = typedArray.getColor(
-            R.styleable.GoogleCustomView_colorYellowGoogle,
-            colorYellowGoogle
-        )
-        colorGreenGoogle = typedArray.getColor(
-            R.styleable.GoogleCustomView_colorGreenGoogle,
-            colorGreenGoogle
-        )
+
         textSizeGoogle = typedArray.getDimension(
             R.styleable.GoogleCustomView_textSizeGoogle.convertSpToPixels(context),
             DEFAULT_TEXT_SIZE.toFloat()
         ).toInt()
+        Log.e("CustomView", "setupAttributes $textSizeGoogle")////////////////////////////////////////////
+
         cornerRadius = typedArray.getDimension(
             R.styleable.GoogleCustomView_cornerBackground.convertDpToPixels(context),
             DEFAULT_CORNER_RADIUS
@@ -103,22 +181,17 @@ class GoogleCustomView @JvmOverloads constructor(
             R.styleable.GoogleCustomView_rotationG,
             DEFAULT_TURN_G.toFloat()
         ).toInt()
+
+
         typedArray.recycle()
-    }
 
-
-    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
-        val initSizeX = resolveDefaultSizeWidth(widthMeasureSpec)
-        val initSizeY = resolveDefaultSizeHeight(heightMeasureSpec)
-        setMeasuredDimension(initSizeX, initSizeY)
     }
 
     private fun resolveDefaultSizeWidth(spec: Int): Int {
         return when (MeasureSpec.getMode(spec)) {
             MeasureSpec.UNSPECIFIED -> context.dpToPx(DEFAULT_SIZE_WIDTH_GOOGLE).toInt()
-            MeasureSpec.AT_MOST -> (marginGoogleX * 2 + pairRadiusLaterG().second * 8 +
-                    pairRadiusLaterG().first * 2).toInt()
+            MeasureSpec.AT_MOST -> (marginGoogleX * 2 + pairRadiusLaterG().second *
+                    (textColorLength + 1) + pairRadiusLaterG().first * 2).toInt()
             MeasureSpec.EXACTLY -> MeasureSpec.getSize(spec)
             else -> MeasureSpec.getSize(spec)
         }
@@ -135,8 +208,8 @@ class GoogleCustomView @JvmOverloads constructor(
     }
 
     private fun startDrawingForCenteringWidth(): Float {
-        return (measuredWidth - (marginGoogleX * 2 + pairRadiusLaterG().second * 8 +
-                pairRadiusLaterG().first * 2).toInt()) / 2 +
+        return (measuredWidth - (marginGoogleX * 2 + pairRadiusLaterG().second * (textColorsGoogle.length + 1) +
+                pairRadiusLaterG().first * 3).toInt()) / 2 +
                 pairRadiusLaterG().second / 2 + pairRadiusLaterG().first + marginGoogleX
     }
 
@@ -146,24 +219,6 @@ class GoogleCustomView @JvmOverloads constructor(
                 pairRadiusLaterG().second / 2 + pairRadiusLaterG().first + marginGoogleY
     }
 
-
-    override fun onDraw(canvas: Canvas?) {
-        super.onDraw(canvas)
-
-        val (innerRadiusLaterG, outerRadiusLaterG) = pairRadiusLaterG()
-
-        if (canvas != null) {
-            drawBackground(canvas)
-        }
-        if (canvas != null) {
-            drawG(canvas, outerRadiusLaterG, innerRadiusLaterG)
-        }
-        if (canvas != null) {
-            drawLetterGoogle(outerRadiusLaterG, canvas)
-        }
-
-
-    }
 
     private fun pairRadiusLaterG(): Pair<Float, Float> {
         val innerRadiusLaterG = textSizeGoogle * attitudeToTextSizeForInnerRadius
@@ -189,17 +244,16 @@ class GoogleCustomView @JvmOverloads constructor(
         )
     }
 
-    private fun drawG(canvas: Canvas, outerRadiusLaterG: Float, innerRadiusLaterG: Float) {
+    private fun drawG(canvas: Canvas) {
         canvas.rotate(
             rotationG.toFloat(),
-            startDrawingForCenteringWidth(),
-            startDrawingForCenteringHeight()
+            startLaterX, startLaterY
         )
-        drawStartG(outerRadiusLaterG, innerRadiusLaterG, canvas)
-        arcLetterG(canvas, outerRadiusLaterG, innerRadiusLaterG, -12, 75, colorBlueGoogle)
-        arcLetterG(canvas, outerRadiusLaterG, innerRadiusLaterG, 60, 95, colorGreenGoogle)
-        arcLetterG(canvas, outerRadiusLaterG, innerRadiusLaterG, 155, 45, colorYellowGoogle)
-        arcLetterG(canvas, outerRadiusLaterG, innerRadiusLaterG, 200, 110, colorRedGoogle)
+        drawStartG(canvas)
+        arcLetterG(canvas, -12F, 75F, colorBlueGoogle)
+        arcLetterG(canvas, 60F, 95F, colorGreenGoogle)
+        arcLetterG(canvas, 155F, 45F, colorYellowGoogle)
+        arcLetterG(canvas, 200F, 110F, colorRedGoogle)
         canvas.rotate(
             -rotationG.toFloat(),
             startDrawingForCenteringWidth(),
@@ -207,54 +261,38 @@ class GoogleCustomView @JvmOverloads constructor(
         )
     }
 
-    private fun drawStartG(outerRadiusLaterG: Float, innerRadiusLaterG: Float, canvas: Canvas) {
+    private fun drawStartG(canvas: Canvas) {
         paint.apply {
             style = Paint.Style.FILL
             isAntiAlias = true
         }
-
         paint.color = colorBlueGoogle
-        val startLaterX = startDrawingForCenteringWidth()
-        val startLaterY = startDrawingForCenteringHeight()
-        val halfRadius = (outerRadiusLaterG - innerRadiusLaterG) / 2
-
         canvas.drawRect(
-            startLaterX,
-            startLaterY - halfRadius,
-            startLaterX + outerRadiusLaterG,
-            startLaterY + halfRadius,
+            startLaterX, startLaterYMinusHalfRadius,
+            startLaterXPlusOuterRadius, startLaterYPlusHalfRadius,
             paint
         )
     }
 
-    private fun arcLetterG(
-        canvas: Canvas?,
-        outer_radius: Float,
-        inner_radius: Float,
-        arc_ofSet: Int,
-        arc_sweep: Int,
-        colorArc: Int
-    ) {
-        val startLaterX = startDrawingForCenteringWidth()
-        val startLaterY = startDrawingForCenteringHeight()
+    private fun arcLetterG(canvas: Canvas?, arc_ofSet: Float, arc_sweep: Float, colorArc: Int) {
 
         val outerRect = RectF(
 
-            (startLaterX - outer_radius),
-            (startLaterY - outer_radius),
-            (startLaterX + outer_radius),
-            (startLaterY + outer_radius)
+            (startLaterXMinusOuterRadius),
+            (startLaterYMinusOuterRadius),
+            (startLaterXPlusOuterRadius),
+            (startLaterYPlusOuterRadius)
         )
         val innerRect = RectF(
-            (startLaterX - inner_radius),
-            (startLaterY - inner_radius),
-            (startLaterX + inner_radius),
-            (startLaterY + inner_radius)
+            (startLaterXMinusInnerRadius),
+            (startLaterYMinusInnerRadius),
+            (startLaterXPlusInnerRadius),
+            (startLaterYPlusInnerRadius)
         )
 
         val path = Path()
-        path.arcTo(outerRect, arc_ofSet.toFloat(), arc_sweep.toFloat())
-        path.arcTo(innerRect, (arc_ofSet + arc_sweep).toFloat(), (-arc_sweep).toFloat())
+        path.arcTo(outerRect, arc_ofSet, arc_sweep)
+        path.arcTo(innerRect, (arc_ofSet + arc_sweep), (-arc_sweep))
         path.close()
 
         val fill = Paint()
@@ -267,46 +305,43 @@ class GoogleCustomView @JvmOverloads constructor(
     }
 
 
-    private fun drawLetterGoogle(
-        outerRadiusLaterG: Float,
-        canvas: Canvas
-    ) {
-        val startLaterX = startDrawingForCenteringWidth()
-        val startLaterY = startDrawingForCenteringHeight()
-        val shiftGoogleX = startLaterX + outerRadiusLaterG
-        val shiftGoogleY = startLaterY + textSizeGoogle / indentFromGAttitudeToTextSize
-        val longBetweenLater = textSizeGoogle * indentFromGOOGLEAttitudeToTextSize
+    private fun drawTextColorGoogle(canvas: Canvas) {
         paint.apply {
-            style = Paint.Style.FILL
-            isAntiAlias = true
             textSize = textSizeGoogle.toFloat()
             typeface = Typeface.create(Typeface.DEFAULT, Typeface.BOLD)
         }
 
-        paint.color = colorBlueGoogle
-        canvas.drawText("G", shiftGoogleX + longBetweenLater * 1F, shiftGoogleY, paint)
-        canvas.drawText("G", shiftGoogleX + longBetweenLater * 4F, shiftGoogleY, paint)
-        paint.color = colorRedGoogle
-        canvas.drawText("O", shiftGoogleX + longBetweenLater * 2F, shiftGoogleY, paint)
-        canvas.drawText("E", shiftGoogleX + longBetweenLater * 6F, shiftGoogleY, paint)
-        paint.color = colorYellowGoogle
-        canvas.drawText("O", shiftGoogleX + longBetweenLater * 3F, shiftGoogleY, paint)
-        paint.color = colorGreenGoogle
-        canvas.drawText("L", shiftGoogleX + longBetweenLater * 5F, shiftGoogleY, paint)
+        for (i in 1..textColorLength) {
+
+            paint.color = if (i < 10) {
+                colorOrderGoogle[i - 1]
+            } else {
+                colorOrderGoogle[i - i / 10 * 10]
+            }
+
+            canvas.drawText(
+                "${textColorsGoogleArray[i - 1]}",
+                shiftGoogleX + longBetweenLater * (i), shiftGoogleY, paint
+            )
+        }
     }
 
-//for test animation
-/*private fun animeTurnG(): Boolean{
-        val va: ValueAnimator = ValueAnimator.ofInt(0,   360).apply {
-            duration = 500
+
+    /*  private fun click(): Boolean {
+          textSizeGoogle += 10
+          requestLayout()
+        *//*  val va: ValueAnimator = ValueAnimator.ofInt(0, 360).apply {
+            duration = 1000
             interpolator = LinearInterpolator()
         }
         va.addUpdateListener {
-            turnG = it.animatedValue as Int
+            rotationG = it.animatedValue as Int
+            Log.e("CustomView", "Animation $rotationG")///////////////////////
             requestLayout()
         }
 
-       // va.start()
+        va.start()*//*
+
         return true
     }*/
 

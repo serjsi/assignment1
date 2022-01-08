@@ -5,9 +5,11 @@
       <map>
         <entry key="..\:/SH++_mentor/assignment1/app/src/main/res/drawable-v24/ic_basket.xml" value="0.13240740740740742" />
         <entry key="..\:/SH++_mentor/assignment1/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.43435897435897436" />
+        <entry key="..\:/SH++_mentor/assignment1/app/src/main/res/drawable/background_grey.xml" value="0.43846153846153846" />
         <entry key="..\:/SH++_mentor/assignment1/app/src/main/res/drawable/button_background_black.xml" value="0.3851851851851852" />
         <entry key="..\:/SH++_mentor/assignment1/app/src/main/res/drawable/button_background_grey.xml" value="0.4453125" />
         <entry key="..\:/SH++_mentor/assignment1/app/src/main/res/drawable/button_background_orange.xml" value="0.3675925925925926" />
+        <entry key="..\:/SH++_mentor/assignment1/app/src/main/res/drawable/corner_grey.xml" value="0.3768518518518518" />
         <entry key="..\:/SH++_mentor/assignment1/app/src/main/res/drawable/ic_add_photo_button.xml" value="0.4453125" />
         <entry key="..\:/SH++_mentor/assignment1/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.43435897435897436" />
         <entry key="..\:/SH++_mentor/assignment1/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.3675925925925926" />
@@ -36,7 +38,7 @@
         <entry key="..\:/SH++_mentor/assignment1/app/src/main/res/layout/activity_profile.xml" value="0.33" />
         <entry key="..\:/SH++_mentor/assignment1/app/src/main/res/layout/dialog_add_contact_profile.xml" value="0.20871327254305977" />
         <entry key="..\:/SH++_mentor/assignment1/app/src/main/res/layout/single_item.xml" value="0.25" />
-        <entry key="..\:/SH++_mentor/assignment1/app/src/main/res/layout/single_item_contact.xml" value="0.22" />
+        <entry key="..\:/SH++_mentor/assignment1/app/src/main/res/layout/single_item_contact.xml" value="0.33" />
         <entry key="..\:/SH++_mentor/assignment1/app/src/main/res/mipmap-anydpi-v26/ic_kot.xml" value="0.3509259259259259" />
         <entry key="..\:/SH++_mentor/assignment1/app/src/main/res/mipmap-anydpi-v26/ic_kot_round.xml" value="0.3509259259259259" />
         <entry key="..\:/SH++_mentor/assignment1/app/src/main/res/mipmap-anydpi-v26/ic_mok.xml" value="0.26614583333333336" />

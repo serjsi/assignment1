@@ -28,7 +28,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/iv_TopContainer"
         app:layout_constraintVertical_weight="0.82"
-        tools:layout_editor_absoluteX="-16dp"
+        tools:layout_editor_absoluteX="0dp"
         tools:listitem="@layout/single_item_contact" />
 
     <androidx.appcompat.widget.AppCompatImageView

@@ -9,7 +9,7 @@
     tools:context=".ui.contacts.AddContactsDialog">
 
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <View
         android:id="@+id/iv_TopContainer"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -19,17 +19,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_weight="0.3" />
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/iv_BottomContainer"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="?attr/colorSecondary"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_TopContainer"
-        app:layout_constraintVertical_weight="0.7" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_AddContacts"
@@ -76,6 +65,17 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_AddContacts"
         app:srcCompat="@drawable/ic_add_photo_button" />
 
+    <View
+        android:id="@+id/iv_BottomContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="?attr/colorSecondary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_TopContainer"
+        app:layout_constraintVertical_weight="0.7" />
+
 
     <ScrollView
         android:layout_width="match_parent"
@@ -97,11 +97,6 @@
                 style="@style/TextInputLayout"
                 android:layout_marginBottom="@dimen/vertical_margin_8"
                 android:hint="@string/username"
-                android:textColorHint="@color/gray"
-                app:errorTextAppearance="@style/ErrorText"
-                app:errorTextColor="@color/design_default_color_error"
-                app:hintTextAppearance="@style/TextInputLayoutHintText"
-                app:hintTextColor="@color/black"
                 app:layout_constraintBottom_toTopOf="@+id/til_Career">
 
 
@@ -118,12 +113,7 @@
                 android:id="@+id/til_Career"
                 style="@style/TextInputLayout"
                 android:layout_marginBottom="@dimen/vertical_margin_8"
-                android:hint="@string/career"
-                android:textColorHint="@color/gray"
-                app:errorTextAppearance="@style/ErrorText"
-                app:errorTextColor="@color/design_default_color_error"
-                app:hintTextAppearance="@style/TextInputLayoutHintText"
-                app:hintTextColor="@color/black">
+                android:hint="@string/career">
 
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -139,12 +129,7 @@
                 android:id="@+id/til_Email"
                 style="@style/TextInputLayout"
                 android:layout_marginBottom="@dimen/vertical_margin_8"
-                android:hint="@string/e_mail"
-                android:textColorHint="@color/gray"
-                app:errorTextAppearance="@style/ErrorText"
-                app:errorTextColor="@color/design_default_color_error"
-                app:hintTextAppearance="@style/TextInputLayoutHintText"
-                app:hintTextColor="@color/black">
+                android:hint="@string/e_mail">
 
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -160,12 +145,7 @@
                 android:id="@+id/til_Phone"
                 style="@style/TextInputLayout"
                 android:layout_marginBottom="@dimen/vertical_margin_8"
-                android:hint="@string/phone"
-                android:textColorHint="@color/gray"
-                app:errorTextAppearance="@style/ErrorText"
-                app:errorTextColor="@color/design_default_color_error"
-                app:hintTextAppearance="@style/TextInputLayoutHintText"
-                app:hintTextColor="@color/black">
+                android:hint="@string/phone">
 
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -181,12 +161,7 @@
                 android:id="@+id/til_Address"
                 style="@style/TextInputLayout"
                 android:layout_marginBottom="@dimen/vertical_margin_8"
-                android:hint="@string/address"
-                android:textColorHint="@color/gray"
-                app:errorTextAppearance="@style/ErrorText"
-                app:errorTextColor="@color/design_default_color_error"
-                app:hintTextAppearance="@style/TextInputLayoutHintText"
-                app:hintTextColor="@color/black">
+                android:hint="@string/address">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_Address"
@@ -201,12 +176,7 @@
                 android:id="@+id/til_DateOfBirth"
                 style="@style/TextInputLayout"
                 android:layout_marginBottom="@dimen/vertical_margin_8"
-                android:hint="@string/date_of_birth"
-                android:textColorHint="@color/gray"
-                app:errorTextAppearance="@style/ErrorText"
-                app:errorTextColor="@color/design_default_color_error"
-                app:hintTextAppearance="@style/TextInputLayoutHintText"
-                app:hintTextColor="@color/black">
+                android:hint="@string/date_of_birth">
 
 
                 <com.google.android.material.textfield.TextInputEditText

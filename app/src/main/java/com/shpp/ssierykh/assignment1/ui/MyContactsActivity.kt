@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
@@ -14,7 +15,9 @@ import com.shpp.ssierykh.assignment1.ui.contacts.*
 import com.shpp.ssierykh.assignment1.databinding.ActivityMyContactsBinding
 import com.shpp.ssierykh.assignment1.utils.AdapterContactsRV
 import com.shpp.ssierykh.assignment1.utils.Constants
+import com.shpp.ssierykh.assignment1.utils.ContactsDiffCallback
 import kotlinx.android.synthetic.main.activity_my_contacts.*
+import java.util.ArrayList
 
 
 class MyContactsActivity : AppCompatActivity(), AdapterContactsRV.OnItemClickListener,
@@ -70,9 +73,10 @@ class MyContactsActivity : AppCompatActivity(), AdapterContactsRV.OnItemClickLis
     }
 
     override fun onAddContact(addItem: ContactForRecyclerView) {
+        val oldList = ArrayList(contactList)
         contactList.add(addItem)
         contactList.sortBy { contactRecyclerView -> contactRecyclerView.name }
-        rvAdapter.notifyItemInserted(contactList.indexOf(addItem))
+        diffContactsOutRVAdapter(oldList)
         Toast.makeText(
             applicationContext,
             "${getString(R.string.Contact)} ${addItem.name} ${getString(R.string.is_add)} ",
@@ -82,9 +86,16 @@ class MyContactsActivity : AppCompatActivity(), AdapterContactsRV.OnItemClickLis
 
     override fun onItemDelete(position: Int) {
         val deleteItem = contactList[position]
+        val oldList = ArrayList(contactList)
         contactList.removeAt(position)
-        rvAdapter.notifyItemRemoved(position)
+        diffContactsOutRVAdapter(oldList)
         isSnack(position, deleteItem)
+    }
+
+    private fun diffContactsOutRVAdapter(oldList: ArrayList<ContactForRecyclerView>) {
+        val diffCallBack = ContactsDiffCallback(oldList, contactList)
+        val diffResult = DiffUtil.calculateDiff(diffCallBack)
+        diffResult.dispatchUpdatesTo(rvAdapter)
     }
 
     private fun swipeDeleteItem() {

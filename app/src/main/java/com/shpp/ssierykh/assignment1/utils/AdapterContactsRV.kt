@@ -1,6 +1,7 @@
 package com.shpp.ssierykh.assignment1.utils
 
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -58,10 +59,8 @@ class AdapterContactsRV(
             with(contactForList[position]) {
                 binding.ivPhoto.loadImageGlade(photoAddress)
                 //  binding.ivPhoto.loadImagePicasso(photoAddress)
-
                 binding.tvName.text = this.name
                 binding.tvCareer.text = this.career
-
                 binding.ivDelete.setOnClickListener {
                     listener.onItemDelete(position)
                 }

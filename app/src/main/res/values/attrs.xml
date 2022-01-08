@@ -2,11 +2,7 @@
 <resources>
     <declare-styleable name="GoogleCustomView">
         <attr name="colorBackgroundGoogle" format="color"/>
-        <attr name="colorBlueGoogle" format="color"/>
-        <attr name="colorRedGoogle" format="color"/>
-        <attr name="colorYellowGoogle" format="color"/>
-        <attr name="colorGreenGoogle" format="color"/>
-
+        <attr name="textColorsGoogle" format="string"/>
         <attr name="textSizeGoogle" format="dimension"/>
         <attr name="cornerBackground" format="dimension"/>
         <attr name="marginGoogleX" format="dimension"/>

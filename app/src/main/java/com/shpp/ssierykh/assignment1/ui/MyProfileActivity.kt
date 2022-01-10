@@ -72,7 +72,7 @@ class MyProfileActivity : AppCompatActivity() {
             val intent = Intent(this, MyContactsActivity::class.java)
             startActivity(intent)
             //Animation
-            //   finish()
+
             overridePendingTransition(0, R.anim.slide_out_left)
 
         }

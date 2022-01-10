@@ -1,6 +1,7 @@
 package com.shpp.ssierykh.assignment1.utils
 
 
+import android.icu.text.Transliterator
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.shpp.ssierykh.assignment1.databinding.SingleItemContactBinding
 import android.view.View
 import com.shpp.ssierykh.assignment1.data.ContactForRecyclerView
+import com.shpp.ssierykh.assignment1.databinding.ActivityContactsProfileBinding.bind
 import com.shpp.ssierykh.assignment1.utils.extensions.loadImageGlade
 
 
@@ -25,8 +27,6 @@ class AdapterContactsRV(
         RecyclerView.ViewHolder(binding.root),
         View.OnClickListener {
 
-
-
         init {
             itemView.setOnClickListener(this)
         }
@@ -36,8 +36,6 @@ class AdapterContactsRV(
                 listener.onItemClick(absoluteAdapterPosition)
             }
         }
-
-
     }
 
     // inside the onCreateViewHolder inflate the view of SingleItemContactsBinding
@@ -54,31 +52,22 @@ class AdapterContactsRV(
     // shown in recycler view
     // to keep it simple we are not setting any image data to view
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-
-        with(holder) {
-            with(contactForList[position]) {
-                binding.ivPhoto.loadImageGlade(photoAddress)
-                //  binding.ivPhoto.loadImagePicasso(photoAddress)
-                binding.tvName.text = this.name
-                binding.tvCareer.text = this.career
-                binding.ivDelete.setOnClickListener {
-                    listener.onItemDelete(position)
-                }
+        val contact = contactForList[position]
+        with(holder.binding) {
+            ivPhoto.loadImageGlade(contact.photoAddress)
+            //  binding.ivPhoto.loadImagePicasso(contact.photoAddress)
+            tvName.text = contact.name
+            tvCareer.text = contact.career
+            ivDelete.setOnClickListener {
+                listener.onItemDelete(holder.absoluteAdapterPosition)
             }
         }
+
     }
 
 
     // return the size of contactList
-    override fun getItemCount(): Int {
-        return contactForList.size
-    }
-
-
-    override fun getItemViewType(position: Int): Int {
-        return position
-    }
-
+    override fun getItemCount(): Int = contactForList.size
 
     interface OnItemClickListener {
         fun onItemClick(position: Int)

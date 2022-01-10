@@ -3,6 +3,7 @@ package com.shpp.ssierykh.assignment1.ui.contacts
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bumptech.glide.Glide
+import com.shpp.ssierykh.assignment1.R
 import com.shpp.ssierykh.assignment1.utils.Constants.CAREER_EXTRA
 import com.shpp.ssierykh.assignment1.utils.Constants.HOME_ADDRESS_EXTRA
 import com.shpp.ssierykh.assignment1.utils.Constants.NAME_EXTRA
@@ -27,8 +28,9 @@ class ContactsProfileActivity : AppCompatActivity() {
         val homeAddress = intent.extras?.get(HOME_ADDRESS_EXTRA).toString()
         setView(nameChange, career, homeAddress)
 
-        binding.ivArrowBack.setOnClickListener { finish() }
-
+        binding.ivArrowBack.setOnClickListener {
+            finish()
+            overridePendingTransition(0, R.anim.slide_out_left)}
     }
 
     private fun setView(nameChange: String, career: String, homeAddress: String) {

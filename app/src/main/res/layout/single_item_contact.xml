@@ -8,7 +8,8 @@
     android:layout_marginTop="@dimen/vertical_margin_8"
     android:layout_marginEnd="@dimen/horizontal_margin_16"
     android:layout_marginBottom="@dimen/vertical_margin_8"
-    android:background="@drawable/corner_grey">
+    android:background="@drawable/corner_grey"
+    >
 
     <!--Add image view, We will not set any data here.-->
     <androidx.appcompat.widget.AppCompatImageView

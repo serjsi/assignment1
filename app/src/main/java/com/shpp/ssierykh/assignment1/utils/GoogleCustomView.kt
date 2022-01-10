@@ -1,6 +1,5 @@
 package com.shpp.ssierykh.assignment1.utils
 
-import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
@@ -23,9 +22,6 @@ import com.shpp.ssierykh.assignment1.utils.Constants.DEFAULT_TURN_G
 import com.shpp.ssierykh.assignment1.utils.extensions.convertDpToPixels
 import com.shpp.ssierykh.assignment1.utils.extensions.convertSpToPixels
 import com.shpp.ssierykh.myapplication.extentions.dpToPx
-import java.sql.Array
-import java.util.*
-import kotlin.Array as Arrays
 
 
 class GoogleCustomView @JvmOverloads constructor(
@@ -55,8 +51,7 @@ class GoogleCustomView @JvmOverloads constructor(
 
     //dimens
     private var textSizeGoogle = 0
-    private var textColorsGoogle = "GOOGLE"
-    //private lateinit var textColorsGoogle: String
+    private var textColorsGoogle = "DEFAULT_TEXT_COLOR_GOOGLE"
     private var textColorsGoogleArray: CharArray
     private var textColorLength = 0
     private var cornerRadius = DEFAULT_CORNER_RADIUS
@@ -87,7 +82,7 @@ class GoogleCustomView @JvmOverloads constructor(
     init {
         paint.isAntiAlias = true
         Log.e("CustomView", "Init")////////////////////////////////////////////
-        setupAttributes(attrs)
+        if(attrs != null) setupAttributes(attrs)
         textColorsGoogleArray = textColorsGoogle.toCharArray()
         textColorLength = textColorsGoogle.length
         longBetweenLater = textSizeGoogle * indentFromGOOGLEAttitudeToTextSize
@@ -150,37 +145,34 @@ class GoogleCustomView @JvmOverloads constructor(
             attrs, R.styleable.GoogleCustomView,
             0, 0
         )
-       // textColorsGoogle = "GOOGLE"
-        /*  textColorsGoogle = typedArray.getString(
-              R.styleable.GoogleCustomView_textColorsGoogle
-          ) as String
-  */
+
+          textColorsGoogle = typedArray.getString( R.styleable.GoogleCustomView_textColorsGoogle
+          ) ?: DEFAULT_TEXT_COLOR_GOOGLE
         colorBackgroundGoogle = typedArray.getColor(
             R.styleable.GoogleCustomView_colorBackgroundGoogle, colorBackgroundGoogle
         )
 
         textSizeGoogle = typedArray.getDimension(
-            R.styleable.GoogleCustomView_textSizeGoogle.convertSpToPixels(context),
-            DEFAULT_TEXT_SIZE.toFloat()
+            R.styleable.GoogleCustomView_textSizeGoogle,
+            DEFAULT_TEXT_SIZE
         ).toInt()
         Log.e("CustomView", "setupAttributes $textSizeGoogle")////////////////////////////////////////////
 
         cornerRadius = typedArray.getDimension(
-            R.styleable.GoogleCustomView_cornerBackground.convertDpToPixels(context),
+            R.styleable.GoogleCustomView_cornerBackground,
             DEFAULT_CORNER_RADIUS
-        )
+        ).convertDpToPixels(context)
         marginGoogleX = typedArray.getDimension(
-            R.styleable.GoogleCustomView_marginGoogleX.convertDpToPixels(context),
+            R.styleable.GoogleCustomView_marginGoogleX,
             DEFAULT_MARGIN_X_GOOGLE
-        )
+        ).convertDpToPixels(context)
         marginGoogleY = typedArray.getDimension(
-            R.styleable.GoogleCustomView_marginGoogleY.convertDpToPixels(context),
+            R.styleable.GoogleCustomView_marginGoogleY,
             DEFAULT_MARGIN_X_GOOGLE
-        )
-        rotationG = typedArray.getDimension(
+        ).convertDpToPixels(context)
+        rotationG = (typedArray.getDimension(
             R.styleable.GoogleCustomView_rotationG,
-            DEFAULT_TURN_G.toFloat()
-        ).toInt()
+            DEFAULT_TURN_G).toDouble()/2.7).toFloat()
 
 
         typedArray.recycle()
@@ -246,7 +238,7 @@ class GoogleCustomView @JvmOverloads constructor(
 
     private fun drawG(canvas: Canvas) {
         canvas.rotate(
-            rotationG.toFloat(),
+            rotationG,
             startLaterX, startLaterY
         )
         drawStartG(canvas)
@@ -255,7 +247,7 @@ class GoogleCustomView @JvmOverloads constructor(
         arcLetterG(canvas, 155F, 45F, colorYellowGoogle)
         arcLetterG(canvas, 200F, 110F, colorRedGoogle)
         canvas.rotate(
-            -rotationG.toFloat(),
+            -rotationG,
             startDrawingForCenteringWidth(),
             startDrawingForCenteringHeight()
         )

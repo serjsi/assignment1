@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -47,12 +48,11 @@ class MyContactsActivity : AppCompatActivity(), AdapterContactsRV.OnItemClickLis
         // attach adapter to the recycler view
         binding.rvBottomContainer.adapter = rvAdapter
 
-        binding.tvAddContacts.setOnClickListener { dialogAddContact() }
-
-        binding.ivArrowBack.setOnClickListener { finish() }
-
+        setOnClickListener()
         swipeDeleteItem()
     }
+
+
 
     // on destroy of view make the binding reference to null
     override fun onDestroy() {
@@ -94,7 +94,7 @@ class MyContactsActivity : AppCompatActivity(), AdapterContactsRV.OnItemClickLis
 
     private fun diffContactsOutRVAdapter(oldList: ArrayList<ContactForRecyclerView>) {
         val diffCallBack = ContactsDiffCallback(oldList, contactList)
-        val diffResult = DiffUtil.calculateDiff(diffCallBack)
+        val diffResult = DiffUtil.calculateDiff(diffCallBack, true)
         diffResult.dispatchUpdatesTo(rvAdapter)
     }
 
@@ -118,11 +118,13 @@ class MyContactsActivity : AppCompatActivity(), AdapterContactsRV.OnItemClickLis
         val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallback)
         itemTouchHelper.attachToRecyclerView(binding.rvBottomContainer)
     }
+    private fun setOnClickListener() {
+        binding.tvAddContacts.setOnClickListener {
+            AddContactsDialog(this).show(supportFragmentManager, "customDialog") }
 
-
-    private fun dialogAddContact() {
-        AddContactsDialog(this).show(supportFragmentManager, "customDialog")
+        binding.ivArrowBack.setOnClickListener { finish() }
     }
+
 
 
     private fun isSnack(position: Int, deleteItem: ContactForRecyclerView) {

@@ -1,10 +1,11 @@
 package com.shpp.ssierykh.assignment1.utils
 
+import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
-import android.util.Log
 import android.view.View
+import android.view.animation.LinearInterpolator
 import com.shpp.ssierykh.assignment1.R
 import com.shpp.ssierykh.assignment1.utils.Constants.DEFAULT_COLOR_BACKGRAUND_GOOGLE
 import com.shpp.ssierykh.assignment1.utils.Constants.DEFAULT_COLOR_BLUE_GOOGLE
@@ -20,7 +21,6 @@ import com.shpp.ssierykh.assignment1.utils.Constants.DEFAULT_TEXT_COLOR_GOOGLE
 import com.shpp.ssierykh.assignment1.utils.Constants.DEFAULT_TEXT_SIZE
 import com.shpp.ssierykh.assignment1.utils.Constants.DEFAULT_TURN_G
 import com.shpp.ssierykh.assignment1.utils.extensions.convertDpToPixels
-import com.shpp.ssierykh.assignment1.utils.extensions.convertSpToPixels
 import com.shpp.ssierykh.myapplication.extentions.dpToPx
 
 
@@ -81,14 +81,13 @@ class GoogleCustomView @JvmOverloads constructor(
 
     init {
         paint.isAntiAlias = true
-        Log.e("CustomView", "Init")////////////////////////////////////////////
-        if(attrs != null) setupAttributes(attrs)
+        if (attrs != null) setupAttributes(attrs)
         textColorsGoogleArray = textColorsGoogle.toCharArray()
         textColorLength = textColorsGoogle.length
         longBetweenLater = textSizeGoogle * indentFromGOOGLEAttitudeToTextSize
         innerRadiusLaterG = textSizeGoogle * attitudeToTextSizeForInnerRadius
         outerRadiusLaterG = textSizeGoogle * attitudeToTextSizeForOuterRadius
-        //setOnClickListener { click() }
+        setOnLongClickListener { onAnimationG() }
     }
 
 
@@ -97,11 +96,9 @@ class GoogleCustomView @JvmOverloads constructor(
         val initSizeX = resolveDefaultSizeWidth(widthMeasureSpec)
         val initSizeY = resolveDefaultSizeHeight(heightMeasureSpec)
         setMeasuredDimension(initSizeX, initSizeY)
-        Log.e("CustomView", "onMeasure")//////////////////////////////////////
     }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
-        Log.e("CustomView", "onSizeChanged")////////////////////////////////////////////
         super.onSizeChanged(w, h, oldw, oldh)
 
         startLaterY = startDrawingForCenteringHeight()
@@ -146,8 +143,9 @@ class GoogleCustomView @JvmOverloads constructor(
             0, 0
         )
 
-          textColorsGoogle = typedArray.getString( R.styleable.GoogleCustomView_textColorsGoogle
-          ) ?: DEFAULT_TEXT_COLOR_GOOGLE
+        textColorsGoogle = typedArray.getString(
+            R.styleable.GoogleCustomView_textColorsGoogle
+        ) ?: DEFAULT_TEXT_COLOR_GOOGLE
         colorBackgroundGoogle = typedArray.getColor(
             R.styleable.GoogleCustomView_colorBackgroundGoogle, colorBackgroundGoogle
         )
@@ -156,7 +154,7 @@ class GoogleCustomView @JvmOverloads constructor(
             R.styleable.GoogleCustomView_textSizeGoogle,
             DEFAULT_TEXT_SIZE
         ).toInt()
-        Log.e("CustomView", "setupAttributes $textSizeGoogle")////////////////////////////////////////////
+        // Log.e("CustomView", "setupAttributes $textSizeGoogle")////////////////////////////////////////////
 
         cornerRadius = typedArray.getDimension(
             R.styleable.GoogleCustomView_cornerBackground,
@@ -172,7 +170,8 @@ class GoogleCustomView @JvmOverloads constructor(
         ).convertDpToPixels(context)
         rotationG = (typedArray.getDimension(
             R.styleable.GoogleCustomView_rotationG,
-            DEFAULT_TURN_G).toDouble()/2.7).toFloat()
+            DEFAULT_TURN_G
+        ).toDouble() / 2.7).toFloat()
 
 
         typedArray.recycle()
@@ -318,24 +317,20 @@ class GoogleCustomView @JvmOverloads constructor(
         }
     }
 
-
-    /*  private fun click(): Boolean {
-          textSizeGoogle += 10
-          requestLayout()
-        *//*  val va: ValueAnimator = ValueAnimator.ofInt(0, 360).apply {
-            duration = 1000
+    //Animation letter G
+    private fun onAnimationG(): Boolean {
+        invalidate()
+        val va: ValueAnimator = ValueAnimator.ofFloat(rotationG, rotationG + 360F).apply {
+            duration = 600
             interpolator = LinearInterpolator()
         }
         va.addUpdateListener {
-            rotationG = it.animatedValue as Int
-            Log.e("CustomView", "Animation $rotationG")///////////////////////
-            requestLayout()
+            rotationG = (it.animatedValue as Float).toInt().toFloat()
+            invalidate()
         }
-
-        va.start()*//*
-
+        va.start()
         return true
-    }*/
+    }
 
 
 }

@@ -41,7 +41,6 @@ class AdapterContactsRV(
     // inside the onCreateViewHolder inflate the view of SingleItemContactsBinding
     // and return new ViewHolder object containing this layout
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-
         val itemView = SingleItemContactBinding
             .inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(itemView)
@@ -52,6 +51,7 @@ class AdapterContactsRV(
     // shown in recycler view
     // to keep it simple we are not setting any image data to view
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+      //  Log.e("AdapterContactsRV", "onBindViewHolder contact ${contactForList[position].name}")////////////////////////////////////////////
         val contact = contactForList[position]
         with(holder.binding) {
             ivPhoto.loadImageGlade(contact.photoAddress)

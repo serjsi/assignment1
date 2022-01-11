@@ -50,8 +50,8 @@ object Constants {
     const val DEFAULT_SIZE_HEIGHT_GOOGLE = 100
     const val DEFAULT_TEXT_SIZE = 20F
     const val DEFAULT_TEXT_COLOR_GOOGLE = "GOOGLE"
-    const val DEFAULT_MARGIN_X_GOOGLE = 10F
-    const val DEFAULT_MARGIN_Y_GOOGLE = 10F
+    const val DEFAULT_MARGIN_X_GOOGLE = 5F
+    const val DEFAULT_MARGIN_Y_GOOGLE = 5F
     const val DEFAULT_CORNER_RADIUS = 5F
     const val DEFAULT_TURN_G = 0F
     const val DEFAULT_COLOR_BACKGRAUND_GOOGLE ="#FAFAFA"

@@ -53,6 +53,15 @@ class AddContactsDialog(private var onDateSelectedListener: OnAddContactListener
 
     }
 
+    override fun onResume() {
+        super.onResume()
+        val params: WindowManager.LayoutParams? = dialog?.window?.attributes
+        params?.width = WindowManager.LayoutParams.MATCH_PARENT
+        params?.height = WindowManager.LayoutParams.MATCH_PARENT
+        dialog?.onWindowAttributesChanged(params)
+    }
+
+
     private fun saveContact() {
         binding.apply {
             etEmail.doOnTextChanged { _, _, _, _ -> isValidateEmail() }
@@ -97,13 +106,6 @@ class AddContactsDialog(private var onDateSelectedListener: OnAddContactListener
 
 
 
-    override fun onResume() {
-        super.onResume()
-        val params: WindowManager.LayoutParams? = dialog?.window?.attributes
-        params?.width = WindowManager.LayoutParams.MATCH_PARENT
-        params?.height = WindowManager.LayoutParams.MATCH_PARENT
-        dialog?.onWindowAttributesChanged(params)
-    }
 
 
 }

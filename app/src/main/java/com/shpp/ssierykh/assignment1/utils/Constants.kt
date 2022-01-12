@@ -48,7 +48,7 @@ object Constants {
     // Custom view Google
     const val DEFAULT_SIZE_WIDTH_GOOGLE = 30
     const val DEFAULT_SIZE_HEIGHT_GOOGLE = 100
-    const val DEFAULT_TEXT_SIZE = 20F
+    const val DEFAULT_TEXT_SIZE = 50F
     const val DEFAULT_TEXT_COLOR_GOOGLE = "GOOGLE"
     const val DEFAULT_MARGIN_X_GOOGLE = 5F
     const val DEFAULT_MARGIN_Y_GOOGLE = 5F
@@ -59,7 +59,9 @@ object Constants {
     const val DEFAULT_COLOR_RED_GOOGLE ="#EB4335"
     const val DEFAULT_COLOR_YELLOW_GOOGLE ="#FBBC05"
     const val DEFAULT_COLOR_GREEN_GOOGLE ="#34A853"
-
+    const val DEGREE_360_ANGLE =360F
+    const val DEGREE_180_ANGLE =180F
+    const val DURATION_ANIMATION_GOOGLE =500L
 
 
 }

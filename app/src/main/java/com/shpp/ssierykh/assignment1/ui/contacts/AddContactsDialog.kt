@@ -104,8 +104,4 @@ class AddContactsDialog(private var onDateSelectedListener: OnAddContactListener
         }
     }
 
-
-
-
-
 }

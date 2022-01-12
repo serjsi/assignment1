@@ -4,6 +4,7 @@ import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import android.view.animation.LinearInterpolator
 import com.shpp.ssierykh.assignment1.R
@@ -20,6 +21,9 @@ import com.shpp.ssierykh.assignment1.utils.Constants.DEFAULT_SIZE_WIDTH_GOOGLE
 import com.shpp.ssierykh.assignment1.utils.Constants.DEFAULT_TEXT_COLOR_GOOGLE
 import com.shpp.ssierykh.assignment1.utils.Constants.DEFAULT_TEXT_SIZE
 import com.shpp.ssierykh.assignment1.utils.Constants.DEFAULT_TURN_G
+import com.shpp.ssierykh.assignment1.utils.Constants.DEGREE_180_ANGLE
+import com.shpp.ssierykh.assignment1.utils.Constants.DEGREE_360_ANGLE
+import com.shpp.ssierykh.assignment1.utils.Constants.DURATION_ANIMATION_GOOGLE
 import com.shpp.ssierykh.assignment1.utils.extensions.convertDpToPixels
 import com.shpp.ssierykh.myapplication.extentions.dpToPx
 
@@ -79,6 +83,7 @@ class GoogleCustomView @JvmOverloads constructor(
     private var outerRadiusLaterG = 0F
 
 
+
     init {
         paint.isAntiAlias = true
         if (attrs != null) setupAttributes(attrs)
@@ -87,7 +92,9 @@ class GoogleCustomView @JvmOverloads constructor(
         longBetweenLater = textSizeGoogle * indentFromGOOGLEAttitudeToTextSize
         innerRadiusLaterG = textSizeGoogle * attitudeToTextSizeForInnerRadius
         outerRadiusLaterG = textSizeGoogle * attitudeToTextSizeForOuterRadius
-        setOnLongClickListener { onAnimationG() }
+        setOnLongClickListener {
+            onAnimationG()
+        }
     }
 
 
@@ -319,16 +326,27 @@ class GoogleCustomView @JvmOverloads constructor(
 
     //Animation letter G
     private fun onAnimationG(): Boolean {
-        invalidate()
-        val va: ValueAnimator = ValueAnimator.ofFloat(rotationG, rotationG + 360F).apply {
-            duration = 600
-            interpolator = LinearInterpolator()
-        }
-        va.addUpdateListener {
-            rotationG = (it.animatedValue as Float).toInt().toFloat()
-            invalidate()
-        }
-        va.start()
+
+            val startRotation = rotationG
+            val va: ValueAnimator = ValueAnimator.ofFloat(0F, DEGREE_360_ANGLE).apply {
+                duration = DURATION_ANIMATION_GOOGLE
+                interpolator = LinearInterpolator()
+            }
+            va.addUpdateListener {
+                val diffAnimation = it.animatedValue as Float
+                rotationG = diffAnimation + startRotation
+                when {
+                    diffAnimation < DEGREE_180_ANGLE -> {
+                        longBetweenLater += diffAnimation / 60
+                    }
+                    diffAnimation > DEGREE_180_ANGLE && diffAnimation != DEGREE_360_ANGLE -> {
+                        longBetweenLater -= (diffAnimation - DEGREE_180_ANGLE) / 60
+                    }
+                }
+                invalidate()
+            }
+            va.start()
+
         return true
     }
 

@@ -4,7 +4,6 @@ import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
-import android.util.Log
 import android.view.View
 import android.view.animation.LinearInterpolator
 import com.shpp.ssierykh.assignment1.R
@@ -24,8 +23,10 @@ import com.shpp.ssierykh.assignment1.utils.Constants.DEFAULT_TURN_G
 import com.shpp.ssierykh.assignment1.utils.Constants.DEGREE_180_ANGLE
 import com.shpp.ssierykh.assignment1.utils.Constants.DEGREE_360_ANGLE
 import com.shpp.ssierykh.assignment1.utils.Constants.DURATION_ANIMATION_GOOGLE
+import com.shpp.ssierykh.assignment1.utils.Constants.MOVE_LONG_BETWEEN_LATER
 import com.shpp.ssierykh.assignment1.utils.extensions.convertDpToPixels
 import com.shpp.ssierykh.myapplication.extentions.dpToPx
+import kotlin.properties.Delegates
 
 
 class GoogleCustomView @JvmOverloads constructor(
@@ -33,7 +34,6 @@ class GoogleCustomView @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
-
 
     private val paint: Paint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val attitudeToTextSizeForInnerRadius = 0.40F
@@ -67,6 +67,7 @@ class GoogleCustomView @JvmOverloads constructor(
     private var startLaterX = 0F
     private var startLaterY = 0F
     private var longBetweenLater = 0F
+    private var startLongBetweenLater = 0F
     private var shiftGoogleX = 0F
     private var shiftGoogleY = 0F
     private var startLaterYMinusHalfRadius = 0F
@@ -82,8 +83,6 @@ class GoogleCustomView @JvmOverloads constructor(
     private var innerRadiusLaterG = 0F
     private var outerRadiusLaterG = 0F
 
-
-
     init {
         paint.isAntiAlias = true
         if (attrs != null) setupAttributes(attrs)
@@ -92,6 +91,7 @@ class GoogleCustomView @JvmOverloads constructor(
         longBetweenLater = textSizeGoogle * indentFromGOOGLEAttitudeToTextSize
         innerRadiusLaterG = textSizeGoogle * attitudeToTextSizeForInnerRadius
         outerRadiusLaterG = textSizeGoogle * attitudeToTextSizeForOuterRadius
+        startLongBetweenLater = longBetweenLater
         setOnLongClickListener {
             onAnimationG()
         }
@@ -327,28 +327,33 @@ class GoogleCustomView @JvmOverloads constructor(
     //Animation letter G
     private fun onAnimationG(): Boolean {
 
-            val startRotation = rotationG
-            val va: ValueAnimator = ValueAnimator.ofFloat(0F, DEGREE_360_ANGLE).apply {
-                duration = DURATION_ANIMATION_GOOGLE
-                interpolator = LinearInterpolator()
-            }
-            va.addUpdateListener {
-                val diffAnimation = it.animatedValue as Float
-                rotationG = diffAnimation + startRotation
-                when {
-                    diffAnimation < DEGREE_180_ANGLE -> {
-                        longBetweenLater += diffAnimation / 60
-                    }
-                    diffAnimation > DEGREE_180_ANGLE && diffAnimation != DEGREE_360_ANGLE -> {
-                        longBetweenLater -= (diffAnimation - DEGREE_180_ANGLE) / 60
-                    }
+        val startRotation = rotationG
+        val moveLongBetweenLater = DEGREE_180_ANGLE / MOVE_LONG_BETWEEN_LATER
+        val va: ValueAnimator = ValueAnimator.ofFloat(0F, DEGREE_360_ANGLE).apply {
+            duration = DURATION_ANIMATION_GOOGLE
+            interpolator = LinearInterpolator()
+        }
+        va.addUpdateListener {
+            val diffAnimation = it.animatedValue as Float
+            rotationG = diffAnimation + startRotation
+
+
+            when {
+                diffAnimation < DEGREE_180_ANGLE -> {
+                    longBetweenLater += diffAnimation / moveLongBetweenLater
                 }
-                invalidate()
+                diffAnimation >= DEGREE_180_ANGLE -> {
+                    longBetweenLater -= (diffAnimation - DEGREE_180_ANGLE) / moveLongBetweenLater
+                }
             }
-            va.start()
+            invalidate()
+        }
+        va.start()
+        longBetweenLater = startLongBetweenLater
 
         return true
     }
 
-
 }
+
+

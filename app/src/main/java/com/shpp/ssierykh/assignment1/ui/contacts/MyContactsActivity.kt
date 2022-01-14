@@ -1,10 +1,9 @@
-package com.shpp.ssierykh.assignment1.ui
+package com.shpp.ssierykh.assignment1.ui.contacts
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -12,16 +11,13 @@ import com.google.android.material.snackbar.Snackbar
 import com.shpp.ssierykh.assignment1.R
 import com.shpp.ssierykh.assignment1.data.ContactForRecyclerView
 import com.shpp.ssierykh.assignment1.data.FakeBaseContacts.fakeBase
-import com.shpp.ssierykh.assignment1.ui.contacts.*
 import com.shpp.ssierykh.assignment1.databinding.ActivityMyContactsBinding
-import com.shpp.ssierykh.assignment1.utils.AdapterContactsRV
 import com.shpp.ssierykh.assignment1.utils.Constants
-import com.shpp.ssierykh.assignment1.utils.ContactsDiffCallback
 import kotlinx.android.synthetic.main.activity_my_contacts.*
 import java.util.ArrayList
 
 
-class MyContactsActivity : AppCompatActivity(), AdapterContactsRV.OnItemClickListener,
+class MyContactsActivity : AppCompatActivity(), AdapterContacts.OnItemClickListener,
     AddContactsDialog.OnAddContactListener {
 
 
@@ -32,7 +28,7 @@ class MyContactsActivity : AppCompatActivity(), AdapterContactsRV.OnItemClickLis
     // create reference to the adapter and the list
     // in the list pass the model of ContactsRecyclerView
     private lateinit var contactList: MutableList<ContactForRecyclerView>
-    private lateinit var rvAdapter: AdapterContactsRV
+    private lateinit var rvAdapter: AdapterContacts
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +39,7 @@ class MyContactsActivity : AppCompatActivity(), AdapterContactsRV.OnItemClickLis
         contactList = fakeBase()
 
         // initialize the adapter, and pass the required argument
-        rvAdapter = AdapterContactsRV(contactList, this)
+        rvAdapter = AdapterContacts(contactList, this)
 
         // attach adapter to the recycler view
         binding.rvBottomContainer.adapter = rvAdapter
@@ -51,7 +47,6 @@ class MyContactsActivity : AppCompatActivity(), AdapterContactsRV.OnItemClickLis
         setOnClickListener()
         swipeDeleteItem()
     }
-
 
 
     // on destroy of view make the binding reference to null
@@ -76,7 +71,7 @@ class MyContactsActivity : AppCompatActivity(), AdapterContactsRV.OnItemClickLis
         val oldList = ArrayList(contactList)
         contactList.add(addItem)
         contactList.sortBy { contactRecyclerView -> contactRecyclerView.name }
-        diffContactsOutRVAdapter(oldList)
+        diffContactsOutAdapter(oldList)
         Toast.makeText(
             applicationContext,
             "${getString(R.string.Contact)} ${addItem.name} ${getString(R.string.is_add)} ",
@@ -88,11 +83,11 @@ class MyContactsActivity : AppCompatActivity(), AdapterContactsRV.OnItemClickLis
         val deleteItem = contactList[position]
         val oldList = ArrayList(contactList)
         contactList.removeAt(position)
-        diffContactsOutRVAdapter(oldList)
-        isSnack(position, deleteItem)
+        diffContactsOutAdapter(oldList)
+        showSnackBar(position, deleteItem)
     }
 
-    private fun diffContactsOutRVAdapter(oldList: ArrayList<ContactForRecyclerView>) {
+    private fun diffContactsOutAdapter(oldList: ArrayList<ContactForRecyclerView>) {
         val diffCallBack = ContactsDiffCallback(oldList, contactList)
         val diffResult = DiffUtil.calculateDiff(diffCallBack, true)
         diffResult.dispatchUpdatesTo(rvAdapter)
@@ -118,23 +113,25 @@ class MyContactsActivity : AppCompatActivity(), AdapterContactsRV.OnItemClickLis
         val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallback)
         itemTouchHelper.attachToRecyclerView(binding.rvBottomContainer)
     }
+
     private fun setOnClickListener() {
         binding.tvAddContacts.setOnClickListener {
-            AddContactsDialog(this).show(supportFragmentManager, "customDialog") }
+            AddContactsDialog(this).show(supportFragmentManager, "customDialog")
+        }
 
         binding.ivArrowBack.setOnClickListener { finish() }
     }
 
 
-
-    private fun isSnack(position: Int, deleteItem: ContactForRecyclerView) {
+    private fun showSnackBar(position: Int, deleteItem: ContactForRecyclerView) {
         Snackbar.make(
             rv_BottomContainer,
             "${getString(R.string.Contact)}  ${deleteItem.name} ${getString(R.string.is_deleted)} ",
             Snackbar.LENGTH_LONG
         ).setAction(getString(R.string.UNDO)) {
+            val oldList = ArrayList(contactList)
             contactList.add(position, deleteItem)
-            rvAdapter.notifyItemInserted(position)
+            diffContactsOutAdapter(oldList)
             Snackbar.make(
                 rv_BottomContainer,
                 "${getString(R.string.Contact)} ${deleteItem.name} ${getString(R.string.is_restored)}",

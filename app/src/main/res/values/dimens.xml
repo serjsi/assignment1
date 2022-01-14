@@ -12,5 +12,9 @@
     <dimen name="textSize_16sp">16sp</dimen>
     <dimen name="textSize_14sp">14sp</dimen>
     <dimen name="textSize_12sp">12sp</dimen>
+    <dimen name="photo_width">113dp</dimen>
+    <dimen name="photo_height">113dp</dimen>
+    <dimen name="photo_item_width">50dp</dimen>
+    <dimen name="photo_item_height">50dp</dimen>
 
 </resources>

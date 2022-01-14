@@ -62,7 +62,7 @@ object Constants {
     const val DEGREE_360_ANGLE =360F
     const val DEGREE_180_ANGLE =180F
     const val DURATION_ANIMATION_GOOGLE =500L
-    const val MOVE_LONG_BETWEEN_LATER = 3
+    const val MOVE_LONG_BETWEEN_LATER = 10
 
 
 }

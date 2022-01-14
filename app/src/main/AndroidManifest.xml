@@ -41,7 +41,7 @@
 
         <activity
             android:screenOrientation="fullSensor"
-            android:name="com.shpp.ssierykh.assignment1.ui.MyContactsActivity"
+            android:name="com.shpp.ssierykh.assignment1.ui.contacts.MyContactsActivity"
             android:exported="true">
         </activity>
 

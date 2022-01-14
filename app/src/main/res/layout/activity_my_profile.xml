@@ -8,7 +8,7 @@
     tools:context=".ui.MyProfileActivity">
 
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <View
         android:id="@+id/iv_TopContainer"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -19,7 +19,7 @@
         />
 
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <View
         android:id="@+id/iv_BottomContainer"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -47,8 +47,8 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/iv_PhotoProfile"
-        android:layout_width="113dp"
-        android:layout_height="113dp"
+        android:layout_width="@dimen/photo_width"
+        android:layout_height="@dimen/photo_height"
         app:layout_constraintBottom_toTopOf="@+id/tv_Name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

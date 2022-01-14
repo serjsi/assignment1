@@ -20,6 +20,7 @@ import com.shpp.ssierykh.assignment1.databinding.ActivityMainBinding
 import com.shpp.ssierykh.assignment1.utils.Validators
 import com.shpp.ssierykh.assignment1.utils.Validators.isValidEmail
 import com.shpp.ssierykh.assignment1.utils.Validators.validatePassword
+import com.shpp.ssierykh.assignment1.utils.extensions.clickWithDebounce
 
 
 class MainActivity : AppCompatActivity() {
@@ -151,14 +152,14 @@ class MainActivity : AppCompatActivity() {
     ////////////////////////////////test method////////////////////////////////////////
     private fun forTestMethod() {
         binding.apply {
-            binding.tvSignIn.setOnClickListener {
-                binding.etEnterEmail.setText(TEST_EMAIL, TextView.BufferType.EDITABLE)
-                binding.etTextPassword.setText(TEST_PASSWORD, TextView.BufferType.EDITABLE)
+            tvSignIn.clickWithDebounce {
+                etEnterEmail.setText(TEST_EMAIL, TextView.BufferType.EDITABLE)
+                etTextPassword.setText(TEST_PASSWORD, TextView.BufferType.EDITABLE)
             }
 
             //Handle pressing the "SignIn" google:
 
-            binding.cuvGoogle.setOnClickListener {
+            binding.cuvGoogle.clickWithDebounce {
                 val intent = Intent(this@MainActivity, MyProfileActivity::class.java)
                 intent.putExtra(NAME_EXTRA, "serhii.sierykh@gmail.com")
                 intent.putExtra(PHOTO_EXTRA, R.mipmap.ic_kot)

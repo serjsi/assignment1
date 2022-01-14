@@ -1,22 +1,20 @@
-package com.shpp.ssierykh.assignment1.utils
+package com.shpp.ssierykh.assignment1.ui.contacts
 
 
-import android.icu.text.Transliterator
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.shpp.ssierykh.assignment1.databinding.SingleItemContactBinding
 import android.view.View
 import com.shpp.ssierykh.assignment1.data.ContactForRecyclerView
-import com.shpp.ssierykh.assignment1.databinding.ActivityContactsProfileBinding.bind
+import com.shpp.ssierykh.assignment1.utils.extensions.clickWithDebounce
 import com.shpp.ssierykh.assignment1.utils.extensions.loadImageGlade
 
 
-class AdapterContactsRV(
+class AdapterContacts(
     private var contactForList: MutableList<ContactForRecyclerView>,
     private val listener: OnItemClickListener,
-) : RecyclerView.Adapter<AdapterContactsRV.ViewHolder>() {
+) : RecyclerView.Adapter<AdapterContacts.ViewHolder>() {
 
 
     // create an inner class with name ViewHolder
@@ -34,6 +32,7 @@ class AdapterContactsRV(
         override fun onClick(v: View?) {
             if (absoluteAdapterPosition != RecyclerView.NO_POSITION) {
                 listener.onItemClick(absoluteAdapterPosition)
+
             }
         }
     }
@@ -58,7 +57,7 @@ class AdapterContactsRV(
             //  binding.ivPhoto.loadImagePicasso(contact.photoAddress)
             tvName.text = contact.name
             tvCareer.text = contact.career
-            ivDelete.setOnClickListener {
+            ivDelete.clickWithDebounce() {
                 listener.onItemDelete(holder.absoluteAdapterPosition)
             }
         }

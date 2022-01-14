@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.MyContactsActivity">
+    tools:context=".ui.contacts.MyContactsActivity">
 
 
     <!--Add recycler view to main activity-->
@@ -35,8 +35,10 @@
         android:id="@+id/iv_ArrowBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/margin_offset_from_edge_screen_16dp"
-        android:paddingStart="@dimen/margin_offset_from_edge_screen_16dp"
+        android:padding="@dimen/margin_offset_from_edge_screen_16dp"
+
+        app:layout_constraintEnd_toStartOf="@+id/iv_Search"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
@@ -70,12 +72,14 @@
         style="@style/TextStyBasic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingStart="@dimen/margin_offset_from_edge_screen_16dp"
+        android:padding="@dimen/margin_offset_from_edge_screen_16dp"
         android:text="@string/add_contacts"
         android:textColor="@color/gray_very_light"
         android:textSize="@dimen/textSize_16sp"
         android:theme="@style/TextStyBasic"
         app:layout_constraintBottom_toBottomOf="@+id/iv_TopContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_ArrowBack" />
 

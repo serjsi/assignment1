@@ -64,6 +64,7 @@ class GoogleCustomView @JvmOverloads constructor(
     private var rotationG = DEFAULT_TURN_G
 
 
+
     private var startLaterX = 0F
     private var startLaterY = 0F
     private var longBetweenLater = 0F
@@ -95,6 +96,7 @@ class GoogleCustomView @JvmOverloads constructor(
         setOnLongClickListener {
             onAnimationG()
         }
+
     }
 
 
@@ -327,29 +329,28 @@ class GoogleCustomView @JvmOverloads constructor(
     //Animation letter G
     private fun onAnimationG(): Boolean {
 
-        val startRotation = rotationG
-        val moveLongBetweenLater = DEGREE_180_ANGLE / MOVE_LONG_BETWEEN_LATER
-        val va: ValueAnimator = ValueAnimator.ofFloat(0F, DEGREE_360_ANGLE).apply {
-            duration = DURATION_ANIMATION_GOOGLE
-            interpolator = LinearInterpolator()
-        }
-        va.addUpdateListener {
-            val diffAnimation = it.animatedValue as Float
-            rotationG = diffAnimation + startRotation
-
-
-            when {
-                diffAnimation < DEGREE_180_ANGLE -> {
-                    longBetweenLater += diffAnimation / moveLongBetweenLater
-                }
-                diffAnimation >= DEGREE_180_ANGLE -> {
-                    longBetweenLater -= (diffAnimation - DEGREE_180_ANGLE) / moveLongBetweenLater
-                }
+            val startRotation = rotationG
+            val startLongBetweenLater = longBetweenLater
+            val moveLongBetweenLater = DEGREE_180_ANGLE / MOVE_LONG_BETWEEN_LATER
+            val va: ValueAnimator = ValueAnimator.ofFloat(0F, DEGREE_360_ANGLE).apply {
+                duration = DURATION_ANIMATION_GOOGLE
+                interpolator = LinearInterpolator()
             }
-            invalidate()
-        }
-        va.start()
-        longBetweenLater = startLongBetweenLater
+            va.addUpdateListener {
+                val diffAnimation = it.animatedValue as Float
+                rotationG = diffAnimation + startRotation
+
+                when {
+                    diffAnimation < DEGREE_180_ANGLE -> {
+                        longBetweenLater = startLongBetweenLater + diffAnimation / moveLongBetweenLater
+                    }
+                    diffAnimation >= DEGREE_180_ANGLE -> {
+                        longBetweenLater = startLongBetweenLater + (DEGREE_360_ANGLE - diffAnimation ) / moveLongBetweenLater
+                    }
+                }
+                invalidate()
+            }
+            va.start()
 
         return true
     }

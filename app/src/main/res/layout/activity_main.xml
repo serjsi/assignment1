@@ -121,6 +121,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:textSizeGoogle="@dimen/textSize_18sp"
+
         />
 
     <androidx.appcompat.widget.AppCompatTextView

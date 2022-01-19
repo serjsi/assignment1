@@ -12,6 +12,7 @@ import com.shpp.ssierykh.assignment1.R
 
 
 import android.content.Intent
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.widget.doOnTextChanged
 import com.shpp.ssierykh.assignment1.data.ContactForRecyclerView
 import com.shpp.ssierykh.assignment1.databinding.DialogAddContactProfileBinding
@@ -29,7 +30,7 @@ class AddContactsDialog(private var onDateSelectedListener: OnAddContactListener
 
     private lateinit var binding: DialogAddContactProfileBinding
 
-    private  var IMAGE_AVATAR = 0
+    private val imageAvatar = 0
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -44,8 +45,12 @@ class AddContactsDialog(private var onDateSelectedListener: OnAddContactListener
             val intent = Intent()
             intent.type = "image/*"
             intent.action = Intent.ACTION_PICK
-            startActivityForResult(Intent.createChooser(intent, "Select Picture"),
-                IMAGE_AVATAR)
+
+            ActivityResultContracts.TakePicture()
+            startActivityForResult(
+                Intent.createChooser(intent, "Select Picture"),
+                imageAvatar
+            )
 
         }
 

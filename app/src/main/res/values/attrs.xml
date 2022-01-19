@@ -8,6 +8,8 @@
         <attr name="marginGoogleX" format="dimension"/>
         <attr name="marginGoogleY" format="dimension"/>
         <attr name="rotationG" format="dimension"/>
+        <attr name="duration_animation" format="dimension"/>
+        <attr name="move_letter_animation" format="dimension"/>
 
     </declare-styleable>
 

@@ -2,7 +2,6 @@ package com.shpp.ssierykh.assignment1.ui.contacts
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.bumptech.glide.Glide
 import com.shpp.ssierykh.assignment1.R
 import com.shpp.ssierykh.assignment1.utils.Constants.CAREER_EXTRA
 import com.shpp.ssierykh.assignment1.utils.Constants.HOME_ADDRESS_EXTRA
@@ -11,8 +10,6 @@ import com.shpp.ssierykh.assignment1.utils.Constants.PHOTO_EXTRA
 import com.shpp.ssierykh.assignment1.databinding.ActivityContactsProfileBinding
 import com.shpp.ssierykh.assignment1.utils.ParsingEmailToName.parsingEmailToName
 import com.shpp.ssierykh.assignment1.utils.extensions.loadImageGlade
-
-import java.util.*
 
 
 class ContactsProfileActivity : AppCompatActivity() {
@@ -38,9 +35,9 @@ class ContactsProfileActivity : AppCompatActivity() {
 
     private fun setView() {
         val career = intent.extras?.get(CAREER_EXTRA)
-        val homeAddress  = intent.extras?.get(HOME_ADDRESS_EXTRA)
+        val homeAddress = intent.extras?.get(HOME_ADDRESS_EXTRA)
         binding.apply {
-            val loadImage = intent.extras?.get(PHOTO_EXTRA)
+            val loadImage = intent.extras?.get(PHOTO_EXTRA).toString()
             ivPhotoProfile.loadImageGlade(loadImage)
             tvName.text = parsingEmailToName(intent.extras?.get(NAME_EXTRA).toString())
             if (career != null) tvCareer.text = career.toString()

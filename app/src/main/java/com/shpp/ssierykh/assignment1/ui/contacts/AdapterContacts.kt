@@ -23,7 +23,7 @@ class AdapterContacts(
     //inner class ViewHolder(val binding: SingleItemContactsBinding) : RecyclerView.ViewHolder(binding.root)
     inner class ViewHolder(val binding: SingleItemContactBinding) :
         RecyclerView.ViewHolder(binding.root),
-        View.OnClickListener {
+        View.OnClickListener  {
 
         init {
             itemView.setOnClickListener(this)
@@ -50,7 +50,6 @@ class AdapterContacts(
     // shown in recycler view
     // to keep it simple we are not setting any image data to view
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-      //  Log.e("AdapterContactsRV", "onBindViewHolder contact ${contactForList[position].name}")////////////////////////////////////////////
         val contact = contactForList[position]
         with(holder.binding) {
             ivPhoto.loadImageGlade(contact.photoAddress)

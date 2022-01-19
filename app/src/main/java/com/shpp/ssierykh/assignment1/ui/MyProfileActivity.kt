@@ -3,6 +3,8 @@ package com.shpp.ssierykh.assignment1.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import com.bumptech.glide.Glide
 import com.shpp.ssierykh.assignment1.R
 import com.shpp.ssierykh.assignment1.utils.Constants.CAREER_EXTRA
 import com.shpp.ssierykh.assignment1.utils.Constants.HOME_ADDRESS_EXTRA
@@ -12,9 +14,6 @@ import com.shpp.ssierykh.assignment1.databinding.ActivityMyProfileBinding
 import com.shpp.ssierykh.assignment1.ui.contacts.MyContactsActivity
 import com.shpp.ssierykh.assignment1.utils.ParsingEmailToName.parsingEmailToName
 import com.shpp.ssierykh.assignment1.utils.extensions.loadImageGlade
-
-
-import java.util.*
 
 
 class MyProfileActivity : AppCompatActivity() {
@@ -34,9 +33,9 @@ class MyProfileActivity : AppCompatActivity() {
 
     private fun setView() {
         val career = intent.extras?.get(CAREER_EXTRA)
-        val homeAddress  = intent.extras?.get(HOME_ADDRESS_EXTRA)
+        val homeAddress = intent.extras?.get(HOME_ADDRESS_EXTRA)
         binding.apply {
-            val loadImage = intent.extras?.get(PHOTO_EXTRA)
+            val loadImage  = intent.extras?.getInt(PHOTO_EXTRA)
             ivPhotoProfile.loadImageGlade(loadImage)
             tvName.text = parsingEmailToName(intent.extras?.get(NAME_EXTRA).toString())
             if (career != null) tvCareer.text = career.toString()
@@ -69,3 +68,5 @@ class MyProfileActivity : AppCompatActivity() {
         }
     }
 }
+
+

@@ -83,6 +83,10 @@ class GoogleCustomView @JvmOverloads constructor(
     private var startLaterYPlusInnerRadius = 0F
     private var innerRadiusLaterG = 0F
     private var outerRadiusLaterG = 0F
+    private var durationAnimationGoogle = 0L
+    private var moveLongBetweenLater = 0
+
+
 
     init {
         paint.isAntiAlias = true
@@ -181,7 +185,14 @@ class GoogleCustomView @JvmOverloads constructor(
             R.styleable.GoogleCustomView_rotationG,
             DEFAULT_TURN_G
         ).toDouble() / 2.7).toFloat()
-
+        durationAnimationGoogle = typedArray.getDimension(
+            R.styleable.GoogleCustomView_duration_animation,
+            DURATION_ANIMATION_GOOGLE.toFloat()
+        ).toLong()
+        moveLongBetweenLater = typedArray.getDimension(
+            R.styleable.GoogleCustomView_move_letter_animation,
+            DEFAULT_TURN_G
+        ).toInt()
 
         typedArray.recycle()
 
@@ -333,7 +344,7 @@ class GoogleCustomView @JvmOverloads constructor(
             val startLongBetweenLater = longBetweenLater
             val moveLongBetweenLater = DEGREE_180_ANGLE / MOVE_LONG_BETWEEN_LATER
             val va: ValueAnimator = ValueAnimator.ofFloat(0F, DEGREE_360_ANGLE).apply {
-                duration = DURATION_ANIMATION_GOOGLE
+                duration = durationAnimationGoogle
                 interpolator = LinearInterpolator()
             }
             va.addUpdateListener {

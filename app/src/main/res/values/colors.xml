@@ -21,5 +21,6 @@
     <color name="red_google_custom">#EA4335</color>
     <color name="yellow_google_custom">#FABB05</color>
     <color name="green_google_custom">#34A852</color>
+    <color name="backgraund_google_custom">#FAFAFA</color>
 
 </resources>

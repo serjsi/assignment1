@@ -7,6 +7,8 @@ import android.util.AttributeSet
 import android.view.View
 import android.view.animation.LinearInterpolator
 import com.shpp.ssierykh.assignment1.R
+import com.shpp.ssierykh.assignment1.utils.Constants.ATTITUDE_TO_TEXT_SIZE_FOR_INNER_RADIUS
+import com.shpp.ssierykh.assignment1.utils.Constants.ATTITUDE_TO_TEXT_SIZE_FOR_OUTER_RADIUS
 import com.shpp.ssierykh.assignment1.utils.Constants.DEFAULT_COLOR_BACKGRAUND_GOOGLE
 import com.shpp.ssierykh.assignment1.utils.Constants.DEFAULT_COLOR_BLUE_GOOGLE
 import com.shpp.ssierykh.assignment1.utils.Constants.DEFAULT_COLOR_GREEN_GOOGLE
@@ -23,7 +25,18 @@ import com.shpp.ssierykh.assignment1.utils.Constants.DEFAULT_TURN_G
 import com.shpp.ssierykh.assignment1.utils.Constants.DEGREE_180_ANGLE
 import com.shpp.ssierykh.assignment1.utils.Constants.DEGREE_360_ANGLE
 import com.shpp.ssierykh.assignment1.utils.Constants.DURATION_ANIMATION_GOOGLE
+import com.shpp.ssierykh.assignment1.utils.Constants.G_ARC_OF_SET_BLUE
+import com.shpp.ssierykh.assignment1.utils.Constants.G_ARC_OF_SET_GREEN
+import com.shpp.ssierykh.assignment1.utils.Constants.G_ARC_OF_SET_RED
+import com.shpp.ssierykh.assignment1.utils.Constants.G_ARC_OF_SET_YEELOW
+import com.shpp.ssierykh.assignment1.utils.Constants.G_ARC_SWEP_BLUE
+import com.shpp.ssierykh.assignment1.utils.Constants.G_ARC_SWEP_GREEN
+import com.shpp.ssierykh.assignment1.utils.Constants.G_ARC_SWEP_RED
+import com.shpp.ssierykh.assignment1.utils.Constants.G_ARC_SWEP_YEELOW
+import com.shpp.ssierykh.assignment1.utils.Constants.INDENT_FROM_GOOGLE_ATTITUDE_TO_TEXTSIZE
+import com.shpp.ssierykh.assignment1.utils.Constants.INDENT_FROM_G_ATTITUDE_TO_TEXTSIZE
 import com.shpp.ssierykh.assignment1.utils.Constants.MOVE_LONG_BETWEEN_LATER
+import com.shpp.ssierykh.assignment1.utils.Constants.TEN_LATTER
 import com.shpp.ssierykh.assignment1.utils.extensions.convertDpToPixels
 import com.shpp.ssierykh.myapplication.extentions.dpToPx
 import kotlin.properties.Delegates
@@ -36,10 +49,7 @@ class GoogleCustomView @JvmOverloads constructor(
 ) : View(context, attrs, defStyleAttr) {
 
     private val paint: Paint = Paint(Paint.ANTI_ALIAS_FLAG)
-    private val attitudeToTextSizeForInnerRadius = 0.40F
-    private val attitudeToTextSizeForOuterRadius = 0.65F
-    private val indentFromGAttitudeToTextSize = 3
-    private val indentFromGOOGLEAttitudeToTextSize = 0.65F
+
 
 
     //colors default
@@ -93,9 +103,9 @@ class GoogleCustomView @JvmOverloads constructor(
         if (attrs != null) setupAttributes(attrs)
         textColorsGoogleArray = textColorsGoogle.toCharArray()
         textColorLength = textColorsGoogle.length
-        longBetweenLater = textSizeGoogle * indentFromGOOGLEAttitudeToTextSize
-        innerRadiusLaterG = textSizeGoogle * attitudeToTextSizeForInnerRadius
-        outerRadiusLaterG = textSizeGoogle * attitudeToTextSizeForOuterRadius
+        longBetweenLater = textSizeGoogle * INDENT_FROM_GOOGLE_ATTITUDE_TO_TEXTSIZE
+        innerRadiusLaterG = textSizeGoogle * ATTITUDE_TO_TEXT_SIZE_FOR_INNER_RADIUS
+        outerRadiusLaterG = textSizeGoogle * ATTITUDE_TO_TEXT_SIZE_FOR_OUTER_RADIUS
         startLongBetweenLater = longBetweenLater
         setOnLongClickListener {
             onAnimationG()
@@ -118,7 +128,7 @@ class GoogleCustomView @JvmOverloads constructor(
         startLaterX = startDrawingForCenteringWidth()
 
         shiftGoogleX = startLaterX + outerRadiusLaterG
-        shiftGoogleY = startLaterY + textSizeGoogle / indentFromGAttitudeToTextSize
+        shiftGoogleY = startLaterY + textSizeGoogle / INDENT_FROM_G_ATTITUDE_TO_TEXTSIZE
         startLaterYMinusHalfRadius = startLaterY - ((outerRadiusLaterG - innerRadiusLaterG) / 2)
         startLaterYPlusHalfRadius = startLaterY + ((outerRadiusLaterG - innerRadiusLaterG) / 2)
 
@@ -232,8 +242,8 @@ class GoogleCustomView @JvmOverloads constructor(
 
 
     private fun pairRadiusLaterG(): Pair<Float, Float> {
-        val innerRadiusLaterG = textSizeGoogle * attitudeToTextSizeForInnerRadius
-        val outerRadiusLaterG = textSizeGoogle * attitudeToTextSizeForOuterRadius
+        val innerRadiusLaterG = textSizeGoogle * ATTITUDE_TO_TEXT_SIZE_FOR_INNER_RADIUS
+        val outerRadiusLaterG = textSizeGoogle * ATTITUDE_TO_TEXT_SIZE_FOR_OUTER_RADIUS
         return Pair(innerRadiusLaterG, outerRadiusLaterG)
     }
 
@@ -261,10 +271,10 @@ class GoogleCustomView @JvmOverloads constructor(
             startLaterX, startLaterY
         )
         drawStartG(canvas)
-        arcLetterG(canvas, -12F, 75F, colorBlueGoogle)
-        arcLetterG(canvas, 60F, 95F, colorGreenGoogle)
-        arcLetterG(canvas, 155F, 45F, colorYellowGoogle)
-        arcLetterG(canvas, 200F, 110F, colorRedGoogle)
+        arcLetterG(canvas, G_ARC_OF_SET_BLUE, G_ARC_SWEP_BLUE, colorBlueGoogle)
+        arcLetterG(canvas, G_ARC_OF_SET_GREEN, G_ARC_SWEP_GREEN, colorGreenGoogle)
+        arcLetterG(canvas, G_ARC_OF_SET_YEELOW, G_ARC_SWEP_YEELOW, colorYellowGoogle)
+        arcLetterG(canvas, G_ARC_OF_SET_RED, G_ARC_SWEP_RED, colorRedGoogle)
         canvas.rotate(
             -rotationG,
             startDrawingForCenteringWidth(),
@@ -324,10 +334,10 @@ class GoogleCustomView @JvmOverloads constructor(
 
         for (i in 1..textColorLength) {
 
-            paint.color = if (i < 10) {
+            paint.color = if (i < TEN_LATTER) {
                 colorOrderGoogle[i - 1]
             } else {
-                colorOrderGoogle[i - i / 10 * 10]
+                colorOrderGoogle[i - i /TEN_LATTER *TEN_LATTER]
             }
 
             canvas.drawText(

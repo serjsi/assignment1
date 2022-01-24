@@ -5,7 +5,7 @@ import android.os.Bundle
 import com.shpp.ssierykh.assignment1.R
 import com.shpp.ssierykh.assignment1.utils.Constants.CAREER_EXTRA
 import com.shpp.ssierykh.assignment1.utils.Constants.HOME_ADDRESS_EXTRA
-import com.shpp.ssierykh.assignment1.utils.Constants.NAME_EXTRA
+import com.shpp.ssierykh.assignment1.utils.Constants.EMAIL_EXTRA
 import com.shpp.ssierykh.assignment1.utils.Constants.PHOTO_EXTRA
 import com.shpp.ssierykh.assignment1.databinding.ActivityContactsProfileBinding
 import com.shpp.ssierykh.assignment1.utils.ParsingEmailToName.parsingEmailToName
@@ -22,7 +22,12 @@ class ContactsProfileActivity : AppCompatActivity() {
         binding = ActivityContactsProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setView()
+        val career = intent.extras?.getString(CAREER_EXTRA) ?: ""
+        val homeAddress = intent.extras?.getString(HOME_ADDRESS_EXTRA) ?: ""
+        val email = intent.extras?.getString(EMAIL_EXTRA) ?: ""
+        val loadImage = intent.extras?.getString(PHOTO_EXTRA) ?: R.drawable.ic_mok
+
+        setView(career, homeAddress, email, loadImage as String)
         clickListener()
     }
 
@@ -33,16 +38,13 @@ class ContactsProfileActivity : AppCompatActivity() {
         }
     }
 
-    private fun setView() {
-        val career = intent.extras?.get(CAREER_EXTRA)
-        val homeAddress = intent.extras?.get(HOME_ADDRESS_EXTRA)
-        binding.apply {
-            val loadImage = intent.extras?.get(PHOTO_EXTRA).toString()
-            ivPhotoProfile.loadImageGlade(loadImage)
-            tvName.text = parsingEmailToName(intent.extras?.get(NAME_EXTRA).toString())
-            if (career != null) tvCareer.text = career.toString()
-            if (homeAddress != null) tvHomeAddress.text = homeAddress.toString()
 
+    private fun setView(career: String, homeAddress: String, email: String, loadImage: String) {
+        binding.apply {
+            ivPhotoProfile.loadImageGlade(loadImage)
+            tvName.text = parsingEmailToName(email)
+            tvCareer.text = career
+            tvHomeAddress.text = homeAddress
         }
     }
 

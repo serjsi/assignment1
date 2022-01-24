@@ -58,7 +58,7 @@ class MyContactsActivity : AppCompatActivity(), AdapterContacts.OnItemClickListe
     override fun onItemClick(position: Int) {
         val clickedItem = contactList[position]
         val intent = Intent(this, ContactsProfileActivity::class.java)
-        intent.putExtra(Constants.NAME_EXTRA, clickedItem.name)
+        intent.putExtra(Constants.EMAIL_EXTRA, clickedItem.name)
         intent.putExtra(Constants.PHOTO_EXTRA, clickedItem.photoAddress)
         intent.putExtra(Constants.CAREER_EXTRA, clickedItem.career)
         startActivity(intent)

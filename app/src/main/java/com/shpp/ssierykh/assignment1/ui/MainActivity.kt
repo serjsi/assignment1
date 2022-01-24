@@ -8,7 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
 import com.shpp.ssierykh.assignment1.R
-import com.shpp.ssierykh.assignment1.utils.Constants.NAME_EXTRA
+import com.shpp.ssierykh.assignment1.utils.Constants.EMAIL_EXTRA
 import com.shpp.ssierykh.assignment1.utils.Constants.NAME_SP
 import com.shpp.ssierykh.assignment1.utils.Constants.PASSWORD_SP
 import com.shpp.ssierykh.assignment1.utils.Constants.PHOTO_EXTRA
@@ -17,7 +17,6 @@ import com.shpp.ssierykh.assignment1.utils.Constants.TEST_EMAIL
 import com.shpp.ssierykh.assignment1.utils.Constants.TEST_PASSWORD
 import com.shpp.ssierykh.assignment1.data.PreferenceStorage
 import com.shpp.ssierykh.assignment1.databinding.ActivityMainBinding
-import com.shpp.ssierykh.assignment1.utils.Validators
 import com.shpp.ssierykh.assignment1.utils.Validators.isValidEmail
 import com.shpp.ssierykh.assignment1.utils.Validators.validatePassword
 import com.shpp.ssierykh.assignment1.utils.extensions.clickWithDebounce
@@ -50,7 +49,7 @@ class MainActivity : AppCompatActivity() {
                 if (isValidateEmail() && isValidatePassword()) {
                     //Stores the values
                     val intent = Intent(this@MainActivity, MyProfileActivity::class.java)
-                    intent.putExtra(NAME_EXTRA, etEmail.text.toString())
+                    intent.putExtra(EMAIL_EXTRA, etEmail.text.toString())
                     intent.putExtra(PHOTO_EXTRA, R.drawable.lucile)
                     startActivity(intent)
                     finish()
@@ -161,7 +160,7 @@ class MainActivity : AppCompatActivity() {
 
             binding.cvGoogle.clickWithDebounce {
                 val intent = Intent(this@MainActivity, MyProfileActivity::class.java)
-                intent.putExtra(NAME_EXTRA, "serhii.sierykh@gmail.com")
+                intent.putExtra(EMAIL_EXTRA, "serhii.sierykh@gmail.com")
                 intent.putExtra(PHOTO_EXTRA, R.mipmap.ic_kot)
                 startActivity(intent)
                 //Animation

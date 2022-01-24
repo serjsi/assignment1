@@ -7,7 +7,7 @@ object Constants {
     const val TEST_PASSWORD = "lucile.alvarado@gmail.com1A"
     const val MIN_LENGTH_PASSWORD = 8
     const val PHOTO_EXTRA = "photo"
-    const val NAME_EXTRA = "name"
+    const val EMAIL_EXTRA = "name"
     const val CAREER_EXTRA = "career"
     const val HOME_ADDRESS_EXTRA = "address"
     const val REMEMBER_SP = "Remember"
@@ -46,6 +46,19 @@ object Constants {
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbK7iKAxH2-IQvSR1tb8rCD2SMoLh6Gk79iQ&usqp=CAU"
 
     // Custom view Google
+    const val ATTITUDE_TO_TEXT_SIZE_FOR_INNER_RADIUS = 0.40F
+    const val ATTITUDE_TO_TEXT_SIZE_FOR_OUTER_RADIUS = 0.65F
+    const val INDENT_FROM_G_ATTITUDE_TO_TEXTSIZE = 3
+    const val INDENT_FROM_GOOGLE_ATTITUDE_TO_TEXTSIZE = 0.65F
+    const val G_ARC_OF_SET_BLUE = -12F
+    const val G_ARC_SWEP_BLUE = 75F
+    const val G_ARC_OF_SET_GREEN = 60F
+    const val G_ARC_SWEP_GREEN = 95F
+    const val G_ARC_OF_SET_YEELOW = 155F
+    const val G_ARC_SWEP_YEELOW = 45F
+    const val G_ARC_OF_SET_RED = 200F
+    const val G_ARC_SWEP_RED = 110F
+    const val TEN_LATTER = 10
     const val DEFAULT_SIZE_WIDTH_GOOGLE = 30
     const val DEFAULT_SIZE_HEIGHT_GOOGLE = 100
     const val DEFAULT_TEXT_SIZE = 50F

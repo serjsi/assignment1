@@ -69,7 +69,7 @@ class AddContactsDialog(private var onDateSelectedListener: OnAddContactListener
 
     private fun saveContact() {
         binding.apply {
-            etEmail.doOnTextChanged { _, _, _, _ -> isValidateEmail() }
+            etEmailA.doOnTextChanged { _, _, _, _ -> isValidateEmail() }
 
             btSave.setOnClickListener {
                 val userName = etUserName.text.toString()
@@ -88,16 +88,16 @@ class AddContactsDialog(private var onDateSelectedListener: OnAddContactListener
     private fun isValidateEmail(): Boolean {
         binding.apply {
 
-            val emailCheck = etEmail.text.toString()
+            val emailCheck = etEmailA.text.toString()
             when {
                 emailCheck.isEmpty() -> {
                     tilEmail.error = getString(R.string.message_cannot_be_empty)
-                    etEmail.requestFocus()
+                    etEmailA.requestFocus()
                     return false
                 }
                 !isValidEmail(emailCheck) -> {
                     tilEmail.error = getString(R.string.message_wromg_e_mail)
-                    etEmail.requestFocus()
+                    etEmailA.requestFocus()
                     return false
                 }
                 else -> {

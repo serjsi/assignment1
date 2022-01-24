@@ -9,28 +9,28 @@
 
 
     <View
-        android:id="@+id/iv_TopContainer"
+        android:id="@+id/ivTopContainer"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="?attr/colorPrimaryVariant"
-        app:layout_constraintBottom_toTopOf="@id/iv_BottomContainer"
+        app:layout_constraintBottom_toTopOf="@id/ivBottomContainer"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_weight="0.5"
         />
 
 
     <View
-        android:id="@+id/iv_BottomContainer"
+        android:id="@+id/ivBottomContainer"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="?attr/colorSecondary"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iv_TopContainer"
+        app:layout_constraintTop_toBottomOf="@id/ivTopContainer"
         app:layout_constraintVertical_weight="0.5"
          />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_Settings"
+        android:id="@+id/tvSettings"
         style="@style/TextStyBasic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -41,23 +41,23 @@
         android:textSize="@dimen/textSize_24sp"
         android:theme="@style/TextStyBasic"
 
-        app:layout_constraintStart_toStartOf="@+id/iv_TopContainer"
-        app:layout_constraintTop_toTopOf="@+id/iv_TopContainer" />
+        app:layout_constraintStart_toStartOf="@+id/ivTopContainer"
+        app:layout_constraintTop_toTopOf="@+id/ivTopContainer" />
 
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/iv_PhotoProfile"
+        android:id="@+id/ivPhotoProfile"
         android:layout_width="@dimen/photo_width"
         android:layout_height="@dimen/photo_height"
-        app:layout_constraintBottom_toTopOf="@+id/tv_Name"
+        app:layout_constraintBottom_toTopOf="@+id/tvName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_Settings"
+        app:layout_constraintTop_toBottomOf="@+id/tvSettings"
         app:layout_constraintVertical_chainStyle="spread"
         app:srcCompat="@drawable/ic_mok" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_HomeAddress"
+        android:id="@+id/tvHomeAddress"
         style="@style/TextStyBasic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -65,13 +65,13 @@
         android:layout_centerHorizontal="true"
         android:text="@string/home_address"
         android:textColor="@color/white_my"
-        app:layout_constraintBottom_toBottomOf="@+id/iv_TopContainer"
+        app:layout_constraintBottom_toBottomOf="@+id/ivTopContainer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_Career" />
+        app:layout_constraintTop_toBottomOf="@+id/tvCareer" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_Career"
+        android:id="@+id/tvCareer"
         style="@style/TextStyBasic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -79,13 +79,13 @@
         android:layout_centerHorizontal="true"
         android:text="@string/career"
         android:textColor="@color/white_my"
-        app:layout_constraintBottom_toTopOf="@+id/tv_HomeAddress"
+        app:layout_constraintBottom_toTopOf="@+id/tvHomeAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_Name" />
+        app:layout_constraintTop_toBottomOf="@+id/tvName" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_Name"
+        android:id="@+id/tvName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -93,14 +93,14 @@
         android:textColor="@color/gray_very_light"
         android:textSize="@dimen/textSize_18sp"
         android:theme="@style/TextStyBasic"
-        app:layout_constraintBottom_toTopOf="@+id/tv_Career"
-        app:layout_constraintEnd_toEndOf="@+id/iv_TopContainer"
-        app:layout_constraintStart_toStartOf="@+id/iv_TopContainer"
-        app:layout_constraintTop_toBottomOf="@+id/iv_PhotoProfile"
+        app:layout_constraintBottom_toTopOf="@+id/tvCareer"
+        app:layout_constraintEnd_toEndOf="@+id/ivTopContainer"
+        app:layout_constraintStart_toStartOf="@+id/ivTopContainer"
+        app:layout_constraintTop_toBottomOf="@+id/ivPhotoProfile"
         />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_goToSettingsAndFill"
+        android:id="@+id/tvGoToSettingsAndFill"
         style="@style/TextStyBasic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -108,16 +108,16 @@
         android:layout_margin="@dimen/margin_offset_from_edge_screen_16dp"
         android:text="@string/go_to_settings_and_fill_out_the_profile"
         android:textColor="@color/gray_text"
-        app:layout_constraintBottom_toTopOf="@+id/bt_EditProfile"
-        app:layout_constraintEnd_toEndOf="@+id/iv_BottomContainer"
-        app:layout_constraintStart_toStartOf="@+id/iv_BottomContainer" />
+        app:layout_constraintBottom_toTopOf="@+id/btEditProfile"
+        app:layout_constraintEnd_toEndOf="@+id/ivBottomContainer"
+        app:layout_constraintStart_toStartOf="@+id/ivBottomContainer" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/bt_EditProfile"
+        android:id="@+id/btEditProfile"
         style="@style/TextStyBasic"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/bt_ViewMyContacts"
+        android:layout_above="@+id/btViewMyContacts"
         android:layout_margin="@dimen/margin_offset_from_edge_screen_16dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/button_background_black"
@@ -125,12 +125,12 @@
         android:textAllCaps="false"
         android:textColor="@color/gray_text"
         android:textSize="@dimen/textSize_14sp"
-        app:layout_constraintBottom_toTopOf="@+id/bt_ViewMyContacts"
+        app:layout_constraintBottom_toTopOf="@+id/btViewMyContacts"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/bt_ViewMyContacts"
+        android:id="@+id/btViewMyContacts"
         style="@style/TextStyBasic"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -141,41 +141,41 @@
         android:text="@string/view_my_contacts"
         android:textColor="?attr/colorOnPrimary"
         android:textSize="@dimen/textSize_16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/iv_BottomContainer"
-        app:layout_constraintEnd_toEndOf="@+id/iv_BottomContainer"
-        app:layout_constraintStart_toStartOf="@+id/iv_BottomContainer" />
+        app:layout_constraintBottom_toBottomOf="@+id/ivBottomContainer"
+        app:layout_constraintEnd_toEndOf="@+id/ivBottomContainer"
+        app:layout_constraintStart_toStartOf="@+id/ivBottomContainer" />
 
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/iv_InstagramLog"
+        android:id="@+id/ivInstagramLog"
         style="@style/logo_ImageView"
-        android:layout_above="@+id/bt_EditProfile"
+        android:layout_above="@+id/btEditProfile"
         android:layout_centerHorizontal="true"
-        app:layout_constraintBottom_toTopOf="@+id/tv_goToSettingsAndFill"
-        app:layout_constraintEnd_toStartOf="@+id/iv_VkLog"
+        app:layout_constraintBottom_toTopOf="@+id/tvGoToSettingsAndFill"
+        app:layout_constraintEnd_toStartOf="@+id/ivVkLog"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_TopContainer"
+        app:layout_constraintTop_toBottomOf="@+id/ivTopContainer"
         app:srcCompat="@drawable/ic_instagram_log" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/iv_VkLog"
+        android:id="@+id/ivVkLog"
         style="@style/logo_ImageView"
-        android:layout_alignBottom="@+id/iv_InstagramLog"
+        android:layout_alignBottom="@+id/ivInstagramLog"
         android:layout_alignParentEnd="true"
-        app:layout_constraintBottom_toTopOf="@+id/tv_goToSettingsAndFill"
-        app:layout_constraintEnd_toStartOf="@+id/iv_FacebookLog"
-        app:layout_constraintStart_toEndOf="@+id/iv_InstagramLog"
-        app:layout_constraintTop_toBottomOf="@+id/iv_TopContainer"
+        app:layout_constraintBottom_toTopOf="@+id/tvGoToSettingsAndFill"
+        app:layout_constraintEnd_toStartOf="@+id/ivFacebookLog"
+        app:layout_constraintStart_toEndOf="@+id/ivInstagramLog"
+        app:layout_constraintTop_toBottomOf="@+id/ivTopContainer"
         app:srcCompat="@drawable/ic_vk_log" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/iv_FacebookLog"
+        android:id="@+id/ivFacebookLog"
         style="@style/logo_ImageView"
-        android:layout_alignBottom="@+id/iv_InstagramLog"
-        app:layout_constraintBottom_toTopOf="@+id/tv_goToSettingsAndFill"
+        android:layout_alignBottom="@+id/ivInstagramLog"
+        app:layout_constraintBottom_toTopOf="@+id/tvGoToSettingsAndFill"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/iv_VkLog"
-        app:layout_constraintTop_toBottomOf="@+id/iv_TopContainer"
+        app:layout_constraintStart_toEndOf="@+id/ivVkLog"
+        app:layout_constraintTop_toBottomOf="@+id/ivTopContainer"
         app:srcCompat="@drawable/ic_facebook_log" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

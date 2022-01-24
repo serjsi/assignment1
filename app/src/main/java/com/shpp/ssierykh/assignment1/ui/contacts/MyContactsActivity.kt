@@ -125,7 +125,7 @@ class MyContactsActivity : AppCompatActivity(), AdapterContacts.OnItemClickListe
 
     private fun showSnackBar(position: Int, deleteItem: ContactForRecyclerView) {
         Snackbar.make(
-            rv_BottomContainer,
+            rvBottomContainer,
             "${getString(R.string.Contact)}  ${deleteItem.name} ${getString(R.string.is_deleted)} ",
             Snackbar.LENGTH_LONG
         ).setAction(getString(R.string.UNDO)) {
@@ -133,7 +133,7 @@ class MyContactsActivity : AppCompatActivity(), AdapterContacts.OnItemClickListe
             contactList.add(position, deleteItem)
             diffContactsOutAdapter(oldList)
             Snackbar.make(
-                rv_BottomContainer,
+                rvBottomContainer,
                 "${getString(R.string.Contact)} ${deleteItem.name} ${getString(R.string.is_restored)}",
                 Snackbar.LENGTH_SHORT
             ).show()

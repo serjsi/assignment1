@@ -43,14 +43,14 @@ class MainActivity : AppCompatActivity() {
      */
     private fun setupListeners() {
         binding.apply {
-            etEnterEmail.doOnTextChanged { _, _, _, _ -> isValidateEmail() }
-            etTextPassword.doOnTextChanged { _, _, _, _ -> isValidatePassword() }
+            etEmail.doOnTextChanged { _, _, _, _ -> isValidateEmail() }
+            etPassword.doOnTextChanged { _, _, _, _ -> isValidatePassword() }
             //Switching to another screen
             btRegister.setOnClickListener {
                 if (isValidateEmail() && isValidatePassword()) {
                     //Stores the values
                     val intent = Intent(this@MainActivity, MyProfileActivity::class.java)
-                    intent.putExtra(NAME_EXTRA, etEnterEmail.text.toString())
+                    intent.putExtra(NAME_EXTRA, etEmail.text.toString())
                     intent.putExtra(PHOTO_EXTRA, R.drawable.lucile)
                     startActivity(intent)
                     finish()
@@ -76,16 +76,16 @@ class MainActivity : AppCompatActivity() {
     private fun isValidateEmail(): Boolean {
         binding.apply {
 
-            val emailCheck = etEnterEmail.text.toString()
+            val emailCheck = etEmail.text.toString()
             when {
                 emailCheck.isEmpty() -> {
                     tilEmail.error = getString(R.string.message_cannot_be_empty)
-                    etEnterEmail.requestFocus()
+                    etEmail.requestFocus()
                     return false
                 }
                 !isValidEmail(emailCheck) -> {
                     tilEmail.error = getString(R.string.message_wromg_e_mail)
-                    etEnterEmail.requestFocus()
+                    etEmail.requestFocus()
                     return false
                 }
                 else -> {
@@ -102,12 +102,12 @@ class MainActivity : AppCompatActivity() {
      */
     private fun isValidatePassword(): Boolean {
         binding.apply {
-            val passwordChek = binding.etTextPassword.text.toString()
+            val passwordChek = binding.etPassword.text.toString()
             //validatePassword(passwordChek)
             return if (validatePassword(passwordChek) != 0) {
                 tilPassword.error =
                     getString(validatePassword(passwordChek))
-                etTextPassword.requestFocus()
+                etPassword.requestFocus()
                 false
             } else {
                 tilPassword.isErrorEnabled = false
@@ -122,8 +122,8 @@ class MainActivity : AppCompatActivity() {
     private fun saveAutologin() {
         binding.apply {
             shPref.save(REMEMBER_SP, cbRemember.isChecked)
-            shPref.save(NAME_SP, etEnterEmail.text.toString())
-            shPref.save(PASSWORD_SP, etTextPassword.text.toString())
+            shPref.save(NAME_SP, etEmail.text.toString())
+            shPref.save(PASSWORD_SP, etPassword.text.toString())
         }
     }
 
@@ -135,8 +135,8 @@ class MainActivity : AppCompatActivity() {
         if (remember) {
             binding.apply {
                 cbRemember.isChecked = true
-                etEnterEmail.setText(shPref.getString(NAME_SP, ""))
-                etTextPassword.setText(shPref.getString(PASSWORD_SP, ""))
+                etEmail.setText(shPref.getString(NAME_SP, ""))
+                etPassword.setText(shPref.getString(PASSWORD_SP, ""))
             }
         }
     }
@@ -153,13 +153,13 @@ class MainActivity : AppCompatActivity() {
     private fun forTestMethod() {
         binding.apply {
             tvSignIn.clickWithDebounce {
-                etEnterEmail.setText(TEST_EMAIL, TextView.BufferType.EDITABLE)
-                etTextPassword.setText(TEST_PASSWORD, TextView.BufferType.EDITABLE)
+                etEmail.setText(TEST_EMAIL, TextView.BufferType.EDITABLE)
+                etPassword.setText(TEST_PASSWORD, TextView.BufferType.EDITABLE)
             }
 
             //Handle pressing the "SignIn" google:
 
-            binding.cuvGoogle.clickWithDebounce {
+            binding.cvGoogle.clickWithDebounce {
                 val intent = Intent(this@MainActivity, MyProfileActivity::class.java)
                 intent.putExtra(NAME_EXTRA, "serhii.sierykh@gmail.com")
                 intent.putExtra(PHOTO_EXTRA, R.mipmap.ic_kot)

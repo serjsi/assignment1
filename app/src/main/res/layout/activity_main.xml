@@ -10,7 +10,7 @@
 
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_LetSGetAcquainted"
+        android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -18,7 +18,7 @@
         android:textColor="@color/gray_very_light"
         android:textSize="@dimen/textSize_24sp"
         android:theme="@style/TextStyBasic"
-        app:layout_constraintBottom_toTopOf="@+id/tv_FillOutTheProfile"
+        app:layout_constraintBottom_toTopOf="@+id/tvSubTitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -26,7 +26,7 @@
 
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_FillOutTheProfile"
+        android:id="@+id/tvSubTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -35,13 +35,13 @@
         android:text="@string/fill_out_the_profile_and_go_to_the_application"
         android:textColor="@color/gray"
         android:theme="@style/TextStyleSmall"
-        app:layout_constraintBottom_toTopOf="@+id/til_Email"
+        app:layout_constraintBottom_toTopOf="@+id/tilEmail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_LetSGetAcquainted" />
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_Email"
+        android:id="@+id/tilEmail"
         style="@style/TextInputLayout"
         android:layout_marginTop="@dimen/vertical_margin_24"
         android:hint="@string/e_mail"
@@ -50,15 +50,15 @@
         app:errorTextColor="@color/design_default_color_error"
         app:hintTextAppearance="@style/TextInputLayoutHintText"
         app:hintTextColor="@color/gray"
-        app:layout_constraintBottom_toTopOf="@+id/til_Password"
+        app:layout_constraintBottom_toTopOf="@+id/tilPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_FillOutTheProfile"
+        app:layout_constraintTop_toBottomOf="@+id/tvSubTitle"
         app:passwordToggleEnabled="false">
 
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_EnterEmail"
+            android:id="@+id/etEmail"
             style="@style/TextInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -68,7 +68,7 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_Password"
+        android:id="@+id/tilPassword"
         style="@style/TextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -80,15 +80,15 @@
         app:errorTextColor="@color/design_default_color_error"
         app:hintTextAppearance="@style/TextInputLayoutHintText"
         app:hintTextColor="@color/gray"
-        app:layout_constraintBottom_toTopOf="@+id/cb_Remember"
+        app:layout_constraintBottom_toTopOf="@+id/cbRemember"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/til_Email"
+        app:layout_constraintTop_toBottomOf="@+id/tilEmail"
         app:passwordToggleEnabled="true"
         app:passwordToggleTint="@color/gray_very_light">
 
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_TextPassword"
+            android:id="@+id/etPassword"
             style="@style/TextInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -98,7 +98,7 @@
 
 
     <androidx.appcompat.widget.AppCompatCheckBox
-        android:id="@+id/cb_Remember"
+        android:id="@+id/cbRemember"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/white_my"
@@ -108,16 +108,16 @@
         android:text="@string/checkbox"
         android:textColor="@color/white_my"
         android:theme="@style/TextStyBasic"
-        app:layout_constraintBottom_toTopOf="@+id/cuv_Google"
+        app:layout_constraintBottom_toTopOf="@+id/cvGoogle"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/til_Password" />
+        app:layout_constraintTop_toBottomOf="@+id/tilPassword" />
 
     <com.shpp.ssierykh.assignment1.utils.GoogleCustomView
-        android:id="@+id/cuv_Google"
+        android:id="@+id/cvGoogle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:colorBackgroundGoogle="@color/gray_very_light"
-        app:layout_constraintBottom_toTopOf="@+id/tv_separator_or"
+        app:layout_constraintBottom_toTopOf="@+id/tvSeparator"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:textSizeGoogle="@dimen/textSize_18sp"
@@ -125,7 +125,7 @@
         />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_separator_or"
+        android:id="@+id/tvSeparator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -135,12 +135,12 @@
         android:textColor="@color/gray_very_light"
         android:textSize="@dimen/textSize_18sp"
         android:theme="@style/TextStyBasic"
-        app:layout_constraintBottom_toTopOf="@+id/bt_Register"
-        app:layout_constraintEnd_toEndOf="@+id/til_Email"
-        app:layout_constraintStart_toStartOf="@+id/til_Email" />
+        app:layout_constraintBottom_toTopOf="@+id/btRegister"
+        app:layout_constraintEnd_toEndOf="@+id/tilEmail"
+        app:layout_constraintStart_toStartOf="@+id/tilEmail" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/bt_Register"
+        android:id="@+id/btRegister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/horizontal_margin_16"
@@ -150,11 +150,11 @@
         android:textColor="@color/white"
         android:textSize="@dimen/textSize_16sp"
         android:theme="@style/TextStyBasic"
-        app:layout_constraintBottom_toTopOf="@+id/tv_ClickingRegisterYou"
-        app:layout_constraintEnd_toEndOf="@+id/til_Email" />
+        app:layout_constraintBottom_toTopOf="@+id/tvTerms"
+        app:layout_constraintEnd_toEndOf="@+id/tilEmail" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_ClickingRegisterYou"
+        android:id="@+id/tvTerms"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -164,12 +164,12 @@
         android:paddingEnd="@dimen/margin_offset_from_edge_screen_16dp"
         android:text="@string/by_clicking_register_you_agree_to_our_terms_and_conditionst"
         android:theme="@style/TextStyleSmall"
-        app:layout_constraintBottom_toTopOf="@+id/tv_AlreadyHaveAnAccount"
+        app:layout_constraintBottom_toTopOf="@+id/tvAlreadyHaveAnAccount"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_AlreadyHaveAnAccount"
+        android:id="@+id/tvAlreadyHaveAnAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/already_have_an_account"
@@ -180,7 +180,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_sign_in"
+        android:id="@+id/tvSignIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/blue"
@@ -191,7 +191,7 @@
         android:theme="@style/TextStyBasic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tv_AlreadyHaveAnAccount" />
+        app:layout_constraintStart_toEndOf="@+id/tvAlreadyHaveAnAccount" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

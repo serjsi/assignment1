@@ -24,7 +24,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_Name"
+            android:id="@+id/tvName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/name"
@@ -36,7 +36,7 @@
             app:layout_constraintTop_toTopOf="@+id/iv_Photo" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_Career"
+            android:id="@+id/tvCareer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/career"
@@ -44,11 +44,11 @@
             android:textSize="@dimen/textSize_12sp"
             android:theme="@style/TextStyBasic"
             app:layout_constraintBottom_toBottomOf="@+id/iv_Photo"
-            app:layout_constraintStart_toStartOf="@+id/tv_Name"
-            app:layout_constraintTop_toBottomOf="@+id/tv_Name" />
+            app:layout_constraintStart_toStartOf="@+id/tvName"
+            app:layout_constraintTop_toBottomOf="@+id/tvName" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/iv_Delete"
+        android:id="@+id/ivDelete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/horizontal_margin_16"
@@ -57,7 +57,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1"
-        app:layout_constraintStart_toEndOf="@+id/tv_Name"
+        app:layout_constraintStart_toEndOf="@+id/tvName"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

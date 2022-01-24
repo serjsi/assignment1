@@ -10,18 +10,18 @@
 
 
     <View
-        android:id="@+id/iv_TopContainer"
+        android:id="@+id/ivTopContainer"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="?attr/colorPrimaryVariant"
-        app:layout_constraintBottom_toTopOf="@+id/iv_BottomContainer"
+        app:layout_constraintBottom_toTopOf="@+id/ivBottomContainer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_weight="0.3" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_AddContacts"
+        android:id="@+id/tvAddContacts"
         style="@style/TextStyBasic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -30,62 +30,62 @@
         android:textColor="@color/gray_very_light"
         android:textSize="@dimen/textSize_18sp"
         android:theme="@style/TextStyBasic"
-        app:layout_constraintEnd_toEndOf="@+id/iv_TopContainer"
-        app:layout_constraintStart_toStartOf="@+id/iv_TopContainer"
-        app:layout_constraintTop_toTopOf="@+id/iv_TopContainer" />
+        app:layout_constraintEnd_toEndOf="@+id/ivTopContainer"
+        app:layout_constraintStart_toStartOf="@+id/ivTopContainer"
+        app:layout_constraintTop_toTopOf="@+id/ivTopContainer" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/iv_ArrowBack"
+        android:id="@+id/ivArrowBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="@dimen/margin_offset_from_edge_screen_16dp"
         android:paddingTop="@dimen/margin_offset_from_edge_screen_16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/iv_TopContainer"
-        app:layout_constraintTop_toTopOf="@+id/iv_TopContainer"
+        app:layout_constraintStart_toStartOf="@+id/ivTopContainer"
+        app:layout_constraintTop_toTopOf="@+id/ivTopContainer"
         app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/iv_PhotoProfile"
+        android:id="@+id/ivPhotoProfile"
         android:layout_width="@dimen/photo_width"
         android:layout_height="@dimen/photo_height"
-        app:layout_constraintBottom_toBottomOf="@+id/iv_TopContainer"
-        app:layout_constraintEnd_toEndOf="@+id/iv_TopContainer"
-        app:layout_constraintStart_toStartOf="@+id/iv_TopContainer"
-        app:layout_constraintTop_toBottomOf="@+id/tv_AddContacts"
+        app:layout_constraintBottom_toBottomOf="@+id/ivTopContainer"
+        app:layout_constraintEnd_toEndOf="@+id/ivTopContainer"
+        app:layout_constraintStart_toStartOf="@+id/ivTopContainer"
+        app:layout_constraintTop_toBottomOf="@+id/tvAddContacts"
         app:srcCompat="@drawable/ic_mok" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/iv_AddPhoto"
+        android:id="@+id/ivAddPhoto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/iv_TopContainer"
-        app:layout_constraintEnd_toEndOf="@+id/iv_TopContainer"
+        app:layout_constraintBottom_toBottomOf="@+id/ivTopContainer"
+        app:layout_constraintEnd_toEndOf="@+id/ivTopContainer"
         app:layout_constraintHorizontal_bias="0.4"
-        app:layout_constraintStart_toEndOf="@+id/iv_PhotoProfile"
-        app:layout_constraintTop_toBottomOf="@+id/tv_AddContacts"
+        app:layout_constraintStart_toEndOf="@+id/ivPhotoProfile"
+        app:layout_constraintTop_toBottomOf="@+id/tvAddContacts"
         app:srcCompat="@drawable/ic_add_photo_button" />
 
     <View
-        android:id="@+id/iv_BottomContainer"
+        android:id="@+id/ivBottomContainer"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="?attr/colorSecondary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_TopContainer"
+        app:layout_constraintTop_toBottomOf="@+id/ivTopContainer"
         app:layout_constraintVertical_weight="0.7" />
 
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/bt_Save"
+        app:layout_constraintBottom_toTopOf="@+id/btSave"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_TopContainer">
+        app:layout_constraintTop_toBottomOf="@+id/ivTopContainer">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -95,15 +95,15 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_UserName"
+                android:id="@+id/tilUserName"
                 style="@style/TextInputLayout"
                 android:layout_marginBottom="@dimen/vertical_margin_8"
                 android:hint="@string/username"
-                app:layout_constraintBottom_toTopOf="@+id/til_Career">
+                app:layout_constraintBottom_toTopOf="@+id/tilCareer">
 
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_UserName"
+                    android:id="@+id/etUserName"
                     style="@style/TextInputEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -112,14 +112,14 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_Career"
+                android:id="@+id/tilCareer"
                 style="@style/TextInputLayout"
                 android:layout_marginBottom="@dimen/vertical_margin_8"
                 android:hint="@string/career">
 
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_Career"
+                    android:id="@+id/etCareer"
                     style="@style/TextInputEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -128,14 +128,14 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_Email"
+                android:id="@+id/tilEmail"
                 style="@style/TextInputLayout"
                 android:layout_marginBottom="@dimen/vertical_margin_8"
                 android:hint="@string/e_mail">
 
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_Email"
+                    android:id="@+id/etEmailA"
                     style="@style/TextInputEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -144,14 +144,14 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_Phone"
+                android:id="@+id/tilPhone"
                 style="@style/TextInputLayout"
                 android:layout_marginBottom="@dimen/vertical_margin_8"
                 android:hint="@string/phone">
 
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_Phone"
+                    android:id="@+id/etPhone"
                     style="@style/TextInputEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -160,13 +160,13 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_Address"
+                android:id="@+id/tilAddress"
                 style="@style/TextInputLayout"
                 android:layout_marginBottom="@dimen/vertical_margin_8"
                 android:hint="@string/address">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_Address"
+                    android:id="@+id/etAddress"
                     style="@style/TextInputEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -175,14 +175,14 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_DateOfBirth"
+                android:id="@+id/tilDateOfBirth"
                 style="@style/TextInputLayout"
                 android:layout_marginBottom="@dimen/vertical_margin_8"
                 android:hint="@string/date_of_birth">
 
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_DateOfBirth"
+                    android:id="@+id/etDateOfBirth"
                     style="@style/TextInputEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -194,7 +194,7 @@
     </ScrollView>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/bt_Save"
+        android:id="@+id/btSave"
         style="@style/TextStyBasic"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -204,9 +204,9 @@
         android:text="@string/save"
         android:textColor="?attr/colorOnPrimary"
         android:textSize="@dimen/textSize_16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/iv_BottomContainer"
+        app:layout_constraintBottom_toBottomOf="@+id/ivBottomContainer"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/iv_BottomContainer" />
+        app:layout_constraintStart_toStartOf="@+id/ivBottomContainer" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

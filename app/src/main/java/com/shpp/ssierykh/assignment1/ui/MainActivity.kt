@@ -161,7 +161,7 @@ class MainActivity : AppCompatActivity() {
             binding.cvGoogle.clickWithDebounce {
                 val intent = Intent(this@MainActivity, MyProfileActivity::class.java)
                 intent.putExtra(EMAIL_EXTRA, "serhii.sierykh@gmail.com")
-                intent.putExtra(PHOTO_EXTRA, R.mipmap.ic_kot)
+                intent.putExtra(PHOTO_EXTRA, R.mipmap.ic_kot_round)
                 startActivity(intent)
                 //Animation
                 finish()

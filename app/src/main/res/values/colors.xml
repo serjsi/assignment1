@@ -22,5 +22,10 @@
     <color name="yellow_google_custom">#FABB05</color>
     <color name="green_google_custom">#34A852</color>
     <color name="backgraund_google_custom">#FAFAFA</color>
+    <color name="light_blue_600">#FF039BE5</color>
+    <color name="light_blue_900">#FF01579B</color>
+    <color name="light_blue_A200">#FF40C4FF</color>
+    <color name="light_blue_A400">#FF00B0FF</color>
+    <color name="black_overlay">#66000000</color>
 
 </resources>

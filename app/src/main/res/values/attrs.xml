@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="GoogleCustomView">
-        <attr name="colorBackgroundGoogle" format="color"/>
-        <attr name="textColorsGoogle" format="string"/>
-        <attr name="textSizeGoogle" format="dimension"/>
-        <attr name="cornerBackground" format="dimension"/>
-        <attr name="marginGoogleX" format="dimension"/>
-        <attr name="marginGoogleY" format="dimension"/>
-        <attr name="rotationG" format="dimension"/>
-        <attr name="duration_animation" format="dimension"/>
-        <attr name="move_letter_animation" format="dimension"/>
+        <attr name="colorBackgroundGoogle" format="color" />
+        <attr name="textColorsGoogle" format="string" />
+        <attr name="textSizeGoogle" format="dimension" />
+        <attr name="cornerBackground" format="dimension" />
+        <attr name="marginGoogleX" format="dimension" />
+        <attr name="marginGoogleY" format="dimension" />
+        <attr name="rotationG" format="dimension" />
+        <attr name="duration_animation" format="dimension" />
+        <attr name="move_letter_animation" format="dimension" />
 
+    </declare-styleable>
+    <declare-styleable name="FullscreenAttrs">
+        <attr name="fullscreenBackgroundColor" format="color" />
+        <attr name="fullscreenTextColor" format="color" />
     </declare-styleable>
 
 

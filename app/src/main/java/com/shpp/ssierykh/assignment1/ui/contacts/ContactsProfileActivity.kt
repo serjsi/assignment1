@@ -34,7 +34,7 @@ class ContactsProfileActivity : AppCompatActivity() {
     private fun clickListener() {
         binding.ivArrowBack.setOnClickListener {
             finish()
-            overridePendingTransition(0, R.anim.slide_out_left)
+            overridePendingTransition(0, R.anim.slide_out)
         }
     }
 

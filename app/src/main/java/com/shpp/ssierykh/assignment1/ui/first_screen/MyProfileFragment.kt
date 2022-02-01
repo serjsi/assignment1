@@ -12,25 +12,7 @@ import com.shpp.ssierykh.assignment1.ui.contract.routing
 
 class MyProfileFragment : Fragment() {
 
-/*        override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
-        ): View? {
-            // Inflate the layout for this fragment
-            val v = inflater.inflate(R.layout.fragment_my_profile_, container, false)
 
-            // Get the activity and widget
-            val context = activity as AppCompatActivity
-            val btnNavigate: Button = v.findViewById(R.id.btEditProfile)
-
-            // Replace fragment
-            btnNavigate.setOnClickListener {
-                context.replaceFragment(SignFragment())
-            }
-
-            return v
-        }*/
 /*override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     options = savedInstanceState?.getParcelable(KEY_OPTIONS) ?: Options.DEFAULT

@@ -63,7 +63,7 @@ class MyContactsActivity : AppCompatActivity(), AdapterContacts.OnItemClickListe
         intent.putExtra(Constants.CAREER_EXTRA, clickedItem.career)
         startActivity(intent)
         //Animation
-        overridePendingTransition(0, R.anim.slide_out_right)
+        overridePendingTransition(0, R.anim.slide_out)
 
     }
 

@@ -15,8 +15,8 @@
     <action
         android:id="@+id/action_global_mainActivity"
         app:destination="@id/mainActivity"
-        app:enterAnim="@anim/slide_in_left"
-        app:exitAnim="@anim/slide_in_right"
-        app:popEnterAnim="@anim/slide_out_left"
-        app:popExitAnim="@anim/slide_out_right" />
+        app:enterAnim="@anim/slide_in"
+        app:exitAnim="@anim/slide_out"
+        app:popEnterAnim="@anim/fade_in"
+        app:popExitAnim="@android:anim/fade_out" />
 </navigation>

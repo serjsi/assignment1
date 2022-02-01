@@ -48,7 +48,7 @@ class MyProfileActivity : AppCompatActivity() {
             startActivity(intent)
             //Animation
 
-            overridePendingTransition(0, R.anim.slide_out_left)
+            overridePendingTransition(0, R.anim.slide_out)
 
         }
     }
@@ -60,7 +60,7 @@ class MyProfileActivity : AppCompatActivity() {
             startActivity(intent)
             //Animation
             finish()
-            overridePendingTransition(0, R.anim.slide_out_left)
+            overridePendingTransition(0, R.anim.slide_out)
 
         }
     }

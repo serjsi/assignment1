@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
                     startActivity(intent)
                     finish()
                     //Animation
-                    overridePendingTransition(0, R.anim.slide_out_right)
+                    overridePendingTransition(0, R.anim.slide_in)
                     btRegister.isClickable = false
                     saveAutologin()
                 } else {
@@ -165,7 +165,7 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
                 //Animation
                 finish()
-                overridePendingTransition(0, R.anim.slide_out_right)
+                overridePendingTransition(0, R.anim.slide_in)
             }
         }
     }

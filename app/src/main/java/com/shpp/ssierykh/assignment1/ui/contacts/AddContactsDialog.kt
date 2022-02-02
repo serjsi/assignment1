@@ -16,7 +16,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.widget.doOnTextChanged
 import com.shpp.ssierykh.assignment1.data.ContactForRecyclerView
 import com.shpp.ssierykh.assignment1.databinding.DialogAddContactProfileBinding
-import com.shpp.ssierykh.assignment1.utils.Validators.isValidEmail
+import com.shpp.ssierykh.assignment1.utils.Validators.isValidateEmail
 
 
 class AddContactsDialog(private var onDateSelectedListener: OnAddContactListener) :
@@ -95,7 +95,7 @@ class AddContactsDialog(private var onDateSelectedListener: OnAddContactListener
                     etEmailA.requestFocus()
                     return false
                 }
-                !isValidEmail(emailCheck) -> {
+                !isValidateEmail(etEmailA) -> {
                     tilEmail.error = getString(R.string.message_wromg_e_mail)
                     etEmailA.requestFocus()
                     return false

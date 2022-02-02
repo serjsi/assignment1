@@ -17,8 +17,8 @@ import com.shpp.ssierykh.assignment1.utils.Constants.TEST_EMAIL
 import com.shpp.ssierykh.assignment1.utils.Constants.TEST_PASSWORD
 import com.shpp.ssierykh.assignment1.data.PreferenceStorage
 import com.shpp.ssierykh.assignment1.databinding.ActivityMainBinding
-import com.shpp.ssierykh.assignment1.utils.Validators.isValidEmail
-import com.shpp.ssierykh.assignment1.utils.Validators.validatePassword
+import com.shpp.ssierykh.assignment1.utils.Validators.isValidateEmail
+import com.shpp.ssierykh.assignment1.utils.Validators.messageValidationPassword
 import com.shpp.ssierykh.assignment1.utils.extensions.clickWithDebounce
 
 
@@ -82,7 +82,7 @@ class MainActivity : AppCompatActivity() {
                     etEmail.requestFocus()
                     return false
                 }
-                !isValidEmail(emailCheck) -> {
+                !isValidateEmail(etEmail) -> {
                     tilEmail.error = getString(R.string.message_wromg_e_mail)
                     etEmail.requestFocus()
                     return false
@@ -101,11 +101,11 @@ class MainActivity : AppCompatActivity() {
      */
     private fun isValidatePassword(): Boolean {
         binding.apply {
-            val passwordChek = binding.etPassword.text.toString()
+
             //validatePassword(passwordChek)
-            return if (validatePassword(passwordChek) != 0) {
+            return if (messageValidationPassword(etPassword) != 0) {
                 tilPassword.error =
-                    getString(validatePassword(passwordChek))
+                    getString(messageValidationPassword(etPassword))
                 etPassword.requestFocus()
                 false
             } else {
@@ -160,7 +160,7 @@ class MainActivity : AppCompatActivity() {
 
             binding.cvGoogle.clickWithDebounce {
                 val intent = Intent(this@MainActivity, MyProfileActivity::class.java)
-                intent.putExtra(EMAIL_EXTRA, "serhii.sierykh@gmail.com")
+                intent.putExtra(EMAIL_EXTRA, getString(R.string.fake_mail))
                 intent.putExtra(PHOTO_EXTRA, R.mipmap.ic_kot_round)
                 startActivity(intent)
                 //Animation

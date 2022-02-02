@@ -1,16 +1,24 @@
 package com.shpp.ssierykh.assignment1.utils
 
-import com.shpp.ssierykh.assignment1.utils.Constants
+import com.google.android.material.textfield.TextInputEditText
 import com.shpp.ssierykh.assignment1.R
 
 object Validators {
 
+
+
+  fun isValidatePassword(password : TextInputEditText): Boolean {
+            return messageValidationPassword(password) == R.string.stop_validation
+  }
+
+
     /**
      * Сhecking validate password
-     * @param passwordChek input password
-     * @return 0 if matches with else push
+     *  @param password input email
+     * @return stop_validation if matches with else push
      */
-    fun validatePassword(passwordChek: String): Int {
+    fun messageValidationPassword(password : TextInputEditText): Int {
+        val passwordChek = password.text.toString()
         when {
             //checking is empty
             passwordChek.isEmpty() -> {
@@ -39,17 +47,18 @@ object Validators {
             }
         }
 
-        return 0
+        return R.string.stop_validation
     }
 
 
 
     /**
      * checking pattern of email
-     * @param email input email
+     * @param emailIn input email
      * @return true if matches with email address else false
      */
-    fun isValidEmail(email: String): Boolean {
+    fun isValidateEmail(emailIn: TextInputEditText): Boolean {
+        val email = emailIn.text.toString()
         return email.contains(
             Regex(
                 "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" +

@@ -51,4 +51,6 @@
     <string name="is_restored"> is restored!</string>
     <string name="is_add"> is add!</string>
     <string name="UNDO"> UNDO</string>
+    <string name="stop_validation" translatable="false"> stop_validation</string>
+    <string name="fake_mail" translatable="false">serhii.sierykh@gmail.com</string>
 </resources>

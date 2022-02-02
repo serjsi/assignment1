@@ -1,6 +1,5 @@
 package com.shpp.ssierykh.assignment1.ui.first_screen
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,18 +9,16 @@ import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import com.shpp.ssierykh.assignment1.R
 import com.shpp.ssierykh.assignment1.databinding.FragmentSignBinding
-import com.shpp.ssierykh.assignment1.ui.MyProfileActivity
 import com.shpp.ssierykh.assignment1.ui.contract.routing
 import com.shpp.ssierykh.assignment1.utils.Constants
 import com.shpp.ssierykh.assignment1.utils.Validators.isValidateEmail
 import com.shpp.ssierykh.assignment1.utils.Validators.isValidatePassword
 import com.shpp.ssierykh.assignment1.utils.Validators.messageValidationPassword
 import com.shpp.ssierykh.assignment1.utils.extensions.clickWithDebounce
-import com.shpp.ssierykh.assignment1.utils.extensions.toast
 
 
 class SignFragment : Fragment() {
-            var press = false
+            var pressRegistration = false
     /*
 
     *//*override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,20 +44,15 @@ class SignFragment : Fragment() {
         return binding.root
     }
 
-
-    private fun onOpenMayProfile() {
-        routing().showMyProfileScreen()
-    }
-
-
     private fun setupListeners() {
         binding.apply {
-            setTextForValidation()
+            showMessageErrorAfterClicking()
             //Switching to another screen
             btRegister.setOnClickListener {
                 checkingTextAfterClicking()
                 if (isValidateEmail(etEmail) && isValidatePassword(etPassword)) {
                     routing().showMyProfileScreen()
+                    pressRegistration = false
                 }
 
                 //Stores the values
@@ -79,21 +71,21 @@ class SignFragment : Fragment() {
     }
 
     private fun FragmentSignBinding.checkingTextAfterClicking() {
-        press = true
+        pressRegistration = true
         if (!isValidateEmail(etEmail)) tilEmail.error = getString(R.string.message_wromg_e_mail)
         if (!isValidatePassword(etPassword)) tilPassword.error =
             getString(messageValidationPassword(etPassword))
     }
 
-    private fun FragmentSignBinding.setTextForValidation() {
+    private fun FragmentSignBinding.showMessageErrorAfterClicking() {
         etEmail.doOnTextChanged { _, _, _, _ ->
-            if (!isValidateEmail(etEmail) && press) {
+            if (!isValidateEmail(etEmail) && pressRegistration) {
                 tilEmail.error = getString(R.string.message_wromg_e_mail)
             } else tilEmail.isErrorEnabled = false
         }
 
         etPassword.doOnTextChanged { _, _, _, _ ->
-            if (!isValidatePassword(etPassword) && press) {
+            if (!isValidatePassword(etPassword) && pressRegistration) {
                 tilPassword.error = getString(messageValidationPassword(etPassword))
             } else tilPassword.isErrorEnabled = false
         }

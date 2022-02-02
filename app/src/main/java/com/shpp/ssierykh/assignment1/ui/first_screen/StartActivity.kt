@@ -18,7 +18,12 @@ class StartActivity : AppCompatActivity(), Routing {
         setContentView(R.layout.activity_start)
 
         // Initially display the first fragment in main activity
-        replaceFragment(SignFragment())
+        if (savedInstanceState == null) {
+            supportFragmentManager
+                .beginTransaction()
+                .add(R.id.host,SignFragment())
+                .commit()
+        }
     }
 
     override fun showMyProfileScreen() {

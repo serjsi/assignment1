@@ -8,6 +8,8 @@ import com.shpp.ssierykh.assignment1.R
 import com.shpp.ssierykh.assignment1.databinding.ActivityStartBinding
 import com.shpp.ssierykh.assignment1.ui.contract.Routing
 import com.shpp.ssierykh.assignment1.ui.first_screen.my_profile.MyProfileFragment
+import com.shpp.ssierykh.assignment1.ui.first_screen.my_profile.edit_profile.AddOrEditContactsDialogFragment
+import com.shpp.ssierykh.assignment1.ui.first_screen.my_profile.view_my_contacts.MyContactsFragment
 import com.shpp.ssierykh.assignment1.ui.first_screen.sign.SignFragment
 
 
@@ -34,6 +36,14 @@ class StartActivity : AppCompatActivity(), Routing {
 
     override fun showSignScreen() {
       replaceFragment(SignFragment())
+    }
+
+    override fun showAddOrEditContacts() {
+        replaceFragment(AddOrEditContactsDialogFragment())
+    }
+
+    override fun showMyContacts() {
+       replaceFragment(MyContactsFragment())
     }
 
     override fun goBack() {

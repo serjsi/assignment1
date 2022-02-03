@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.shpp.ssierykh.assignment1.R
-import com.shpp.ssierykh.assignment1.data.ContactForRecyclerView
 import com.shpp.ssierykh.assignment1.data.FakeBaseContacts.fakeBase
 import com.shpp.ssierykh.assignment1.databinding.ActivityMyContactsBinding
 import com.shpp.ssierykh.assignment1.utils.Constants

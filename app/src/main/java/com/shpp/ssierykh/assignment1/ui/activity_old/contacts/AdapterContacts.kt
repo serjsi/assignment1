@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.shpp.ssierykh.assignment1.databinding.SingleItemContactBinding
 import android.view.View
-import com.shpp.ssierykh.assignment1.data.ContactForRecyclerView
 import com.shpp.ssierykh.assignment1.utils.extensions.clickWithDebounce
 import com.shpp.ssierykh.assignment1.utils.extensions.loadImageGlade
 

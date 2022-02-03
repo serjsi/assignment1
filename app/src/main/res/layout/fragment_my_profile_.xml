@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -15,8 +16,7 @@
         android:background="?attr/colorPrimaryVariant"
         app:layout_constraintBottom_toTopOf="@id/ivBottomContainer"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_weight="0.5"
-        />
+        app:layout_constraintVertical_weight="0.5" />
 
 
     <View
@@ -26,8 +26,7 @@
         android:background="?attr/colorSecondary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ivTopContainer"
-        app:layout_constraintVertical_weight="0.5"
-        />
+        app:layout_constraintVertical_weight="0.5" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvSettings"
@@ -61,8 +60,8 @@
         style="@style/TextStyBasic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/vertical_margin_24"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/vertical_margin_24"
         android:text="@string/home_address"
         android:textColor="@color/white_my"
         app:layout_constraintBottom_toBottomOf="@+id/ivTopContainer"
@@ -75,8 +74,8 @@
         style="@style/TextStyBasic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/vertical_margin_16"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/vertical_margin_16"
         android:text="@string/career"
         android:textColor="@color/white_my"
         app:layout_constraintBottom_toTopOf="@+id/tvHomeAddress"
@@ -96,8 +95,7 @@
         app:layout_constraintBottom_toTopOf="@+id/tvCareer"
         app:layout_constraintEnd_toEndOf="@+id/ivTopContainer"
         app:layout_constraintStart_toStartOf="@+id/ivTopContainer"
-        app:layout_constraintTop_toBottomOf="@+id/ivPhotoProfile"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/ivPhotoProfile" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvGoToSettingsAndFill"

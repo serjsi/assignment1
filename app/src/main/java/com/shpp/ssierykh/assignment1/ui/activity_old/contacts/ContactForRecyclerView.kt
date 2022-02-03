@@ -1,4 +1,4 @@
-package com.shpp.ssierykh.assignment1.data
+package com.shpp.ssierykh.assignment1.ui.activity_old.contacts
 
 // this is the Contacts model class
 data class ContactForRecyclerView(

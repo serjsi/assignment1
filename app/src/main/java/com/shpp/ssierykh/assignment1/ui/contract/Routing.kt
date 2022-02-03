@@ -10,5 +10,7 @@ fun Fragment.routing(): Routing {
 interface Routing {
     fun showMyProfileScreen()
     fun showSignScreen()
+    fun showAddOrEditContacts()
+    fun showMyContacts()
     fun goBack()
 }

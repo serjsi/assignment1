@@ -1,4 +1,4 @@
-package com.shpp.ssierykh.assignment1.ui.activity_old.contacts
+package com.shpp.ssierykh.assignment1.ui.first_screen.my_profile.edit_profile
 
 
 import android.os.Bundle
@@ -14,11 +14,13 @@ import com.shpp.ssierykh.assignment1.R
 import android.content.Intent
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.widget.doOnTextChanged
+import com.shpp.ssierykh.assignment1.ui.activity_old.contacts.ContactForRecyclerView
 import com.shpp.ssierykh.assignment1.databinding.DialogAddOrEditContactProfileBinding
+import com.shpp.ssierykh.assignment1.ui.contract.routing
 import com.shpp.ssierykh.assignment1.utils.Validators.isValidateEmail
 
 
-class AddContactsDialogFragment(private var onDateSelectedListener: OnAddContactListener) :
+class AddOrEditContactsDialogFragment() :
     DialogFragment() {
 
 
@@ -30,13 +32,14 @@ class AddContactsDialogFragment(private var onDateSelectedListener: OnAddContact
     private lateinit var binding: DialogAddOrEditContactProfileBinding
 
     private val imageAvatar = 0
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
 
         binding = DialogAddOrEditContactProfileBinding.inflate(inflater, container, false)
-        binding.ivArrowBack.setOnClickListener { dismiss() }
+        binding.ivArrowBack.setOnClickListener {goBackMyProfile() }
 
         saveContact()
 
@@ -57,12 +60,18 @@ class AddContactsDialogFragment(private var onDateSelectedListener: OnAddContact
 
     }
 
+
     override fun onResume() {
         super.onResume()
         val params: WindowManager.LayoutParams? = dialog?.window?.attributes
         params?.width = WindowManager.LayoutParams.MATCH_PARENT
         params?.height = WindowManager.LayoutParams.MATCH_PARENT
         dialog?.onWindowAttributesChanged(params)
+    }
+
+
+    private fun goBackMyProfile() {
+        routing().goBack()
     }
 
 
@@ -76,10 +85,12 @@ class AddContactsDialogFragment(private var onDateSelectedListener: OnAddContact
                 val selectedDate =
                     ContactForRecyclerView(Constants.PHOTO_FAKE_1, userName, career)
                 dismiss()
-                onDateSelectedListener.onAddContact(selectedDate)
+             /*   onDateSelectedListener.onAddContact(selectedDate)*/////////////////////////////////////
             }
         }
     }
+
+
 
     /**
      * Checking validate E-mail

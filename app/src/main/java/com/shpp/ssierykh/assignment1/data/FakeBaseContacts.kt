@@ -1,5 +1,6 @@
 package com.shpp.ssierykh.assignment1.data
 
+import com.shpp.ssierykh.assignment1.ui.activity_old.contacts.ContactForRecyclerView
 import com.shpp.ssierykh.assignment1.utils.Constants
 
 object FakeBaseContacts {

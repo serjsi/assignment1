@@ -18,7 +18,8 @@ import com.shpp.ssierykh.assignment1.utils.extensions.clickWithDebounce
 
 
 class SignFragment : Fragment() {
-            var pressRegistration = false
+    var pressRegistration = false
+
     /*
 
     *//*override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,7 +41,7 @@ class SignFragment : Fragment() {
         //  binding.btRegister.setOnClickListener { onOpenMayProfile() }
         setupListeners()
         // loadAutologin()
-          forTestMethod()
+        forTestMethod()
         return binding.root
     }
 
@@ -101,15 +102,15 @@ class SignFragment : Fragment() {
 
             //Handle pressing the "SignIn" google:
 
-    /*        binding.cvGoogle.clickWithDebounce {
-                val intent = Intent(this@MainActivity, MyProfileActivity::class.java)
-                intent.putExtra(Constants.EMAIL_EXTRA, getString(R.string.fake_mail))
-                intent.putExtra(Constants.PHOTO_EXTRA, R.mipmap.ic_kot_round)
-                startActivity(intent)
-                //Animation
-                finish()
-                overridePendingTransition(0, R.anim.slide_in)
-            }*/
+            /*        binding.cvGoogle.clickWithDebounce {
+                        val intent = Intent(this@MainActivity, MyProfileActivity::class.java)
+                        intent.putExtra(Constants.EMAIL_EXTRA, getString(R.string.fake_mail))
+                        intent.putExtra(Constants.PHOTO_EXTRA, R.mipmap.ic_kot_round)
+                        startActivity(intent)
+                        //Animation
+                        finish()
+                        overridePendingTransition(0, R.anim.slide_in)
+                    }*/
         }
     }
     //////////////////////////////////////////////////////////////////////////////////

@@ -1,4 +1,4 @@
-package com.shpp.ssierykh.assignment1.ui
+package com.shpp.ssierykh.assignment1.ui.activity_old
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -9,7 +9,7 @@ import com.shpp.ssierykh.assignment1.utils.Constants.HOME_ADDRESS_EXTRA
 import com.shpp.ssierykh.assignment1.utils.Constants.EMAIL_EXTRA
 import com.shpp.ssierykh.assignment1.utils.Constants.PHOTO_EXTRA
 import com.shpp.ssierykh.assignment1.databinding.ActivityMyProfileBinding
-import com.shpp.ssierykh.assignment1.ui.contacts.MyContactsActivity
+import com.shpp.ssierykh.assignment1.ui.activity_old.contacts.MyContactsActivity
 import com.shpp.ssierykh.assignment1.utils.ParsingEmailToName.parsingEmailToName
 import com.shpp.ssierykh.assignment1.utils.extensions.loadImageGlade
 

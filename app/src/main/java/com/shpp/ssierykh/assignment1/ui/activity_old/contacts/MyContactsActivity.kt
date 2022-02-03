@@ -1,4 +1,4 @@
-package com.shpp.ssierykh.assignment1.ui.contacts
+package com.shpp.ssierykh.assignment1.ui.activity_old.contacts
 
 import android.content.Intent
 import android.os.Bundle
@@ -18,7 +18,7 @@ import java.util.ArrayList
 
 
 class MyContactsActivity : AppCompatActivity(), AdapterContacts.OnItemClickListener,
-    AddContactsDialog.OnAddContactListener {
+    AddContactsDialogFragment.OnAddContactListener {
 
 
     // view binding for the activity
@@ -116,7 +116,7 @@ class MyContactsActivity : AppCompatActivity(), AdapterContacts.OnItemClickListe
 
     private fun setOnClickListener() {
         binding.tvAddContacts.setOnClickListener {
-            AddContactsDialog(this).show(supportFragmentManager, "customDialog")
+            AddContactsDialogFragment(this).show(supportFragmentManager, "customDialog")
         }
 
         binding.ivArrowBack.setOnClickListener { finish() }

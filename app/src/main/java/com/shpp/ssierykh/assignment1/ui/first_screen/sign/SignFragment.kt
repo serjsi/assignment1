@@ -1,4 +1,4 @@
-package com.shpp.ssierykh.assignment1.ui.first_screen
+package com.shpp.ssierykh.assignment1.ui.first_screen.sign
 
 import android.os.Bundle
 import android.view.LayoutInflater

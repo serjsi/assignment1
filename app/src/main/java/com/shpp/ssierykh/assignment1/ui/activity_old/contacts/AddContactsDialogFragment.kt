@@ -1,4 +1,4 @@
-package com.shpp.ssierykh.assignment1.ui.contacts
+package com.shpp.ssierykh.assignment1.ui.activity_old.contacts
 
 
 import android.os.Bundle
@@ -15,11 +15,11 @@ import android.content.Intent
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.widget.doOnTextChanged
 import com.shpp.ssierykh.assignment1.data.ContactForRecyclerView
-import com.shpp.ssierykh.assignment1.databinding.DialogAddContactProfileBinding
+import com.shpp.ssierykh.assignment1.databinding.DialogAddOrEditContactProfileBinding
 import com.shpp.ssierykh.assignment1.utils.Validators.isValidateEmail
 
 
-class AddContactsDialog(private var onDateSelectedListener: OnAddContactListener) :
+class AddContactsDialogFragment(private var onDateSelectedListener: OnAddContactListener) :
     DialogFragment() {
 
 
@@ -28,7 +28,7 @@ class AddContactsDialog(private var onDateSelectedListener: OnAddContactListener
     }
 
 
-    private lateinit var binding: DialogAddContactProfileBinding
+    private lateinit var binding: DialogAddOrEditContactProfileBinding
 
     private val imageAvatar = 0
     override fun onCreateView(
@@ -36,7 +36,7 @@ class AddContactsDialog(private var onDateSelectedListener: OnAddContactListener
         savedInstanceState: Bundle?,
     ): View {
 
-        binding = DialogAddContactProfileBinding.inflate(inflater, container, false)
+        binding = DialogAddOrEditContactProfileBinding.inflate(inflater, container, false)
         binding.ivArrowBack.setOnClickListener { dismiss() }
 
         saveContact()

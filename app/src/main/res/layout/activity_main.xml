@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="?attr/colorPrimaryVariant"
     android:padding="@dimen/margin_offset_from_edge_screen_16dp"
-    tools:context=".ui.MainActivity">
+    tools:context=".ui.activity_old.MainActivity">
 
 
     <androidx.appcompat.widget.AppCompatTextView

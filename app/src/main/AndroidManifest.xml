@@ -25,27 +25,21 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.activity_old.MainActivity"
             android:exported="true"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="fullSensor" >
 
-            <!--
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            -->
         </activity>
         <activity
-            android:name=".ui.MyProfileActivity"
+            android:name=".ui.activity_old.MyProfileActivity"
             android:exported="true"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="fullSensor" />
         <activity
-            android:name=".ui.contacts.ContactsProfileActivity"
+            android:name="com.shpp.ssierykh.assignment1.ui.activity_old.contacts.ContactsProfileActivity"
             android:exported="true"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="fullSensor" />
         <activity
-            android:name=".ui.contacts.MyContactsActivity"
+            android:name="com.shpp.ssierykh.assignment1.ui.activity_old.contacts.MyContactsActivity"
             android:exported="true"
             android:screenOrientation="fullSensor" />
     </application>

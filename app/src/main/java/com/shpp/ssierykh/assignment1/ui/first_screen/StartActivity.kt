@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment
 import com.shpp.ssierykh.assignment1.R
 import com.shpp.ssierykh.assignment1.databinding.ActivityStartBinding
 import com.shpp.ssierykh.assignment1.ui.contract.Routing
+import com.shpp.ssierykh.assignment1.ui.first_screen.my_profile.MyProfileFragment
+import com.shpp.ssierykh.assignment1.ui.first_screen.sign.SignFragment
 
 
 private lateinit var binding: ActivityStartBinding
@@ -21,7 +23,7 @@ class StartActivity : AppCompatActivity(), Routing {
         if (savedInstanceState == null) {
             supportFragmentManager
                 .beginTransaction()
-                .add(R.id.host,SignFragment())
+                .add(R.id.host, SignFragment())
                 .commit()
         }
     }

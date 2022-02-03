@@ -1,4 +1,4 @@
-package com.shpp.ssierykh.assignment1.ui
+package com.shpp.ssierykh.assignment1.ui.activity_old
 
 
 import android.content.Intent
@@ -103,7 +103,7 @@ class MainActivity : AppCompatActivity() {
         binding.apply {
 
             //validatePassword(passwordChek)
-            return if (messageValidationPassword(etPassword) != 0) {
+            return if (messageValidationPassword(etPassword) !=  R.string.stop_validation) {
                 tilPassword.error =
                     getString(messageValidationPassword(etPassword))
                 etPassword.requestFocus()

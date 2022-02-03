@@ -1,4 +1,4 @@
-package com.shpp.ssierykh.assignment1.ui.first_screen
+package com.shpp.ssierykh.assignment1.ui.first_screen.my_profile
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -28,7 +28,7 @@ class MyProfileFragment : Fragment() {
             this.options = it
         }*/
 
-        binding.btEditProfile.setOnClickListener { onOpenSignScreen() }
+        binding.tvSettings .setOnClickListener { onOpenSignScreen() }
 
 
         return binding.root

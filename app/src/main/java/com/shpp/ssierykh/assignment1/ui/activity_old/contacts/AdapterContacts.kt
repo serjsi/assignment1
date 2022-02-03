@@ -1,4 +1,4 @@
-package com.shpp.ssierykh.assignment1.ui.contacts
+package com.shpp.ssierykh.assignment1.ui.activity_old.contacts
 
 
 import android.view.LayoutInflater

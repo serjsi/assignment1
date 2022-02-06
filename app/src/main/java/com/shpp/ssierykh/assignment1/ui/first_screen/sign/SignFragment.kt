@@ -5,12 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.os.bundleOf
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.setFragmentResult
 import com.shpp.ssierykh.assignment1.R
 import com.shpp.ssierykh.assignment1.databinding.FragmentSignBinding
 import com.shpp.ssierykh.assignment1.ui.contract.routing
 import com.shpp.ssierykh.assignment1.utils.Constants
+import com.shpp.ssierykh.assignment1.utils.Constants.EMAIL_BANDLE_KEY
+import com.shpp.ssierykh.assignment1.utils.Constants.PHOTO_BANDLE_KEY
+import com.shpp.ssierykh.assignment1.utils.Constants.REQEUST_KEY_USER
 import com.shpp.ssierykh.assignment1.utils.Validators.isValidateEmail
 import com.shpp.ssierykh.assignment1.utils.Validators.isValidatePassword
 import com.shpp.ssierykh.assignment1.utils.Validators.messageValidationPassword
@@ -45,6 +50,7 @@ class SignFragment : Fragment() {
         return binding.root
     }
 
+
     private fun setupListeners() {
         binding.apply {
             showMessageErrorAfterClicking()
@@ -53,6 +59,10 @@ class SignFragment : Fragment() {
                 checkingTextAfterClicking()
                 if (isValidateEmail(etEmail) && isValidatePassword(etPassword)) {
                     routing().showMyProfileScreen()
+                    setFragmentResult(REQEUST_KEY_USER,
+                        bundleOf(EMAIL_BANDLE_KEY to etEmail.text.toString(),
+                            PHOTO_BANDLE_KEY to R.drawable.lucile)
+                    )
                     pressRegistration = false
                 }
 

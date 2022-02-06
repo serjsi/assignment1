@@ -67,15 +67,21 @@ object Constants {
     const val DEFAULT_MARGIN_Y_GOOGLE = 5F
     const val DEFAULT_CORNER_RADIUS = 5F
     const val DEFAULT_TURN_G = 0F
-    const val DEFAULT_COLOR_BACKGRAUND_GOOGLE ="#FAFAFA"
-    const val DEFAULT_COLOR_BLUE_GOOGLE ="#4285F4"
-    const val DEFAULT_COLOR_RED_GOOGLE ="#EB4335"
-    const val DEFAULT_COLOR_YELLOW_GOOGLE ="#FBBC05"
-    const val DEFAULT_COLOR_GREEN_GOOGLE ="#34A853"
-    const val DEGREE_360_ANGLE =360F
-    const val DEGREE_180_ANGLE =180F
-    const val DURATION_ANIMATION_GOOGLE =500L
+    const val DEFAULT_COLOR_BACKGRAUND_GOOGLE = "#FAFAFA"
+    const val DEFAULT_COLOR_BLUE_GOOGLE = "#4285F4"
+    const val DEFAULT_COLOR_RED_GOOGLE = "#EB4335"
+    const val DEFAULT_COLOR_YELLOW_GOOGLE = "#FBBC05"
+    const val DEFAULT_COLOR_GREEN_GOOGLE = "#34A853"
+    const val DEGREE_360_ANGLE = 360F
+    const val DEGREE_180_ANGLE = 180F
+    const val DURATION_ANIMATION_GOOGLE = 500L
     const val MOVE_LONG_BETWEEN_LATER = 10
 
+    // Bandle
+    const val REQEUST_KEY_USER = "requestKeyUser"
+    const val PHOTO_BANDLE_KEY = "photoBK"
+    const val EMAIL_BANDLE_KEY = "emailBK"
+    const val CAREER_BANDLE_KEY = "careerBK"
+    const val HOME_BANDLE_KEY = "addresBK"
 
 }

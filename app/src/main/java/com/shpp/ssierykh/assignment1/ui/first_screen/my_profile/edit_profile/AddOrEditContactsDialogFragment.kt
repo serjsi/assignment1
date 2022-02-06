@@ -13,10 +13,17 @@ import com.shpp.ssierykh.assignment1.R
 
 import android.content.Intent
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.os.bundleOf
 import androidx.core.widget.doOnTextChanged
+import androidx.fragment.app.setFragmentResult
 import com.shpp.ssierykh.assignment1.ui.activity_old.contacts.ContactForRecyclerView
 import com.shpp.ssierykh.assignment1.databinding.DialogAddOrEditContactProfileBinding
 import com.shpp.ssierykh.assignment1.ui.contract.routing
+import com.shpp.ssierykh.assignment1.utils.Constants.CAREER_BANDLE_KEY
+import com.shpp.ssierykh.assignment1.utils.Constants.EMAIL_BANDLE_KEY
+import com.shpp.ssierykh.assignment1.utils.Constants.HOME_BANDLE_KEY
+import com.shpp.ssierykh.assignment1.utils.Constants.PHOTO_BANDLE_KEY
+import com.shpp.ssierykh.assignment1.utils.Constants.REQEUST_KEY_USER
 import com.shpp.ssierykh.assignment1.utils.Validators.isValidateEmail
 
 
@@ -39,7 +46,7 @@ class AddOrEditContactsDialogFragment() :
     ): View {
 
         binding = DialogAddOrEditContactProfileBinding.inflate(inflater, container, false)
-        binding.ivArrowBack.setOnClickListener {goBackMyProfile() }
+        binding.ivArrowBack.setOnClickListener { goBackMyProfile() }
 
         saveContact()
 
@@ -80,18 +87,27 @@ class AddOrEditContactsDialogFragment() :
             etEmailA.doOnTextChanged { _, _, _, _ -> isValidateEmail() }
 
             btSave.setOnClickListener {
-                val userName = etUserName.text.toString()
-                val career = etCareer.text.toString()
-                val selectedDate =
-                    ContactForRecyclerView(Constants.PHOTO_FAKE_1, userName, career)
-                dismiss()
-             /*   onDateSelectedListener.onAddContact(selectedDate)*/////////////////////////////////////
+
+                /*   val selectedDate =
+                       ContactForRecyclerView(Constants.PHOTO_FAKE_1, userName, career)*/
+                setFragmentResult(
+                    REQEUST_KEY_USER,
+                    bundleOf(
+                        EMAIL_BANDLE_KEY to etUserName.text.toString(),
+                        PHOTO_BANDLE_KEY to R.drawable.lucile,
+                        CAREER_BANDLE_KEY to etCareer.text.toString(),
+                        HOME_BANDLE_KEY to etAddress.text.toString()
+                    ),
+                )
+                    routing().goBack()///////////////////////////////////////////////////////////////
+                //dismiss()
+
             }
         }
     }
 
 
-
+//TODO Corected
     /**
      * Checking validate E-mail
      */

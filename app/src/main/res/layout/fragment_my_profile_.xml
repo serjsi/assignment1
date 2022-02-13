@@ -16,8 +16,8 @@
         android:background="?attr/colorPrimaryVariant"
         app:layout_constraintBottom_toTopOf="@id/ivBottomContainer"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_weight="0.5" />
-
+        app:layout_constraintVertical_weight="0.5"
+        tools:layout_editor_absoluteX="0dp" />
 
     <View
         android:id="@+id/ivBottomContainer"
@@ -104,10 +104,12 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_margin="@dimen/margin_offset_from_edge_screen_16dp"
+        android:layout_marginBottom="16dp"
         android:text="@string/go_to_settings_and_fill_out_the_profile"
         android:textColor="@color/gray_text"
         app:layout_constraintBottom_toTopOf="@+id/btEditProfile"
         app:layout_constraintEnd_toEndOf="@+id/ivBottomContainer"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="@+id/ivBottomContainer" />
 
     <androidx.appcompat.widget.AppCompatButton

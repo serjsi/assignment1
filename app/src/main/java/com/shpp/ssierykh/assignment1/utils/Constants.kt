@@ -13,6 +13,7 @@ object Constants {
     const val REMEMBER_SP = "Remember"
     const val NAME_SP = "Name"
     const val PASSWORD_SP = "Password"
+    const val USER_PREFERENCES_NAME = "Name"
 
 
     //Photo fake contacts
@@ -83,5 +84,6 @@ object Constants {
     const val EMAIL_BANDLE_KEY = "emailBK"
     const val CAREER_BANDLE_KEY = "careerBK"
     const val HOME_BANDLE_KEY = "addresBK"
+    const val NAME_BANDLE_KEY = "nameBK"
 
 }

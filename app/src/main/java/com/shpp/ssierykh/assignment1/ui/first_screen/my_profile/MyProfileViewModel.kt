@@ -1,25 +1,32 @@
 package com.shpp.ssierykh.assignment1.ui.first_screen.my_profile
 
+
+import android.util.Log
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.SavedStateHandle
+import androidx.lifecycle.MutableLiveData
+
 import androidx.lifecycle.ViewModel
+import com.shpp.ssierykh.assignment1.data.Contact
 
-class MyProfileViewModel(state : SavedStateHandle) : ViewModel() {
 
-    // Keep the key as a constant
-    companion object {
-        private val USER_KEY = "userId"
+class MyProfileViewModel : ViewModel() {
+    //TODO For test, later delete
+    init {
+        Log.i("MyProfileViewModel", "MyProfileViewModel created!")
+
     }
 
-    private val savedStateHandle = state
-
-    fun saveCurrentUser(userId: String) {
-        // Sets a new value for the object associated to the key.
-        savedStateHandle.set(USER_KEY, userId)
+    override fun onCleared() {
+        super.onCleared()
+        Log.i("MyProfileViewModel", "MyProfileViewModel destroyed!")
     }
 
-    fun getCurrentUser(): String {
-        // Gets the current value of the user id from the saved state handle
-        return savedStateHandle.get(USER_KEY)?: ""
+
+
+    private val _profileResource = MutableLiveData<Contact>()
+    val profilContact: LiveData<Contact> get() = _profileResource
+    fun setContact(profilContact: Contact) {
+        _profileResource.value = profilContact
     }
 }
+

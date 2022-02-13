@@ -14,6 +14,7 @@ import com.shpp.ssierykh.assignment1.R
 import android.content.Intent
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.widget.doOnTextChanged
+import com.shpp.ssierykh.assignment1.data.Contact
 import com.shpp.ssierykh.assignment1.databinding.DialogAddOrEditContactProfileBinding
 import com.shpp.ssierykh.assignment1.utils.Validators.isValidateEmail
 
@@ -23,7 +24,7 @@ class AddContactsDialogFragment(private var onDateSelectedListener: OnAddContact
 
 
     interface OnAddContactListener {
-        fun onAddContact(addItem: ContactForRecyclerView)
+        fun onAddContact(addItem: Contact)
     }
 
 
@@ -74,7 +75,7 @@ class AddContactsDialogFragment(private var onDateSelectedListener: OnAddContact
                 val userName = etUserName.text.toString()
                 val career = etCareer.text.toString()
                 val selectedDate =
-                    ContactForRecyclerView(Constants.PHOTO_FAKE_1, userName, career)
+                    Contact(Constants.PHOTO_FAKE_1, userName, career)
                 dismiss()
                 onDateSelectedListener.onAddContact(selectedDate)
             }

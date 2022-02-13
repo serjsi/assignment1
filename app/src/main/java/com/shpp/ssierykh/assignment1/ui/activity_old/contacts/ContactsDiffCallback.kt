@@ -1,10 +1,11 @@
 package com.shpp.ssierykh.assignment1.ui.activity_old.contacts
 
 import androidx.recyclerview.widget.DiffUtil
+import com.shpp.ssierykh.assignment1.data.Contact
 
 class ContactsDiffCallback(
-    private val oldList: List<ContactForRecyclerView>,
-    private val newList: List<ContactForRecyclerView>
+    private val oldList: List<Contact>,
+    private val newList: List<Contact>
 ) : DiffUtil.Callback() {
     override fun getOldListSize(): Int = oldList.size
 

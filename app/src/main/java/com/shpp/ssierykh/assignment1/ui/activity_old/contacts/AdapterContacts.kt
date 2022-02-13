@@ -6,14 +6,18 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.shpp.ssierykh.assignment1.databinding.SingleItemContactBinding
 import android.view.View
+import com.shpp.ssierykh.assignment1.data.Contact
+
 import com.shpp.ssierykh.assignment1.utils.extensions.clickWithDebounce
 import com.shpp.ssierykh.assignment1.utils.extensions.loadImageGlade
 
 
+
 class AdapterContacts(
-    private var contactForList: MutableList<ContactForRecyclerView>,
+    private var contactForList: MutableList<Contact>,
     private val listener: OnItemClickListener,
 ) : RecyclerView.Adapter<AdapterContacts.ViewHolder>() {
+
 
 
     // create an inner class with name ViewHolder

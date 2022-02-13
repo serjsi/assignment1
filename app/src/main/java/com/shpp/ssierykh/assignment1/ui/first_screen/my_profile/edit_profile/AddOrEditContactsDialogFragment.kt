@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.WindowManager
 import androidx.fragment.app.DialogFragment
-import com.shpp.ssierykh.assignment1.utils.Constants
 import com.shpp.ssierykh.assignment1.R
 
 
@@ -15,10 +14,12 @@ import android.content.Intent
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.os.bundleOf
 import androidx.core.widget.doOnTextChanged
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.setFragmentResult
-import com.shpp.ssierykh.assignment1.ui.activity_old.contacts.ContactForRecyclerView
+import com.shpp.ssierykh.assignment1.data.Contact
 import com.shpp.ssierykh.assignment1.databinding.DialogAddOrEditContactProfileBinding
 import com.shpp.ssierykh.assignment1.ui.contract.routing
+import com.shpp.ssierykh.assignment1.ui.first_screen.my_profile.MyProfileViewModel
 import com.shpp.ssierykh.assignment1.utils.Constants.CAREER_BANDLE_KEY
 import com.shpp.ssierykh.assignment1.utils.Constants.EMAIL_BANDLE_KEY
 import com.shpp.ssierykh.assignment1.utils.Constants.HOME_BANDLE_KEY
@@ -32,7 +33,7 @@ class AddOrEditContactsDialogFragment() :
 
 
     interface OnAddContactListener {
-        fun onAddContact(addItem: ContactForRecyclerView)
+        fun onAddContact(addItem: Contact)
     }
 
 
@@ -90,7 +91,12 @@ class AddOrEditContactsDialogFragment() :
 
                 /*   val selectedDate =
                        ContactForRecyclerView(Constants.PHOTO_FAKE_1, userName, career)*/
-                setFragmentResult(
+
+                val viewModel: MyProfileViewModel by activityViewModels()
+                viewModel.setContact(Contact( etEmailA.text.toString(),"",
+                    etUserName.text.toString(),etCareer.text.toString(),etAddress.text.toString()))
+
+             /*   setFragmentResult(
                     REQEUST_KEY_USER,
                     bundleOf(
                         EMAIL_BANDLE_KEY to etUserName.text.toString(),
@@ -98,9 +104,9 @@ class AddOrEditContactsDialogFragment() :
                         CAREER_BANDLE_KEY to etCareer.text.toString(),
                         HOME_BANDLE_KEY to etAddress.text.toString()
                     ),
-                )
+                )*/
                     routing().goBack()///////////////////////////////////////////////////////////////
-                //dismiss()
+
 
             }
         }

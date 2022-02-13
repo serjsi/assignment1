@@ -15,8 +15,8 @@ import com.shpp.ssierykh.assignment1.utils.Constants.PHOTO_EXTRA
 import com.shpp.ssierykh.assignment1.utils.Constants.REMEMBER_SP
 import com.shpp.ssierykh.assignment1.utils.Constants.TEST_EMAIL
 import com.shpp.ssierykh.assignment1.utils.Constants.TEST_PASSWORD
-import com.shpp.ssierykh.assignment1.data.PreferenceStorage
 import com.shpp.ssierykh.assignment1.databinding.ActivityMainBinding
+import com.shpp.ssierykh.assignment1.utils.PreferenceStorage
 import com.shpp.ssierykh.assignment1.utils.Validators.isValidateEmail
 import com.shpp.ssierykh.assignment1.utils.Validators.messageValidationPassword
 import com.shpp.ssierykh.assignment1.utils.extensions.clickWithDebounce

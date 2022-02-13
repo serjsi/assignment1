@@ -1,4 +1,4 @@
-package com.shpp.ssierykh.assignment1.data
+package com.shpp.ssierykh.assignment1.utils
 
 import android.content.Context
 

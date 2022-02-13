@@ -1,5 +1,6 @@
 package com.shpp.ssierykh.assignment1.ui.first_screen.sign
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,76 +8,66 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.os.bundleOf
 import androidx.core.widget.doOnTextChanged
+import androidx.datastore.dataStore
+import androidx.datastore.preferences.core.PreferenceDataStoreFactory
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.setFragmentResult
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.asLiveData
 import com.shpp.ssierykh.assignment1.R
+import com.shpp.ssierykh.assignment1.data.Contact
 import com.shpp.ssierykh.assignment1.databinding.FragmentSignBinding
 import com.shpp.ssierykh.assignment1.ui.contract.routing
+import com.shpp.ssierykh.assignment1.ui.first_screen.my_profile.MyProfileViewModel
 import com.shpp.ssierykh.assignment1.utils.Constants
 import com.shpp.ssierykh.assignment1.utils.Constants.EMAIL_BANDLE_KEY
 import com.shpp.ssierykh.assignment1.utils.Constants.PHOTO_BANDLE_KEY
 import com.shpp.ssierykh.assignment1.utils.Constants.REQEUST_KEY_USER
+
 import com.shpp.ssierykh.assignment1.utils.Validators.isValidateEmail
 import com.shpp.ssierykh.assignment1.utils.Validators.isValidatePassword
 import com.shpp.ssierykh.assignment1.utils.Validators.messageValidationPassword
+import com.shpp.ssierykh.assignment1.utils.data_store.SaveLoginDataStore
 import com.shpp.ssierykh.assignment1.utils.extensions.clickWithDebounce
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 
 class SignFragment : Fragment() {
     var pressRegistration = false
 
-    /*
-
-    *//*override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
-    options = savedInstanceState?.getParcelable(KEY_OPTIONS) ?: Options.DEFAULT
-}*/
     private lateinit var binding: FragmentSignBinding
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentSignBinding.inflate(inflater, container, false)
+        val viewModel: MyProfileViewModel by activityViewModels()
 
-        /*     navigator().listenResult(Options::class.java, viewLifecycleOwner) {
-            this.options = it
-        }*/
-
-        //  binding.btRegister.setOnClickListener { onOpenMayProfile() }
-        setupListeners()
-        // loadAutologin()
+        setupListeners(viewModel)
+       // observeData()
         forTestMethod()
+
         return binding.root
+
     }
 
 
-    private fun setupListeners() {
+    private fun setupListeners(viewModel: MyProfileViewModel) {
         binding.apply {
             showMessageErrorAfterClicking()
-            //Switching to another screen
-            btRegister.setOnClickListener {
+                  btRegister.setOnClickListener {
                 checkingTextAfterClicking()
                 if (isValidateEmail(etEmail) && isValidatePassword(etPassword)) {
+                viewModel.setContact(Contact(etEmail.text.toString()))
+
                     routing().showMyProfileScreen()
-                    setFragmentResult(REQEUST_KEY_USER,
-                        bundleOf(EMAIL_BANDLE_KEY to etEmail.text.toString(),
-                            PHOTO_BANDLE_KEY to R.drawable.lucile)
-                    )
                     pressRegistration = false
                 }
-
-                //Stores the values
-                /*      val intent = Intent(this@MainActivity, MyProfileActivity::class.java)
-                      intent.putExtra(Constants.EMAIL_EXTRA, etEmail.text.toString())
-                      intent.putExtra(Constants.PHOTO_EXTRA, R.drawable.lucile)
-                      startActivity(intent)
-                      finish()
-                      //Animation
-                      overridePendingTransition(0, R.anim.slide_in)
-                      btRegister.isClickable = false
-                      saveAutologin()*/
-
             }
         }
     }
@@ -102,6 +93,54 @@ class SignFragment : Fragment() {
         }
     }
 
+
+/*    private var autologin = SaveLoginDataStore(da)
+
+    //Stores the values
+    @DelicateCoroutinesApi
+    fun writeLoginDataStore(email: String, password: String, remember: Boolean) {
+        if (remember) {
+            GlobalScope.launch {
+                autologin.storeUser(email, password, remember)
+            }
+
+        } else {
+            GlobalScope.launch {
+                autologin.storeUser("", "", remember)
+
+            }
+
+        }
+    }
+    @SuppressLint("FragmentLiveDataObserve")
+    private fun observeData() {
+        //Check ChekBox
+        autologin.userRememberFlow.asLiveData().observe(this, {
+            if (it == true) {
+                //Updates remember
+                binding.cbRemember.isChecked = it
+
+                //Updates email
+                autologin.userEmailFlow.asLiveData().observe(this, { email ->
+                    if (email != null) {
+                        binding.etEmail.setText(email, TextView.BufferType.EDITABLE)
+                    }
+                })
+
+                //Updates password
+                autologin.userPasswordFlow.asLiveData().observe(this, { password ->
+                    if (password != null) {
+                        binding.etPassword.setText(
+                            password,
+                            TextView.BufferType.EDITABLE
+                        )
+                    }
+                })
+
+            }
+        })
+    }*/
+
     ////////////////////////////////test method////////////////////////////////////////
     private fun forTestMethod() {
         binding.apply {
@@ -110,18 +149,12 @@ class SignFragment : Fragment() {
                 etPassword.setText(Constants.TEST_PASSWORD, TextView.BufferType.EDITABLE)
             }
 
-            //Handle pressing the "SignIn" google:
-
-            /*        binding.cvGoogle.clickWithDebounce {
-                        val intent = Intent(this@MainActivity, MyProfileActivity::class.java)
-                        intent.putExtra(Constants.EMAIL_EXTRA, getString(R.string.fake_mail))
-                        intent.putExtra(Constants.PHOTO_EXTRA, R.mipmap.ic_kot_round)
-                        startActivity(intent)
-                        //Animation
-                        finish()
-                        overridePendingTransition(0, R.anim.slide_in)
-                    }*/
         }
+
+        setFragmentResult(REQEUST_KEY_USER,
+            bundleOf(EMAIL_BANDLE_KEY to binding.etEmail.text.toString(),
+                PHOTO_BANDLE_KEY to R.drawable.lucile)
+        )
     }
     //////////////////////////////////////////////////////////////////////////////////
 

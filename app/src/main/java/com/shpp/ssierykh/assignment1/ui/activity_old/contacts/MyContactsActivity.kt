@@ -9,7 +9,8 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.shpp.ssierykh.assignment1.R
-import com.shpp.ssierykh.assignment1.data.FakeBaseContacts.fakeBase
+import com.shpp.ssierykh.assignment1.data.Contact
+import com.shpp.ssierykh.assignment1.data.FakeBaseContacts_old_delete.fakeBase
 import com.shpp.ssierykh.assignment1.databinding.ActivityMyContactsBinding
 import com.shpp.ssierykh.assignment1.utils.Constants
 import kotlinx.android.synthetic.main.activity_my_contacts.*
@@ -26,7 +27,7 @@ class MyContactsActivity : AppCompatActivity(), AdapterContacts.OnItemClickListe
 
     // create reference to the adapter and the list
     // in the list pass the model of ContactsRecyclerView
-    private lateinit var contactList: MutableList<ContactForRecyclerView>
+    private lateinit var contactList: MutableList<Contact>
     private lateinit var rvAdapter: AdapterContacts
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -66,7 +67,7 @@ class MyContactsActivity : AppCompatActivity(), AdapterContacts.OnItemClickListe
 
     }
 
-    override fun onAddContact(addItem: ContactForRecyclerView) {
+    override fun onAddContact(addItem: Contact) {
         val oldList = ArrayList(contactList)
         contactList.add(addItem)
         contactList.sortBy { contactRecyclerView -> contactRecyclerView.name }
@@ -86,7 +87,7 @@ class MyContactsActivity : AppCompatActivity(), AdapterContacts.OnItemClickListe
         showSnackBar(position, deleteItem)
     }
 
-    private fun diffContactsOutAdapter(oldList: ArrayList<ContactForRecyclerView>) {
+    private fun diffContactsOutAdapter(oldList: ArrayList<Contact>) {
         val diffCallBack = ContactsDiffCallback(oldList, contactList)
         val diffResult = DiffUtil.calculateDiff(diffCallBack, true)
         diffResult.dispatchUpdatesTo(rvAdapter)
@@ -122,7 +123,7 @@ class MyContactsActivity : AppCompatActivity(), AdapterContacts.OnItemClickListe
     }
 
 
-    private fun showSnackBar(position: Int, deleteItem: ContactForRecyclerView) {
+    private fun showSnackBar(position: Int, deleteItem: Contact) {
         Snackbar.make(
             rvBottomContainer,
             "${getString(R.string.Contact)}  ${deleteItem.name} ${getString(R.string.is_deleted)} ",

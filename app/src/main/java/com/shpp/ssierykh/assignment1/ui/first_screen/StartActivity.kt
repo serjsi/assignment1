@@ -1,6 +1,7 @@
 package com.shpp.ssierykh.assignment1.ui.first_screen
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 
@@ -8,6 +9,7 @@ import com.shpp.ssierykh.assignment1.R
 import com.shpp.ssierykh.assignment1.databinding.ActivityStartBinding
 import com.shpp.ssierykh.assignment1.ui.contract.Routing
 import com.shpp.ssierykh.assignment1.ui.first_screen.my_profile.MyProfileFragment
+import com.shpp.ssierykh.assignment1.ui.first_screen.my_profile.MyProfileViewModel
 import com.shpp.ssierykh.assignment1.ui.first_screen.my_profile.edit_profile.AddOrEditContactsDialogFragment
 import com.shpp.ssierykh.assignment1.ui.first_screen.my_profile.view_my_contacts.MyContactsFragment
 import com.shpp.ssierykh.assignment1.ui.first_screen.sign.SignFragment
@@ -16,9 +18,11 @@ import com.shpp.ssierykh.assignment1.ui.first_screen.sign.SignFragment
 private lateinit var binding: ActivityStartBinding
 
 class StartActivity : AppCompatActivity(), Routing {
-    override fun onCreate(savedInstanceState: Bundle?) {
+    private val viewModel : MyProfileViewModel by viewModels()
+    override fun onCreate(savedInstanceState: Bundle?)
+     {
         super.onCreate(savedInstanceState)
-       binding = ActivityStartBinding.inflate(layoutInflater).also { setContentView(it.root) }
+        binding = ActivityStartBinding.inflate(layoutInflater).also { setContentView(it.root) }
         setContentView(R.layout.activity_start)
 
         // Initially display the first fragment in main activity
@@ -31,11 +35,11 @@ class StartActivity : AppCompatActivity(), Routing {
     }
 
     override fun showMyProfileScreen() {
-       replaceFragment(MyProfileFragment())
+        replaceFragment(MyProfileFragment())
     }
 
     override fun showSignScreen() {
-      replaceFragment(SignFragment())
+        replaceFragment(SignFragment())
     }
 
     override fun showAddOrEditContacts() {
@@ -43,7 +47,7 @@ class StartActivity : AppCompatActivity(), Routing {
     }
 
     override fun showMyContacts() {
-       replaceFragment(MyContactsFragment())
+        replaceFragment(MyContactsFragment())
     }
 
     override fun goBack() {
@@ -52,7 +56,7 @@ class StartActivity : AppCompatActivity(), Routing {
 }
 
 // Extension function to replace fragment
- fun AppCompatActivity.replaceFragment(fragment: Fragment) {
+fun AppCompatActivity.replaceFragment(fragment: Fragment) {
     supportFragmentManager
         .beginTransaction()
         .setCustomAnimations(

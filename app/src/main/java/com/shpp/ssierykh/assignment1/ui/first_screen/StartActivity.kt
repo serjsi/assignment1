@@ -4,9 +4,17 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 import com.shpp.ssierykh.assignment1.R
 import com.shpp.ssierykh.assignment1.databinding.ActivityStartBinding
+import com.shpp.ssierykh.assignment1.ui.SwitchNavigationGraph.isNavigationGraph
 import com.shpp.ssierykh.assignment1.ui.contract.Routing
 import com.shpp.ssierykh.assignment1.ui.first_screen.my_profile.MyProfileFragment
 import com.shpp.ssierykh.assignment1.ui.first_screen.my_profile.MyProfileViewModel
@@ -16,22 +24,25 @@ import com.shpp.ssierykh.assignment1.ui.first_screen.sign.SignFragment
 
 
 private lateinit var binding: ActivityStartBinding
+private lateinit var navController: NavController
 
 class StartActivity : AppCompatActivity(), Routing {
-    private val viewModel : MyProfileViewModel by viewModels()
-    override fun onCreate(savedInstanceState: Bundle?)
-     {
+    private val viewModel: MyProfileViewModel by viewModels()
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityStartBinding.inflate(layoutInflater).also { setContentView(it.root) }
+        if (!isNavigationGraph) {
+            binding = ActivityStartBinding.inflate(layoutInflater).also { setContentView(it.root) }
+        }
         setContentView(R.layout.activity_start)
 
         // Initially display the first fragment in main activity
-        if (savedInstanceState == null) {
+        if (savedInstanceState == null && !isNavigationGraph) {
             supportFragmentManager
                 .beginTransaction()
-                .add(R.id.host, SignFragment())
+                .add(R.id.nav_host_fragment, SignFragment())
                 .commit()
         }
+
     }
 
     override fun showMyProfileScreen() {
@@ -65,7 +76,7 @@ fun AppCompatActivity.replaceFragment(fragment: Fragment) {
             R.anim.fade_in,
             R.anim.slide_out
         )
-        .replace(R.id.host, fragment)
+        .replace(R.id.nav_host_fragment, fragment)
         .addToBackStack(null)
         .commit()
 

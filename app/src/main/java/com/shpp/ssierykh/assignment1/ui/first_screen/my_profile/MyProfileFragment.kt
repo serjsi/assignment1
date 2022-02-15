@@ -10,8 +10,12 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
+import com.shpp.ssierykh.assignment1.R
 import com.shpp.ssierykh.assignment1.data.Contact
 import com.shpp.ssierykh.assignment1.databinding.FragmentMyProfileBinding
+import com.shpp.ssierykh.assignment1.ui.SwitchNavigationGraph
+import com.shpp.ssierykh.assignment1.ui.SwitchNavigationGraph.isNavigationGraph
 import com.shpp.ssierykh.assignment1.ui.contract.routing
 import com.shpp.ssierykh.assignment1.utils.Constants.CAREER_BANDLE_KEY
 import com.shpp.ssierykh.assignment1.utils.Constants.EMAIL_BANDLE_KEY
@@ -20,6 +24,7 @@ import com.shpp.ssierykh.assignment1.utils.Constants.NAME_BANDLE_KEY
 import com.shpp.ssierykh.assignment1.utils.Constants.PHOTO_BANDLE_KEY
 import com.shpp.ssierykh.assignment1.utils.Constants.REQEUST_KEY_USER
 import com.shpp.ssierykh.assignment1.utils.extensions.loadImageGlade
+import com.shpp.ssierykh.assignment1.utils.extensions.toast
 
 
 class MyProfileFragment : Fragment() {
@@ -61,15 +66,31 @@ class MyProfileFragment : Fragment() {
     }
 
     private fun onOpenMyContacts() {
-        routing().showMyContacts()
+        if (isNavigationGraph) {
+            findNavController().navigate(
+                R.id.action_myProfileFragmentGraph_to_myContactsFragmentGraph,
+                null
+            )
+        }else routing().showMyContacts()
     }
 
     private fun onOpenEditProfile() {
-        routing().showAddOrEditContacts()
+        if (isNavigationGraph) {
+            findNavController().navigate(
+                R.id.action_myProfileFragmentGraph_to_addOrEditContactsDialogFragmentGraph,
+                null
+            )
+        }else routing().showAddOrEditContacts()
     }
 
     private fun onOpenSignScreen() {
-        routing().showSignScreen()
+        if (isNavigationGraph) {
+            toast("Go Sign Navigation")//TODO Delete////////////////////////////
+            findNavController().navigate(
+                R.id.action_myProfileFragmentGraph_to_signFragmentGraph,
+                null
+            )
+        }else  routing().showSignScreen()
     }
 
 }

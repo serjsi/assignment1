@@ -4,45 +4,48 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/startActivity">
-    <activity
-        android:id="@+id/startActivity"
-        android:name="com.shpp.ssierykh.assignment1.ui.first_screen.StartActivity"
-        android:label="activity_start"
-        tools:layout="@layout/activity_start" />
+    app:startDestination="@id/signFragmentGraph">
     <fragment
-        android:id="@+id/signFragment2"
+        android:id="@+id/signFragmentGraph"
         android:name="com.shpp.ssierykh.assignment1.ui.first_screen.sign.SignFragment"
         android:label="fragment_sign"
         tools:layout="@layout/fragment_sign" >
         <action
-            android:id="@+id/action_signFragment2_to_myProfileFragment2"
-            app:destination="@id/myProfileFragment2" />
+            android:id="@+id/action_signFragmentGraph_to_myProfileFragmentGraph"
+            app:destination="@id/myProfileFragmentGraph"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:launchSingleTop="false"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
     <fragment
-        android:id="@+id/myProfileFragment2"
+        android:id="@+id/myProfileFragmentGraph"
         android:name="com.shpp.ssierykh.assignment1.ui.first_screen.my_profile.MyProfileFragment"
         android:label="fragment_my_profile_"
         tools:layout="@layout/fragment_my_profile_" >
         <action
-            android:id="@+id/action_myProfileFragment2_to_myContactsFragment"
-            app:destination="@id/myContactsFragment" />
+            android:id="@+id/action_myProfileFragmentGraph_to_myContactsFragmentGraph"
+            app:destination="@id/myContactsFragmentGraph" />
         <action
-            android:id="@+id/action_myProfileFragment2_to_addOrEditContactsDialogFragment"
-            app:destination="@id/addOrEditContactsDialogFragment" />
+            android:id="@+id/action_myProfileFragmentGraph_to_addOrEditContactsDialogFragmentGraph"
+            app:destination="@id/addOrEditContactsDialogFragmentGraph" />
+        <action
+            android:id="@+id/action_myProfileFragmentGraph_to_signFragmentGraph"
+            app:destination="@id/signFragmentGraph" />
     </fragment>
     <fragment
-        android:id="@+id/myContactsFragment"
+        android:id="@+id/addOrEditContactsDialogFragmentGraph"
+        android:name="com.shpp.ssierykh.assignment1.ui.first_screen.my_profile.edit_profile.AddOrEditContactsDialogFragment"
+        android:label="dialog_add_or_edit_contact_profile"
+        tools:layout="@layout/dialog_add_or_edit_contact_profile" />
+    <fragment
+        android:id="@+id/myContactsFragmentGraph"
         android:name="com.shpp.ssierykh.assignment1.ui.first_screen.my_profile.view_my_contacts.MyContactsFragment"
         android:label="fragment_my_contacts"
         tools:layout="@layout/fragment_my_contacts" >
         <action
-            android:id="@+id/action_myContactsFragment_to_addOrEditContactsDialogFragment"
-            app:destination="@id/addOrEditContactsDialogFragment" />
+            android:id="@+id/action_myContactsFragmentGraph_to_addOrEditContactsDialogFragmentGraph"
+            app:destination="@id/addOrEditContactsDialogFragmentGraph" />
     </fragment>
-    <dialog
-        android:id="@+id/addOrEditContactsDialogFragment"
-        android:name="com.shpp.ssierykh.assignment1.ui.first_screen.my_profile.edit_profile.AddOrEditContactsDialogFragment"
-        android:label="dialog_add_or_edit_contact_profile"
-        tools:layout="@layout/dialog_add_or_edit_contact_profile" />
 </navigation>

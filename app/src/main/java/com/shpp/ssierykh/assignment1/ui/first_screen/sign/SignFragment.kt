@@ -15,9 +15,13 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.asLiveData
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.shpp.ssierykh.assignment1.R
 import com.shpp.ssierykh.assignment1.data.Contact
 import com.shpp.ssierykh.assignment1.databinding.FragmentSignBinding
+import com.shpp.ssierykh.assignment1.ui.SwitchNavigationGraph.isNavigationGraph
 import com.shpp.ssierykh.assignment1.ui.contract.routing
 import com.shpp.ssierykh.assignment1.ui.first_screen.my_profile.MyProfileViewModel
 import com.shpp.ssierykh.assignment1.utils.Constants
@@ -30,16 +34,17 @@ import com.shpp.ssierykh.assignment1.utils.Validators.isValidatePassword
 import com.shpp.ssierykh.assignment1.utils.Validators.messageValidationPassword
 import com.shpp.ssierykh.assignment1.utils.data_store.SaveLoginDataStore
 import com.shpp.ssierykh.assignment1.utils.extensions.clickWithDebounce
+import com.shpp.ssierykh.assignment1.utils.extensions.toast
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 
 class SignFragment : Fragment() {
-    var pressRegistration = false
+    private var pressRegistration = false
 
     private lateinit var binding: FragmentSignBinding
-
+    private lateinit var navController: NavController
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -49,7 +54,7 @@ class SignFragment : Fragment() {
         val viewModel: MyProfileViewModel by activityViewModels()
 
         setupListeners(viewModel)
-       // observeData()
+        // observeData()
         forTestMethod()
 
         return binding.root
@@ -60,17 +65,18 @@ class SignFragment : Fragment() {
     private fun setupListeners(viewModel: MyProfileViewModel) {
         binding.apply {
             showMessageErrorAfterClicking()
-                  btRegister.setOnClickListener {
+            btRegister.setOnClickListener {
                 checkingTextAfterClicking()
                 if (isValidateEmail(etEmail) && isValidatePassword(etPassword)) {
-                viewModel.setContact(Contact(etEmail.text.toString()))
-
-                 /*   setFragmentResult(REQEUST_KEY_USER,
-                        bundleOf(EMAIL_BANDLE_KEY to etEmail.text.toString(),
-                            PHOTO_BANDLE_KEY to R.drawable.lucile)
-                    )*/
-
-                    routing().showMyProfileScreen()
+                    viewModel.setContact(Contact(etEmail.text.toString()))
+                    if (isNavigationGraph) {
+                        toast("Go MyProfile Navigation")//TODO Delete////////////////////////////
+                        findNavController().navigate(
+                            R.id.action_signFragmentGraph_to_myProfileFragmentGraph,
+                            null
+                        )
+                    } else
+                        routing().showMyProfileScreen()
                     pressRegistration = false
                 }
             }
@@ -156,9 +162,12 @@ class SignFragment : Fragment() {
 
         }
 
-        setFragmentResult(REQEUST_KEY_USER,
-            bundleOf(EMAIL_BANDLE_KEY to binding.etEmail.text.toString(),
-                PHOTO_BANDLE_KEY to R.drawable.lucile)
+        setFragmentResult(
+            REQEUST_KEY_USER,
+            bundleOf(
+                EMAIL_BANDLE_KEY to binding.etEmail.text.toString(),
+                PHOTO_BANDLE_KEY to R.drawable.lucile
+            )
         )
     }
     //////////////////////////////////////////////////////////////////////////////////

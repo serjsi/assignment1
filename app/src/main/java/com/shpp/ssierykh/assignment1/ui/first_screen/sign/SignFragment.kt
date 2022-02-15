@@ -65,6 +65,11 @@ class SignFragment : Fragment() {
                 if (isValidateEmail(etEmail) && isValidatePassword(etPassword)) {
                 viewModel.setContact(Contact(etEmail.text.toString()))
 
+                 /*   setFragmentResult(REQEUST_KEY_USER,
+                        bundleOf(EMAIL_BANDLE_KEY to etEmail.text.toString(),
+                            PHOTO_BANDLE_KEY to R.drawable.lucile)
+                    )*/
+
                     routing().showMyProfileScreen()
                     pressRegistration = false
                 }

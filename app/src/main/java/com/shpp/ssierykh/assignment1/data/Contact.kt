@@ -1,10 +1,12 @@
 package com.shpp.ssierykh.assignment1.data
 
+import android.text.Editable
+
 // this is the Contacts model class
 data class Contact(
-    val email: String = "",
-    val photoAddress: String = "",
-    val name: String = "",
-    val career: String = "",
-    val home: String = ""
+    var email: String = "",
+    var photoAddress: String = "",
+    var name: String = "",
+    var career: String = "",
+    var home: String= ""
 )

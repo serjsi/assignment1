@@ -29,6 +29,7 @@ fun AppCompatImageView.loadImageGlade(
         .with(this)
         .load(loadPicture)
         .circleCrop()
+        .error(R.drawable.ic_mok)
         .into(this)
 }
 

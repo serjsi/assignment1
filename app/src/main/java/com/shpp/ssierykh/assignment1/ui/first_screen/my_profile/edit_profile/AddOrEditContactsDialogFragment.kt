@@ -11,11 +11,13 @@ import com.shpp.ssierykh.assignment1.R
 
 
 import android.content.Intent
+import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.os.bundleOf
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.setFragmentResult
+import androidx.lifecycle.Observer
 import com.shpp.ssierykh.assignment1.data.Contact
 import com.shpp.ssierykh.assignment1.databinding.DialogAddOrEditContactProfileBinding
 import com.shpp.ssierykh.assignment1.ui.contract.routing
@@ -26,15 +28,12 @@ import com.shpp.ssierykh.assignment1.utils.Constants.HOME_BANDLE_KEY
 import com.shpp.ssierykh.assignment1.utils.Constants.PHOTO_BANDLE_KEY
 import com.shpp.ssierykh.assignment1.utils.Constants.REQEUST_KEY_USER
 import com.shpp.ssierykh.assignment1.utils.Validators.isValidateEmail
+import com.shpp.ssierykh.assignment1.utils.extensions.loadImageGlade
 
 
 class AddOrEditContactsDialogFragment() :
     DialogFragment() {
 
-
-    interface OnAddContactListener {
-        fun onAddContact(addItem: Contact)
-    }
 
 
     private lateinit var binding: DialogAddOrEditContactProfileBinding
@@ -48,8 +47,9 @@ class AddOrEditContactsDialogFragment() :
 
         binding = DialogAddOrEditContactProfileBinding.inflate(inflater, container, false)
         binding.ivArrowBack.setOnClickListener { goBackMyProfile() }
-
-        saveContact()
+        val viewModel: MyProfileViewModel by activityViewModels()
+        setDataContact(viewModel)
+        saveContact(viewModel)
 
         binding.ivAddPhoto.setOnClickListener {
             val intent = Intent()
@@ -83,7 +83,7 @@ class AddOrEditContactsDialogFragment() :
     }
 
 
-    private fun saveContact() {
+    private fun saveContact(viewModel: MyProfileViewModel) {
         binding.apply {
             etEmailA.doOnTextChanged { _, _, _, _ -> isValidateEmail() }
 
@@ -92,28 +92,33 @@ class AddOrEditContactsDialogFragment() :
                 /*   val selectedDate =
                        ContactForRecyclerView(Constants.PHOTO_FAKE_1, userName, career)*/
 
-                val viewModel: MyProfileViewModel by activityViewModels()
-                viewModel.setContact(Contact( etEmailA.text.toString(),"",
+                viewModel.setContact(Contact( etEmailA.text.toString(),"dsf",
                     etUserName.text.toString(),etCareer.text.toString(),etAddress.text.toString()))
 
-             /*   setFragmentResult(
-                    REQEUST_KEY_USER,
-                    bundleOf(
-                        EMAIL_BANDLE_KEY to etUserName.text.toString(),
-                        PHOTO_BANDLE_KEY to R.drawable.lucile,
-                        CAREER_BANDLE_KEY to etCareer.text.toString(),
-                        HOME_BANDLE_KEY to etAddress.text.toString()
-                    ),
-                )*/
-                    routing().goBack()///////////////////////////////////////////////////////////////
+                    routing().goBack()
 
 
             }
         }
     }
 
+    private fun setDataContact(viewModel: MyProfileViewModel) {
 
-//TODO Corected
+       /* val profileObserver2 = Observer<Contact> { profilContact ->
+            // Update the UI, in this case, a TextView.
+            binding.apply {
+              ivPhotoProfile.loadImageGlade(profilContact.photoAddress)
+              etUserName.text= profilContact.name
+               etCareer.text = profilContact.career
+               etAddress.text = profilContact.home
+            }
+        }
+        // Observe the LiveData, passing in this activity as the LifecycleOwner and the observer.
+        viewModel.profilContact.observe(this.viewLifecycleOwner, profileObserver2)*/
+    }
+
+
+//TODO Corected//////////////////////////////////////////////////////////////
     /**
      * Checking validate E-mail
      */

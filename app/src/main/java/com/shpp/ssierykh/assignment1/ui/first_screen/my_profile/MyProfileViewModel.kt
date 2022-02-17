@@ -6,8 +6,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.shpp.ssierykh.assignment1.data.Contact
+import com.shpp.ssierykh.assignment1.data.preferences.DataStoreRepository
+import com.shpp.ssierykh.assignment1.utils.Constants
 import com.shpp.ssierykh.assignment1.utils.ParsingEmailToName.parsingEmailToName
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import javax.inject.Inject
 
 
 class MyProfileViewModel : ViewModel() {
@@ -22,5 +28,7 @@ class MyProfileViewModel : ViewModel() {
         }
         _profileResource.value = profilContact
     }
+
+
 }
 

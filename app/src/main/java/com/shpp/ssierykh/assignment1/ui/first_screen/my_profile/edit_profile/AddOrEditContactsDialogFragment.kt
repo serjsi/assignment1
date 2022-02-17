@@ -11,24 +11,14 @@ import com.shpp.ssierykh.assignment1.R
 
 
 import android.content.Intent
-import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.os.bundleOf
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.setFragmentResult
-import androidx.lifecycle.Observer
 import com.shpp.ssierykh.assignment1.data.Contact
 import com.shpp.ssierykh.assignment1.databinding.DialogAddOrEditContactProfileBinding
 import com.shpp.ssierykh.assignment1.ui.contract.routing
 import com.shpp.ssierykh.assignment1.ui.first_screen.my_profile.MyProfileViewModel
-import com.shpp.ssierykh.assignment1.utils.Constants.CAREER_BANDLE_KEY
-import com.shpp.ssierykh.assignment1.utils.Constants.EMAIL_BANDLE_KEY
-import com.shpp.ssierykh.assignment1.utils.Constants.HOME_BANDLE_KEY
-import com.shpp.ssierykh.assignment1.utils.Constants.PHOTO_BANDLE_KEY
-import com.shpp.ssierykh.assignment1.utils.Constants.REQEUST_KEY_USER
 import com.shpp.ssierykh.assignment1.utils.Validators.isValidateEmail
-import com.shpp.ssierykh.assignment1.utils.extensions.loadImageGlade
 
 
 class AddOrEditContactsDialogFragment() :
@@ -51,6 +41,13 @@ class AddOrEditContactsDialogFragment() :
         setDataContact(viewModel)
         saveContact(viewModel)
 
+        setPhotoProfil()
+
+        return binding.root
+
+    }
+
+    private fun AddOrEditContactsDialogFragment.setPhotoProfil() {
         binding.ivAddPhoto.setOnClickListener {
             val intent = Intent()
             intent.type = "image/*"
@@ -63,9 +60,6 @@ class AddOrEditContactsDialogFragment() :
             )
 
         }
-
-        return binding.root
-
     }
 
 
@@ -118,7 +112,7 @@ class AddOrEditContactsDialogFragment() :
     }
 
 
-//TODO Corected//////////////////////////////////////////////////////////////
+//TODO Corrected//////////////////////////////////////////////////////////////
     /**
      * Checking validate E-mail
      */

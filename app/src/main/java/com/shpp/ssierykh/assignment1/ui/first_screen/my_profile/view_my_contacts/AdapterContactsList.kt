@@ -19,6 +19,7 @@ interface ContactClickListener {
 class AdapterContactsList(
     private val  actionListener: ContactClickListener,
 ) : RecyclerView.Adapter<AdapterContactsList.ContactViewHolder>(),View.OnClickListener {
+
     var contacts: List<Contact> = emptyList()
         set(newValue) {
             field = newValue
@@ -66,7 +67,6 @@ class AdapterContactsList(
 
     class ContactViewHolder(val binding: SingleItemContactBinding) :
         RecyclerView.ViewHolder(binding.root)
-
 
 
 }

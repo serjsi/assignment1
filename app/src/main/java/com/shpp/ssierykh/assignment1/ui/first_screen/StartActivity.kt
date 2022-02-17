@@ -21,11 +21,13 @@ import com.shpp.ssierykh.assignment1.ui.first_screen.my_profile.MyProfileViewMod
 import com.shpp.ssierykh.assignment1.ui.first_screen.my_profile.edit_profile.AddOrEditContactsDialogFragment
 import com.shpp.ssierykh.assignment1.ui.first_screen.my_profile.view_my_contacts.MyContactsFragment
 import com.shpp.ssierykh.assignment1.ui.first_screen.sign.SignFragment
+import dagger.hilt.android.AndroidEntryPoint
 
 
 private lateinit var binding: ActivityStartBinding
 private lateinit var navController: NavController
 
+@AndroidEntryPoint
 class StartActivity : AppCompatActivity(), Routing {
     private val viewModel: MyProfileViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {

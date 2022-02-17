@@ -33,19 +33,33 @@
         <action
             android:id="@+id/action_myProfileFragmentGraph_to_signFragmentGraph"
             app:destination="@id/signFragmentGraph" />
+        <argument
+            android:name="ContactData"
+            android:defaultValue="Contact" />
     </fragment>
     <fragment
         android:id="@+id/addOrEditContactsDialogFragmentGraph"
         android:name="com.shpp.ssierykh.assignment1.ui.first_screen.my_profile.edit_profile.AddOrEditContactsDialogFragment"
         android:label="dialog_add_or_edit_contact_profile"
-        tools:layout="@layout/dialog_add_or_edit_contact_profile" />
+        tools:layout="@layout/dialog_add_or_edit_contact_profile" >
+        <action
+            android:id="@+id/action_addOrEditContactsDialogFragmentGraph_to_myProfileFragmentGraph"
+            app:destination="@id/myProfileFragmentGraph" />
+        <argument android:name="ContactData" />
+        <action
+            android:id="@+id/action_addOrEditContactsDialogFragmentGraph_to_myContactsFragmentGraph"
+            app:destination="@id/myContactsFragmentGraph" />
+    </fragment>
     <fragment
         android:id="@+id/myContactsFragmentGraph"
         android:name="com.shpp.ssierykh.assignment1.ui.first_screen.my_profile.view_my_contacts.MyContactsFragment"
         android:label="fragment_my_contacts"
         tools:layout="@layout/fragment_my_contacts" >
         <action
-            android:id="@+id/action_myContactsFragmentGraph_to_addOrEditContactsDialogFragmentGraph"
+            android:id="@+id/action_myContactsFragmentGraph_to_myProfileFragmentGraph"
+            app:destination="@id/myProfileFragmentGraph" />
+        <action
+            android:id="@+id/action_myContactsFragmentGraph_to_addOrEditContactsDialogFragmentGraph3"
             app:destination="@id/addOrEditContactsDialogFragmentGraph" />
     </fragment>
 </navigation>

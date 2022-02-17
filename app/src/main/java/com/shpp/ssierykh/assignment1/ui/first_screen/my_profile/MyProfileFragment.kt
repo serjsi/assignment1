@@ -17,10 +17,9 @@ import com.shpp.ssierykh.assignment1.databinding.FragmentMyProfileBinding
 import com.shpp.ssierykh.assignment1.ui.SwitchNavigationGraph
 import com.shpp.ssierykh.assignment1.ui.SwitchNavigationGraph.isNavigationGraph
 import com.shpp.ssierykh.assignment1.ui.contract.routing
-import com.shpp.ssierykh.assignment1.utils.Constants.CAREER_BANDLE_KEY
+
 import com.shpp.ssierykh.assignment1.utils.Constants.EMAIL_BANDLE_KEY
-import com.shpp.ssierykh.assignment1.utils.Constants.HOME_BANDLE_KEY
-import com.shpp.ssierykh.assignment1.utils.Constants.NAME_BANDLE_KEY
+
 import com.shpp.ssierykh.assignment1.utils.Constants.PHOTO_BANDLE_KEY
 import com.shpp.ssierykh.assignment1.utils.Constants.REQEUST_KEY_USER
 import com.shpp.ssierykh.assignment1.utils.extensions.loadImageGlade
@@ -68,17 +67,14 @@ class MyProfileFragment : Fragment() {
     private fun onOpenMyContacts() {
         if (isNavigationGraph) {
             findNavController().navigate(
-                R.id.action_myProfileFragmentGraph_to_myContactsFragmentGraph,
-                null
-            )
+                R.id.action_myProfileFragmentGraph_to_myContactsFragmentGraph)
         }else routing().showMyContacts()
     }
 
     private fun onOpenEditProfile() {
         if (isNavigationGraph) {
             findNavController().navigate(
-                R.id.action_myProfileFragmentGraph_to_addOrEditContactsDialogFragmentGraph,
-                null
+                R.id.action_myProfileFragmentGraph_to_addOrEditContactsDialogFragmentGraph
             )
         }else routing().showAddOrEditContacts()
     }
@@ -88,7 +84,6 @@ class MyProfileFragment : Fragment() {
             toast("Go Sign Navigation")//TODO Delete////////////////////////////
             findNavController().navigate(
                 R.id.action_myProfileFragmentGraph_to_signFragmentGraph,
-                null
             )
         }else  routing().showSignScreen()
     }

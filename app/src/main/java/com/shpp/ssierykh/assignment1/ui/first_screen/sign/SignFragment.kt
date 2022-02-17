@@ -1,6 +1,5 @@
 package com.shpp.ssierykh.assignment1.ui.first_screen.sign
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,15 +7,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.os.bundleOf
 import androidx.core.widget.doOnTextChanged
-import androidx.datastore.dataStore
-import androidx.datastore.preferences.core.PreferenceDataStoreFactory
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.asLiveData
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.shpp.ssierykh.assignment1.R
 import com.shpp.ssierykh.assignment1.data.Contact
@@ -32,14 +27,12 @@ import com.shpp.ssierykh.assignment1.utils.Constants.REQEUST_KEY_USER
 import com.shpp.ssierykh.assignment1.utils.Validators.isValidateEmail
 import com.shpp.ssierykh.assignment1.utils.Validators.isValidatePassword
 import com.shpp.ssierykh.assignment1.utils.Validators.messageValidationPassword
-import com.shpp.ssierykh.assignment1.utils.data_store.SaveLoginDataStore
 import com.shpp.ssierykh.assignment1.utils.extensions.clickWithDebounce
 import com.shpp.ssierykh.assignment1.utils.extensions.toast
-import kotlinx.coroutines.DelicateCoroutinesApi
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import dagger.hilt.android.AndroidEntryPoint
 
 
+@AndroidEntryPoint
 class SignFragment : Fragment() {
     private var pressRegistration = false
 
@@ -52,23 +45,37 @@ class SignFragment : Fragment() {
     ): View {
         binding = FragmentSignBinding.inflate(inflater, container, false)
         val viewModel: MyProfileViewModel by activityViewModels()
+        val viewModelMy: SignViewModel by viewModels()
+        setupListeners(viewModel,viewModelMy)
 
-        setupListeners(viewModel)
-        // observeData()
+        getAutologin(viewModelMy)
+
         forTestMethod()
 
         return binding.root
 
     }
 
+    private fun getAutologin(vM: SignViewModel) {
 
-    private fun setupListeners(viewModel: MyProfileViewModel) {
+        if (vM.getRemember() == true) {
+            binding.apply {
+                cbRemember.isChecked = vM.getRemember()!!
+                etEmail.setText(vM.getEmail(), TextView.BufferType.EDITABLE)
+                etPassword.setText(vM.getPassword(), TextView.BufferType.EDITABLE)
+            }
+        }
+    }
+
+
+    private fun setupListeners(viewModel: MyProfileViewModel,vM: SignViewModel) {
         binding.apply {
             showMessageErrorAfterClicking()
             btRegister.setOnClickListener {
                 checkingTextAfterClicking()
                 if (isValidateEmail(etEmail) && isValidatePassword(etPassword)) {
                     viewModel.setContact(Contact(etEmail.text.toString()))
+                      writeAutologin(vM)
                     if (isNavigationGraph) {
                         toast("Go MyProfile Navigation")//TODO Delete////////////////////////////
                         findNavController().navigate(
@@ -105,52 +112,20 @@ class SignFragment : Fragment() {
     }
 
 
-/*    private var autologin = SaveLoginDataStore(da)
+    private fun writeAutologin(vm: SignViewModel) {
+        binding.apply {
+            if (cbRemember.isChecked) {
+                vm.saveEmail(etEmail.text.toString())
+                vm.savePassword(etPassword.text.toString())
+                vm.saveRemember(cbRemember.isChecked)
 
-    //Stores the values
-    @DelicateCoroutinesApi
-    fun writeLoginDataStore(email: String, password: String, remember: Boolean) {
-        if (remember) {
-            GlobalScope.launch {
-                autologin.storeUser(email, password, remember)
+            } else {
+                vm.saveEmail("")
+             vm.savePassword("")
+                vm.saveRemember(false)
             }
-
-        } else {
-            GlobalScope.launch {
-                autologin.storeUser("", "", remember)
-
-            }
-
         }
     }
-    @SuppressLint("FragmentLiveDataObserve")
-    private fun observeData() {
-        //Check ChekBox
-        autologin.userRememberFlow.asLiveData().observe(this, {
-            if (it == true) {
-                //Updates remember
-                binding.cbRemember.isChecked = it
-
-                //Updates email
-                autologin.userEmailFlow.asLiveData().observe(this, { email ->
-                    if (email != null) {
-                        binding.etEmail.setText(email, TextView.BufferType.EDITABLE)
-                    }
-                })
-
-                //Updates password
-                autologin.userPasswordFlow.asLiveData().observe(this, { password ->
-                    if (password != null) {
-                        binding.etPassword.setText(
-                            password,
-                            TextView.BufferType.EDITABLE
-                        )
-                    }
-                })
-
-            }
-        })
-    }*/
 
     ////////////////////////////////test method////////////////////////////////////////
     private fun forTestMethod() {

@@ -1,64 +1,48 @@
 package com.shpp.ssierykh.assignment1.ui.first_screen.sign
 
-import androidx.datastore.preferences.core.PreferenceDataStoreFactory
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
-
-import com.shpp.ssierykh.assignment1.utils.data_store.SaveLoginDataStore
-import kotlinx.coroutines.DelicateCoroutinesApi
-import kotlinx.coroutines.GlobalScope
+import androidx.lifecycle.viewModelScope
+import com.shpp.ssierykh.assignment1.data.preferences.DataStoreRepository
+import com.shpp.ssierykh.assignment1.utils.Constants.NAME_SP
+import com.shpp.ssierykh.assignment1.utils.Constants.PASSWORD_SP
+import com.shpp.ssierykh.assignment1.utils.Constants.REMEMBER_SP
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import javax.inject.Inject
 
+@HiltViewModel
+class SignViewModel @Inject constructor(
+    private val repository: DataStoreRepository) : ViewModel() {
 
-class SignViewModel : ViewModel() {
-   /* private var autologin = SaveLoginDataStore(dataStore)
-
-    //Stores the values
-    @DelicateCoroutinesApi
-    fun writeLoginDataStore(email: String, password: String, remember: Boolean) {
-        if (remember) {
-            GlobalScope.launch {
-                autologin.storeUser(email, password, remember)
-            }
-
-        } else {
-            GlobalScope.launch {
-                autologin.storeUser("", "", remember)
-
-            }
-
-        }*/
-
-   /*      private fun observeData() {
-
-           //Check ChekBox
-             autologin.userRememberFlow.asLiveData().observe(this, {
-               if (it == true) {
-
-                   //Updates email
-                   userManager.userEmailFlow.asLiveData().observe(this, {
-                       if (it != null) {
-                           email = it
-                           binding.editTextEnterEmail.setText(email, TextView.BufferType.EDITABLE)
-                       }
-                   })
-
-                   //Updates password
-                   userManager.userPasswordFlow.asLiveData().observe(this, {
-                       if (it != null) {
-                           password = it
-                           binding.editTextTextPassword.setText(password, TextView.BufferType.EDITABLE)
-                       }
-                   })
-
-                   //Updates remember
-                   userManager.userRememberFlow.asLiveData().observe(this, {
-                       if (it != null) {
-                           remember = it
-                           binding.checkBoxRemember.isChecked = it
-                       }
-                   })
-               }
-           })
-       } */// TODO: Implement the ViewModel
+    fun saveEmail(value: String) {
+        viewModelScope.launch {
+            repository.putString(NAME_SP, value)
+        }
     }
+
+    fun getEmail(): String? = runBlocking {
+        repository.getString(NAME_SP)
+    }
+
+    fun savePassword(value: String) {
+        viewModelScope.launch {
+            repository.putString(PASSWORD_SP, value)
+        }
+    }
+
+    fun getPassword(): String? = runBlocking {
+        repository.getString(PASSWORD_SP)
+    }
+
+    fun saveRemember(value: Boolean) {
+        viewModelScope.launch {
+            repository.putBoolean(REMEMBER_SP, value)
+        }
+    }
+
+    fun getRemember(): Boolean? = runBlocking {
+        repository.getBoolean(REMEMBER_SP)
+    }
+
+}

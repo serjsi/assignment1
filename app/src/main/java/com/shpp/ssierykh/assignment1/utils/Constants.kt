@@ -82,8 +82,6 @@ object Constants {
     const val REQEUST_KEY_USER = "requestKeyUser"
     const val PHOTO_BANDLE_KEY = "photoBK"
     const val EMAIL_BANDLE_KEY = "emailBK"
-    const val CAREER_BANDLE_KEY = "careerBK"
-    const val HOME_BANDLE_KEY = "addresBK"
-    const val NAME_BANDLE_KEY = "nameBK"
+
 
 }

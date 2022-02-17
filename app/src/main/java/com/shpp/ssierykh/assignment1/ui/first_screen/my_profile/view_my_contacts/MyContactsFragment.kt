@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.shpp.ssierykh.assignment1.data.BaseContacts
@@ -28,13 +29,14 @@ class MyContactsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentMyContactsBinding.inflate(inflater, container, false)
-
+        val viewModel: MyContactsViewModel by activityViewModels()
 
         // initialize the adapter, and pass the required argument
-     //   adapter = AdapterContactsList(viewModel)
+
+        adapter = AdapterContactsList(viewModel)
 
         // attach adapter to the recycler view
-     //   binding.rvBottomContainer.adapter = adapter
+        binding.rvBottomContainer.adapter = adapter
 
         binding.ivArrowBack.setOnClickListener { onArrowBack() }
         binding.tvAddContacts.setOnClickListener { onAddContact() }

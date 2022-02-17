@@ -16,9 +16,9 @@
         android:background="?attr/colorPrimaryVariant"
         app:layout_constraintBottom_toTopOf="@+id/ivBottomContainer"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_weight="0.3" />
+        app:layout_constraintVertical_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/scrollView2"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvAddContacts"
@@ -50,6 +50,7 @@
         android:id="@+id/ivPhotoProfile"
         android:layout_width="@dimen/photo_width"
         android:layout_height="@dimen/photo_height"
+android:layout_margin="@dimen/horizontal_margin_16"
         app:layout_constraintBottom_toBottomOf="@+id/ivTopContainer"
         app:layout_constraintEnd_toEndOf="@+id/ivTopContainer"
         app:layout_constraintStart_toStartOf="@+id/ivTopContainer"
@@ -80,12 +81,15 @@
 
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/btSave"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivTopContainer">
+        app:layout_constraintTop_toBottomOf="@+id/ivTopContainer"
+        app:layout_constraintVertical_bias="1.0">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -110,6 +114,13 @@
                     android:textColor="?attr/colorOnSecondary" />
             </com.google.android.material.textfield.TextInputLayout>
 
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPhone"
+                style="@style/TextInputEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/colorOnSecondary" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilCareer"
@@ -150,12 +161,6 @@
                 android:hint="@string/phone">
 
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etPhone"
-                    style="@style/TextInputEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="?attr/colorOnSecondary" />
             </com.google.android.material.textfield.TextInputLayout>
 
 

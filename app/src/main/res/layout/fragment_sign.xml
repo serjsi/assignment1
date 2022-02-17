@@ -31,8 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_margin="8dp"
-        android:layout_marginTop="@dimen/vertical_margin_8"
+        android:layout_margin="@dimen/vertical_margin_8"
         android:text="@string/fill_out_the_profile_and_go_to_the_application"
         android:textColor="@color/gray"
         android:theme="@style/TextStyleSmall"
@@ -102,6 +101,7 @@
         android:id="@+id/cbRemember"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
         android:backgroundTint="@color/white_my"
         android:buttonTint="@color/gray_very_light"
         android:duplicateParentState="false"
@@ -110,6 +110,8 @@
         android:textColor="@color/white_my"
         android:theme="@style/TextStyBasic"
         app:layout_constraintBottom_toTopOf="@+id/cvGoogle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tilPassword" />
 
@@ -117,13 +119,13 @@
         android:id="@+id/cvGoogle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
         app:colorBackgroundGoogle="@color/gray_very_light"
         app:layout_constraintBottom_toTopOf="@+id/tvSeparator"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:textSizeGoogle="@dimen/textSize_18sp"
 
-        />
+        app:textSizeGoogle="@dimen/textSize_18sp" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvSeparator"

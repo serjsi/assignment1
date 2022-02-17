@@ -16,6 +16,7 @@
         android:background="?attr/colorPrimaryVariant"
         app:layout_constraintBottom_toTopOf="@id/ivBottomContainer"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5"
         app:layout_constraintVertical_weight="0.5"
         tools:layout_editor_absoluteX="0dp" />
 
@@ -26,7 +27,8 @@
         android:background="?attr/colorSecondary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ivTopContainer"
-        app:layout_constraintVertical_weight="0.5" />
+        app:layout_constraintVertical_weight="0.5"
+        tools:layout_editor_absoluteX="0dp" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvSettings"
@@ -48,10 +50,13 @@
         android:id="@+id/ivPhotoProfile"
         android:layout_width="@dimen/photo_width"
         android:layout_height="@dimen/photo_height"
-        app:layout_constraintBottom_toTopOf="@+id/tvName"
+        app:flow_firstVerticalBias="0.5"
+        app:layout_constraintBottom_toBottomOf="@+id/ivTopContainer"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvSettings"
+        app:layout_constraintTop_toTopOf="@+id/ivTopContainer"
+        app:layout_constraintVertical_bias="0.327"
         app:layout_constraintVertical_chainStyle="spread"
         app:srcCompat="@drawable/ic_mok" />
 
@@ -61,7 +66,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/vertical_margin_24"
         android:text="@string/home_address"
         android:textColor="@color/white_my"
         app:layout_constraintBottom_toBottomOf="@+id/ivTopContainer"
@@ -104,13 +108,13 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_margin="@dimen/margin_offset_from_edge_screen_16dp"
-        android:layout_marginBottom="16dp"
         android:text="@string/go_to_settings_and_fill_out_the_profile"
         android:textColor="@color/gray_text"
         app:layout_constraintBottom_toTopOf="@+id/btEditProfile"
         app:layout_constraintEnd_toEndOf="@+id/ivBottomContainer"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="@+id/ivBottomContainer" />
+        app:layout_constraintVertical_bias="1.5"
+        app:layout_constraintStart_toStartOf="@+id/ivBottomContainer"
+        app:layout_constraintTop_toTopOf="@+id/ivBottomContainer" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btEditProfile"
@@ -118,8 +122,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/btViewMyContacts"
-        android:layout_margin="@dimen/margin_offset_from_edge_screen_16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginStart="@dimen/margin_offset_from_edge_screen_16dp"
+        android:layout_marginEnd="@dimen/margin_offset_from_edge_screen_16dp"
         android:background="@drawable/button_background_black"
         android:text="@string/edit_profile"
         android:textAllCaps="false"
@@ -127,7 +131,9 @@
         android:textSize="@dimen/textSize_14sp"
         app:layout_constraintBottom_toTopOf="@+id/btViewMyContacts"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ivBottomContainer"
+        app:layout_constraintVertical_bias="0.939" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btViewMyContacts"

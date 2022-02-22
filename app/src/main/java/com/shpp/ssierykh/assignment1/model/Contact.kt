@@ -1,6 +1,4 @@
-package com.shpp.ssierykh.assignment1.data
-
-import android.text.Editable
+package com.shpp.ssierykh.assignment1.model
 
 // this is the Contacts model class
 data class Contact(

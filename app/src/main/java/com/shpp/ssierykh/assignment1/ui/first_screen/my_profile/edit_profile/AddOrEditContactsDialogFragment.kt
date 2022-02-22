@@ -14,7 +14,7 @@ import android.content.Intent
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.activityViewModels
-import com.shpp.ssierykh.assignment1.data.Contact
+import com.shpp.ssierykh.assignment1.model.Contact
 import com.shpp.ssierykh.assignment1.databinding.DialogAddOrEditContactProfileBinding
 import com.shpp.ssierykh.assignment1.ui.contract.routing
 import com.shpp.ssierykh.assignment1.ui.first_screen.my_profile.MyProfileViewModel

@@ -14,7 +14,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.shpp.ssierykh.assignment1.R
-import com.shpp.ssierykh.assignment1.data.Contact
+import com.shpp.ssierykh.assignment1.model.Contact
 import com.shpp.ssierykh.assignment1.databinding.FragmentSignBinding
 import com.shpp.ssierykh.assignment1.ui.SwitchNavigationGraph.isNavigationGraph
 import com.shpp.ssierykh.assignment1.ui.contract.routing

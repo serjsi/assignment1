@@ -3,8 +3,8 @@ package com.shpp.ssierykh.assignment1.ui.first_screen.my_profile.view_my_contact
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.shpp.ssierykh.assignment1.data.BaseContacts
-import com.shpp.ssierykh.assignment1.data.Contact
+import com.shpp.ssierykh.assignment1.model.BaseContacts
+import com.shpp.ssierykh.assignment1.model.Contact
 
 data class UserListItem(
     val contact: Contact

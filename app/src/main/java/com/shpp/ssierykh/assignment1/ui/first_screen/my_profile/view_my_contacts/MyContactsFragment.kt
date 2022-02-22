@@ -5,17 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
-import com.shpp.ssierykh.assignment1.data.BaseContacts
-import com.shpp.ssierykh.assignment1.data.FakeBaseContacts_old_delete.fakeBase
 
 import com.shpp.ssierykh.assignment1.databinding.FragmentMyContactsBinding
-import com.shpp.ssierykh.assignment1.ui.activity_old.contacts.AdapterContacts
 import com.shpp.ssierykh.assignment1.ui.contract.routing
-import com.shpp.ssierykh.assignment1.ui.first_screen.App
-import com.shpp.ssierykh.assignment1.ui.first_screen.my_profile.MyProfileViewModel
 
 
 class MyContactsFragment : Fragment() {
@@ -29,7 +22,7 @@ class MyContactsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentMyContactsBinding.inflate(inflater, container, false)
-        val viewModel: MyContactsViewModel by activityViewModels()
+        val viewModel: MyContactsViewModel by viewModels()
 
         // initialize the adapter, and pass the required argument
 
@@ -40,7 +33,6 @@ class MyContactsFragment : Fragment() {
 
         binding.ivArrowBack.setOnClickListener { onArrowBack() }
         binding.tvAddContacts.setOnClickListener { onAddContact() }
-
         return binding.root
     }
 

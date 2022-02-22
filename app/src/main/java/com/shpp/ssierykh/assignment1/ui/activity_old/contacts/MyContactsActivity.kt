@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.shpp.ssierykh.assignment1.R
-import com.shpp.ssierykh.assignment1.data.Contact
-import com.shpp.ssierykh.assignment1.data.FakeBaseContacts_old_delete.fakeBase
+import com.shpp.ssierykh.assignment1.model.Contact
+import com.shpp.ssierykh.assignment1.model.FakeBaseContacts_old_delete.fakeBase
 import com.shpp.ssierykh.assignment1.databinding.ActivityMyContactsBinding
 import com.shpp.ssierykh.assignment1.utils.Constants
 import kotlinx.android.synthetic.main.activity_my_contacts.*

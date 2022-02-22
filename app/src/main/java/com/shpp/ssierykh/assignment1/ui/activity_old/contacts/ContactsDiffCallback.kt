@@ -1,7 +1,7 @@
 package com.shpp.ssierykh.assignment1.ui.activity_old.contacts
 
 import androidx.recyclerview.widget.DiffUtil
-import com.shpp.ssierykh.assignment1.data.Contact
+import com.shpp.ssierykh.assignment1.model.Contact
 
 class ContactsDiffCallback(
     private val oldList: List<Contact>,

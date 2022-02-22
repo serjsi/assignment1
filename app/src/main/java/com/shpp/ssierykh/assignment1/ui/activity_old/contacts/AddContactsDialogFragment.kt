@@ -14,7 +14,7 @@ import com.shpp.ssierykh.assignment1.R
 import android.content.Intent
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.widget.doOnTextChanged
-import com.shpp.ssierykh.assignment1.data.Contact
+import com.shpp.ssierykh.assignment1.model.Contact
 import com.shpp.ssierykh.assignment1.databinding.DialogAddOrEditContactProfileBinding
 import com.shpp.ssierykh.assignment1.utils.Validators.isValidateEmail
 

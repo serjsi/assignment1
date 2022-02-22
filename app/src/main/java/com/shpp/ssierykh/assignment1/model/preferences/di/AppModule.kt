@@ -1,8 +1,8 @@
-package com.shpp.ssierykh.assignment1.data.preferences.di
+package com.shpp.ssierykh.assignment1.model.preferences.di
 
 import android.content.Context
-import com.shpp.ssierykh.assignment1.data.preferences.DataStoreRepository
-import com.shpp.ssierykh.assignment1.data.preferences.DataStoreRepositoryImpl
+import com.shpp.ssierykh.assignment1.model.preferences.DataStoreRepository
+import com.shpp.ssierykh.assignment1.model.preferences.DataStoreRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

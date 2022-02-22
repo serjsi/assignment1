@@ -2,7 +2,7 @@ package com.shpp.ssierykh.assignment1.ui.first_screen.sign
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.shpp.ssierykh.assignment1.data.preferences.DataStoreRepository
+import com.shpp.ssierykh.assignment1.model.preferences.DataStoreRepository
 import com.shpp.ssierykh.assignment1.utils.Constants.NAME_SP
 import com.shpp.ssierykh.assignment1.utils.Constants.PASSWORD_SP
 import com.shpp.ssierykh.assignment1.utils.Constants.REMEMBER_SP

@@ -1,5 +1,6 @@
 package com.shpp.ssierykh.assignment1.ui.first_screen.my_profile.view_my_contacts
 ///https://medium.com/@vgoyal_1/datastore-android-how-to-use-it-like-a-pro-using-kotlin-2c2440683d78
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,16 +12,14 @@ data class UserListItem(
 )
 
 class MyContactsViewModel(
-    private val baseContacts : BaseContacts
+    private val baseContacts: BaseContacts
 ) : ViewModel(), ContactClickListener {
     //TODO For test, later delete
-/*    init {
+    init {
         Log.i("MyContactsViewModel", "MyContactsViewModel created!")
-    }
-    override fun onCleared() {
-        super.onCleared()
-        Log.i("MyContactsViewModel", "MyContactsViewModel destroyed!")
-    }*/
+       //aseContacts.addListener(listener)
+        loadContacts()    }
+
     private val _contacts = MutableLiveData<Result<List<UserListItem>>>()
     val contacts: LiveData<Result<List<UserListItem>>> = _contacts
 
@@ -33,18 +32,19 @@ class MyContactsViewModel(
         TODO("Not yet implemented")
     }
 
-//    private val listener: BaseContacts {
-//    }
+/*    private val listener: BaseContacts {
+        usersResult = if (it.isEmpty()) {
+            EmptyResult()
+        } else {
+            SuccessResult(it)
+        }    }*/
 
-    init {
-//       baseContacts.addListener(listener)
-        loadContacts()
-    }
+
 
     override fun onCleared() {
         super.onCleared()
 //        baseContacts.removeListener(listener)
-    }
+        Log.i("MyContactsViewModel", "MyContactsViewModel destroyed!") }
 
     fun loadContacts() {
         baseContacts.loadContacts()

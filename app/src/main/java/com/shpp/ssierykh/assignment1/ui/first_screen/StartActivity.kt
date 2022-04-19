@@ -5,15 +5,12 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 import com.shpp.ssierykh.assignment1.R
 import com.shpp.ssierykh.assignment1.databinding.ActivityStartBinding
+import com.shpp.ssierykh.assignment1.model.BaseContacts
 import com.shpp.ssierykh.assignment1.ui.SwitchNavigationGraph.isNavigationGraph
 import com.shpp.ssierykh.assignment1.ui.contract.Routing
 import com.shpp.ssierykh.assignment1.ui.first_screen.my_profile.MyProfileFragment
@@ -60,7 +57,7 @@ class StartActivity : AppCompatActivity(), Routing {
     }
 
     override fun showMyContacts() {
-        replaceFragment(MyContactsFragment())
+        replaceFragment(MyContactsFragment( BaseContacts()))
     }
 
     override fun goBack() {

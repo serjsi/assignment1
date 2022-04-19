@@ -1,6 +1,7 @@
 package com.shpp.ssierykh.assignment1.ui.first_screen.my_profile.view_my_contacts
 
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -23,7 +24,7 @@ class AdapterContactsList(
     var contacts: List<Contact> = emptyList()
         set(newValue) {
             field = newValue
-            this.notifyDataSetChanged()
+            notifyDataSetChanged()
         }
 
     override fun onClick(v: View) {
@@ -41,10 +42,12 @@ class AdapterContactsList(
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactViewHolder {
-        val itemView = SingleItemContactBinding
-            .inflate(LayoutInflater.from(parent.context), parent, false)
-        return ContactViewHolder(itemView)
+        val binding = SingleItemContactBinding.inflate(
+            LayoutInflater.from(parent.context), parent, false)
 
+        binding.ivDelete.setOnClickListener(this)
+
+        return ContactViewHolder(binding)
     }
 
 
@@ -56,7 +59,6 @@ class AdapterContactsList(
             tvName.text = contact.name
             tvCareer.text = contact.career
         }
-
     }
 
 

@@ -29,7 +29,7 @@ class MyContactsFragment(val baseContacts: BaseContacts) : Fragment() {
         vm = ViewModelProvider(this, MyContactsViewModelFactory(baseContacts))
             .get(MyContactsViewModel::class.java)
 
-        // initialize the adapter, and pass the required argument
+        // initialize the adapter, and pass the required argument yu
 
         adapter = AdapterContactsList(vm)
 

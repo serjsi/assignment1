@@ -34,7 +34,6 @@ class MyContactsViewModel(
 
 
     override fun onContactDelete(contact: Contact) {
-        Log.i("MyContactsViewModel", "onUserDelete ${contact.email}")
         baseContacts.deleteContact(contact)
     }
 

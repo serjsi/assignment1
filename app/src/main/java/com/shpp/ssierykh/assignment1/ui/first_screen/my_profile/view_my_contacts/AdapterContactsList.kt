@@ -6,10 +6,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import android.view.View
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ItemTouchHelper
 import com.bumptech.glide.Glide.init
 import com.shpp.ssierykh.assignment1.R
 import com.shpp.ssierykh.assignment1.model.Contact
 import com.shpp.ssierykh.assignment1.databinding.SingleItemContactBinding
+import com.shpp.ssierykh.assignment1.utils.ContactsDiffCallback
 import com.shpp.ssierykh.assignment1.utils.extensions.loadImageGlade
 
 
@@ -25,15 +28,17 @@ class AdapterContactsList(
 
     var contacts: List<Contact> = emptyList()
         set(newValue) {
+            val diffCallback = ContactsDiffCallback(field, newValue)
+            val diffResult = DiffUtil.calculateDiff(diffCallback)
             field = newValue
-            notifyDataSetChanged()
             Log.i("AdapterContactsList", "Adapter notifyDataSetChanged()")
+            diffResult.dispatchUpdatesTo(this)
         }
 
     override fun onClick(v: View) {
 
         val contact = v.tag as Contact
-        Log.i("AdapterContactsList", "MyContactsViewModel destroyed!")
+
         when (v.id) {
             R.id.ivDelete -> {
                 actionListener.onContactDelete(contact)
@@ -47,8 +52,9 @@ class AdapterContactsList(
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactViewHolder {
-       val binding = SingleItemContactBinding.inflate(
-            LayoutInflater.from(parent.context), parent, false)
+        val binding = SingleItemContactBinding.inflate(
+            LayoutInflater.from(parent.context), parent, false
+        )
 
         binding.root.setOnClickListener(this)
         binding.ivDelete.setOnClickListener(this)
@@ -78,6 +84,8 @@ class AdapterContactsList(
 
     class ContactViewHolder(val binding: SingleItemContactBinding) :
         RecyclerView.ViewHolder(binding.root)
+
+
 
 
 }

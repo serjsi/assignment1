@@ -13,6 +13,7 @@ import com.shpp.ssierykh.assignment1.model.Contact
 import com.shpp.ssierykh.assignment1.model.FakeBaseContacts_old_delete.fakeBase
 import com.shpp.ssierykh.assignment1.databinding.ActivityMyContactsBinding
 import com.shpp.ssierykh.assignment1.utils.Constants
+import com.shpp.ssierykh.assignment1.utils.ContactsDiffCallback
 import kotlinx.android.synthetic.main.activity_my_contacts.*
 import java.util.ArrayList
 

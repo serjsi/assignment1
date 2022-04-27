@@ -1,17 +1,15 @@
 package com.shpp.ssierykh.assignment1.ui.first_screen.my_profile.view_my_contacts
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.shpp.ssierykh.assignment1.databinding.FragmentMyContactsBinding
-import com.shpp.ssierykh.assignment1.model.BaseContacts
 import com.shpp.ssierykh.assignment1.ui.contract.routing
 
 
@@ -35,7 +33,6 @@ class MyContactsFragment() : Fragment() {
         viewModel.contacts.observe(viewLifecycleOwner, Observer {
           adapter.contacts = it
 
-            Log.i("MyContactsViewModel", "Adapter observe()")
         })
 
 
@@ -43,9 +40,14 @@ class MyContactsFragment() : Fragment() {
         binding.tvAddContacts.setOnClickListener { onAddContact() }
 
         // attach adapter to the recycler view
+        val layoutManager = LinearLayoutManager(requireContext())
+        binding.rvBottomContainer.layoutManager = layoutManager
         binding.rvBottomContainer.adapter = adapter
 
+        viewModel.swipeDeleteItem(binding)
+
         return binding.root
+
     }
 
 
@@ -56,5 +58,7 @@ class MyContactsFragment() : Fragment() {
     private fun onArrowBack() {
         routing().goBack()
     }
+
+
 }
 

@@ -2,6 +2,7 @@ package com.shpp.ssierykh.assignment1.model
 
 import android.util.Log
 import com.shpp.ssierykh.assignment1.utils.Constants
+import java.util.ArrayList
 
 typealias ContactListener = (users: List<Contact>) -> Unit
 
@@ -52,7 +53,9 @@ class BaseContacts {
     fun deleteContact(user: Contact) {
         val indexToDelete = contacts.indexOfFirst { it.email == user.email }
         if (indexToDelete != -1) {
+            contacts = ArrayList(contacts)
             contacts.removeAt(indexToDelete)
+            Log.i("BaseContacts", "deleteContact ${user.email}")
             notifyChanges()
         }
     }

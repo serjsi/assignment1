@@ -1,4 +1,4 @@
-package com.shpp.ssierykh.assignment1.ui.activity_old.contacts
+package com.shpp.ssierykh.assignment1.utils
 
 import androidx.recyclerview.widget.DiffUtil
 import com.shpp.ssierykh.assignment1.model.Contact

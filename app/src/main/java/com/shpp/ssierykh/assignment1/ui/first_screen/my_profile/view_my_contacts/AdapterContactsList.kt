@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import android.view.View
+import com.bumptech.glide.Glide.init
 import com.shpp.ssierykh.assignment1.R
 import com.shpp.ssierykh.assignment1.model.Contact
 import com.shpp.ssierykh.assignment1.databinding.SingleItemContactBinding
@@ -13,38 +14,43 @@ import com.shpp.ssierykh.assignment1.utils.extensions.loadImageGlade
 
 
 interface ContactClickListener {
-    fun onUserDetails(contact: Contact)
-    fun onUserDelete(contact: Contact)
+
+    fun onContactDetails(contact: Contact)
+    fun onContactDelete(contact: Contact)
 }
 
 class AdapterContactsList(
-    private val  actionListener: ContactClickListener,
-) : RecyclerView.Adapter<AdapterContactsList.ContactViewHolder>(),View.OnClickListener {
+    private val actionListener: ContactClickListener,
+) : RecyclerView.Adapter<AdapterContactsList.ContactViewHolder>(), View.OnClickListener {
 
     var contacts: List<Contact> = emptyList()
         set(newValue) {
             field = newValue
             notifyDataSetChanged()
+            Log.i("AdapterContactsList", "Adapter notifyDataSetChanged()")
         }
 
     override fun onClick(v: View) {
+
         val contact = v.tag as Contact
+        Log.i("AdapterContactsList", "MyContactsViewModel destroyed!")
         when (v.id) {
             R.id.ivDelete -> {
-                actionListener.onUserDelete(contact)
+                actionListener.onContactDelete(contact)
             }
             else -> {
-               actionListener.onUserDetails(contact)
+                actionListener.onContactDetails(contact)
             }
         }
+
     }
 
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactViewHolder {
-        val binding = SingleItemContactBinding.inflate(
+       val binding = SingleItemContactBinding.inflate(
             LayoutInflater.from(parent.context), parent, false)
 
+        binding.root.setOnClickListener(this)
         binding.ivDelete.setOnClickListener(this)
 
         return ContactViewHolder(binding)
@@ -54,6 +60,10 @@ class AdapterContactsList(
     override fun onBindViewHolder(holderContact: ContactViewHolder, position: Int) {
         val contact = contacts[position]
         with(holderContact.binding) {
+            holderContact.itemView.tag = contact
+
+            ivDelete.tag = contact
+
             ivPhoto.loadImageGlade(contact.photoAddress)
             //  binding.ivPhoto.loadImagePicasso(contact.photoAddress)
             tvName.text = contact.name
@@ -66,12 +76,13 @@ class AdapterContactsList(
     override fun getItemCount(): Int = contacts.size
 
 
-
     class ContactViewHolder(val binding: SingleItemContactBinding) :
         RecyclerView.ViewHolder(binding.root)
 
 
 }
+
+
 
 
 

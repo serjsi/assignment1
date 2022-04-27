@@ -1,13 +1,18 @@
 package com.shpp.ssierykh.assignment1.model
 
+import android.util.Log
 import com.shpp.ssierykh.assignment1.utils.Constants
 
-typealias UsersListener = (users: List<Contact>) -> Unit
+typealias ContactListener = (users: List<Contact>) -> Unit
 
 
 class BaseContacts {
     private var contacts = mutableListOf<Contact>()
-    private val listeners = mutableSetOf<UsersListener>()
+    private val listeners = mutableSetOf<ContactListener>()
+
+    init {
+        loadContacts()
+    }
 
     fun loadContacts() {
         contacts = mutableListOf(
@@ -40,8 +45,11 @@ class BaseContacts {
         contacts.sortBy { contactRecyclerView -> contactRecyclerView.name }
     }
 
+    fun getContacts(): List<Contact> {
+    return contacts
+    }
 
-    fun deleteUser(user: Contact) {
+    fun deleteContact(user: Contact) {
         val indexToDelete = contacts.indexOfFirst { it.email == user.email }
         if (indexToDelete != -1) {
             contacts.removeAt(indexToDelete)
@@ -50,12 +58,12 @@ class BaseContacts {
     }
 
 
-    fun addListener(listener: UsersListener) {
+    fun addListener(listener: ContactListener) {
         listeners.add(listener)
         listener.invoke(contacts)
     }
 
-    fun removeListener(listener: UsersListener) {
+    fun removeListener(listener: ContactListener) {
         listeners.remove(listener)
     }
 

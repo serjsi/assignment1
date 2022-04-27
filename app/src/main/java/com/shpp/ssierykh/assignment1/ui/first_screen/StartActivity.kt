@@ -57,7 +57,7 @@ class StartActivity : AppCompatActivity(), Routing {
     }
 
     override fun showMyContacts() {
-        replaceFragment(MyContactsFragment( BaseContacts()))
+        replaceFragment(MyContactsFragment( ))
     }
 
     override fun goBack() {

@@ -64,7 +64,7 @@ class MyContactsFragment() : Fragment() {
             "${getString(R.string.Contact)}  $nameDeleteContact ${getString(R.string.is_deleted)} ",
             Snackbar.LENGTH_LONG
         ).setAction(getString(R.string.UNDO)) {
-            //TODO need realise with database
+            //TODO need realise with database contacts
         //    adapter.contacts = oldContacts
             this.toast(
                 " ${getString(R.string.Contact)}  $nameDeleteContact" +

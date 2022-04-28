@@ -1,4 +1,4 @@
-package com.shpp.ssierykh.assignment1.ui.first_screen.my_profile.view_my_contacts
+package com.shpp.ssierykh.assignment1.screens.first_screen.my_profile.view_my_contacts
 
 
 import android.util.Log
@@ -7,8 +7,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ItemTouchHelper
-import com.bumptech.glide.Glide.init
 import com.shpp.ssierykh.assignment1.R
 import com.shpp.ssierykh.assignment1.model.Contact
 import com.shpp.ssierykh.assignment1.databinding.SingleItemContactBinding
@@ -31,14 +29,11 @@ class AdapterContactsList(
             val diffCallback = ContactsDiffCallback(field, newValue)
             val diffResult = DiffUtil.calculateDiff(diffCallback)
             field = newValue
-            Log.i("AdapterContactsList", "Adapter notifyDataSetChanged()")
             diffResult.dispatchUpdatesTo(this)
         }
 
     override fun onClick(v: View) {
-
         val contact = v.tag as Contact
-
         when (v.id) {
             R.id.ivDelete -> {
                 actionListener.onContactDelete(contact)
@@ -47,7 +42,6 @@ class AdapterContactsList(
                 actionListener.onContactDetails(contact)
             }
         }
-
     }
 
 
@@ -67,32 +61,19 @@ class AdapterContactsList(
         val contact = contacts[position]
         with(holderContact.binding) {
             holderContact.itemView.tag = contact
-
             ivDelete.tag = contact
 
             ivPhoto.loadImageGlade(contact.photoAddress)
             //  binding.ivPhoto.loadImagePicasso(contact.photoAddress)
             tvName.text = contact.name
             tvCareer.text = contact.career
+
         }
     }
-
 
     // return the size of contactList
     override fun getItemCount(): Int = contacts.size
 
-
     class ContactViewHolder(val binding: SingleItemContactBinding) :
         RecyclerView.ViewHolder(binding.root)
-
-
-
-
 }
-
-
-
-
-
-
-

@@ -7,7 +7,7 @@
     app:startDestination="@id/signFragmentGraph">
     <fragment
         android:id="@+id/signFragmentGraph"
-        android:name="com.shpp.ssierykh.assignment1.ui.first_screen.sign.SignFragment"
+        android:name="com.shpp.ssierykh.assignment1.screens.first_screen.sign.SignFragment"
         android:label="fragment_sign"
         tools:layout="@layout/fragment_sign" >
         <action
@@ -21,7 +21,7 @@
     </fragment>
     <fragment
         android:id="@+id/myProfileFragmentGraph"
-        android:name="com.shpp.ssierykh.assignment1.ui.first_screen.my_profile.MyProfileFragment"
+        android:name="com.shpp.ssierykh.assignment1.screens.first_screen.my_profile.MyProfileFragment"
         android:label="fragment_my_profile_"
         tools:layout="@layout/fragment_my_profile_" >
         <action
@@ -39,7 +39,7 @@
     </fragment>
     <fragment
         android:id="@+id/addOrEditContactsDialogFragmentGraph"
-        android:name="com.shpp.ssierykh.assignment1.ui.first_screen.my_profile.edit_profile.AddOrEditContactsDialogFragment"
+        android:name="com.shpp.ssierykh.assignment1.screens.first_screen.my_profile.edit_profile.AddOrEditContactsDialogFragment"
         android:label="dialog_add_or_edit_contact_profile"
         tools:layout="@layout/dialog_add_or_edit_contact_profile" >
         <action
@@ -52,7 +52,7 @@
     </fragment>
     <fragment
         android:id="@+id/myContactsFragmentGraph"
-        android:name="com.shpp.ssierykh.assignment1.ui.first_screen.my_profile.view_my_contacts.MyContactsFragment"
+        android:name="com.shpp.ssierykh.assignment1.screens.first_screen.my_profile.view_my_contacts.MyContactsFragment"
         android:label="fragment_my_contacts"
         tools:layout="@layout/fragment_my_contacts" >
         <action

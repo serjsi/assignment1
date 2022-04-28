@@ -1,4 +1,4 @@
-package com.shpp.ssierykh.assignment1.ui.first_screen.sign
+package com.shpp.ssierykh.assignment1.screens.first_screen.sign
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

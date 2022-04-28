@@ -1,4 +1,4 @@
-package com.shpp.ssierykh.assignment1.ui.activity_old
+package com.shpp.ssierykh.assignment1.screens.activity_old
 
 
 import android.content.Intent

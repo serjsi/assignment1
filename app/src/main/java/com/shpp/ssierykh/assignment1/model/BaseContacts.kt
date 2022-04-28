@@ -15,7 +15,7 @@ class BaseContacts {
         loadContacts()
     }
 
-    fun loadContacts() {
+    private fun loadContacts() {
         contacts = mutableListOf(
 
             Contact("FrankWells@mail.ua", Constants.PHOTO_FAKE_1, "Frank Wells", "Baker"),
@@ -55,7 +55,14 @@ class BaseContacts {
         if (indexToDelete != -1) {
             contacts = ArrayList(contacts)
             contacts.removeAt(indexToDelete)
-            Log.i("BaseContacts", "deleteContact ${user.email}")
+            notifyChanges()
+        }
+    }
+
+    fun addContact(user: Contact) {
+        if (user != null) {
+            contacts = ArrayList(contacts)
+            contacts.add(user)
             notifyChanges()
         }
     }

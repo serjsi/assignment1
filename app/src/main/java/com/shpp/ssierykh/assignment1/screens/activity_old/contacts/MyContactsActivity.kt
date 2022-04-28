@@ -1,4 +1,4 @@
-package com.shpp.ssierykh.assignment1.ui.activity_old.contacts
+package com.shpp.ssierykh.assignment1.screens.activity_old.contacts
 
 import android.content.Intent
 import android.os.Bundle

@@ -1,41 +1,45 @@
-package com.shpp.ssierykh.assignment1.ui.first_screen.my_profile.view_my_contacts
-///https://medium.com/@vgoyal_1/datastore-android-how-to-use-it-like-a-pro-using-kotlin-2c2440683d78
-import android.util.Log
-import android.view.View
+package com.shpp.ssierykh.assignment1.screens.first_screen.my_profile.view_my_contacts
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.shpp.ssierykh.assignment1.databinding.FragmentMyContactsBinding
-import com.shpp.ssierykh.assignment1.databinding.SingleItemContactBinding
 import com.shpp.ssierykh.assignment1.model.BaseContacts
 import com.shpp.ssierykh.assignment1.model.Contact
 import com.shpp.ssierykh.assignment1.model.ContactListener
-import kotlinx.android.synthetic.main.activity_main.view.*
 
-data class UserListItem(
-    val contact: Contact
-)
 
 class MyContactsViewModel(
     private val baseContacts: BaseContacts
 ) : ViewModel(), ContactClickListener {
 
-    /*    private var _contacts = MutableLiveData<List<UserListItem>>()
-        val contacts: LiveData<List<UserListItem>> = _contacts  */
+
     private var _contacts = MutableLiveData<List<Contact>>()
     val contacts: LiveData<List<Contact>> = _contacts
 
+    private val _actionShowDetails = MutableLiveData<Contact>()
+    val actionShowDetails: LiveData<Contact> = _actionShowDetails
+
+    private val _actionShowSnackbar = MutableLiveData<String>()
+    val actionShowSnackbar: LiveData<String> = _actionShowSnackbar
+
 
     override fun onContactDetails(contact: Contact) {
-        Log.i("MyContactsViewModel", "onUserDetails ${contact.email}")
+        _actionShowDetails.value = contact
     }
-
 
     override fun onContactDelete(contact: Contact) {
         baseContacts.deleteContact(contact)
+        _actionShowSnackbar.value = contact.name
     }
+
+    override fun onCleared() {
+        super.onCleared()
+        baseContacts.removeListener(listener)
+    }
+
+
 
     private val listener: ContactListener = {
         _contacts.value = baseContacts.getContacts()
@@ -45,11 +49,6 @@ class MyContactsViewModel(
         baseContacts.addListener(listener)
         loadUser()
         _contacts.value = baseContacts.getContacts()
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        baseContacts.removeListener(listener)
     }
 
 
@@ -81,5 +80,7 @@ class MyContactsViewModel(
         val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallback)
         itemTouchHelper.attachToRecyclerView(binding.rvBottomContainer)
     }
+
+
 
 }

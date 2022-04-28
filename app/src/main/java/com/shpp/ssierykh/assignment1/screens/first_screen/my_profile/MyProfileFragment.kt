@@ -1,4 +1,4 @@
-package com.shpp.ssierykh.assignment1.ui.first_screen.my_profile
+package com.shpp.ssierykh.assignment1.screens.first_screen.my_profile
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,8 +10,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.shpp.ssierykh.assignment1.R
 import com.shpp.ssierykh.assignment1.databinding.FragmentMyProfileBinding
-import com.shpp.ssierykh.assignment1.ui.SwitchNavigationGraph.isNavigationGraph
-import com.shpp.ssierykh.assignment1.ui.contract.routing
+import com.shpp.ssierykh.assignment1.screens.SwitchNavigationGraph.featureNavigationEnabled
+import com.shpp.ssierykh.assignment1.screens.contract.routing
 
 import com.shpp.ssierykh.assignment1.utils.extensions.loadImageGlade
 import com.shpp.ssierykh.assignment1.utils.extensions.toast
@@ -74,14 +74,14 @@ class MyProfileFragment : Fragment() {
     }
 
     private fun onOpenMyContacts() {
-        if (isNavigationGraph) {
+        if (featureNavigationEnabled) {
             findNavController().navigate(
                 R.id.action_myProfileFragmentGraph_to_myContactsFragmentGraph)
         }else routing().showMyContacts()
     }
 
     private fun onOpenEditProfile() {
-        if (isNavigationGraph) {
+        if (featureNavigationEnabled) {
             findNavController().navigate(
                 R.id.action_myProfileFragmentGraph_to_addOrEditContactsDialogFragmentGraph
             )
@@ -89,7 +89,7 @@ class MyProfileFragment : Fragment() {
     }
 
     private fun onOpenSignScreen() {
-        if (isNavigationGraph) {
+        if (featureNavigationEnabled) {
             toast("Go Sign Navigation")//TODO Delete////////////////////////////
             findNavController().navigate(
                 R.id.action_myProfileFragmentGraph_to_signFragmentGraph,

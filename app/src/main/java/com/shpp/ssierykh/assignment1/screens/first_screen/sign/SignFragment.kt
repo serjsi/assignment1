@@ -1,4 +1,4 @@
-package com.shpp.ssierykh.assignment1.ui.first_screen.sign
+package com.shpp.ssierykh.assignment1.screens.first_screen.sign
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -16,9 +16,9 @@ import androidx.navigation.fragment.findNavController
 import com.shpp.ssierykh.assignment1.R
 import com.shpp.ssierykh.assignment1.model.Contact
 import com.shpp.ssierykh.assignment1.databinding.FragmentSignBinding
-import com.shpp.ssierykh.assignment1.ui.SwitchNavigationGraph.isNavigationGraph
-import com.shpp.ssierykh.assignment1.ui.contract.routing
-import com.shpp.ssierykh.assignment1.ui.first_screen.my_profile.MyProfileViewModel
+import com.shpp.ssierykh.assignment1.screens.SwitchNavigationGraph.featureNavigationEnabled
+import com.shpp.ssierykh.assignment1.screens.contract.routing
+import com.shpp.ssierykh.assignment1.screens.first_screen.my_profile.MyProfileViewModel
 import com.shpp.ssierykh.assignment1.utils.Constants
 import com.shpp.ssierykh.assignment1.utils.Constants.EMAIL_BANDLE_KEY
 import com.shpp.ssierykh.assignment1.utils.Constants.PHOTO_BANDLE_KEY
@@ -76,7 +76,7 @@ class SignFragment : Fragment() {
                 if (isValidateEmail(etEmail) && isValidatePassword(etPassword)) {
                     viewModel.setContact(Contact(etEmail.text.toString()))
                       writeAutologin(vM)
-                    if (isNavigationGraph) {
+                    if (featureNavigationEnabled) {
                         toast("Go MyProfile Navigation")//TODO Delete////////////////////////////
                         findNavController().navigate(
                             R.id.action_signFragmentGraph_to_myProfileFragmentGraph,

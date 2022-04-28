@@ -12,12 +12,12 @@
         android:roundIcon="@mipmap/ic_kot_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Assignment1"
-        android:name=".ui.first_screen.App">
+        android:name=".screens.first_screen.App">
         <activity
-            android:name=".ui.first_screen.StartActivity"
+            android:name=".screens.first_screen.StartActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.SplashScreen"
+            android:name=".screens.SplashScreen"
             android:exported="true"
             android:theme="@style/SplashTheme" >
             <intent-filter>
@@ -27,21 +27,21 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.activity_old.MainActivity"
+            android:name=".screens.activity_old.MainActivity"
             android:exported="true"
             android:screenOrientation="fullSensor" >
 
         </activity>
         <activity
-            android:name=".ui.activity_old.MyProfileActivity"
+            android:name=".screens.activity_old.MyProfileActivity"
             android:exported="true"
             android:screenOrientation="fullSensor" />
         <activity
-            android:name="com.shpp.ssierykh.assignment1.ui.activity_old.contacts.ContactsProfileActivity"
+            android:name="com.shpp.ssierykh.assignment1.screens.activity_old.contacts.ContactsProfileActivity"
             android:exported="true"
             android:screenOrientation="fullSensor" />
         <activity
-            android:name="com.shpp.ssierykh.assignment1.ui.activity_old.contacts.MyContactsActivity"
+            android:name="com.shpp.ssierykh.assignment1.screens.activity_old.contacts.MyContactsActivity"
             android:exported="true"
             android:screenOrientation="fullSensor" />
     </application>

@@ -1,7 +1,6 @@
-package com.shpp.ssierykh.assignment1.ui.contract
+package com.shpp.ssierykh.assignment1.screens.contract
 
 import androidx.fragment.app.Fragment
-import androidx.navigation.NavController
 
 
 fun Fragment.routing(): Routing {

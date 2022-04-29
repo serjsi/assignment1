@@ -1,4 +1,6 @@
 package com.shpp.ssierykh.assignment1.screens.first_screen.my_profile.view_my_contacts
+
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -14,6 +16,7 @@ class MyContactsViewModel(
     private val baseContacts: BaseContacts
 ) : ViewModel(), ContactClickListener {
 
+    private lateinit var lastDeleteContact: Contact
 
     private var _contacts = MutableLiveData<List<Contact>>()
     val contacts: LiveData<List<Contact>> = _contacts
@@ -32,14 +35,22 @@ class MyContactsViewModel(
     override fun onContactDelete(contact: Contact) {
         baseContacts.deleteContact(contact)
         _actionShowSnackbar.value = contact.name
+        lastDeleteContact = contact
+    }
+
+    fun restoreLastDeletingContact() {
+        onContactAdd(lastDeleteContact)
+    }
+
+    private fun onContactAdd(contact: Contact) {
+        baseContacts.addContact(contact)
+
     }
 
     override fun onCleared() {
         super.onCleared()
         baseContacts.removeListener(listener)
     }
-
-
 
     private val listener: ContactListener = {
         _contacts.value = baseContacts.getContacts()
@@ -80,7 +91,6 @@ class MyContactsViewModel(
         val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallback)
         itemTouchHelper.attachToRecyclerView(binding.rvBottomContainer)
     }
-
 
 
 }

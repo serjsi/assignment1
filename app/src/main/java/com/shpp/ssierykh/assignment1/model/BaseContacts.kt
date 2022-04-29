@@ -4,7 +4,7 @@ import android.util.Log
 import com.shpp.ssierykh.assignment1.utils.Constants
 import java.util.ArrayList
 
-typealias ContactListener = (users: List<Contact>) -> Unit
+typealias ContactListener = (contacts: List<Contact>) -> Unit
 
 
 class BaseContacts {
@@ -47,7 +47,7 @@ class BaseContacts {
     }
 
     fun getContacts(): List<Contact> {
-    return contacts
+        return contacts
     }
 
     fun deleteContact(user: Contact) {
@@ -60,11 +60,10 @@ class BaseContacts {
     }
 
     fun addContact(user: Contact) {
-        if (user != null) {
-            contacts = ArrayList(contacts)
-            contacts.add(user)
-            notifyChanges()
-        }
+        contacts = ArrayList(contacts)
+        contacts.add(user)
+        contacts.sortBy { contactRecyclerView -> contactRecyclerView.name }
+        notifyChanges()
     }
 
 
@@ -79,6 +78,7 @@ class BaseContacts {
 
     private fun notifyChanges() {
         listeners.forEach { it.invoke(contacts) }
+
     }
 
 }

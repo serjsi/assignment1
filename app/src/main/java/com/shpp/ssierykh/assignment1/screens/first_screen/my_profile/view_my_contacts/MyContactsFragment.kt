@@ -1,6 +1,7 @@
 package com.shpp.ssierykh.assignment1.screens.first_screen.my_profile.view_my_contacts
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,15 +33,17 @@ class MyContactsFragment() : Fragment() {
         binding = FragmentMyContactsBinding.inflate(inflater, container, false)
         adapter = AdapterContactsList(viewModel)
 
-        var oldContacts: List<Contact> = emptyList()
 
         viewModel.contacts.observe(viewLifecycleOwner, Observer {
-         //   oldContacts = adapter.contacts
             adapter.contacts = it
         })
 
         viewModel.actionShowSnackbar.observe(viewLifecycleOwner, Observer {
-            showSnackbarDeleteContact(oldContacts, it)
+            showSnackbarDeleteContact( it)
+        })
+
+        viewModel.actionShowDetails.observe(viewLifecycleOwner, Observer {
+            this.toast("Show details  ${it.name}") //TODO ---------------
         })
 
         binding.apply {
@@ -55,23 +58,20 @@ class MyContactsFragment() : Fragment() {
         viewModel.swipeDeleteItem(binding)
 
         return binding.root
-
     }
 
-    private fun showSnackbarDeleteContact(oldContacts: List<Contact>, nameDeleteContact: String?) {
+    private fun showSnackbarDeleteContact( nameDeleteContact: String?) {
         Snackbar.make(
             binding.rvBottomContainer,
             "${getString(R.string.Contact)}  $nameDeleteContact ${getString(R.string.is_deleted)} ",
             Snackbar.LENGTH_LONG
         ).setAction(getString(R.string.UNDO)) {
-            //TODO need realise with database
-        //    adapter.contacts = oldContacts
-            this.toast(
+                viewModel. restoreLastDeletingContact()
+                this.toast(
                 " ${getString(R.string.Contact)}  $nameDeleteContact" +
                         " ${getString(R.string.is_restored)}"
             )
         }.apply { show()}
-
     }
 
 

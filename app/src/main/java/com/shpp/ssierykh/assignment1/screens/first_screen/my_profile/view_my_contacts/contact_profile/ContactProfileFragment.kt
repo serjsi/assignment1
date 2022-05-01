@@ -70,7 +70,6 @@ class ContactProfileFragment : Fragment() {
         }
     }
 
-
     private fun onOpenMyContacts() {
         if (featureNavigationEnabled) {
             findNavController().navigate(

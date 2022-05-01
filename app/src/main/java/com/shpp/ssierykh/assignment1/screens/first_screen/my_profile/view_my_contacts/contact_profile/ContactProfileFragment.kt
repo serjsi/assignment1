@@ -88,7 +88,6 @@ class ContactProfileFragment : Fragment() {
         }
 
     }
-
 }
 
 

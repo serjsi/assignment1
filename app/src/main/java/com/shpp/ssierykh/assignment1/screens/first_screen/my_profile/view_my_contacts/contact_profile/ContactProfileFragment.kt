@@ -64,7 +64,6 @@ class ContactProfileFragment : Fragment() {
                     tvCareer.text = profilContactNew.career
                     tvHomeAddress.text = profilContactNew.home
                 }
-
             }
                 .collect()
         }

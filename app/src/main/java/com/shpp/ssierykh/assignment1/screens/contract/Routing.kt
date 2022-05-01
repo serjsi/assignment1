@@ -1,6 +1,7 @@
 package com.shpp.ssierykh.assignment1.screens.contract
 
 import androidx.fragment.app.Fragment
+import com.shpp.ssierykh.assignment1.model.Contact
 
 
 fun Fragment.routing(): Routing {
@@ -12,5 +13,6 @@ interface Routing {
     fun showSignScreen()
     fun showAddOrEditContacts()
     fun showMyContacts()
+    fun showContactProfile(contact: Contact)
     fun goBack()
 }

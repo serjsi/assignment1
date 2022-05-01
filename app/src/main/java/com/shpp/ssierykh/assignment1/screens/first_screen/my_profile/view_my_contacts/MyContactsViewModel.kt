@@ -47,6 +47,7 @@ class MyContactsViewModel(
 
     }
 
+
     override fun onCleared() {
         super.onCleared()
         baseContacts.removeListener(listener)

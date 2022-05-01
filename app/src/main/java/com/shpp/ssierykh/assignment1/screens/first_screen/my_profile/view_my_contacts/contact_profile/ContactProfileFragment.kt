@@ -48,11 +48,12 @@ class ContactProfileFragment : Fragment() {
        setDataProfile()
 
         binding.apply {
-
+            ivArrowBack.setOnClickListener { onArrowBack() }
             btViewMyContacts.setOnClickListener { onOpenMyContacts() }
-            btEditProfile.isInvisible
-            tvGoToSettingsAndFill.isInvisible
-            tvSettings.isInvisible
+            btEditProfile.visibility = View.GONE
+            tvGoToSettingsAndFill.visibility = View.GONE
+            tvSettings.visibility = View.GONE
+            btViewMyContacts.text = "message" //TODO question
         }
 
 
@@ -62,13 +63,13 @@ class ContactProfileFragment : Fragment() {
 
     private fun setDataProfile() {
         lifecycleScope.launchWhenStarted {
-            viewModel.profilContact.onEach { profilContactNew ->
+            viewModel.profilContact.onEach { profilContact ->
                 // Update the UI, in this case, a TextView.
                 binding.apply {
-                    ivPhotoProfile.loadImageGlade(profilContactNew.photoAddress)
-                    tvName.text = profilContactNew.name
-                    tvCareer.text = profilContactNew.career
-                    tvHomeAddress.text = profilContactNew.home
+                    ivPhotoProfile.loadImageGlade(profilContact.photoAddress)
+                    tvName.text = profilContact.name
+                    tvCareer.text = profilContact.career
+                    tvHomeAddress.text = profilContact.home
                 }
             }
                 .collect()
@@ -92,6 +93,10 @@ class ContactProfileFragment : Fragment() {
             return fragment
         }
 
+    }
+
+    private fun onArrowBack() {
+        routing().goBack()
     }
 }
 

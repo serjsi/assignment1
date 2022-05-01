@@ -37,6 +37,7 @@ class MyProfileFragment : Fragment() {
             tvSettings.setOnClickListener { onOpenSignScreen() }
             btEditProfile.setOnClickListener { onOpenEditProfile() }
             btViewMyContacts.setOnClickListener { onOpenMyContacts() }
+            ivArrowBack.visibility =View.GONE
         }
         return binding.root
 

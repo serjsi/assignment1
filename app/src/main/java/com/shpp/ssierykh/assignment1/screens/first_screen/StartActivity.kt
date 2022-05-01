@@ -66,12 +66,12 @@ class StartActivity : AppCompatActivity(), Routing {
     }
 
     override fun showContactProfile(contact: Contact) {
-   //     runWhenActive {
+        runWhenActive {
             supportFragmentManager.beginTransaction()
                 .addToBackStack(null)
                 .replace(R.id.nav_host_fragment, ContactProfileFragment.newInstance(contact.email))
                 .commit()
- //       }
+        }
     }
 
 

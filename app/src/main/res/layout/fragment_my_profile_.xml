@@ -45,6 +45,21 @@
         app:layout_constraintStart_toStartOf="@+id/ivTopContainer"
         app:layout_constraintTop_toTopOf="@+id/ivTopContainer" />
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvProfile"
+        style="@style/TextStyBasic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/horizontal_margin_16"
+        android:text="Profile"
+        android:textColor="@color/gray_very_light"
+        android:textSize="@dimen/textSize_16sp"
+        android:theme="@style/TextStyBasic"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/ivPhotoProfile"

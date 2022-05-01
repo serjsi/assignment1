@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
+import androidx.core.view.isInvisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
@@ -49,7 +50,12 @@ class ContactProfileFragment : Fragment() {
         binding.apply {
 
             btViewMyContacts.setOnClickListener { onOpenMyContacts() }
+            btEditProfile.isInvisible
+            tvGoToSettingsAndFill.isInvisible
+            tvSettings.isInvisible
         }
+
+
         return binding.root
 
     }

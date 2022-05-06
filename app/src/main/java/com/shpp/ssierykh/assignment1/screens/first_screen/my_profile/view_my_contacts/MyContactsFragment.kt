@@ -1,11 +1,9 @@
 package com.shpp.ssierykh.assignment1.screens.first_screen.my_profile.view_my_contacts
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -14,7 +12,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.shpp.ssierykh.assignment1.R
 
 import com.shpp.ssierykh.assignment1.databinding.FragmentMyContactsBinding
-import com.shpp.ssierykh.assignment1.model.Contact
+
 import com.shpp.ssierykh.assignment1.screens.contract.routing
 import com.shpp.ssierykh.assignment1.utils.extensions.toast
 
@@ -44,7 +42,7 @@ class MyContactsFragment() : Fragment() {
         })
 
         viewModel.actionShowDetails.observe(viewLifecycleOwner, Observer {
-         routing().showContactProfile(it)
+      routing().showContactProfile(it)
 
 
         })

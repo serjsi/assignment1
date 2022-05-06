@@ -4,9 +4,11 @@ import androidx.fragment.app.Fragment
 import com.shpp.ssierykh.assignment1.model.Contact
 
 
-fun Fragment.routing(): Routing {
+/*fun Fragment.routing(): Routing {
     return requireActivity() as Routing
-}
+}*/
+fun Fragment.routing() = requireActivity() as Routing
+
 interface Routing {
 
     fun showMyProfileScreen()

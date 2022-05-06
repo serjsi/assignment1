@@ -24,6 +24,8 @@ class MyContactsViewModel(
     private val _actionShowDetails = MutableLiveData<Contact>()
     val actionShowDetails: LiveData<Contact> = _actionShowDetails
 
+
+
     private val _actionShowSnackbar = MutableLiveData<String>()
     val actionShowSnackbar: LiveData<String> = _actionShowSnackbar
 

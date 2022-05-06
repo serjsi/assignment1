@@ -9,9 +9,11 @@ import androidx.core.view.isInvisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.shpp.ssierykh.assignment1.R
+import com.shpp.ssierykh.assignment1.databinding.FragmentContactProfileBinding
 import com.shpp.ssierykh.assignment1.databinding.FragmentMyProfileBinding
 import com.shpp.ssierykh.assignment1.screens.SwitchNavigationGraph.featureNavigationEnabled
 import com.shpp.ssierykh.assignment1.screens.activity_old.contacts.ContactsProfileActivity
@@ -27,7 +29,8 @@ import kotlinx.coroutines.flow.onEach
 
 class ContactProfileFragment : Fragment() {
 
-    private lateinit var binding: FragmentMyProfileBinding
+    //    private lateinit var binding: FragmentMyProfileBinding
+    private lateinit var binding: FragmentContactProfileBinding
 
     private val viewModel: ContactProfileViewModel by viewModels { factory() }
 
@@ -42,10 +45,13 @@ class ContactProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         super.onCreate(savedInstanceState)
-        binding = FragmentMyProfileBinding.inflate(inflater, container, false)
+        //  binding =  FragmentMyProfileBinding.inflate(inflater, container, false)
+        binding = FragmentContactProfileBinding.inflate(layoutInflater, container, false)
 
 
-       setDataProfile()
+        setDataProfile()
+
+
 
         binding.apply {
             ivArrowBack.setOnClickListener { onArrowBack() }
@@ -79,9 +85,11 @@ class ContactProfileFragment : Fragment() {
     private fun onOpenMyContacts() {
         if (featureNavigationEnabled) {
             findNavController().navigate(
-                R.id.action_myProfileFragmentGraph_to_myContactsFragmentGraph)
-        }else routing().showMyContacts()
+                R.id.action_myProfileFragmentGraph_to_myContactsFragmentGraph
+            )
+        } else routing().showMyContacts()
     }
+
 
     companion object {
 

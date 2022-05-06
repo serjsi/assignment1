@@ -24,7 +24,7 @@ import javax.xml.validation.SchemaFactory.newInstance
 
 
 private lateinit var binding: ActivityStartBinding
-private lateinit var navController: NavController
+
 
 @AndroidEntryPoint
 class StartActivity : AppCompatActivity(), Routing {
@@ -32,6 +32,7 @@ class StartActivity : AppCompatActivity(), Routing {
 
     // actions to be launched when activity is active
     private val actions = mutableListOf<() -> Unit>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (!featureNavigationEnabled) {
@@ -50,24 +51,25 @@ class StartActivity : AppCompatActivity(), Routing {
     }
 
     override fun showMyProfileScreen() {
-        replaceFragment(MyProfileFragment())
+      replaceFragment(MyProfileFragment())
     }
 
     override fun showSignScreen() {
-        replaceFragment(SignFragment())
+      replaceFragment(SignFragment())
     }
 
     override fun showAddOrEditContacts() {
-        replaceFragment(AddOrEditContactsDialogFragment())
+       replaceFragment(AddOrEditContactsDialogFragment())
     }
 
     override fun showMyContacts() {
-        replaceFragment(MyContactsFragment())
+      replaceFragment(MyContactsFragment())
     }
 
     override fun showContactProfile(contact: Contact) {
         runWhenActive {
             supportFragmentManager.beginTransaction()
+
                 .addToBackStack(null)
                 .replace(R.id.nav_host_fragment, ContactProfileFragment.newInstance(contact.email))
                 .commit()

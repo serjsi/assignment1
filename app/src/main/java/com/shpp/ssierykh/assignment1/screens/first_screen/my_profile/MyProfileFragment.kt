@@ -38,6 +38,7 @@ class MyProfileFragment : Fragment() {
             btEditProfile.setOnClickListener { onOpenEditProfile() }
             btViewMyContacts.setOnClickListener { onOpenMyContacts() }
             ivArrowBack.visibility =View.GONE
+            tvProfile.visibility=View.GONE
         }
         return binding.root
 

@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".screens.first_screen.my_profile.ContactProfilieFragment">
+
+
+    <View
+        android:id="@+id/ivTopContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="?attr/colorPrimaryVariant"
+        app:layout_constraintBottom_toTopOf="@id/ivBottomContainer"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5"
+        app:layout_constraintVertical_weight="0.5"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <View
+        android:id="@+id/ivBottomContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="?attr/colorSecondary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivTopContainer"
+        app:layout_constraintVertical_weight="0.5"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvSettings"
+        style="@style/TextStyBasic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/horizontal_margin_16"
+        android:layout_marginStart="16dp"
+        android:text="@string/settings"
+        android:textColor="@color/gray_very_light"
+        android:textSize="@dimen/textSize_24sp"
+        android:theme="@style/TextStyBasic"
+        app:layout_constraintStart_toStartOf="@+id/ivTopContainer"
+        app:layout_constraintTop_toTopOf="@+id/ivTopContainer" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivArrowBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/margin_offset_from_edge_screen_16dp"
+
+        app:layout_constraintBottom_toBottomOf="@+id/ivTopContainer"
+        app:layout_constraintEnd_toEndOf="@+id/ivTopContainer"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/ivTopContainer"
+        app:layout_constraintTop_toTopOf="@+id/ivTopContainer"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvProfile"
+        style="@style/TextStyBasic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/horizontal_margin_16"
+        android:text="@string/profile"
+        android:textColor="@color/gray_very_light"
+        android:textSize="@dimen/textSize_16sp"
+        android:theme="@style/TextStyBasic"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivPhotoProfile"
+        android:layout_width="@dimen/photo_width"
+        android:layout_height="@dimen/photo_height"
+        app:flow_firstVerticalBias="0.5"
+        app:layout_constraintBottom_toBottomOf="@+id/ivTopContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ivTopContainer"
+        app:layout_constraintVertical_bias="0.327"
+        app:layout_constraintVertical_chainStyle="spread"
+        app:srcCompat="@drawable/ic_mok" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvHomeAddress"
+        style="@style/TextStyBasic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/home_address"
+        android:textColor="@color/white_my"
+        app:layout_constraintBottom_toBottomOf="@+id/ivTopContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCareer" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvCareer"
+        style="@style/TextStyBasic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/vertical_margin_16"
+        android:text="@string/career"
+        android:textColor="@color/white_my"
+        app:layout_constraintBottom_toTopOf="@+id/tvHomeAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvName" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/name"
+        android:textColor="@color/gray_very_light"
+        android:textSize="@dimen/textSize_18sp"
+        android:theme="@style/TextStyBasic"
+        app:layout_constraintBottom_toTopOf="@+id/tvCareer"
+        app:layout_constraintEnd_toEndOf="@+id/ivTopContainer"
+        app:layout_constraintStart_toStartOf="@+id/ivTopContainer"
+        app:layout_constraintTop_toBottomOf="@+id/ivPhotoProfile" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvGoToSettingsAndFill"
+        style="@style/TextStyBasic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/margin_offset_from_edge_screen_16dp"
+        android:text="@string/go_to_settings_and_fill_out_the_profile"
+        android:textColor="@color/gray_text"
+        app:layout_constraintBottom_toTopOf="@+id/btEditProfile"
+        app:layout_constraintEnd_toEndOf="@+id/ivBottomContainer"
+        app:layout_constraintVertical_bias="1.5"
+        app:layout_constraintStart_toStartOf="@+id/ivBottomContainer"
+        app:layout_constraintTop_toTopOf="@+id/ivBottomContainer" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btEditProfile"
+        style="@style/TextStyBasic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btViewMyContacts"
+        android:layout_marginStart="@dimen/margin_offset_from_edge_screen_16dp"
+        android:layout_marginEnd="@dimen/margin_offset_from_edge_screen_16dp"
+        android:background="@drawable/button_background_black"
+        android:text="@string/edit_profile"
+        android:textAllCaps="false"
+        android:textColor="@color/gray_text"
+        android:textSize="@dimen/textSize_14sp"
+        app:layout_constraintBottom_toTopOf="@+id/btViewMyContacts"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ivBottomContainer"
+        app:layout_constraintVertical_bias="0.939" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btViewMyContacts"
+        style="@style/TextStyBasic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/margin_offset_from_edge_screen_16dp"
+        android:background="@drawable/button_background_orange"
+        android:backgroundTint="?attr/colorPrimary"
+        android:text="@string/view_my_contacts"
+        android:textColor="?attr/colorOnPrimary"
+        android:textSize="@dimen/textSize_16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivBottomContainer"
+        app:layout_constraintEnd_toEndOf="@+id/ivBottomContainer"
+        app:layout_constraintStart_toStartOf="@+id/ivBottomContainer" />
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivInstagramLog"
+        style="@style/logo_ImageView"
+        android:layout_above="@+id/btEditProfile"
+        android:layout_centerHorizontal="true"
+        app:layout_constraintBottom_toTopOf="@+id/tvGoToSettingsAndFill"
+        app:layout_constraintEnd_toStartOf="@+id/ivVkLog"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivTopContainer"
+        app:srcCompat="@drawable/ic_instagram_log" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivVkLog"
+        style="@style/logo_ImageView"
+        android:layout_alignBottom="@+id/ivInstagramLog"
+        android:layout_alignParentEnd="true"
+        app:layout_constraintBottom_toTopOf="@+id/tvGoToSettingsAndFill"
+        app:layout_constraintEnd_toStartOf="@+id/ivFacebookLog"
+        app:layout_constraintStart_toEndOf="@+id/ivInstagramLog"
+        app:layout_constraintTop_toBottomOf="@+id/ivTopContainer"
+        app:srcCompat="@drawable/ic_vk_log" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivFacebookLog"
+        style="@style/logo_ImageView"
+        android:layout_alignBottom="@+id/ivInstagramLog"
+        app:layout_constraintBottom_toTopOf="@+id/tvGoToSettingsAndFill"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ivVkLog"
+        app:layout_constraintTop_toBottomOf="@+id/ivTopContainer"
+        app:srcCompat="@drawable/ic_facebook_log" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+

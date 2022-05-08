@@ -1,5 +1,6 @@
 package com.shpp.ssierykh.assignment1.screens.first_screen
 
+import android.content.Context
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -40,6 +41,7 @@ class StartActivity : AppCompatActivity(), Routing {
         }
         setContentView(R.layout.activity_start)
 
+
         // Initially display the first fragment in main activity
         if (savedInstanceState == null && !featureNavigationEnabled) {
             supportFragmentManager
@@ -69,7 +71,6 @@ class StartActivity : AppCompatActivity(), Routing {
     override fun showContactProfile(contact: Contact) {
         runWhenActive {
             supportFragmentManager.beginTransaction()
-
                 .addToBackStack(null)
                 .replace(R.id.nav_host_fragment, ContactProfileFragment.newInstance(contact.email))
                 .commit()
@@ -78,7 +79,15 @@ class StartActivity : AppCompatActivity(), Routing {
 
 
     override fun goBack() {
-        onBackPressed()
+        runWhenActive { onBackPressed()}
+
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        actions.forEach { it() }
+        actions.clear()
     }
 
     /**

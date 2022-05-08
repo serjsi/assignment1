@@ -21,8 +21,8 @@ class MyContactsViewModel(
     private var _contacts = MutableLiveData<List<Contact>>()
     val contacts: LiveData<List<Contact>> = _contacts
 
-    private val _actionShowDetails = MutableLiveData<Contact>()
-    val actionShowDetails: LiveData<Contact> = _actionShowDetails
+    private val _actionShowDetails = MutableLiveData<Contact?>()
+    val actionShowDetails: MutableLiveData<Contact?> = _actionShowDetails
 
 
 
@@ -32,7 +32,9 @@ class MyContactsViewModel(
 
     override fun onContactDetails(contact: Contact) {
         _actionShowDetails.value = contact
+        _actionShowDetails.value = null
     }
+
 
     override fun onContactDelete(contact: Contact) {
         baseContacts.deleteContact(contact)
@@ -46,13 +48,13 @@ class MyContactsViewModel(
 
     private fun onContactAdd(contact: Contact) {
         baseContacts.addContact(contact)
-
     }
 
 
     override fun onCleared() {
         super.onCleared()
         baseContacts.removeListener(listener)
+
     }
 
     private val listener: ContactListener = {
@@ -69,6 +71,7 @@ class MyContactsViewModel(
     private fun loadUser(): List<Contact> {
         return baseContacts.getContacts()
     }
+
 
     fun swipeDeleteItem(binding: FragmentMyContactsBinding) {
         val itemTouchHelperCallback = object :

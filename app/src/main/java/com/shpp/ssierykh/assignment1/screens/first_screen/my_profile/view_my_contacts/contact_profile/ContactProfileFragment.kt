@@ -1,5 +1,6 @@
 package com.shpp.ssierykh.assignment1.screens.first_screen.my_profile.view_my_contacts.contact_profile
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -18,8 +19,8 @@ import com.shpp.ssierykh.assignment1.databinding.FragmentMyProfileBinding
 import com.shpp.ssierykh.assignment1.screens.SwitchNavigationGraph.featureNavigationEnabled
 import com.shpp.ssierykh.assignment1.screens.activity_old.contacts.ContactsProfileActivity
 import com.shpp.ssierykh.assignment1.screens.contract.routing
+import com.shpp.ssierykh.assignment1.screens.factory
 import com.shpp.ssierykh.assignment1.screens.first_screen.my_profile.view_my_contacts.MyContactsFragment
-import com.shpp.ssierykh.assignment1.screens.first_screen.my_profile.view_my_contacts.factory
 
 import com.shpp.ssierykh.assignment1.utils.extensions.loadImageGlade
 import com.shpp.ssierykh.assignment1.utils.extensions.toast
@@ -105,6 +106,7 @@ class ContactProfileFragment : Fragment() {
 
     private fun onArrowBack() {
         routing().goBack()
+
     }
 }
 

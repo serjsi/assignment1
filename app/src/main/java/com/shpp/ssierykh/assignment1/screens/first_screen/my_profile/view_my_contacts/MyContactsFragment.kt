@@ -1,6 +1,7 @@
 package com.shpp.ssierykh.assignment1.screens.first_screen.my_profile.view_my_contacts
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,8 +13,10 @@ import com.google.android.material.snackbar.Snackbar
 import com.shpp.ssierykh.assignment1.R
 
 import com.shpp.ssierykh.assignment1.databinding.FragmentMyContactsBinding
+import com.shpp.ssierykh.assignment1.model.Contact
 
 import com.shpp.ssierykh.assignment1.screens.contract.routing
+import com.shpp.ssierykh.assignment1.screens.factory
 import com.shpp.ssierykh.assignment1.utils.extensions.toast
 
 
@@ -34,6 +37,7 @@ class MyContactsFragment() : Fragment() {
 
 
         viewModel.contacts.observe(viewLifecycleOwner, Observer {
+            Log.d("test","!---------------------LOAD ConTACT")
             adapter.contacts = it
         })
 
@@ -42,8 +46,7 @@ class MyContactsFragment() : Fragment() {
         })
 
         viewModel.actionShowDetails.observe(viewLifecycleOwner, Observer {
-      routing().showContactProfile(it)
-
+            it?.let { it1 -> routing().showContactProfile(it1) }
 
         })
 
@@ -83,7 +86,6 @@ class MyContactsFragment() : Fragment() {
     private fun onArrowBack() {
         routing().goBack()
     }
-
 
 
 }

@@ -40,6 +40,7 @@ class AdapterContactsList(
             }
             else -> {
                 actionListener.onContactDetails(contact)
+
             }
         }
     }
@@ -50,7 +51,6 @@ class AdapterContactsList(
             LayoutInflater.from(parent.context), parent, false
         )
 
-        binding.root.setOnClickListener(this)
         binding.ivDelete.setOnClickListener(this)
 
         return ContactViewHolder(binding)
@@ -62,6 +62,8 @@ class AdapterContactsList(
         with(holderContact.binding) {
             holderContact.itemView.tag = contact
             ivDelete.tag = contact
+
+            holderContact.binding.root.setOnClickListener(this@AdapterContactsList)
 
             ivPhoto.loadImageGlade(contact.photoAddress)
             //  binding.ivPhoto.loadImagePicasso(contact.photoAddress)
@@ -75,5 +77,6 @@ class AdapterContactsList(
     override fun getItemCount(): Int = contacts.size
 
     class ContactViewHolder(val binding: SingleItemContactBinding) :
+
         RecyclerView.ViewHolder(binding.root)
 }

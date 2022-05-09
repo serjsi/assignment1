@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="?attr/colorPrimaryVariant"
     android:padding="@dimen/margin_offset_from_edge_screen_16dp"
-    tools:context=".screens.first_screen.sign.SignFragment">
+    tools:context=".ui.sign.SignFragment">
 
 
     <androidx.appcompat.widget.AppCompatTextView

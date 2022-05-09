@@ -12,12 +12,12 @@
         android:roundIcon="@mipmap/ic_kot_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Assignment1"
-        android:name=".screens.first_screen.App">
+        android:name=".utils.App">
         <activity
-            android:name=".screens.first_screen.StartActivity"
+            android:name="com.shpp.ssierykh.assignment1.activity_and_splash.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".screens.SplashScreen"
+            android:name="com.shpp.ssierykh.assignment1.activity_and_splash.SplashScreen"
             android:exported="true"
             android:theme="@style/SplashTheme" >
             <intent-filter>
@@ -26,24 +26,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".screens.activity_old.MainActivity"
-            android:exported="true"
-            android:screenOrientation="fullSensor" >
 
-        </activity>
-        <activity
-            android:name=".screens.activity_old.MyProfileActivity"
-            android:exported="true"
-            android:screenOrientation="fullSensor" />
-        <activity
-            android:name="com.shpp.ssierykh.assignment1.screens.activity_old.contacts.ContactsProfileActivity"
-            android:exported="true"
-            android:screenOrientation="fullSensor" />
-        <activity
-            android:name="com.shpp.ssierykh.assignment1.screens.activity_old.contacts.MyContactsActivity"
-            android:exported="true"
-            android:screenOrientation="fullSensor" />
     </application>
 
 </manifest>

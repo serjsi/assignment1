@@ -6,8 +6,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.shpp.ssierykh.assignment1.utils.App
 import com.shpp.ssierykh.assignment1.ui.view_my_contacts.MyContactsViewModel
 import com.shpp.ssierykh.assignment1.ui.contact_profile.ContactProfileViewModel
-
-
+import com.shpp.ssierykh.assignment1.ui.edit_profile.AddOrEditContactsDialogFragment
+import com.shpp.ssierykh.assignment1.ui.edit_profile.AddOrEditContactsViewModel
 
 
 @Suppress("UNCHECKED_CAST")
@@ -22,6 +22,9 @@ open class ContactsViewModelFactory(private val app: App) :
         }
         ContactProfileViewModel::class.java -> {
             ContactProfileViewModel(app.baseContacts)
+        }
+        AddOrEditContactsViewModel::class.java -> {
+            AddOrEditContactsViewModel(app.baseContacts)
         }
         else -> {
             throw IllegalStateException("Unknown view model class")

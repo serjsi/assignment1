@@ -1,6 +1,7 @@
 package com.shpp.ssierykh.assignment1.ui.contact_profile
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.shpp.ssierykh.assignment1.R
 import com.shpp.ssierykh.assignment1.databinding.FragmentContactProfileBinding
 import com.shpp.ssierykh.assignment1.ui.fragment_util.factory
@@ -18,6 +20,7 @@ import com.shpp.ssierykh.assignment1.ui.fragment_util.routing
 
 
 import com.shpp.ssierykh.assignment1.utils.extensions.loadImageGlade
+import com.shpp.ssierykh.assignment1.utils.extensions.toast
 
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
@@ -25,14 +28,17 @@ import kotlinx.coroutines.flow.onEach
 
 class ContactProfileFragment : Fragment() {
 
-    //    private lateinit var binding: FragmentMyProfileBinding
     private lateinit var binding: FragmentContactProfileBinding
-
     private val viewModel: ContactProfileViewModel by viewModels { factory() }
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.loadUser(requireArguments().getString(ARG_EMAIL_ID))
+        if (featureNavigationEnabled) {
+            val args: ContactProfileFragmentArgs by navArgs()
+            viewModel.loadContact(args.contactArg)
+        } else viewModel.loadContact(requireArguments().getString(ARG_EMAIL_ID))
     }
 
     override fun onCreateView(
@@ -41,24 +47,15 @@ class ContactProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         super.onCreate(savedInstanceState)
-        //  binding =  FragmentMyProfileBinding.inflate(inflater, container, false)
         binding = FragmentContactProfileBinding.inflate(layoutInflater, container, false)
-
 
         setDataProfile()
 
 
-
         binding.apply {
             ivArrowBack.setOnClickListener { onArrowBack() }
-            btViewMyContacts.setOnClickListener { onOpenMyContacts() }
-            btEditProfile.visibility = View.GONE
-            tvGoToSettingsAndFill.visibility = View.GONE
-            tvSettings.visibility = View.GONE
-            btViewMyContacts.text = "message" //TODO question
+            btMessage.setOnClickListener { toast("test message") } //TODO deleting
         }
-
-
         return binding.root
 
     }
@@ -78,19 +75,9 @@ class ContactProfileFragment : Fragment() {
         }
     }
 
-    private fun onOpenMyContacts() {
-        if (featureNavigationEnabled) {
-            findNavController().navigate(
-                R.id.action_myProfileFragmentGraph_to_myContactsFragmentGraph
-            )
-        } else routing().showMyContacts()
-    }
-
-
     companion object {
 
         private const val ARG_EMAIL_ID = "ARG_EMAIL_ID"
-
         fun newInstance(emailId: String): ContactProfileFragment {
             val fragment = ContactProfileFragment()
             fragment.arguments = bundleOf(ARG_EMAIL_ID to emailId)
@@ -101,7 +88,6 @@ class ContactProfileFragment : Fragment() {
 
     private fun onArrowBack() {
         routing().goBack()
-
     }
 }
 

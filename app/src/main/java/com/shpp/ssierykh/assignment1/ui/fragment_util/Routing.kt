@@ -12,8 +12,8 @@ fun Fragment.routing() = requireActivity() as Routing
 interface Routing {
 
     fun showMyProfileScreen()
-    fun showSignScreen()
     fun showAddOrEditContacts()
+   // fun showAddOrEditContacts(contact: Contact)
     fun showMyContacts()
     fun showContactProfile(contact: Contact)
     fun goBack()

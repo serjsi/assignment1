@@ -77,7 +77,6 @@ class SignFragment : Fragment() {
                     viewModel.setContact(Contact(etEmail.text.toString()))
                       writeAutologin(vM)
                     if (featureNavigationEnabled) {
-                        toast("Go MyProfile Navigation")//TODO Delete////////////////////////////
                         findNavController().navigate(
                             R.id.action_signFragmentGraph_to_myProfileFragmentGraph,
                             null

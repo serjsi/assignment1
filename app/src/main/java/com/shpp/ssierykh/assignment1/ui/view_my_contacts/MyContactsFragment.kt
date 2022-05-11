@@ -1,21 +1,22 @@
 package com.shpp.ssierykh.assignment1.ui.view_my_contacts
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.shpp.ssierykh.assignment1.R
 
 import com.shpp.ssierykh.assignment1.databinding.FragmentMyContactsBinding
+import com.shpp.ssierykh.assignment1.model.Contact
 import com.shpp.ssierykh.assignment1.ui.fragment_util.factory
 
 import com.shpp.ssierykh.assignment1.ui.fragment_util.routing
+import com.shpp.ssierykh.assignment1.utils.SwitchNavigationGraph
 
 import com.shpp.ssierykh.assignment1.utils.extensions.toast
 
@@ -45,8 +46,14 @@ class MyContactsFragment() : Fragment() {
         }
 
         viewModel.actionShowDetails.observe(viewLifecycleOwner) {
-            it?.let { it1 -> routing().showContactProfile(it1) }
-
+            it?.let {
+                if (SwitchNavigationGraph.featureNavigationEnabled) {
+                      val emailID = it.email
+                        findNavController().navigate(
+                            MyContactsFragmentDirections.
+                            actionMyContactsFragmentGraphToContactProfileFragment(emailID))
+                } else  routing().showContactProfile(it)
+            }
         }
 
         binding.apply {
@@ -79,7 +86,11 @@ class MyContactsFragment() : Fragment() {
 
 
     private fun onAddContact() {
-        routing().showAddOrEditContacts()
+        if (SwitchNavigationGraph.featureNavigationEnabled) {
+            findNavController().navigate(
+                R.id.action_myContactsFragmentGraph_to_addOrEditContactsDialogFragmentGraph3
+            )
+        } else routing().showAddOrEditContacts()
     }
 
     private fun onArrowBack() {

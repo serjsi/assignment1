@@ -34,11 +34,9 @@ class MyProfileFragment : Fragment() {
         setDataContact(viewModel)
 
         binding.apply {
-            tvSettings.setOnClickListener { onOpenSignScreen() }
             btEditProfile.setOnClickListener { onOpenEditProfile() }
             btViewMyContacts.setOnClickListener { onOpenMyContacts() }
-            ivArrowBack.visibility =View.GONE
-            tvProfile.visibility=View.GONE
+
         }
         return binding.root
 
@@ -47,17 +45,17 @@ class MyProfileFragment : Fragment() {
     private fun setDataContact(viewModel: MyProfileViewModel) {
         // Create the observer which updates the UI.
         //LiveData
-     /*   val profileObserver = Observer<Contact> { profilContactNew ->
-            // Update the UI, in this case, a TextView.
-            binding.apply {
-                ivPhotoProfile.loadImageGlade(profilContactNew.photoAddress)
-                tvName.text = profilContactNew.name
-                tvCareer.text = profilContactNew.career
-                tvHomeAddress.text = profilContactNew.home
-            }
-        }
-        // Observe the LiveData, passing in this activity as the LifecycleOwner and the observer.
-        viewModel.profilContact.observe(viewLifecycleOwner, profileObserver)*/
+        /*   val profileObserver = Observer<Contact> { profilContactNew ->
+               // Update the UI, in this case, a TextView.
+               binding.apply {
+                   ivPhotoProfile.loadImageGlade(profilContactNew.photoAddress)
+                   tvName.text = profilContactNew.name
+                   tvCareer.text = profilContactNew.career
+                   tvHomeAddress.text = profilContactNew.home
+               }
+           }
+           // Observe the LiveData, passing in this activity as the LifecycleOwner and the observer.
+           viewModel.profilContact.observe(viewLifecycleOwner, profileObserver)*/
 
         //Flow
         lifecycleScope.launchWhenStarted {
@@ -71,15 +69,16 @@ class MyProfileFragment : Fragment() {
                 }
 
             }
-                .collect ()
+                .collect()
         }
     }
 
     private fun onOpenMyContacts() {
         if (featureNavigationEnabled) {
             findNavController().navigate(
-                R.id.action_myProfileFragmentGraph_to_myContactsFragmentGraph)
-        }else routing().showMyContacts()
+                R.id.action_myProfileFragmentGraph_to_myContactsFragmentGraph
+            )
+        } else routing().showMyContacts()
     }
 
     private fun onOpenEditProfile() {
@@ -87,18 +86,7 @@ class MyProfileFragment : Fragment() {
             findNavController().navigate(
                 R.id.action_myProfileFragmentGraph_to_addOrEditContactsDialogFragmentGraph
             )
-        }else routing().showAddOrEditContacts()
-    }
-
-    private fun onOpenSignScreen() {
-        if (featureNavigationEnabled) {
-            toast("Go Sign Navigation")//TODO Delete////////////////////////////
-            findNavController().navigate(
-                R.id.action_myProfileFragmentGraph_to_signFragmentGraph,
-            )
-        }else  routing().showSignScreen()
+        } else routing().showAddOrEditContacts()
     }
 
 }
-
-

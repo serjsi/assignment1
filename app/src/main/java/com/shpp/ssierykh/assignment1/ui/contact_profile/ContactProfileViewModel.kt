@@ -21,10 +21,8 @@ class ContactProfileViewModel(
 
 
 
-    fun loadUser(emailID: String?) {
+    fun loadContact(emailID: String?) {
         _profileContact.value = baseContacts.getContacts().firstOrNull { it.email == emailID }!!
     }
-
-
 }
 

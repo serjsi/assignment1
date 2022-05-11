@@ -20,6 +20,7 @@
         app:layout_constraintVertical_weight="0.5"
         tools:layout_editor_absoluteX="0dp" />
 
+
     <View
         android:id="@+id/ivBottomContainer"
         android:layout_width="match_parent"
@@ -29,20 +30,6 @@
         app:layout_constraintTop_toBottomOf="@id/ivTopContainer"
         app:layout_constraintVertical_weight="0.5"
         tools:layout_editor_absoluteX="0dp" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvSettings"
-        style="@style/TextStyBasic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/horizontal_margin_16"
-        android:layout_marginStart="16dp"
-        android:text="@string/settings"
-        android:textColor="@color/gray_very_light"
-        android:textSize="@dimen/textSize_24sp"
-        android:theme="@style/TextStyBasic"
-        app:layout_constraintStart_toStartOf="@+id/ivTopContainer"
-        app:layout_constraintTop_toTopOf="@+id/ivTopContainer" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/ivArrowBack"
@@ -98,6 +85,7 @@
         android:textColor="@color/white_my"
         app:layout_constraintBottom_toBottomOf="@+id/ivTopContainer"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvCareer" />
 
@@ -129,42 +117,9 @@
         app:layout_constraintStart_toStartOf="@+id/ivTopContainer"
         app:layout_constraintTop_toBottomOf="@+id/ivPhotoProfile" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvGoToSettingsAndFill"
-        style="@style/TextStyBasic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="@dimen/margin_offset_from_edge_screen_16dp"
-        android:text="@string/go_to_settings_and_fill_out_the_profile"
-        android:textColor="@color/gray_text"
-        app:layout_constraintBottom_toTopOf="@+id/btEditProfile"
-        app:layout_constraintEnd_toEndOf="@+id/ivBottomContainer"
-        app:layout_constraintVertical_bias="1.5"
-        app:layout_constraintStart_toStartOf="@+id/ivBottomContainer"
-        app:layout_constraintTop_toTopOf="@+id/ivBottomContainer" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btEditProfile"
-        style="@style/TextStyBasic"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/btViewMyContacts"
-        android:layout_marginStart="@dimen/margin_offset_from_edge_screen_16dp"
-        android:layout_marginEnd="@dimen/margin_offset_from_edge_screen_16dp"
-        android:background="@drawable/button_background_black"
-        android:text="@string/edit_profile"
-        android:textAllCaps="false"
-        android:textColor="@color/gray_text"
-        android:textSize="@dimen/textSize_14sp"
-        app:layout_constraintBottom_toTopOf="@+id/btViewMyContacts"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/ivBottomContainer"
-        app:layout_constraintVertical_bias="0.939" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btViewMyContacts"
+        android:id="@+id/btMessage"
         style="@style/TextStyBasic"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -172,7 +127,7 @@
         android:layout_margin="@dimen/margin_offset_from_edge_screen_16dp"
         android:background="@drawable/button_background_orange"
         android:backgroundTint="?attr/colorPrimary"
-        android:text="@string/view_my_contacts"
+        android:text="@string/message"
         android:textColor="?attr/colorOnPrimary"
         android:textSize="@dimen/textSize_16sp"
         app:layout_constraintBottom_toBottomOf="@+id/ivBottomContainer"
@@ -183,12 +138,14 @@
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/ivInstagramLog"
         style="@style/logo_ImageView"
-        android:layout_above="@+id/btEditProfile"
         android:layout_centerHorizontal="true"
-        app:layout_constraintBottom_toTopOf="@+id/tvGoToSettingsAndFill"
+        android:layout_marginTop="96dp"
+
+        app:layout_constraintBottom_toTopOf="@+id/btMessage"
         app:layout_constraintEnd_toStartOf="@+id/ivVkLog"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivTopContainer"
+        app:layout_constraintVertical_bias="0.2"
         app:srcCompat="@drawable/ic_instagram_log" />
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -196,20 +153,25 @@
         style="@style/logo_ImageView"
         android:layout_alignBottom="@+id/ivInstagramLog"
         android:layout_alignParentEnd="true"
-        app:layout_constraintBottom_toTopOf="@+id/tvGoToSettingsAndFill"
+        android:layout_marginTop="96dp"
+        app:layout_constraintBottom_toTopOf="@+id/btMessage"
         app:layout_constraintEnd_toStartOf="@+id/ivFacebookLog"
         app:layout_constraintStart_toEndOf="@+id/ivInstagramLog"
         app:layout_constraintTop_toBottomOf="@+id/ivTopContainer"
+        app:layout_constraintVertical_bias="0.2"
         app:srcCompat="@drawable/ic_vk_log" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/ivFacebookLog"
         style="@style/logo_ImageView"
         android:layout_alignBottom="@+id/ivInstagramLog"
-        app:layout_constraintBottom_toTopOf="@+id/tvGoToSettingsAndFill"
+        android:layout_marginTop="72dp"
+
+        app:layout_constraintBottom_toTopOf="@+id/btMessage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/ivVkLog"
         app:layout_constraintTop_toBottomOf="@+id/ivTopContainer"
+        app:layout_constraintVertical_bias="0.318"
         app:srcCompat="@drawable/ic_facebook_log" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

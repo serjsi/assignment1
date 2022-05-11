@@ -54,13 +54,20 @@ class MainActivity : AppCompatActivity(), Routing {
       replaceFragment(MyProfileFragment())
     }
 
-    override fun showSignScreen() {
-      replaceFragment(SignFragment())
-    }
 
     override fun showAddOrEditContacts() {
-       replaceFragment(AddOrEditContactsDialogFragment())
+        replaceFragment(AddOrEditContactsDialogFragment())
     }
+
+/*    override fun showAddOrEditContacts(contact: Contact) {
+        runWhenActive {
+            supportFragmentManager.beginTransaction()
+                .addToBackStack(null)
+                .replace(R.id.nav_host_fragment,
+                    AddOrEditContactsDialogFragment.newInstance(contact.email))
+                .commit()
+        }
+    }*/
 
     override fun showMyContacts() {
       replaceFragment(MyContactsFragment())

@@ -6,15 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.shpp.ssierykh.assignment1.R
 import com.shpp.ssierykh.assignment1.databinding.FragmentMyProfileBinding
+import com.shpp.ssierykh.assignment1.ui.edit_profile.AddOrEditContactsViewModel
+import com.shpp.ssierykh.assignment1.ui.fragment_util.factory
 import com.shpp.ssierykh.assignment1.utils.SwitchNavigationGraph.featureNavigationEnabled
 import com.shpp.ssierykh.assignment1.ui.fragment_util.routing
 
 import com.shpp.ssierykh.assignment1.utils.extensions.loadImageGlade
-import com.shpp.ssierykh.assignment1.utils.extensions.toast
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
 
@@ -22,6 +24,8 @@ import kotlinx.coroutines.flow.onEach
 class MyProfileFragment : Fragment() {
 
     private lateinit var binding: FragmentMyProfileBinding
+
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -31,7 +35,7 @@ class MyProfileFragment : Fragment() {
         super.onCreate(savedInstanceState)
         binding = FragmentMyProfileBinding.inflate(inflater, container, false)
 
-        setDataContact(viewModel)
+       setDataContact(viewModel)
 
         binding.apply {
             btEditProfile.setOnClickListener { onOpenEditProfile() }
@@ -67,7 +71,6 @@ class MyProfileFragment : Fragment() {
                     tvCareer.text = profilContactNew.career
                     tvHomeAddress.text = profilContactNew.home
                 }
-
             }
                 .collect()
         }
@@ -84,9 +87,11 @@ class MyProfileFragment : Fragment() {
     private fun onOpenEditProfile() {
         if (featureNavigationEnabled) {
             findNavController().navigate(
-                R.id.action_myProfileFragmentGraph_to_addOrEditContactsDialogFragmentGraph
+               MyProfileFragmentDirections.
+               actionMyProfileFragmentGraphToAddOrEditContactsDialogFragmentGraph(
+                   "AlainaWalters@mail.ua") //TODO
             )
-        } else routing().showAddOrEditContacts()
+        } //else routing().showAddOrEditContacts( viewModel.myContact())
     }
 
 }

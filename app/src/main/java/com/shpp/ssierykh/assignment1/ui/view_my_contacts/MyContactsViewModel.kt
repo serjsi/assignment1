@@ -25,8 +25,6 @@ class MyContactsViewModel(
     private val _actionShowDetails = MutableLiveData<Contact?>()
     val actionShowDetails: MutableLiveData<Contact?> = _actionShowDetails
 
-
-
     private val _actionShowSnackbar = MutableLiveData<String>()
     val actionShowSnackbar: LiveData<String> = _actionShowSnackbar
 
@@ -35,7 +33,6 @@ class MyContactsViewModel(
         _actionShowDetails.value = contact
         _actionShowDetails.value = null
     }
-
 
     override fun onContactDelete(contact: Contact) {
         baseContacts.deleteContact(contact)

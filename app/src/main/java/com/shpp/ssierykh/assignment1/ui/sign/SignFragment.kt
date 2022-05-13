@@ -37,7 +37,6 @@ class SignFragment : Fragment() {
     private var pressRegistration = false
 
     private lateinit var binding: FragmentSignBinding
-    private lateinit var navController: NavController
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -46,7 +45,7 @@ class SignFragment : Fragment() {
         binding = FragmentSignBinding.inflate(inflater, container, false)
         val viewModel: MyProfileViewModel by activityViewModels()
         val viewModelMy: SignViewModel by viewModels()
-        setupListeners(viewModel,viewModelMy)
+        setupListeners(viewModel, viewModelMy)
 
         getAutologin(viewModelMy)
 
@@ -68,21 +67,15 @@ class SignFragment : Fragment() {
     }
 
 
-    private fun setupListeners(viewModel: MyProfileViewModel,vM: SignViewModel) {
+    private fun setupListeners(viewModel: MyProfileViewModel, vM: SignViewModel) {
         binding.apply {
             showMessageErrorAfterClicking()
             btRegister.setOnClickListener {
-                checkingTextAfterClicking()
+                   checkingTextAfterClicking()
                 if (isValidateEmail(etEmail) && isValidatePassword(etPassword)) {
                     viewModel.setContact(Contact(etEmail.text.toString()))
-                      writeAutologin(vM)
-                    if (featureNavigationEnabled) {
-                        findNavController().navigate(
-                            R.id.action_signFragmentGraph_to_myProfileFragmentGraph,
-                            null
-                        )
-                    } else
-                        routing().showMyProfileScreen()
+                    writeAutologin(vM)
+                    onOpenMyProfile()
                     pressRegistration = false
                 }
             }
@@ -97,6 +90,7 @@ class SignFragment : Fragment() {
     }
 
     private fun FragmentSignBinding.showMessageErrorAfterClicking() {
+
         etEmail.doOnTextChanged { _, _, _, _ ->
             if (!isValidateEmail(etEmail) && pressRegistration) {
                 tilEmail.error = getString(R.string.message_wromg_e_mail)
@@ -110,6 +104,15 @@ class SignFragment : Fragment() {
         }
     }
 
+    private fun onOpenMyProfile() {
+        if (featureNavigationEnabled) {
+            findNavController().navigate(
+                R.id.action_signFragmentGraph_to_myProfileFragmentGraph, null
+            )
+        } else
+            routing().showMyProfileScreen()
+    }
+
 
     private fun writeAutologin(vm: SignViewModel) {
         binding.apply {
@@ -120,7 +123,7 @@ class SignFragment : Fragment() {
 
             } else {
                 vm.saveEmail("")
-             vm.savePassword("")
+                vm.savePassword("")
                 vm.saveRemember(false)
             }
         }

@@ -19,6 +19,7 @@ import com.shpp.ssierykh.assignment1.ui.view_my_contacts.MyContactsFragment
 import com.shpp.ssierykh.assignment1.ui.contact_profile.ContactProfileFragment
 import com.shpp.ssierykh.assignment1.ui.sign.SignFragment
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.StateFlow
 
 
 private lateinit var binding: ActivityMainBinding
@@ -55,19 +56,18 @@ class MainActivity : AppCompatActivity(), Routing {
     }
 
 
-    override fun showAddOrEditContacts() {
-        replaceFragment(AddOrEditContactsDialogFragment())
-    }
 
-/*    override fun showAddOrEditContacts(contact: Contact) {
+    override fun showAddOrEditContacts(contact: Contact?) {
         runWhenActive {
-            supportFragmentManager.beginTransaction()
-                .addToBackStack(null)
-                .replace(R.id.nav_host_fragment,
-                    AddOrEditContactsDialogFragment.newInstance(contact.email))
-                .commit()
+            if (contact != null) {
+                supportFragmentManager.beginTransaction()
+                    .addToBackStack(null)
+                    .replace(R.id.nav_host_fragment,
+                        AddOrEditContactsDialogFragment.newInstance(contact.email))
+                    .commit()
+            }
         }
-    }*/
+    }
 
     override fun showMyContacts() {
       replaceFragment(MyContactsFragment())

@@ -22,7 +22,9 @@ class ContactProfileViewModel(
 
 
     fun loadContact(emailID: String?) {
-        _profileContact.value = baseContacts.getContacts().firstOrNull { it.email == emailID }!!
+       if(emailID != null){
+           _profileContact.value = baseContacts.getContacts().firstOrNull { it.email == emailID }!!
+       }
     }
 }
 

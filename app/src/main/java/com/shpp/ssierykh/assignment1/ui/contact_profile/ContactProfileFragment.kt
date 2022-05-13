@@ -1,7 +1,6 @@
 package com.shpp.ssierykh.assignment1.ui.contact_profile
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,9 +8,7 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.shpp.ssierykh.assignment1.R
 import com.shpp.ssierykh.assignment1.databinding.FragmentContactProfileBinding
 import com.shpp.ssierykh.assignment1.ui.fragment_util.factory
 import com.shpp.ssierykh.assignment1.utils.SwitchNavigationGraph.featureNavigationEnabled
@@ -31,8 +28,6 @@ class ContactProfileFragment : Fragment() {
     private lateinit var binding: FragmentContactProfileBinding
     private val viewModel: ContactProfileViewModel by viewModels { factory() }
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (featureNavigationEnabled) {
@@ -50,7 +45,6 @@ class ContactProfileFragment : Fragment() {
         binding = FragmentContactProfileBinding.inflate(layoutInflater, container, false)
 
         setDataProfile()
-
 
         binding.apply {
             ivArrowBack.setOnClickListener { onArrowBack() }

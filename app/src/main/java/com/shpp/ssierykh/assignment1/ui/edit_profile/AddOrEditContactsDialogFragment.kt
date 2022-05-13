@@ -15,16 +15,22 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.os.bundleOf
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.navArgs
 import com.shpp.ssierykh.assignment1.model.Contact
 import com.shpp.ssierykh.assignment1.databinding.DialogAddOrEditContactProfileBinding
+import com.shpp.ssierykh.assignment1.ui.contact_profile.ContactProfileFragmentArgs
 import com.shpp.ssierykh.assignment1.ui.fragment_util.factory
 import com.shpp.ssierykh.assignment1.ui.fragment_util.routing
+import com.shpp.ssierykh.assignment1.utils.SwitchNavigationGraph
 import com.shpp.ssierykh.assignment1.utils.Validators.isValidateEmail
+import com.shpp.ssierykh.assignment1.utils.extensions.loadImageGlade
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.onEach
 
 
 class AddOrEditContactsDialogFragment() :
     DialogFragment() {
-
 
 
     private lateinit var binding: DialogAddOrEditContactProfileBinding
@@ -33,10 +39,17 @@ class AddOrEditContactsDialogFragment() :
 
     private val viewModel: AddOrEditContactsViewModel by viewModels { factory() }
 
-/*    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.loadUser(requireArguments().getString(AddOrEditContactsDialogFragment.ARG_EMAIL_ID))
-    }*/
+        if (SwitchNavigationGraph.featureNavigationEnabled) {
+            val args: ContactProfileFragmentArgs by navArgs()
+            viewModel.loadContact(args.contactArg)
+        } else viewModel.loadContact(
+            requireArguments().getString(
+                AddOrEditContactsDialogFragment.ARG_EMAIL_ID
+            )
+        )
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,7 +57,6 @@ class AddOrEditContactsDialogFragment() :
     ): View {
         binding = DialogAddOrEditContactProfileBinding.inflate(inflater, container, false)
         binding.ivArrowBack.setOnClickListener { goBackMyProfile() }
-    //    val viewModel: MyProfileViewModel by activityViewModels()
         setDataContact(viewModel)
         saveContact(viewModel)
 
@@ -93,10 +105,17 @@ class AddOrEditContactsDialogFragment() :
                 /*   val selectedDate =
                        ContactForRecyclerView(Constants.PHOTO_FAKE_1, userName, career)*/
 
-                viewModel.setContact(Contact( etEmailA.text.toString(),"dsf",
-                    etUserName.text.toString(),etCareer.text.toString(),etAddress.text.toString()))
+                viewModel.setContact(
+                    Contact(
+                        etEmailA.text.toString(),
+                        "dsf",
+                        etUserName.text.toString(),
+                        etCareer.text.toString(),
+                        etAddress.text.toString()
+                    )
+                )
 
-                    routing().goBack()
+                routing().goBack()
 
 
             }
@@ -105,19 +124,20 @@ class AddOrEditContactsDialogFragment() :
 
     private fun setDataContact(viewModel: AddOrEditContactsViewModel) {
 
-       /* val profileObserver2 = Observer<Contact> { profilContact ->
-            // Update the UI, in this case, a TextView.
-            binding.apply {
-              ivPhotoProfile.loadImageGlade(profilContact.photoAddress)
-              etUserName.text= profilContact.name
-               etCareer.text = profilContact.career
-               etAddress.text = profilContact.home
+        lifecycleScope.launchWhenStarted {
+            viewModel.profilContact.onEach { data ->
+                // Update the UI, in this case, a TextView.
+                binding.apply {
+                    ivPhotoProfile.loadImageGlade(data.photoAddress)
+                    etUserName.setText(data.name)
+                    etCareer.setText(data.career)
+                    etEmailA.setText(data.email)
+                    etAddress.setText(data.home)
+                }
             }
+                .collect()
         }
-        // Observe the LiveData, passing in this activity as the LifecycleOwner and the observer.
-        viewModel.profilContact.observe(this.viewLifecycleOwner, profileObserver2)*/
     }
-
 
 
 //TODO Corrected//////////////////////////////////////////////////////////////
@@ -147,6 +167,7 @@ class AddOrEditContactsDialogFragment() :
 
         }
     }
+
     companion object {
 
         private const val ARG_EMAIL_ID = "ARG_EMAIL_ID"

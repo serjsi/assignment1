@@ -8,6 +8,7 @@ import com.shpp.ssierykh.assignment1.ui.view_my_contacts.MyContactsViewModel
 import com.shpp.ssierykh.assignment1.ui.contact_profile.ContactProfileViewModel
 import com.shpp.ssierykh.assignment1.ui.edit_profile.AddOrEditContactsDialogFragment
 import com.shpp.ssierykh.assignment1.ui.edit_profile.AddOrEditContactsViewModel
+import com.shpp.ssierykh.assignment1.ui.my_profile.MyProfileViewModel
 
 
 @Suppress("UNCHECKED_CAST")
@@ -20,6 +21,9 @@ open class ContactsViewModelFactory(private val app: App) :
         MyContactsViewModel::class.java -> {
             MyContactsViewModel(app.baseContacts)
         }
+//        MyProfileViewModel::class.java -> {
+//            MyProfileViewModel(app.baseContacts)
+//        }
         ContactProfileViewModel::class.java -> {
             ContactProfileViewModel(app.baseContacts)
         }

@@ -17,8 +17,10 @@ class AddOrEditContactsViewModel(
 
 
 
-    fun loadUser(emailID: String?) {
-        _profileContact.value = baseContacts.getContacts().firstOrNull { it.email == emailID }!!
+    fun loadContact(emailID: String?) {
+        if(emailID != null){
+            _profileContact.value = baseContacts.getContacts().firstOrNull { it.email == emailID }!!
+        }
     }
 
     fun setContact(contact: Contact) {

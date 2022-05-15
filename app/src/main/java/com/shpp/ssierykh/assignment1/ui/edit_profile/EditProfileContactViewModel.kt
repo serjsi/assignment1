@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
-class AddOrEditContactsViewModel(
+class EditProfileContactViewModel(
     private val baseContacts: BaseContacts
 ) : ViewModel() {
 
@@ -18,8 +18,8 @@ class AddOrEditContactsViewModel(
 
 
     fun loadContact(emailID: String?) {
-        if (emailID != null) {
-            _profileContact.value = baseContacts.getContacts().firstOrNull { it.email == emailID }!!
+        emailID?.let {
+            _profileContact.value = baseContacts.getContactForEmail(emailID)!!
         }
     }
 
@@ -29,6 +29,7 @@ class AddOrEditContactsViewModel(
 
     fun setPhotoProfile(photoUri: String){
         val data = _profileContact.value
+        baseContacts.deleteContact(_profileContact.value)
         _profileContact.value = Contact(data.email,photoUri,data.name,data.career,data.home)
     }
 }

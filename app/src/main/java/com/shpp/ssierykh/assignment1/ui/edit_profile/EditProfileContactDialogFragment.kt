@@ -17,7 +17,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import com.shpp.ssierykh.assignment1.R
-import com.shpp.ssierykh.assignment1.databinding.DialogAddOrEditContactProfileBinding
+import com.shpp.ssierykh.assignment1.databinding.EditContactProfileBinding
 import com.shpp.ssierykh.assignment1.model.Contact
 import com.shpp.ssierykh.assignment1.utils.SwitchNavigationGraph
 import com.shpp.ssierykh.assignment1.utils.Validators.isValidateEmail
@@ -28,20 +28,19 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
 
 
-class AddOrEditContactsDialogFragment() :
-    DialogFragment() {
+class EditProfileContactDialogFragment : DialogFragment() {
 
 
-    private lateinit var binding: DialogAddOrEditContactProfileBinding
+    private lateinit var binding: EditContactProfileBinding
     private var imageUri: Uri? = null
 
 
-    private val viewModel: AddOrEditContactsViewModel by viewModels { factory() }
+    private val viewModel: EditProfileContactViewModel by viewModels { factory() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (SwitchNavigationGraph.featureNavigationEnabled) {
-            val args: AddOrEditContactsDialogFragmentArgs by navArgs()
+            val args: EditProfileContactDialogFragmentArgs by navArgs()
             args.contactArg?.let { viewModel.loadContact(args.contactArg) }
         } else savedInstanceState?.let {
             viewModel.loadContact(requireArguments().getString(ARG_EMAIL_ID))
@@ -52,7 +51,7 @@ class AddOrEditContactsDialogFragment() :
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        binding = DialogAddOrEditContactProfileBinding.inflate(inflater, container, false)
+        binding = EditContactProfileBinding.inflate(inflater, container, false)
         binding.ivArrowBack.setOnClickListener { routing().goBack() }
 
         setDataContact(viewModel)
@@ -92,7 +91,7 @@ class AddOrEditContactsDialogFragment() :
     }
 
 
-    private fun saveContact(viewModel: AddOrEditContactsViewModel) {
+    private fun saveContact(viewModel: EditProfileContactViewModel) {
         binding.apply {
             etEmailA.doOnTextChanged { _, _, _, _ -> isValidateEmail() }
 
@@ -111,12 +110,11 @@ class AddOrEditContactsDialogFragment() :
         }
     }
 
-    private fun setDataContact(viewModel: AddOrEditContactsViewModel) {
+    private fun setDataContact(viewModel: EditProfileContactViewModel) {
         lifecycleScope.launchWhenStarted {
             viewModel.profilContact.onEach { data ->
                 // Update the UI, in this case, a TextView.
                 binding.apply {
-//                    ivPhotoProfile.loadImageGlade(data.photoAddress)
                     ivPhotoProfile.loadImageGlade(data.photoAddress)
                     etUserName.setText(data.name)
                     etCareer.setText(data.career)
@@ -160,8 +158,8 @@ class AddOrEditContactsDialogFragment() :
     companion object {
 
         private const val ARG_EMAIL_ID = "ARG_EMAIL_ID"
-        fun newInstance(emailId: String): AddOrEditContactsDialogFragment {
-            val fragment = AddOrEditContactsDialogFragment()
+        fun newInstance(emailId: String): EditProfileContactDialogFragment {
+            val fragment = EditProfileContactDialogFragment()
             fragment.arguments = bundleOf(ARG_EMAIL_ID to emailId)
             return fragment
         }

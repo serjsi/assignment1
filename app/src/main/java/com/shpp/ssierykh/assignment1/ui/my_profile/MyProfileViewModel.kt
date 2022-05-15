@@ -1,6 +1,9 @@
 package com.shpp.ssierykh.assignment1.ui.my_profile
 
 
+import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.shpp.ssierykh.assignment1.data.BaseContacts
 import com.shpp.ssierykh.assignment1.model.Contact
@@ -10,31 +13,30 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
 
-class MyProfileViewModel  : ViewModel() {
+class MyProfileViewModel(
+    private val baseContacts: BaseContacts
+) : ViewModel() {
 
     //LiveData
-/*    private val _profileResource = MutableLiveData<Contact>()
-    val profilContact: LiveData<Contact> get() = _profileResource*/
+
+   /* private val _profileContact = MutableLiveData<Contact>()
+    val profilContact: LiveData<Contact> get() = _profileContact*/
 
     //StateFlow
-    private val _profileResource = MutableStateFlow(Contact())
-    val profilContact: StateFlow<Contact> = _profileResource.asStateFlow()
+    private val _profileContact = MutableStateFlow(Contact())
+    val profilContact: StateFlow<Contact> = _profileContact.asStateFlow()
 
 
-    fun setContact(profilContact: Contact) {
-        if (profilContact.name == "") {
-            val email = parsingEmailToName(profilContact.email)
-            profilContact.name = email
-     //       baseContacts.addContact(Contact(profilContact.email,profilContact.name))
+    fun setContact(myContactEmail: String) {
+        val myContact = baseContacts.getContactForEmail(myContactEmail)
+        Log.d("my profilq", "___________________________$myContact")
+        if (myContact != null) {
+            _profileContact.value = myContact!!
+        } else {
+            val name = parsingEmailToName(myContactEmail)
+            baseContacts.addContact(Contact(myContactEmail, "", name))
+            _profileContact.value =
+                baseContacts.getContacts().firstOrNull { it.email == myContactEmail }!!
         }
-        _profileResource.value = profilContact
     }
-
-    fun myContact():Contact{
-        return _profileResource.value
-    }
-
-
-
 }
-

@@ -33,9 +33,9 @@
     </fragment>
     <fragment
         android:id="@+id/addOrEditContactsDialogFragmentGraph"
-        android:name="com.shpp.ssierykh.assignment1.ui.edit_profile.AddOrEditContactsDialogFragment"
+        android:name="com.shpp.ssierykh.assignment1.ui.edit_profile.EditProfileContactDialogFragment"
         android:label="dialog_add_or_edit_contact_profile"
-        tools:layout="@layout/dialog_add_or_edit_contact_profile" >
+        tools:layout="@layout/edit_contact_profile" >
         <argument
             android:name="contactArg"
             app:argType="string"

@@ -41,11 +41,11 @@ class SignFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentSignBinding.inflate(inflater, container, false)
-        val viewModel: MyProfileViewModel by activityViewModels()
-        val viewModelMy: SignViewModel by viewModels()
-        setupListeners(viewModel, viewModelMy)
+      //  val viewModel: MyProfileViewModel by activityViewModels()
+        val viewModel: SignViewModel by viewModels()
+        setupListeners(viewModel)
 
-        getAutologin(viewModelMy)
+        getAutologin(viewModel)
 
         forTestMethod()
 
@@ -65,13 +65,15 @@ class SignFragment : Fragment() {
     }
 
 
-    private fun setupListeners(viewModel: MyProfileViewModel, vM: SignViewModel) {
+    private fun setupListeners(vM: SignViewModel) {
+
         binding.apply {
             showMessageErrorAfterClicking()
             btRegister.setOnClickListener {
                    checkingTextAfterClicking()
                 if (isValidateEmail(etEmail) && isValidatePassword(etPassword)) {
-                    viewModel.setContact(Contact(etEmail.text.toString()))
+                   // val emailMy = Contact(etEmail.text.toString())
+                    setFragmentResult(REQEUST_KEY_USER, bundleOf(EMAIL_BANDLE_KEY to etEmail.text.toString()))
                     writeAutologin(vM)
                     onOpenMyProfile()
                     pressRegistration = false

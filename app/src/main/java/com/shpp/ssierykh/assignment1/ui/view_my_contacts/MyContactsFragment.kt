@@ -89,7 +89,7 @@ class MyContactsFragment() : Fragment() {
             findNavController().navigate(
                 MyContactsFragmentDirections.
                 actionMyContactsFragmentGraphToAddOrEditContactsDialogFragmentGraph3(null))
-        } else routing().showAddOrEditContacts()
+        } else routing().showEditProfileContact()
     }
 
     private fun onArrowBack() {

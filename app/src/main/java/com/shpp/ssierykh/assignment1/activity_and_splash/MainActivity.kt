@@ -14,7 +14,7 @@ import com.shpp.ssierykh.assignment1.utils.SwitchNavigationGraph.featureNavigati
 import com.shpp.ssierykh.assignment1.utils.fragment_util.Routing
 import com.shpp.ssierykh.assignment1.ui.my_profile.MyProfileFragment
 import com.shpp.ssierykh.assignment1.ui.my_profile.MyProfileViewModel
-import com.shpp.ssierykh.assignment1.ui.edit_profile.AddOrEditContactsDialogFragment
+import com.shpp.ssierykh.assignment1.ui.edit_profile.EditProfileContactDialogFragment
 import com.shpp.ssierykh.assignment1.ui.view_my_contacts.MyContactsFragment
 import com.shpp.ssierykh.assignment1.ui.contact_profile.ContactProfileFragment
 import com.shpp.ssierykh.assignment1.ui.sign.SignFragment
@@ -27,7 +27,7 @@ private lateinit var binding: ActivityMainBinding
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(), Routing {
-    private val viewModel: MyProfileViewModel by viewModels()
+   // private val viewModel: MyProfileViewModel by viewModels() TODO Delete
 
     // actions to be launched when activity is active
     private val actions = mutableListOf<() -> Unit>()
@@ -54,16 +54,16 @@ class MainActivity : AppCompatActivity(), Routing {
       replaceFragment(MyProfileFragment())
     }
 
-    override fun showAddOrEditContacts() {
-        replaceFragment(AddOrEditContactsDialogFragment())
+    override fun showEditProfileContact() {
+        replaceFragment(EditProfileContactDialogFragment())
     }
 
-    override fun showAddOrEditContacts(contact: Contact?) {
+    override fun showEditProfileContact(contact: Contact?) {
             if (contact != null) {
                 supportFragmentManager.beginTransaction()
                     .addToBackStack(null)
                     .replace(R.id.nav_host_fragment,
-                        AddOrEditContactsDialogFragment.newInstance(contact.email))
+                        EditProfileContactDialogFragment.newInstance(contact.email))
                     .commit()
             }
     }

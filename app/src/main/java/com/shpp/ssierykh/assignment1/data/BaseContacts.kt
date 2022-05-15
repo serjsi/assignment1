@@ -1,6 +1,5 @@
 package com.shpp.ssierykh.assignment1.data
 
-import android.util.Log
 import com.shpp.ssierykh.assignment1.model.Contact
 import com.shpp.ssierykh.assignment1.utils.Constants
 import java.util.ArrayList
@@ -50,6 +49,10 @@ class BaseContacts {
     fun getContacts(): List<Contact> {
         return contacts
     }
+     fun getContactForEmail(emailFind: String): Contact? {
+         return contacts.firstOrNull { it.email == emailFind}
+     }
+
 
     fun deleteContact(user: Contact) {
         val indexToDelete = contacts.indexOfFirst { it.email == user.email }

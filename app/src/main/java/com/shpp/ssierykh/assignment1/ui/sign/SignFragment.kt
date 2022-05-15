@@ -11,13 +11,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
-import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.shpp.ssierykh.assignment1.R
 import com.shpp.ssierykh.assignment1.model.Contact
 import com.shpp.ssierykh.assignment1.databinding.FragmentSignBinding
 import com.shpp.ssierykh.assignment1.utils.SwitchNavigationGraph.featureNavigationEnabled
-import com.shpp.ssierykh.assignment1.ui.fragment_util.routing
+import com.shpp.ssierykh.assignment1.utils.fragment_util.routing
 import com.shpp.ssierykh.assignment1.ui.my_profile.MyProfileViewModel
 import com.shpp.ssierykh.assignment1.utils.Constants
 import com.shpp.ssierykh.assignment1.utils.Constants.EMAIL_BANDLE_KEY
@@ -28,7 +27,6 @@ import com.shpp.ssierykh.assignment1.utils.Validators.isValidateEmail
 import com.shpp.ssierykh.assignment1.utils.Validators.isValidatePassword
 import com.shpp.ssierykh.assignment1.utils.Validators.messageValidationPassword
 import com.shpp.ssierykh.assignment1.utils.extensions.clickWithDebounce
-import com.shpp.ssierykh.assignment1.utils.extensions.toast
 import dagger.hilt.android.AndroidEntryPoint
 
 

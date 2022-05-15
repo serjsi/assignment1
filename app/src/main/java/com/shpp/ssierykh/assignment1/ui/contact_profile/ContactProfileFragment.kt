@@ -10,10 +10,10 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import com.shpp.ssierykh.assignment1.databinding.FragmentContactProfileBinding
-import com.shpp.ssierykh.assignment1.ui.fragment_util.factory
+import com.shpp.ssierykh.assignment1.utils.fragment_util.factory
 import com.shpp.ssierykh.assignment1.utils.SwitchNavigationGraph.featureNavigationEnabled
 
-import com.shpp.ssierykh.assignment1.ui.fragment_util.routing
+import com.shpp.ssierykh.assignment1.utils.fragment_util.routing
 
 
 import com.shpp.ssierykh.assignment1.utils.extensions.loadImageGlade

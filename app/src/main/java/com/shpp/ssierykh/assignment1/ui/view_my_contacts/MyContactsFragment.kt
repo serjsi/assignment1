@@ -12,9 +12,9 @@ import com.google.android.material.snackbar.Snackbar
 import com.shpp.ssierykh.assignment1.R
 
 import com.shpp.ssierykh.assignment1.databinding.FragmentMyContactsBinding
-import com.shpp.ssierykh.assignment1.ui.fragment_util.factory
+import com.shpp.ssierykh.assignment1.utils.fragment_util.factory
 
-import com.shpp.ssierykh.assignment1.ui.fragment_util.routing
+import com.shpp.ssierykh.assignment1.utils.fragment_util.routing
 import com.shpp.ssierykh.assignment1.utils.SwitchNavigationGraph
 
 import com.shpp.ssierykh.assignment1.utils.extensions.toast
@@ -89,7 +89,7 @@ class MyContactsFragment() : Fragment() {
             findNavController().navigate(
                 MyContactsFragmentDirections.
                 actionMyContactsFragmentGraphToAddOrEditContactsDialogFragmentGraph3(null))
-        } else routing().showAddOrEditContacts(null)
+        } else routing().showAddOrEditContacts()
     }
 
     private fun onArrowBack() {

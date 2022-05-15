@@ -8,7 +8,8 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
 class AddOrEditContactsViewModel(
-    private val baseContacts: BaseContacts) : ViewModel() {
+    private val baseContacts: BaseContacts
+) : ViewModel() {
 
 
     //StateFlow
@@ -16,14 +17,18 @@ class AddOrEditContactsViewModel(
     val profilContact: StateFlow<Contact> = _profileContact.asStateFlow()
 
 
-
     fun loadContact(emailID: String?) {
-        if(emailID != null){
+        if (emailID != null) {
             _profileContact.value = baseContacts.getContacts().firstOrNull { it.email == emailID }!!
         }
     }
 
     fun setContact(contact: Contact) {
+        baseContacts.addContact(contact)
+    }
 
+    fun setPhotoProfile(photoUri: String){
+        val data = _profileContact.value
+        _profileContact.value = Contact(data.email,photoUri,data.name,data.career,data.home)
     }
 }

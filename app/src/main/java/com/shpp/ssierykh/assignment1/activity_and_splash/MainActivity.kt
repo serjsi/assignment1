@@ -11,7 +11,7 @@ import com.shpp.ssierykh.assignment1.databinding.ActivityMainBinding
 
 import com.shpp.ssierykh.assignment1.model.Contact
 import com.shpp.ssierykh.assignment1.utils.SwitchNavigationGraph.featureNavigationEnabled
-import com.shpp.ssierykh.assignment1.ui.fragment_util.Routing
+import com.shpp.ssierykh.assignment1.utils.fragment_util.Routing
 import com.shpp.ssierykh.assignment1.ui.my_profile.MyProfileFragment
 import com.shpp.ssierykh.assignment1.ui.my_profile.MyProfileViewModel
 import com.shpp.ssierykh.assignment1.ui.edit_profile.AddOrEditContactsDialogFragment
@@ -19,7 +19,6 @@ import com.shpp.ssierykh.assignment1.ui.view_my_contacts.MyContactsFragment
 import com.shpp.ssierykh.assignment1.ui.contact_profile.ContactProfileFragment
 import com.shpp.ssierykh.assignment1.ui.sign.SignFragment
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.StateFlow
 
 
 private lateinit var binding: ActivityMainBinding
@@ -55,10 +54,11 @@ class MainActivity : AppCompatActivity(), Routing {
       replaceFragment(MyProfileFragment())
     }
 
-
+    override fun showAddOrEditContacts() {
+        replaceFragment(AddOrEditContactsDialogFragment())
+    }
 
     override fun showAddOrEditContacts(contact: Contact?) {
-        runWhenActive {
             if (contact != null) {
                 supportFragmentManager.beginTransaction()
                     .addToBackStack(null)
@@ -66,7 +66,6 @@ class MainActivity : AppCompatActivity(), Routing {
                         AddOrEditContactsDialogFragment.newInstance(contact.email))
                     .commit()
             }
-        }
     }
 
     override fun showMyContacts() {

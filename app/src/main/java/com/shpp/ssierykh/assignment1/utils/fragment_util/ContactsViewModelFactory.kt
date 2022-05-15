@@ -1,4 +1,4 @@
-package com.shpp.ssierykh.assignment1.ui.fragment_util
+package com.shpp.ssierykh.assignment1.utils.fragment_util
 
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
@@ -6,9 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.shpp.ssierykh.assignment1.utils.App
 import com.shpp.ssierykh.assignment1.ui.view_my_contacts.MyContactsViewModel
 import com.shpp.ssierykh.assignment1.ui.contact_profile.ContactProfileViewModel
-import com.shpp.ssierykh.assignment1.ui.edit_profile.AddOrEditContactsDialogFragment
 import com.shpp.ssierykh.assignment1.ui.edit_profile.AddOrEditContactsViewModel
-import com.shpp.ssierykh.assignment1.ui.my_profile.MyProfileViewModel
 
 
 @Suppress("UNCHECKED_CAST")

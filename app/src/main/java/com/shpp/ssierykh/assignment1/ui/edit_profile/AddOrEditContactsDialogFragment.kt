@@ -1,30 +1,29 @@
 package com.shpp.ssierykh.assignment1.ui.edit_profile
 
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import android.view.ViewGroup
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.view.WindowManager
-import androidx.fragment.app.DialogFragment
-import com.shpp.ssierykh.assignment1.R
-
-
-import android.content.Intent
+import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.os.bundleOf
 import androidx.core.widget.doOnTextChanged
+import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
-import com.shpp.ssierykh.assignment1.model.Contact
+import com.shpp.ssierykh.assignment1.R
 import com.shpp.ssierykh.assignment1.databinding.DialogAddOrEditContactProfileBinding
-import com.shpp.ssierykh.assignment1.ui.contact_profile.ContactProfileFragmentArgs
-import com.shpp.ssierykh.assignment1.ui.fragment_util.factory
-import com.shpp.ssierykh.assignment1.ui.fragment_util.routing
+import com.shpp.ssierykh.assignment1.model.Contact
 import com.shpp.ssierykh.assignment1.utils.SwitchNavigationGraph
 import com.shpp.ssierykh.assignment1.utils.Validators.isValidateEmail
 import com.shpp.ssierykh.assignment1.utils.extensions.loadImageGlade
+import com.shpp.ssierykh.assignment1.utils.fragment_util.factory
+import com.shpp.ssierykh.assignment1.utils.fragment_util.routing
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
 
@@ -34,21 +33,19 @@ class AddOrEditContactsDialogFragment() :
 
 
     private lateinit var binding: DialogAddOrEditContactProfileBinding
+    private var imageUri: Uri? = null
 
-    private val imageAvatar = 0
 
     private val viewModel: AddOrEditContactsViewModel by viewModels { factory() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (SwitchNavigationGraph.featureNavigationEnabled) {
-            val args: ContactProfileFragmentArgs by navArgs()
-            viewModel.loadContact(args.contactArg)
-        } else viewModel.loadContact(
-            requireArguments().getString(
-                AddOrEditContactsDialogFragment.ARG_EMAIL_ID
-            )
-        )
+            val args: AddOrEditContactsDialogFragmentArgs by navArgs()
+            args.contactArg?.let { viewModel.loadContact(args.contactArg) }
+        } else savedInstanceState?.let {
+            viewModel.loadContact(requireArguments().getString(ARG_EMAIL_ID))
+        }
     }
 
     override fun onCreateView(
@@ -56,11 +53,12 @@ class AddOrEditContactsDialogFragment() :
         savedInstanceState: Bundle?,
     ): View {
         binding = DialogAddOrEditContactProfileBinding.inflate(inflater, container, false)
-        binding.ivArrowBack.setOnClickListener { goBackMyProfile() }
+        binding.ivArrowBack.setOnClickListener { routing().goBack() }
+
         setDataContact(viewModel)
         saveContact(viewModel)
 
-        setPhotoProfil()
+        getImageFromGallery()
 
         return binding.root
 
@@ -75,23 +73,21 @@ class AddOrEditContactsDialogFragment() :
     }
 
 
-    private fun goBackMyProfile() {
-        routing().goBack()
-    }
 
+    private fun getImageFromGallery() {
+        val imagePickerActivityResult: ActivityResultLauncher<Intent> = registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult()
+        ) { result ->
+            result?.let {
+                imageUri = result.data?.data
+                viewModel.setPhotoProfile(imageUri.toString())
+            }
+        }
 
-    private fun AddOrEditContactsDialogFragment.setPhotoProfil() {
         binding.ivAddPhoto.setOnClickListener {
-            val intent = Intent()
-            intent.type = "image/*"
-            intent.action = Intent.ACTION_PICK
-
-            ActivityResultContracts.TakePicture()
-            startActivityForResult(
-                Intent.createChooser(intent, "Select Picture"),
-                imageAvatar
-            )
-
+            val galleryIntent = Intent(Intent.ACTION_PICK)
+            galleryIntent.type = "image/*"
+            imagePickerActivityResult.launch(galleryIntent)
         }
     }
 
@@ -101,33 +97,26 @@ class AddOrEditContactsDialogFragment() :
             etEmailA.doOnTextChanged { _, _, _, _ -> isValidateEmail() }
 
             btSave.setOnClickListener {
-
-                /*   val selectedDate =
-                       ContactForRecyclerView(Constants.PHOTO_FAKE_1, userName, career)*/
-
                 viewModel.setContact(
                     Contact(
                         etEmailA.text.toString(),
-                        "dsf",
+                        imageUri.toString(),
                         etUserName.text.toString(),
                         etCareer.text.toString(),
                         etAddress.text.toString()
                     )
                 )
-
                 routing().goBack()
-
-
             }
         }
     }
 
     private fun setDataContact(viewModel: AddOrEditContactsViewModel) {
-
         lifecycleScope.launchWhenStarted {
             viewModel.profilContact.onEach { data ->
                 // Update the UI, in this case, a TextView.
                 binding.apply {
+//                    ivPhotoProfile.loadImageGlade(data.photoAddress)
                     ivPhotoProfile.loadImageGlade(data.photoAddress)
                     etUserName.setText(data.name)
                     etCareer.setText(data.career)
@@ -171,7 +160,6 @@ class AddOrEditContactsDialogFragment() :
     companion object {
 
         private const val ARG_EMAIL_ID = "ARG_EMAIL_ID"
-
         fun newInstance(emailId: String): AddOrEditContactsDialogFragment {
             val fragment = AddOrEditContactsDialogFragment()
             fragment.arguments = bundleOf(ARG_EMAIL_ID to emailId)
@@ -181,3 +169,5 @@ class AddOrEditContactsDialogFragment() :
     }
 
 }
+
+

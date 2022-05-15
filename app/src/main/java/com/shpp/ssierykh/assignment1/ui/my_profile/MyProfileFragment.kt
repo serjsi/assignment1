@@ -6,15 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.shpp.ssierykh.assignment1.R
 import com.shpp.ssierykh.assignment1.databinding.FragmentMyProfileBinding
-import com.shpp.ssierykh.assignment1.ui.edit_profile.AddOrEditContactsViewModel
-import com.shpp.ssierykh.assignment1.ui.fragment_util.factory
 import com.shpp.ssierykh.assignment1.utils.SwitchNavigationGraph.featureNavigationEnabled
-import com.shpp.ssierykh.assignment1.ui.fragment_util.routing
+import com.shpp.ssierykh.assignment1.utils.fragment_util.routing
 
 import com.shpp.ssierykh.assignment1.utils.extensions.loadImageGlade
 import kotlinx.coroutines.flow.collect

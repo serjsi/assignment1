@@ -70,7 +70,6 @@ class ContactProfileFragment : Fragment() {
     }
 
     companion object {
-
         private const val ARG_EMAIL_ID = "ARG_EMAIL_ID"
         fun newInstance(emailId: String): ContactProfileFragment {
             val fragment = ContactProfileFragment()

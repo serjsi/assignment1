@@ -27,7 +27,6 @@ private lateinit var binding: ActivityMainBinding
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(), Routing {
-   // private val viewModel: MyProfileViewModel by viewModels() TODO Delete
 
     // actions to be launched when activity is active
     private val actions = mutableListOf<() -> Unit>()

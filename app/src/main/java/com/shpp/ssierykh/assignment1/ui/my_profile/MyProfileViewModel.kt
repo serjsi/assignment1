@@ -16,27 +16,20 @@ import kotlinx.coroutines.flow.asStateFlow
 class MyProfileViewModel(
     private val baseContacts: BaseContacts
 ) : ViewModel() {
-
-    //LiveData
-
-   /* private val _profileContact = MutableLiveData<Contact>()
-    val profilContact: LiveData<Contact> get() = _profileContact*/
-
-    //StateFlow
     private val _profileContact = MutableStateFlow(Contact())
     val profilContact: StateFlow<Contact> = _profileContact.asStateFlow()
 
 
     fun setContact(myContactEmail: String) {
-        val myContact = baseContacts.getContactForEmail(myContactEmail)
+        var myContact = baseContacts.getContactForEmail(myContactEmail)
         Log.d("my profilq", "___________________________$myContact")
         if (myContact != null) {
-            _profileContact.value = myContact!!
+            _profileContact.value = myContact
         } else {
             val name = parsingEmailToName(myContactEmail)
             baseContacts.addContact(Contact(myContactEmail, "", name))
             _profileContact.value =
-                baseContacts.getContacts().firstOrNull { it.email == myContactEmail }!!
+                baseContacts.getContactForEmail(myContactEmail)!!
         }
     }
 }

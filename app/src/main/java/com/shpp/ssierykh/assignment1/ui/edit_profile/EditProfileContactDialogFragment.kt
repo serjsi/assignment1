@@ -59,6 +59,9 @@ class EditProfileContactDialogFragment : DialogFragment() {
 
         getImageFromGallery()
 
+        binding.tvAddContacts.visibility = if(!viewModel.getVisible()) View.VISIBLE else View.GONE
+        binding.tvEditProfile.visibility = if(viewModel.getVisible()) View.VISIBLE else View.GONE
+
         return binding.root
 
     }

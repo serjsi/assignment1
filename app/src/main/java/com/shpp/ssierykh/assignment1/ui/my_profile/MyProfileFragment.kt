@@ -36,7 +36,7 @@ class MyProfileFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setFragmentResultListener(REQEUST_KEY_USER) { key, bundle ->
+        setFragmentResultListener(REQEUST_KEY_USER) { _, bundle ->
             bundle.getString(EMAIL_BANDLE_KEY)?.let { viewModel.setContact(it) }
 
         }
@@ -62,22 +62,6 @@ class MyProfileFragment : Fragment() {
     }
 
     private fun setDataContact() {
-        // Create the observer which updates the UI.
-        //LiveData
-/*           val profileObserver = Observer<Contact> { profilContactNew ->
-               // Update the UI, in this case, a TextView.
-               myContact = profilContactNew
-               binding.apply {
-                   ivPhotoProfile.loadImageGlade(profilContactNew.photoAddress)
-                   tvName.text = profilContactNew.name
-                   tvCareer.text = profilContactNew.career
-                   tvHomeAddress.text = profilContactNew.home
-               }
-           }
-           // Observe the LiveData, passing in this activity as the LifecycleOwner and the observer.
-           viewModel.profilContact.observe(viewLifecycleOwner, profileObserver)*/
-
-        //Flow
         lifecycleScope.launchWhenStarted {
 
             viewModel.profilContact.onEach { profilContactNew ->

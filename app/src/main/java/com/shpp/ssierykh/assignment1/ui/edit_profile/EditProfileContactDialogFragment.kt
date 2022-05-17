@@ -17,23 +17,26 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import com.shpp.ssierykh.assignment1.R
-import com.shpp.ssierykh.assignment1.databinding.EditContactProfileBinding
+import com.shpp.ssierykh.assignment1.databinding.FragmentSignBinding
 import com.shpp.ssierykh.assignment1.model.Contact
 import com.shpp.ssierykh.assignment1.utils.SwitchNavigationGraph
+import com.shpp.ssierykh.assignment1.utils.Validators
 import com.shpp.ssierykh.assignment1.utils.Validators.isValidateEmail
 import com.shpp.ssierykh.assignment1.utils.extensions.loadImageGlade
 import com.shpp.ssierykh.assignment1.utils.fragment_util.factory
 import com.shpp.ssierykh.assignment1.utils.fragment_util.routing
+import kotlinx.android.synthetic.main.fragment_sign.*
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
+import com.shpp.ssierykh.assignment1.databinding.EditContactProfileBinding as EditContactProfileBinding1
 
 
 class EditProfileContactDialogFragment : DialogFragment() {
 
 
-    private lateinit var binding: EditContactProfileBinding
+    private lateinit var binding: EditContactProfileBinding1
     private var imageUri: Uri? = null
-
+    private var pressSaveContact: Boolean = false
 
     private val viewModel: EditProfileContactViewModel by viewModels { factory() }
 
@@ -51,7 +54,7 @@ class EditProfileContactDialogFragment : DialogFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        binding = EditContactProfileBinding.inflate(inflater, container, false)
+        binding = EditContactProfileBinding1.inflate(inflater, container, false)
         binding.ivArrowBack.setOnClickListener { routing().goBack() }
 
         setDataContact(viewModel)
@@ -59,8 +62,8 @@ class EditProfileContactDialogFragment : DialogFragment() {
 
         getImageFromGallery()
 
-        binding.tvAddContacts.visibility = if(!viewModel.getVisible()) View.VISIBLE else View.GONE
-        binding.tvEditProfile.visibility = if(viewModel.getVisible()) View.VISIBLE else View.GONE
+        binding.tvAddContacts.visibility = if (!viewModel.getVisible()) View.VISIBLE else View.GONE
+        binding.tvEditProfile.visibility = if (viewModel.getVisible()) View.VISIBLE else View.GONE
 
         return binding.root
 
@@ -73,7 +76,6 @@ class EditProfileContactDialogFragment : DialogFragment() {
         params?.height = WindowManager.LayoutParams.MATCH_PARENT
         dialog?.onWindowAttributesChanged(params)
     }
-
 
 
     private fun getImageFromGallery() {
@@ -96,20 +98,22 @@ class EditProfileContactDialogFragment : DialogFragment() {
 
     private fun saveContact(viewModel: EditProfileContactViewModel) {
         binding.apply {
-            etEmailA.doOnTextChanged { _, _, _, _ -> isValidateEmail() }
-
+            showMessageErrorAfterClicking()
             btSave.setOnClickListener {
-                viewModel.setContact(
-                    Contact(
-                        etEmailA.text.toString(),
-                        imageUri.toString(),
-                        etUserName.text.toString(),
-                        etCareer.text.toString(),
-                        etAddress.text.toString()
+                    checkingTextAfterClicking()
+                if (isValidateEmail(etEmail)) {
+                    viewModel.setContact(Contact(
+                            etEmail.text.toString(),
+                            imageUri.toString(),
+                            etUserName.text.toString(),
+                            etCareer.text.toString(),
+                            etAddress.text.toString()
+                        )
                     )
-                )
-                routing().goBack()
+                    routing().goBack()
+                }
             }
+
         }
     }
 
@@ -121,7 +125,7 @@ class EditProfileContactDialogFragment : DialogFragment() {
                     ivPhotoProfile.loadImageGlade(data.photoAddress)
                     etUserName.setText(data.name)
                     etCareer.setText(data.career)
-                    etEmailA.setText(data.email)
+                    etEmail.setText(data.email)
                     etAddress.setText(data.home)
                 }
             }
@@ -131,31 +135,27 @@ class EditProfileContactDialogFragment : DialogFragment() {
 
 
 //TODO Corrected//////////////////////////////////////////////////////////////
-    /**
-     * Checking validate E-mail
-     */
-    private fun isValidateEmail(): Boolean {
-        binding.apply {
 
-            val emailCheck = etEmailA.text.toString()
-            when {
-                emailCheck.isEmpty() -> {
-                    tilEmail.error = getString(R.string.message_cannot_be_empty)
-                    etEmailA.requestFocus()
-                    return false
-                }
-                !isValidateEmail(etEmailA) -> {
-                    tilEmail.error = getString(R.string.message_wromg_e_mail)
-                    etEmailA.requestFocus()
-                    return false
-                }
-                else -> {
-                    tilEmail.isErrorEnabled = false
-                    return true
-                }
-            }
+    private fun EditContactProfileBinding1.checkingTextAfterClicking() {
+        pressSaveContact = true
+        if (!isValidateEmail(etEmail)) tilEmail.error = getString(R.string.message_wromg_e_mail)
+        /*       if (!Validators.isValidatePassword(etPassword)) tilPassword.error =
+                   getString(Validators.messageValidationPassword(etPassword))*/
+    }
 
+    private fun EditContactProfileBinding1.showMessageErrorAfterClicking() {
+
+        etEmail.doOnTextChanged { _, _, _, _ ->
+            if (!isValidateEmail(etEmail) && pressSaveContact) {
+                tilEmail.error = getString(R.string.message_wromg_e_mail)
+            } else tilEmail.isErrorEnabled = false
         }
+
+        /*       etPassword.doOnTextChanged { _, _, _, _ ->
+                   if (!Validators.isValidatePassword(etPassword) && pressSaveContact) {
+                       tilPassword.error = getString(Validators.messageValidationPassword(etPassword))
+                   } else tilPassword.isErrorEnabled = false
+               }*/
     }
 
     companion object {

@@ -14,7 +14,7 @@ object Validators {
 
     /**
      * Сhecking validate password
-     *  @param password input email
+     *  @param password input password
      * @return stop_validation if matches with else push
      */
     fun messageValidationPassword(password : TextInputEditText): Int {

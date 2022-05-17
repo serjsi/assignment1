@@ -11,15 +11,16 @@ class EditProfileContactViewModel(
     private val baseContacts: BaseContacts
 ) : ViewModel() {
 
-private var visible : Boolean = false
+    private var visible: Boolean = false
 
     //StateFlow
     private val _profileContact = MutableStateFlow(Contact())
     val profilContact: StateFlow<Contact> = _profileContact.asStateFlow()
 
 
+
     fun loadContact(emailID: String?) {
-       visible = true
+        visible = true
         emailID?.let {
             _profileContact.value = baseContacts.getContactForEmail(emailID)!!
         }
@@ -29,12 +30,13 @@ private var visible : Boolean = false
         baseContacts.addContact(contact)
     }
 
-    fun setPhotoProfile(photoUri: String){
+    fun setPhotoProfile(photoUri: String) {
         val data = _profileContact.value
         baseContacts.deleteContact(_profileContact.value)
-        _profileContact.value = Contact(data.email,photoUri,data.name,data.career,data.home)
+        _profileContact.value = Contact(data.email, photoUri, data.name, data.career, data.home)
     }
-    fun getVisible() : Boolean{
+
+    fun getVisible(): Boolean {
         return visible
     }
 }

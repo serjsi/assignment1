@@ -31,10 +31,10 @@
         android:textColor="@color/gray_very_light"
         android:textSize="@dimen/textSize_18sp"
         android:theme="@style/TextStyBasic"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="@+id/ivTopContainer"
         app:layout_constraintStart_toStartOf="@+id/ivTopContainer"
-        app:layout_constraintTop_toTopOf="@+id/ivTopContainer"
-        android:visibility="invisible"/>
+        app:layout_constraintTop_toTopOf="@+id/ivTopContainer" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvEditProfile"
@@ -124,19 +124,13 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etUserName"
+                    android:inputType="textPersonName|textCapWords"
                     style="@style/TextInputEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="?attr/colorOnSecondary" />
             </com.google.android.material.textfield.TextInputLayout>
 
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etPhone"
-                style="@style/TextInputEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="?attr/colorOnSecondary" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilCareer"
@@ -147,6 +141,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etCareer"
+                    android:inputType="textCapSentences"
                     style="@style/TextInputEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -162,7 +157,8 @@
 
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etEmailA"
+                    android:id="@+id/etEmail"
+                    android:inputType="textEmailAddress"
                     style="@style/TextInputEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -176,6 +172,13 @@
                 android:layout_marginBottom="@dimen/vertical_margin_8"
                 android:hint="@string/phone">
 
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etPhone"
+                    android:inputType="phone"
+                    style="@style/TextInputEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="?attr/colorOnSecondary" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -188,6 +191,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etAddress"
+                    android:inputType="textPostalAddress|textCapSentences"
                     style="@style/TextInputEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -204,6 +208,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etDateOfBirth"
+                    android:inputType="date"
                     style="@style/TextInputEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

@@ -77,8 +77,8 @@ class BaseContacts {
         notifyChanges()
     }
 
-    fun deleteContact(user: Contact) {
-        val indexToDelete = contacts.indexOfFirst { it.email == user.email }
+    fun deleteContact(contact: Contact) {
+        val indexToDelete = contacts.indexOfFirst { it.email == contact.email }
         if (indexToDelete != -1) {
             contacts = ArrayList(contacts)
             contacts.removeAt(indexToDelete)

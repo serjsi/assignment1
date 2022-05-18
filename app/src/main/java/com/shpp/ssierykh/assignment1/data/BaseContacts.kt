@@ -49,10 +49,33 @@ class BaseContacts {
     fun getContacts(): List<Contact> {
         return contacts
     }
-     fun getContactForEmail(emailFind: String): Contact? {
-         return contacts.firstOrNull { it.email == emailFind}
-     }
 
+    fun getContactForEmail(emailFind: String): Contact? {
+        return contacts.firstOrNull { it.email == emailFind }
+    }
+
+    fun setContact(contactNew: Contact){
+        val contact = getContactForEmail(contactNew.email)
+        if(contactNew.photoAddress != contact?.photoAddress ){
+            contact?.photoAddress = contactNew.photoAddress
+        }
+        if(contactNew.name != contact?.name ){
+            contact?.name = contactNew.name
+        }
+        if(contactNew.career != contact?.career  ){
+            contact?.career = contactNew.career
+        }
+        if(contactNew.phone != contact?.phone ){
+            contact?.phone = contactNew.phone
+        }
+        if(contactNew.home != contact?.home ){
+            contact?.home = contactNew.home
+        }
+        if(contactNew.birth != contact?.birth){
+            contact?.birth = contactNew.birth
+        }
+        notifyChanges()
+    }
 
     fun deleteContact(user: Contact) {
         val indexToDelete = contacts.indexOfFirst { it.email == user.email }

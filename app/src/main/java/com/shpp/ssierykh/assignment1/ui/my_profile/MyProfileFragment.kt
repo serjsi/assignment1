@@ -89,7 +89,8 @@ class MyProfileFragment : Fragment() {
     private fun onOpenEditProfile() {
         if (featureNavigationEnabled) {
            findNavController().navigate(
-                MyProfileFragmentDirections.actionMyProfileFragmentGraphToAddOrEditContactsDialogFragmentGraph(
+                MyProfileFragmentDirections.
+                actionMyProfileFragmentGraphToAddOrEditContactsDialogFragmentGraph(
                     myContact.email
                 )
             )

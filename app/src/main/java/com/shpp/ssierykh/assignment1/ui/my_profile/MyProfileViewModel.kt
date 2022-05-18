@@ -22,7 +22,6 @@ class MyProfileViewModel(
 
     fun setContact(myContactEmail: String) {
         var myContact = baseContacts.getContactForEmail(myContactEmail)
-        Log.d("my profilq", "___________________________$myContact")
         if (myContact != null) {
             _profileContact.value = myContact
         } else {

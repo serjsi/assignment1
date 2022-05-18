@@ -174,11 +174,13 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etPhone"
-                    android:inputType="phone"
                     style="@style/TextInputEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="?attr/colorOnSecondary" />
+                    android:inputType="phone"
+                    android:textColor="?attr/colorOnSecondary"
+                    android:textColorHint="#78909C"
+                    tools:ignore="TextContrastCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
 

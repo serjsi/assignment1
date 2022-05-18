@@ -1,6 +1,8 @@
 package com.shpp.ssierykh.assignment1.ui.edit_profile
 
 
+import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -8,8 +10,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.view.inputmethod.InputMethodManager
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.net.toUri
 import androidx.core.os.bundleOf
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.DialogFragment
@@ -56,14 +60,15 @@ class EditProfileContactDialogFragment : DialogFragment() {
     ): View {
         binding = EditContactProfileBinding1.inflate(inflater, container, false)
         binding.ivArrowBack.setOnClickListener { routing().goBack() }
+        imageUri = viewModel.takePhoto().toUri()
 
         setDataContact(viewModel)
+
         saveContact(viewModel)
 
         getImageFromGallery()
 
-        binding.tvAddContacts.visibility = if (!viewModel.getVisible()) View.VISIBLE else View.GONE
-        binding.tvEditProfile.visibility = if (viewModel.getVisible()) View.VISIBLE else View.GONE
+        isVisibleNameFragment()
 
         return binding.root
 
@@ -75,6 +80,11 @@ class EditProfileContactDialogFragment : DialogFragment() {
         params?.width = WindowManager.LayoutParams.MATCH_PARENT
         params?.height = WindowManager.LayoutParams.MATCH_PARENT
         dialog?.onWindowAttributesChanged(params)
+    }
+
+    private fun isVisibleNameFragment() {
+        binding.tvAddContacts.visibility = if (!viewModel.getVisible()) View.VISIBLE else View.GONE
+        binding.tvEditProfile.visibility = if (viewModel.getVisible()) View.VISIBLE else View.GONE
     }
 
 
@@ -120,7 +130,6 @@ class EditProfileContactDialogFragment : DialogFragment() {
     private fun setDataContact(viewModel: EditProfileContactViewModel) {
         lifecycleScope.launchWhenStarted {
             viewModel.profilContact.onEach { data ->
-                // Update the UI, in this case, a TextView.
                 binding.apply {
                     ivPhotoProfile.loadImageGlade(data.photoAddress)
                     etUserName.setText(data.name)
@@ -134,13 +143,14 @@ class EditProfileContactDialogFragment : DialogFragment() {
     }
 
 
+
+
 //TODO Corrected//////////////////////////////////////////////////////////////
 
     private fun EditContactProfileBinding1.checkingTextAfterClicking() {
         pressSaveContact = true
         if (!isValidateEmail(etEmail)) tilEmail.error = getString(R.string.message_wromg_e_mail)
-        /*       if (!Validators.isValidatePassword(etPassword)) tilPassword.error =
-                   getString(Validators.messageValidationPassword(etPassword))*/
+
     }
 
     private fun EditContactProfileBinding1.showMessageErrorAfterClicking() {

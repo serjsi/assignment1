@@ -41,7 +41,7 @@ class MyContactsFragment() : Fragment() {
         }
 
         viewModel.actionShowSnackbar.observe(viewLifecycleOwner) {
-            showSnackbarDeleteContact(it)
+            showSnackBarDeleteContact(it)
         }
 
         viewModel.actionShowDetails.observe(viewLifecycleOwner) {
@@ -69,7 +69,7 @@ class MyContactsFragment() : Fragment() {
         return binding.root
     }
 
-    private fun showSnackbarDeleteContact( nameDeleteContact: String?) {
+    private fun showSnackBarDeleteContact(nameDeleteContact: String?) {
         Snackbar.make(
             binding.rvBottomContainer,
             "${getString(R.string.Contact)}  $nameDeleteContact ${getString(R.string.is_deleted)} ",

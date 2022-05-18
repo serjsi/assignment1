@@ -1,5 +1,6 @@
 package com.shpp.ssierykh.assignment1.ui.edit_profile
 
+import android.net.Uri
 import androidx.lifecycle.ViewModel
 import com.shpp.ssierykh.assignment1.data.BaseContacts
 import com.shpp.ssierykh.assignment1.model.Contact
@@ -11,32 +12,39 @@ class EditProfileContactViewModel(
     private val baseContacts: BaseContacts
 ) : ViewModel() {
 
-    private var visible: Boolean = false
+    private var isEditProfile: Boolean = false
 
     //StateFlow
     private val _profileContact = MutableStateFlow(Contact())
     val profilContact: StateFlow<Contact> = _profileContact.asStateFlow()
 
 
-
     fun loadContact(emailID: String?) {
-        visible = true
+        isEditProfile = true
         emailID?.let {
             _profileContact.value = baseContacts.getContactForEmail(emailID)!!
         }
     }
 
     fun setContact(contact: Contact) {
-        baseContacts.addContact(contact)
+        if (isEditProfile) {
+            baseContacts.setContact(contact)
+        } else baseContacts.addContact(contact)
     }
+
 
     fun setPhotoProfile(photoUri: String) {
         val data = _profileContact.value
-        baseContacts.deleteContact(_profileContact.value)
         _profileContact.value = Contact(data.email, photoUri, data.name, data.career, data.home)
+
     }
 
     fun getVisible(): Boolean {
-        return visible
+        return isEditProfile
+    }
+
+    fun takePhoto(): String {
+            return _profileContact.value.photoAddress
+
     }
 }

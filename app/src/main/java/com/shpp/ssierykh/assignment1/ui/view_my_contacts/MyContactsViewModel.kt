@@ -10,7 +10,7 @@ import com.shpp.ssierykh.assignment1.data.ContactListener
 import com.shpp.ssierykh.assignment1.databinding.FragmentMyContactsBinding
 
 import com.shpp.ssierykh.assignment1.model.Contact
-
+import com.shpp.ssierykh.assignment1.utils.Event
 
 
 class MyContactsViewModel(
@@ -22,21 +22,20 @@ class MyContactsViewModel(
     private var _contacts = MutableLiveData<List<Contact>>()
     val contacts: LiveData<List<Contact>> = _contacts
 
-    private val _actionShowDetails = MutableLiveData<Contact?>()
-    val actionShowDetails: MutableLiveData<Contact?> = _actionShowDetails
+    private val _actionShowDetails = MutableLiveData<Event<Contact?>>()
+    val actionShowDetails: MutableLiveData<Event<Contact?>> = _actionShowDetails
 
-    private val _actionShowSnackbar = MutableLiveData<String>()
-    val actionShowSnackbar: LiveData<String> = _actionShowSnackbar
+    private val _actionShowSnackBar = MutableLiveData<Event<String>>()
+    val actionShowSnackBar: MutableLiveData<Event<String>> = _actionShowSnackBar
 
 
     override fun onContactDetails(contact: Contact) {
-        _actionShowDetails.value = contact
-        _actionShowDetails.value = null
+        _actionShowDetails.value = Event(contact)
     }
 
     override fun onContactDelete(contact: Contact) {
         baseContacts.deleteContact(contact)
-        _actionShowSnackbar.value = contact.name
+        _actionShowSnackBar.value = Event(contact.name)
         lastDeleteContact = contact
     }
 

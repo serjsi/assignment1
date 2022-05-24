@@ -40,18 +40,18 @@ class MyContactsFragment() : Fragment() {
             adapter.contacts = it
         }
 
-        viewModel.actionShowSnackbar.observe(viewLifecycleOwner) {
-            showSnackBarDeleteContact(it)
+        viewModel.actionShowSnackBar.observe(viewLifecycleOwner) {
+          it.getValue()?.let{contact -> showSnackBarDeleteContact(contact)}
         }
 
         viewModel.actionShowDetails.observe(viewLifecycleOwner) {
-            it?.let {
+            it.getValue()?.let {contact ->
                 if (SwitchNavigationGraph.featureNavigationEnabled) {
-                      val emailID = it.email
+                      val emailID = contact.email
                         findNavController().navigate(
                             MyContactsFragmentDirections.
                             actionMyContactsFragmentGraphToContactProfileFragment(emailID))
-                } else  routing().showContactProfile(it)
+                } else  routing().showContactProfile(contact)
             }
         }
 

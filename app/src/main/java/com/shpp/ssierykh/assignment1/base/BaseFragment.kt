@@ -36,7 +36,7 @@ abstract class BaseFragment<BINDING : ViewDataBinding, VM : BaseViewModel>() : F
 
         binding.apply {
             lifecycleOwner = viewLifecycleOwner
-         //   setVariable(BR.viewModel, viewModel) TODO - BR?
+           // setVariable(BR.viewModel, viewModel) //TODO - BR?
         }
 
         return binding.root

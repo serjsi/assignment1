@@ -41,7 +41,6 @@ class SignFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentSignBinding.inflate(inflater, container, false)
-      //  val viewModel: MyProfileViewModel by activityViewModels()
         val viewModel: SignViewModel by viewModels()
         setupListeners(viewModel)
 
@@ -128,6 +127,7 @@ class SignFragment : Fragment() {
             }
         }
     }
+
 
     ////////////////////////////////test method////////////////////////////////////////
     private fun forTestMethod() {

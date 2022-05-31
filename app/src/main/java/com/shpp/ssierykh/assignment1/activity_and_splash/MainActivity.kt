@@ -1,7 +1,6 @@
 package com.shpp.ssierykh.assignment1.activity_and_splash
 
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
@@ -10,10 +9,10 @@ import com.shpp.ssierykh.assignment1.R
 import com.shpp.ssierykh.assignment1.databinding.ActivityMainBinding
 
 import com.shpp.ssierykh.assignment1.model.Contact
+import com.shpp.ssierykh.assignment1.navigate.Routing
 import com.shpp.ssierykh.assignment1.utils.SwitchNavigationGraph.featureNavigationEnabled
-import com.shpp.ssierykh.assignment1.utils.fragment_util.Routing
-import com.shpp.ssierykh.assignment1.ui.my_profile.MyProfileFragment
-import com.shpp.ssierykh.assignment1.ui.my_profile.MyProfileViewModel
+
+import com.shpp.ssierykh.assignment1.ui.edit_profile.my_profile.MyProfileFragment
 import com.shpp.ssierykh.assignment1.ui.edit_profile.EditProfileContactDialogFragment
 import com.shpp.ssierykh.assignment1.ui.view_my_contacts.MyContactsFragment
 import com.shpp.ssierykh.assignment1.ui.contact_profile.ContactProfileFragment

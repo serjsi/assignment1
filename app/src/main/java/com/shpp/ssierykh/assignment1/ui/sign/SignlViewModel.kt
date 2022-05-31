@@ -2,6 +2,7 @@ package com.shpp.ssierykh.assignment1.ui.sign
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.shpp.ssierykh.assignment1.base.BaseViewModel
 import com.shpp.ssierykh.assignment1.data.preferences.DataStoreRepository
 import com.shpp.ssierykh.assignment1.utils.Constants.NAME_SP
 import com.shpp.ssierykh.assignment1.utils.Constants.PASSWORD_SP
@@ -13,7 +14,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SignViewModel @Inject constructor(
-    private val repository: DataStoreRepository) : ViewModel() {
+    private val repository: DataStoreRepository) : BaseViewModel() {
 
     fun saveEmail(value: String) {
         viewModelScope.launch {
@@ -45,4 +46,16 @@ class SignViewModel @Inject constructor(
         repository.getBoolean(REMEMBER_SP)
     }
 
+
+    fun goToSecondFragmentClicked() {
+        navigate(SignFragmentDirections.actionSignFragmentGraphToMyProfileFragmentGraph())
+    }
+
+    fun goToSecondFragmentWithArgs() {
+        navigate(
+            SignFragmentDirections.actionSignFragmentGraphToMyProfileFragmentGraph(
+               /* userId = "Test user id"*/
+            )
+        )
+    }
 }

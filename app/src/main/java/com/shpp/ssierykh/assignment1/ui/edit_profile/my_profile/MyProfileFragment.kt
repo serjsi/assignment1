@@ -1,28 +1,22 @@
-package com.shpp.ssierykh.assignment1.ui.my_profile
+package com.shpp.ssierykh.assignment1.ui.edit_profile.my_profile
 
 import android.os.Bundle
-import android.provider.ContactsContract
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.shpp.ssierykh.assignment1.R
 import com.shpp.ssierykh.assignment1.databinding.FragmentMyProfileBinding
 import com.shpp.ssierykh.assignment1.model.Contact
-import com.shpp.ssierykh.assignment1.ui.edit_profile.EditProfileContactViewModel
+import com.shpp.ssierykh.assignment1.navigate.routing
 import com.shpp.ssierykh.assignment1.utils.Constants.EMAIL_BANDLE_KEY
 import com.shpp.ssierykh.assignment1.utils.Constants.REQEUST_KEY_USER
 import com.shpp.ssierykh.assignment1.utils.SwitchNavigationGraph.featureNavigationEnabled
-import com.shpp.ssierykh.assignment1.utils.fragment_util.routing
-
 import com.shpp.ssierykh.assignment1.utils.extensions.loadImageGlade
-import com.shpp.ssierykh.assignment1.utils.extensions.toast
 import com.shpp.ssierykh.assignment1.utils.fragment_util.factory
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach

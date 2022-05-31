@@ -1,4 +1,4 @@
-package com.shpp.ssierykh.assignment1.utils.fragment_util
+package com.shpp.ssierykh.assignment1.navigate
 
 import androidx.fragment.app.Fragment
 import com.shpp.ssierykh.assignment1.model.Contact

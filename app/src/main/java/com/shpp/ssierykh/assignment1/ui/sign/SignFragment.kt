@@ -8,16 +8,15 @@ import android.widget.TextView
 import androidx.core.os.bundleOf
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.shpp.ssierykh.assignment1.R
-import com.shpp.ssierykh.assignment1.model.Contact
+import com.shpp.ssierykh.assignment1.base.BaseFragment
 import com.shpp.ssierykh.assignment1.databinding.FragmentSignBinding
+import com.shpp.ssierykh.assignment1.navigate.routing
 import com.shpp.ssierykh.assignment1.utils.SwitchNavigationGraph.featureNavigationEnabled
-import com.shpp.ssierykh.assignment1.utils.fragment_util.routing
-import com.shpp.ssierykh.assignment1.ui.my_profile.MyProfileViewModel
+
 import com.shpp.ssierykh.assignment1.utils.Constants
 import com.shpp.ssierykh.assignment1.utils.Constants.EMAIL_BANDLE_KEY
 import com.shpp.ssierykh.assignment1.utils.Constants.PHOTO_BANDLE_KEY
@@ -27,14 +26,25 @@ import com.shpp.ssierykh.assignment1.utils.Validators.isValidateEmail
 import com.shpp.ssierykh.assignment1.utils.Validators.isValidatePassword
 import com.shpp.ssierykh.assignment1.utils.Validators.messageValidationPassword
 import com.shpp.ssierykh.assignment1.utils.extensions.clickWithDebounce
+import com.shpp.ssierykh.assignment1.utils.extensions.toast
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class SignFragment : Fragment() {
+class SignFragment: BaseFragment<FragmentSignBinding,SignViewModel> (){
     private var pressRegistration = false
+    override var useSharedViewModel = true
 
-    private lateinit var binding: FragmentSignBinding
+    override fun getViewModelClass() = SignViewModel::class.java
+    override fun getViewBinding() = FragmentSignBinding.inflate(layoutInflater)
+    override fun setUpViews() {
+        setupListeners(viewModel)
+
+        getAutologin(viewModel)
+
+        forTestMethod()
+    }
+/*    private lateinit var binding: FragmentSignBinding
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -50,7 +60,9 @@ class SignFragment : Fragment() {
 
         return binding.root
 
-    }
+    }*/
+
+
 
     private fun getAutologin(vM: SignViewModel) {
 
@@ -105,9 +117,11 @@ class SignFragment : Fragment() {
 
     private fun onOpenMyProfile() {
         if (featureNavigationEnabled) {
-            findNavController().navigate(
+            toast("navigation")// TODO from test
+            viewModel.goToSecondFragmentClicked()
+        /*     findNavController().navigate(
                 R.id.action_signFragmentGraph_to_myProfileFragmentGraph, null
-            )
+            )*/
         } else
             routing().showMyProfileScreen()
     }

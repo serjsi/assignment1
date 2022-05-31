@@ -1,9 +1,6 @@
-package com.shpp.ssierykh.assignment1.ui.my_profile
+package com.shpp.ssierykh.assignment1.ui.edit_profile.my_profile
 
 
-import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.shpp.ssierykh.assignment1.data.BaseContacts
 import com.shpp.ssierykh.assignment1.model.Contact

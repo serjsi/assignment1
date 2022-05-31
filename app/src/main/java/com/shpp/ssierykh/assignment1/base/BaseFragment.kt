@@ -8,46 +8,60 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.viewbinding.ViewBinding
+import com.shpp.ssierykh.assignment1.navigate.NavigationCommand
 import com.shpp.ssierykh.assignment1.utils.observeNonNull
 
-abstract class BaseFragment<BINDING : ViewDataBinding, VM : BaseViewModel>() : Fragment() {
+abstract class BaseFragment<VBinding  : ViewBinding, ViewModel  : BaseViewModel>() : Fragment() {
 
-    @get:LayoutRes
-    protected abstract val layoutId: Int
+    open var useSharedViewModel: Boolean = false
 
-    protected abstract val viewModel: VM
+    protected lateinit var viewModel: ViewModel
+    protected abstract fun getViewModelClass(): Class<ViewModel>
 
-    protected lateinit var binding: BINDING
+    protected lateinit var binding: VBinding
+    protected abstract fun getViewBinding(): VBinding
 
-    protected abstract fun onReady(savedInstanceState: Bundle?)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        init()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(
-            layoutInflater,
-            layoutId,
-            container,
-            false
-        )
-
-        binding.apply {
-            lifecycleOwner = viewLifecycleOwner
-           // setVariable(BR.viewModel, viewModel) //TODO - BR?
-        }
-
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        observeNavigation()
-
-        onReady(savedInstanceState)
+        setUpViews()
+        observeData()
+        observeNavigation()////-------------------------
     }
+
+    open fun setUpViews() {}
+
+    open fun observeView() {}
+
+    open fun observeData() {}
+
+    private fun init() {
+        binding = getViewBinding()
+        viewModel = if (useSharedViewModel) {
+            ViewModelProvider(requireActivity()).get(
+                getViewModelClass()
+            )
+        } else {
+            ViewModelProvider(this).get(getViewModelClass())
+        }
+    }
+
 
     private fun observeNavigation() {
         viewModel.navigation.observeNonNull(viewLifecycleOwner) {

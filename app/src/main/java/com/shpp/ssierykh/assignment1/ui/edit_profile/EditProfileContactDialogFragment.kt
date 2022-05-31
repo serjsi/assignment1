@@ -23,12 +23,12 @@ import androidx.navigation.fragment.navArgs
 import com.shpp.ssierykh.assignment1.R
 import com.shpp.ssierykh.assignment1.databinding.FragmentSignBinding
 import com.shpp.ssierykh.assignment1.model.Contact
+import com.shpp.ssierykh.assignment1.navigate.routing
 import com.shpp.ssierykh.assignment1.utils.SwitchNavigationGraph
 import com.shpp.ssierykh.assignment1.utils.Validators
 import com.shpp.ssierykh.assignment1.utils.Validators.isValidateEmail
 import com.shpp.ssierykh.assignment1.utils.extensions.loadImageGlade
 import com.shpp.ssierykh.assignment1.utils.fragment_util.factory
-import com.shpp.ssierykh.assignment1.utils.fragment_util.routing
 import kotlinx.android.synthetic.main.fragment_sign.*
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach

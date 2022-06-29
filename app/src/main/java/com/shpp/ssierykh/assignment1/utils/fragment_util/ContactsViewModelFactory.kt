@@ -3,11 +3,11 @@ package com.shpp.ssierykh.assignment1.utils.fragment_util
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.shpp.ssierykh.assignment1.utils.App
+import com.shpp.ssierykh.assignment1.app.App
 import com.shpp.ssierykh.assignment1.ui.view_my_contacts.MyContactsViewModel
 import com.shpp.ssierykh.assignment1.ui.contact_profile.ContactProfileViewModel
 import com.shpp.ssierykh.assignment1.ui.edit_profile.EditProfileContactViewModel
-import com.shpp.ssierykh.assignment1.ui.edit_profile.my_profile.MyProfileViewModel
+import com.shpp.ssierykh.assignment1.ui.my_profile.MyProfileViewModel
 
 
 @Suppress("UNCHECKED_CAST")

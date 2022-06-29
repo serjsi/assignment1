@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_kot_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Assignment1"
-        android:name=".utils.App">
+        android:name=".app.App">
         <activity
             android:name="com.shpp.ssierykh.assignment1.activity_and_splash.MainActivity"
             android:exported="false" />

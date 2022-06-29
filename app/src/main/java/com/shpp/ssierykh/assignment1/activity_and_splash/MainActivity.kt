@@ -12,7 +12,7 @@ import com.shpp.ssierykh.assignment1.model.Contact
 import com.shpp.ssierykh.assignment1.navigate.Routing
 import com.shpp.ssierykh.assignment1.utils.SwitchNavigationGraph.featureNavigationEnabled
 
-import com.shpp.ssierykh.assignment1.ui.edit_profile.my_profile.MyProfileFragment
+import com.shpp.ssierykh.assignment1.ui.my_profile.MyProfileFragment
 import com.shpp.ssierykh.assignment1.ui.edit_profile.EditProfileContactDialogFragment
 import com.shpp.ssierykh.assignment1.ui.view_my_contacts.MyContactsFragment
 import com.shpp.ssierykh.assignment1.ui.contact_profile.ContactProfileFragment

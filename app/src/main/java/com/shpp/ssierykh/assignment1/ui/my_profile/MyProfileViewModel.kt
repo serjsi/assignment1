@@ -1,10 +1,12 @@
-package com.shpp.ssierykh.assignment1.ui.edit_profile.my_profile
+package com.shpp.ssierykh.assignment1.ui.my_profile
 
 
 import androidx.lifecycle.ViewModel
+import com.shpp.ssierykh.assignment1.base.BaseViewModel
 import com.shpp.ssierykh.assignment1.data.BaseContacts
 import com.shpp.ssierykh.assignment1.model.Contact
 import com.shpp.ssierykh.assignment1.utils.ParsingEmailToName.parsingEmailToName
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -12,7 +14,7 @@ import kotlinx.coroutines.flow.asStateFlow
 
 class MyProfileViewModel(
     private val baseContacts: BaseContacts
-) : ViewModel() {
+) : BaseViewModel() {
     private val _profileContact = MutableStateFlow(Contact())
     val profilContact: StateFlow<Contact> = _profileContact.asStateFlow()
 

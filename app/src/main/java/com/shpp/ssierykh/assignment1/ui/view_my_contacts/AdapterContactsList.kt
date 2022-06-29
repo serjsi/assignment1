@@ -39,7 +39,6 @@ class AdapterContactsList(
             }
             else -> {
                 actionListener.onContactDetails(contact)
-
             }
         }
     }
@@ -49,9 +48,7 @@ class AdapterContactsList(
         val binding = SingleItemContactBinding.inflate(
             LayoutInflater.from(parent.context), parent, false
         )
-
         binding.ivDelete.setOnClickListener(this)
-
         return ContactViewHolder(binding)
     }
 
@@ -61,9 +58,7 @@ class AdapterContactsList(
         with(holderContact.binding) {
             holderContact.itemView.tag = contact
             ivDelete.tag = contact
-
             holderContact.binding.root.setOnClickListener(this@AdapterContactsList)
-
             ivPhoto.loadImageGlade(contact.photoAddress)
             //  binding.ivPhoto.loadImagePicasso(contact.photoAddress)
             tvName.text = contact.name

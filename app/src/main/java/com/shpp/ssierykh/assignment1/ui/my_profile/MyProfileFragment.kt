@@ -1,4 +1,4 @@
-package com.shpp.ssierykh.assignment1.ui.edit_profile.my_profile
+package com.shpp.ssierykh.assignment1.ui.my_profile
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -27,6 +27,7 @@ class MyProfileFragment : Fragment() {
     private lateinit var binding: FragmentMyProfileBinding
     private lateinit var myContact: Contact
     private val viewModel: MyProfileViewModel by viewModels { factory() }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

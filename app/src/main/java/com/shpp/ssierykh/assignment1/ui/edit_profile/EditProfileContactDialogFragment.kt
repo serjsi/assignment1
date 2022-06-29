@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -46,11 +47,12 @@ class EditProfileContactDialogFragment : DialogFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if (SwitchNavigationGraph.featureNavigationEnabled) {
+              if (SwitchNavigationGraph.featureNavigationEnabled) {
             val args: EditProfileContactDialogFragmentArgs by navArgs()
             args.contactArg?.let { viewModel.loadContact(args.contactArg) }
-        } else savedInstanceState?.let {
-            viewModel.loadContact(requireArguments().getString(ARG_EMAIL_ID))
+        } else
+            arguments?.let {
+                viewModel.loadContact(requireArguments().getString(ARG_EMAIL_ID))
         }
     }
 
@@ -110,9 +112,10 @@ class EditProfileContactDialogFragment : DialogFragment() {
         binding.apply {
             showMessageErrorAfterClicking()
             btSave.setOnClickListener {
-                    checkingTextAfterClicking()
+                checkingTextAfterClicking()
                 if (isValidateEmail(etEmail)) {
-                    viewModel.setContact(Contact(
+                    viewModel.setContact(
+                        Contact(
                             etEmail.text.toString(),
                             imageUri.toString(),
                             etUserName.text.toString(),
@@ -141,8 +144,6 @@ class EditProfileContactDialogFragment : DialogFragment() {
                 .collect()
         }
     }
-
-
 
 
 //TODO Corrected//////////////////////////////////////////////////////////////

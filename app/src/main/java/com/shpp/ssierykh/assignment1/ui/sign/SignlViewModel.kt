@@ -50,7 +50,7 @@ class SignViewModel @Inject constructor(
     fun goToSecondFragmentClicked() {
         navigate(SignFragmentDirections.actionSignFragmentGraphToMyProfileFragmentGraph())
     }
-
+//TODO
     fun goToSecondFragmentWithArgs() {
         navigate(
             SignFragmentDirections.actionSignFragmentGraphToMyProfileFragmentGraph(

@@ -13,6 +13,7 @@ import com.shpp.ssierykh.assignment1.R
 
 import com.shpp.ssierykh.assignment1.databinding.FragmentMyContactsBinding
 import com.shpp.ssierykh.assignment1.navigate.routing
+import com.shpp.ssierykh.assignment1.utils.SwipeToDeleteItem
 import com.shpp.ssierykh.assignment1.utils.fragment_util.factory
 
 
@@ -66,6 +67,7 @@ class MyContactsFragment() : Fragment() {
             rvBottomContainer.adapter = adapter
         }
         viewModel.swipeDeleteItem(binding)
+//      viewModel.onContactDelete( SwipeToDeleteItem(binding).setContact()) TODO implement
 
         return binding.root
     }

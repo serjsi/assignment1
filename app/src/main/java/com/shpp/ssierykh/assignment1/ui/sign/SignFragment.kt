@@ -39,9 +39,7 @@ class SignFragment: BaseFragment<FragmentSignBinding,SignViewModel> (){
     override fun getViewBinding() = FragmentSignBinding.inflate(layoutInflater)
     override fun setUpViews() {
         setupListeners(viewModel)
-
         getAutologin(viewModel)
-
         forTestMethod()
     }
 /*    private lateinit var binding: FragmentSignBinding

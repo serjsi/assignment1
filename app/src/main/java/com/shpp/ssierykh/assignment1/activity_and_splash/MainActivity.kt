@@ -31,7 +31,6 @@ import dagger.hilt.android.AndroidEntryPoint
 private lateinit var binding: ActivityMainBinding
 
 
-
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(), Routing {
 
@@ -45,7 +44,9 @@ class MainActivity : AppCompatActivity(), Routing {
             binding = ActivityMainBinding.inflate(layoutInflater).also { setContentView(it.root) }
         }
         setContentView(R.layout.activity_main)
-
+        registerPermissionListener()
+        checkAddressReadPermission()
+        downloadContactsPhone()
 
         // Initially display the first fragment in main activity
         if (savedInstanceState == null && !featureNavigationEnabled) {
@@ -58,7 +59,7 @@ class MainActivity : AppCompatActivity(), Routing {
     }
 
     override fun showMyProfileScreen() {
-      replaceFragment(MyProfileFragment())
+        replaceFragment(MyProfileFragment())
     }
 
     override fun showEditProfileContact() {
@@ -66,17 +67,19 @@ class MainActivity : AppCompatActivity(), Routing {
     }
 
     override fun showEditProfileContact(contact: Contact?) {
-            if (contact != null) {
-                supportFragmentManager.beginTransaction()
-                    .addToBackStack(null)
-                    .replace(R.id.nav_host_fragment,
-                        EditProfileContactDialogFragment.newInstance(contact.email))
-                    .commit()
-            }
+        if (contact != null) {
+            supportFragmentManager.beginTransaction()
+                .addToBackStack(null)
+                .replace(
+                    R.id.nav_host_fragment,
+                    EditProfileContactDialogFragment.newInstance(contact.email)
+                )
+                .commit()
+        }
     }
 
     override fun showMyContacts() {
-      replaceFragment(MyContactsFragment())
+        replaceFragment(MyContactsFragment())
     }
 
     override fun showContactProfile(contact: Contact) {
@@ -90,7 +93,7 @@ class MainActivity : AppCompatActivity(), Routing {
 
 
     override fun goBack() {
-        runWhenActive { onBackPressed()}
+        runWhenActive { onBackPressed() }
 
 
     }
@@ -128,7 +131,7 @@ class MainActivity : AppCompatActivity(), Routing {
     }
 
     private fun downloadContactsPhone() {
-        Log.v("_______Contacts","start")
+        Log.v("_______Contacts", "start")
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS) ==
             PackageManager.PERMISSION_GRANTED
         ) {
@@ -147,7 +150,7 @@ class MainActivity : AppCompatActivity(), Routing {
                     newModel.name = fullName
                     newModel.phone = phone
                     //contacts.add(newModel)
-                    Log.v("_______Contacts","-$fullName--")
+                    Log.v("_______Contacts", "-$fullName--")
                 }
             }
             cursor?.close()

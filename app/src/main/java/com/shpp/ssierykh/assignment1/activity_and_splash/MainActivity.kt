@@ -14,17 +14,18 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 
 import com.shpp.ssierykh.assignment1.R
+import com.shpp.ssierykh.assignment1.data.BaseContacts
 import com.shpp.ssierykh.assignment1.databinding.ActivityMainBinding
 
 import com.shpp.ssierykh.assignment1.model.Contact
 import com.shpp.ssierykh.assignment1.navigate.Routing
 import com.shpp.ssierykh.assignment1.utils.SwitchNavigationGraph.featureNavigationEnabled
-
 import com.shpp.ssierykh.assignment1.ui.my_profile.MyProfileFragment
 import com.shpp.ssierykh.assignment1.ui.edit_profile.EditProfileContactDialogFragment
 import com.shpp.ssierykh.assignment1.ui.view_my_contacts.MyContactsFragment
 import com.shpp.ssierykh.assignment1.ui.contact_profile.ContactProfileFragment
 import com.shpp.ssierykh.assignment1.ui.sign.SignFragment
+
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -38,15 +39,19 @@ class MainActivity : AppCompatActivity(), Routing {
     private val actions = mutableListOf<() -> Unit>()
     private lateinit var pLauncher: ActivityResultLauncher<String>
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (!featureNavigationEnabled) {
             binding = ActivityMainBinding.inflate(layoutInflater).also { setContentView(it.root) }
         }
         setContentView(R.layout.activity_main)
+
+
         registerPermissionListener()
         checkAddressReadPermission()
         downloadContactsPhone()
+
 
         // Initially display the first fragment in main activity
         if (savedInstanceState == null && !featureNavigationEnabled) {
@@ -156,7 +161,6 @@ class MainActivity : AppCompatActivity(), Routing {
             cursor?.close()
         }
     }
-
 
     /**
      * Avoiding [IllegalStateException] if navigation action has been called after restoring app from background.

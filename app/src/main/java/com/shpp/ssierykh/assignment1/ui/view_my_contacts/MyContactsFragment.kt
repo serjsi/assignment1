@@ -1,17 +1,24 @@
 package com.shpp.ssierykh.assignment1.ui.view_my_contacts
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.os.Bundle
+import android.provider.ContactsContract
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.shpp.ssierykh.assignment1.R
+import com.shpp.ssierykh.assignment1.activity_and_splash.MainActivity
 
 import com.shpp.ssierykh.assignment1.databinding.FragmentMyContactsBinding
+import com.shpp.ssierykh.assignment1.model.Contact
 import com.shpp.ssierykh.assignment1.navigate.routing
 import com.shpp.ssierykh.assignment1.utils.SwipeToDeleteItem
 import com.shpp.ssierykh.assignment1.utils.fragment_util.factory
@@ -98,7 +105,6 @@ class MyContactsFragment() : Fragment() {
     private fun onArrowBack() {
         routing().goBack()
     }
-
 
 }
 

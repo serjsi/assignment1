@@ -1,18 +1,31 @@
 package com.shpp.ssierykh.assignment1.data
 
+import android.Manifest
+import android.annotation.SuppressLint
+import android.content.pm.PackageManager
+import android.provider.ContactsContract
+import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import com.shpp.ssierykh.assignment1.activity_and_splash.MainActivity
 import com.shpp.ssierykh.assignment1.model.Contact
+
 import com.shpp.ssierykh.assignment1.utils.Constants
 import java.util.ArrayList
+
 
 typealias ContactListener = (contacts: List<Contact>) -> Unit
 
 
-class BaseContacts {
+class BaseContacts
+{
     private var contacts = mutableListOf<Contact>()
     private val listeners = mutableSetOf<ContactListener>()
 
+
     init {
         loadContacts()
+
     }
 
     private fun loadContacts() {
@@ -54,24 +67,24 @@ class BaseContacts {
         return contacts.firstOrNull { it.email == emailFind }
     }
 
-    fun setContact(contactNew: Contact){
+    fun setContact(contactNew: Contact) {
         val contact = getContactForEmail(contactNew.email)
-        if(contactNew.photoAddress != contact?.photoAddress ){
+        if (contactNew.photoAddress != contact?.photoAddress) {
             contact?.photoAddress = contactNew.photoAddress
         }
-        if(contactNew.name != contact?.name ){
+        if (contactNew.name != contact?.name) {
             contact?.name = contactNew.name
         }
-        if(contactNew.career != contact?.career  ){
+        if (contactNew.career != contact?.career) {
             contact?.career = contactNew.career
         }
-        if(contactNew.phone != contact?.phone ){
+        if (contactNew.phone != contact?.phone) {
             contact?.phone = contactNew.phone
         }
-        if(contactNew.home != contact?.home ){
+        if (contactNew.home != contact?.home) {
             contact?.home = contactNew.home
         }
-        if(contactNew.birth != contact?.birth){
+        if (contactNew.birth != contact?.birth) {
             contact?.birth = contactNew.birth
         }
         notifyChanges()
@@ -107,5 +120,6 @@ class BaseContacts {
         listeners.forEach { it.invoke(contacts) }
 
     }
+
 
 }

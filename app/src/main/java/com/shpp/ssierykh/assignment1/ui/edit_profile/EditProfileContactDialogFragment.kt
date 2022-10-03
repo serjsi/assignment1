@@ -1,17 +1,13 @@
 package com.shpp.ssierykh.assignment1.ui.edit_profile
 
 
-import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
-import android.view.inputmethod.InputMethodManager
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.net.toUri
@@ -22,15 +18,12 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import com.shpp.ssierykh.assignment1.R
-import com.shpp.ssierykh.assignment1.databinding.FragmentSignBinding
 import com.shpp.ssierykh.assignment1.model.Contact
 import com.shpp.ssierykh.assignment1.navigate.routing
 import com.shpp.ssierykh.assignment1.utils.SwitchNavigationGraph
-import com.shpp.ssierykh.assignment1.utils.Validators
 import com.shpp.ssierykh.assignment1.utils.Validators.isValidateEmail
 import com.shpp.ssierykh.assignment1.utils.extensions.loadImageGlade
 import com.shpp.ssierykh.assignment1.utils.fragment_util.factory
-import kotlinx.android.synthetic.main.fragment_sign.*
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
 import com.shpp.ssierykh.assignment1.databinding.EditContactProfileBinding as EditContactProfileBinding1
